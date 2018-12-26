@@ -8,6 +8,7 @@ import myRouter from './my'
 // demo页
 const DemoPage = () => import( /* webpackChunkName: "home" */ '../views/demo.vue')
 const CanvasDemo = () => import( /* webpackChunkName: "home" */ '../views/canvasDemo.vue')
+const QRDemo = () => import( /* webpackChunkName: "home" */ '../views/qrDemo.vue')
 
 Vue.use(Router)
 
@@ -26,6 +27,11 @@ const router =  new Router({
             path: '/canvas',
             name: 'canvasDemo',
             component: CanvasDemo
+        },
+        {
+            path: '/qr',
+            name: 'qrDemo',
+            component: QRDemo
         },
         ...homeRouter,
         ...myRouter,
