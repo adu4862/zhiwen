@@ -34,13 +34,27 @@
         },
         methods: {
             toImage() {
+                let dom = this.$refs.we
+                console.log(dom)
+                let width = dom.offsetWidth
+                let height = dom.offsetHeight
+                let canvasBox = document.createElement("canvas");
+                let scale = window.devicePixelRatio;
+                canvasBox.width = width * scale;
+                canvasBox.height = height * scale;
+
+                canvasBox.style.width = width + "px";
+                canvasBox.style.height = height + "px";
+                canvasBox.getContext("2d").scale(scale, scale);
+                console.log(scale)
                 html2canvas(this.$refs.we, {
                     backgroundColor: null,
                     // allowTaint: true,
                     useCORS: true,
                     dpi: window.devicePixelRatio,
-                    width: 300,
+                    // width: 300,
                     // height: 480,
+                    // scale: scale,
                 }).then((canvas) => {
                     let dataURL = canvas.toDataURL("image/png");
                     this.dataURL = dataURL;
@@ -72,8 +86,11 @@
                 @include ct();
                 width: 200px;
                 height: 180px;
+                line-height: 180px;
                 margin: 0 auto;
                 background-color: cornflowerblue;
+                font-size: 40px;
+                text-align: center;
             }
             .bottom {
                 display: flex;
