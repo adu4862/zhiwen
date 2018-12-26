@@ -57,7 +57,7 @@
                 flex-flow: column;
                 justify-content: space-around;
                 margin-left: 10px;
-                min-width: 0;
+                overflow: hidden;
                 .title {
                     overflow: hidden;
                     text-overflow: ellipsis;

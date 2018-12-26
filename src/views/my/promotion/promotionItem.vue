@@ -37,7 +37,7 @@
             flex-flow: column;
             justify-content: space-between;
             flex: 1;
-            min-width: 0;
+            overflow: hidden;
             .title {
                 overflow: hidden;
                 text-overflow: ellipsis;

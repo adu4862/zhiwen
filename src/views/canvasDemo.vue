@@ -51,7 +51,6 @@
                     backgroundColor: null,
                     // allowTaint: true,
                     useCORS: true,
-                    dpi: window.devicePixelRatio,
                     // width: 300,
                     // height: 480,
                     // scale: scale,
