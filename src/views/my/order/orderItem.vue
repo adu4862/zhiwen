@@ -57,7 +57,7 @@
             }
             .info {
                 color: red;
-                font-size: $text-mini-size;
+                font-size: $text-tip-size;
             }
             .prices {
                 display: flex;

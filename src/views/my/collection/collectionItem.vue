@@ -70,7 +70,7 @@
                 display: flex;
                 align-items: flex-end;
                 .old-price {
-                    font-size: $text-mini-size;
+                    font-size: $text-tip-size;
                     text-decoration: line-through;
                 }
                 .new-price {

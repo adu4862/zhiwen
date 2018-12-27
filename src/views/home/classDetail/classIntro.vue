@@ -77,7 +77,7 @@
 				.old-price {
                     margin-left: 5px;
                     text-decoration: line-through;
-                    font-size: $text-mini-size;
+                    font-size: $text-tip-size;
 				}
 				.people {
 					margin-left: 40px;
