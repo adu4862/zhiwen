@@ -58,7 +58,7 @@ const toThousands = (val) => {
  * @param pos 保留的小数位
  * @returns {*}
  */
-const fomatFloat = (val, pos = 2) => {
+const formatFloat = (val, pos = 2) => {
     let f = parseFloat(val);
     if (isNaN(f)) {
         return false;
@@ -80,5 +80,6 @@ export default {
     timeFilter,
     formatPhone,
     formatBank,
-    toThousands
+    toThousands,
+    formatFloat,
 }
