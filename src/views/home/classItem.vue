@@ -29,11 +29,8 @@
 </script>
 
 <style lang="scss" scoped>
-	// @import "~@/style/var.scss";
-
 	.class-item {
 		display: flex;
-		width: 100%;
 		&-banner {
             position: relative;
 			.banner {
@@ -53,9 +50,6 @@
 			margin-left: 5px;
             flex: 1;
             overflow: hidden;
-			> div {
-				text-align: left;
-			}
 			.title {
 				font-size: $text-title-size;
 			}
