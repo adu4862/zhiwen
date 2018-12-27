@@ -17,8 +17,8 @@
 </script>
 
 <style lang="scss">
-	@import "./style/reset";
-	@import "./style/var";
+    @import "./style/reset.scss";
+    @import "./style/common.scss";
     @import "~@/assets/iconfont/iconfont.css";
     #app {
         font-size: $text-common-size;

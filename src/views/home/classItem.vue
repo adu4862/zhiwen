@@ -5,7 +5,7 @@
 			<i class="class-type-icon iconfont icon-weibo"></i>
 		</div>
 		<div class="class-item-content">
-			<div class="title">法律英语基础版法法律英语基础版法法律英语基础版法</div>
+			<div class="title ellipsis">法律英语基础版法法律英语基础版法法律英语基础版法</div>
 			<div class="content">熟悉法律条文，具有法律思维，能够把各种生活关系转换为法律关系，以至于在法律层面能担负起真正的法律责任</div>
 			<!-- <div class="saled">
 				<span class="saled-num">155人开通</span>
@@ -57,9 +57,6 @@
 				text-align: left;
 			}
 			.title {
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
 				font-size: $text-title-size;
 			}
 			.content {
