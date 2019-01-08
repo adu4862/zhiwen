@@ -1,10 +1,14 @@
 <template>
     <div class="m-class-item">
         <div class="m-class-item-banner">
-            <img class="banner" src="http://ww1.sinaimg.cn/large/0069osmDly1fxgv7wf2ypj30jk0cun0d.jpg"
+            <img class="banner" :src="require('@/assets/img/demo_class_banner.png')"
                  alt="class-banner">
-            <!--<i class="class-type-icon iconfont icon-weibo"></i>-->
-            <img class="class-type-icon" :src="require('@/assets/img/icon_video.png')" alt="video_icon">
+            <div class="icon-wrap">
+                <img v-if="type === 'video'" class="class-type-icon"
+                     :src="require('@/assets/img/icon_video.png')" alt="video_icon">
+                <img v-if="type === 'voice'" class="class-type-icon"
+                     :src="require('@/assets/img/icon_voice.png')" alt="video_icon">
+            </div>
         </div>
         <div class="m-class-item-content">
             <div class="title ellipsis">法律英语基础版法法律英语基础版法法律英语基础版法</div>
@@ -24,6 +28,12 @@
 <script>
     export default {
         components: {},
+        props: {
+            type: {
+                type: String,
+                default: 'voice'
+            }
+        },
         data() {
             return {};
         },
@@ -35,16 +45,23 @@
         display: flex;
         &-banner {
             position: relative;
+            border-radius: 6px;
+            overflow: hidden;
             .banner {
                 width: 114px;
-                height: 80px;
-                /*height: 100%;*/
-                border-radius: 6px;
+                height: 100%;
+            }
+            .icon-wrap {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 14px;
+                background-color: rgba(0, 0, 0, .6);
             }
             .class-type-icon {
-                position: absolute;
-                right: 5px;
-                bottom: 5px;
+                @include tb();
+                right: 8px;
                 width: 8px;
                 height: 8px;
                 color: #fff;

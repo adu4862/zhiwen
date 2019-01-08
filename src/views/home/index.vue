@@ -11,7 +11,7 @@
         <div class="home-classes">
             <SectionTitle title="法律英语课程" />
             <div class="class-list">
-                <ClassItem type="video"/>
+                <ClassItem type="voice"/>
             </div>
         </div>
     </div>
