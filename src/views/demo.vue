@@ -62,8 +62,7 @@
 
 <script>
 	// @ is an alias to /src
-	import CountDown from "@/components/countDown.vue";
-	import Modal from "@/components/modal.vue";
+    import {CountDown, Modal} from '@/components'
 	import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
 	import env from "@/config/env";
 	import { getUserInfo } from "@/api/common";
