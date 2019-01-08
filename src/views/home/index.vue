@@ -1,21 +1,24 @@
 <template>
     <div class="home">
         <div class="home-swipe">
-            <van-swipe :autoplay="3000" indicator-color="#ff6632" :height="180">
-                <van-swipe-item><div class="swipe-item">1</div></van-swipe-item>
-                <van-swipe-item><div class="swipe-item">2</div></van-swipe-item>
-                <van-swipe-item><div class="swipe-item">3</div></van-swipe-item>
-                <van-swipe-item><div class="swipe-item">4</div></van-swipe-item>
+            <van-swipe :autoplay="3000" indicator-color="#ff6632">
+                <van-swipe-item><img :src="require('@/assets/img/demo_banner.png')" alt="banner"></van-swipe-item>
+                <van-swipe-item><img :src="require('@/assets/img/demo_banner.png')" alt="banner"></van-swipe-item>
+                <van-swipe-item><img :src="require('@/assets/img/demo_banner.png')" alt="banner"></van-swipe-item>
+                <van-swipe-item><img :src="require('@/assets/img/demo_banner.png')" alt="banner"></van-swipe-item>
             </van-swipe>
         </div>
-        <ClassItem/>
+        <div class="home-classes">
+            <SectionTitle title="法律英语课程" />
+            <div class="class-list">
+                <ClassItem type="video"/>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-    // @ is an alias to /src
-    import ClassItem from "./classItem";
-    import Dialog from "@/components/dialog";
+    import {Dialog, ClassItem, SectionTitle} from "@/components";
     import {mapState, mapMutations, mapActions, mapGetters} from "vuex";
     import {getUserInfo} from "@/api/common";
 
@@ -24,6 +27,7 @@
         components: {
             ClassItem,
             Dialog,
+            SectionTitle,
         },
         data() {
             return {
@@ -57,34 +61,19 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "~@/assets/iconfont/iconfont.css";
-
     .home {
-        p {
-            margin: 20px auto;
-        }
         &-swipe {
             .swipe-item {
-                line-height: 180px;
                 text-align: center;
                 background-color: cornflowerblue;
             }
         }
-        .border {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100px;
-            height: 200px;
-            margin: 20px auto;
-            position: relative;
-            @include border();
+        &-classes {
+            padding: 13px 20px;
+            background-color: #fff;
+            .class-list {
+                margin-top: 12px;
+            }
         }
-    }
-
-    .dialog-content {
-        width: 300px;
-        height: 180px;
-        background-color: #fff;
     }
 </style>

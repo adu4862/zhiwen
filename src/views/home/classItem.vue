@@ -63,13 +63,13 @@
 				justify-content: space-between;
 				width: 100%;
 				&-num {
-					font-size: $text-tip-size;
+					font-size: $text-mini-size;
 				}
 				&-price {
 					display: flex;
 					align-items: flex-end;
 					.old-price {
-						font-size: $text-tip-size;
+						font-size: $text-mini-size;
 						text-decoration: line-through;
 					}
 					.new-price {
