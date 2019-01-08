@@ -47,9 +47,11 @@
 			proxy代理：
 			{{rank.ok?'成功':'失败'}}
 		</p>
-		<Dialog v-model="showDialog" :showClose="true">
-			<div class="dialog-content">this is dialog content!</div>
-		</Dialog>
+        <Dialog :isVisible="isVisible" :showMask="true" @close="closeDialog">
+            <div>
+                123
+            </div>
+        </Dialog>
 	</div>
 </template>
 
@@ -69,8 +71,8 @@
 		},
 		data() {
 			return {
-				showDialog: false,
-			};
+                isVisible: false,
+            };
 		},
 		computed: {
 			...mapState("user", ["userInfo", "rank"]),
@@ -87,8 +89,11 @@
 			timeStart() {},
 			timeEnd() {},
 			handleDialog() {
-				this.showDialog = true;
+				this.isVisible = true;
 			},
+            closeDialog() {
+                this.isVisible = false;
+            },
 			handleI18n() {
 				this.$i18n.locale = this.$i18n.locale === "en-US" ? "zh-CN" : "en-US";
 			}
