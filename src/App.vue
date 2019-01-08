@@ -19,7 +19,7 @@
 <style lang="scss">
     @import "./style/reset.scss";
     @import "./style/common.scss";
-    @import "~@/assets/iconfont/iconfont.css";
+    @import "~@/assets/iconfont/styles.css";
     #app {
         font-size: $text-common-size;
         font-weight: $text-common-weight;

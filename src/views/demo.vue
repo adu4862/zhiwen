@@ -8,7 +8,7 @@
 		</p>
 		<p>
 			iconfont:
-			<i class="iconfont icon-weibo"></i>
+			<i class="icon icon--2"></i>
 		</p>
 		<p @click="handleI18n">
 			i18n:
@@ -111,7 +111,6 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "~@/assets/iconfont/iconfont.css";
 	.home {
 		font-size: 14px;
 		p {

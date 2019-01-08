@@ -43,8 +43,6 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "~@/assets/iconfont/iconfont.css";
-
     .tab-bar {
 		display: flex;
 		justify-content: space-around;

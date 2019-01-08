@@ -47,8 +47,6 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "~@/assets/iconfont/iconfont.css";
-
 	.class-table {
 		&-header {
 			display: flex;
