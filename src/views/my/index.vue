@@ -1,14 +1,13 @@
 <template>
     <div class="my">
         <div class="my-head">
-            <img class="img"
+            <img class="header"
                  src="http://cdn.zmqnw-images.zmqnw.com.cn/2017/12/28/132806689309a1.jpg?width=640&amp;height=640"
                  alt="head-img">
-            我是袁哲
+            <span class="name">
+                我是袁哲
+            </span>
         </div>
-        <SectionTitle
-            title="我的课程"
-        />
         <div class="my-cell-group">
             <div class="cell">
                 <div class="cell-left">
@@ -58,6 +57,12 @@
                 </div>
             </div>
         </div>
+        <div class="my-class-list">
+            <SectionTitle
+                title="我的课程"
+            />
+        </div>
+
     </div>
 </template>
 
@@ -77,19 +82,26 @@
 <style lang="scss" scoped>
     .my {
         &-head {
-            padding-top: 50px;
-            padding-bottom: 50px;
+            padding-top: 18px;
+            padding-bottom: 31px;
             display: flex;
             flex-flow: column;
             align-items: center;
-            img {
+            background:linear-gradient(223deg,rgba(127,156,255,1) 0%,rgba(154,129,255,1) 100%);
+            .header {
                 margin-bottom: 15px;
                 width: 80px;
                 height: 80px;
                 border-radius: 50%;
             }
+            .name {
+                font-size: 16px;
+                font-weight: 600;
+                color: #fff;
+            }
         }
         &-cell-group {
+            margin-bottom: 6px;
             padding: 0 20px;
             background-color: #fff;
             .cell {
@@ -97,7 +109,7 @@
                 justify-content: space-between;
                 align-items: center;
                 padding: 13px 0 10px 12px;
-                @include border-bottom($border-color: rgba(101, 135, 248, 0.36));
+                @include border-bottom();
                 &-left {
                     .label {
                         margin-left: 11px;
@@ -114,6 +126,10 @@
             .cell:nth-last-child(1):after {
                 display: none;
             }
+        }
+        &-class-list {
+            padding: 14px 20px;
+            background-color: #fff;
         }
     }
 </style>

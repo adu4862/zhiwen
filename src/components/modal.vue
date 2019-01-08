@@ -144,7 +144,7 @@
                     color: #888888;
                 }
                 &-footer {
-                    @include border-top($border-color: rgba(101,135,248,0.36));
+                    @include border-top();
                     display: flex;
                     align-items: center;
                     height: 49px;
@@ -159,7 +159,7 @@
                         }
                     }
                     .left-btn {
-                        @include border-right($border-color: rgba(101,135,248,0.36));
+                        @include border-right();
                         &:after {
                             top: 4px;
                         }
