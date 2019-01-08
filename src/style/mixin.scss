@@ -1,4 +1,5 @@
 @import "var.scss";
+@import "_btn.scss";
 
 //定位全屏
 @mixin allcover {
@@ -107,7 +108,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, .5);
 }
 
 @mixin flex($direction: column, $wrap: nowrap) {

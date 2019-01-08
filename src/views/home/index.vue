@@ -60,7 +60,6 @@
     @import "~@/assets/iconfont/iconfont.css";
 
     .home {
-        font-size: 14px;
         p {
             margin: 20px auto;
         }

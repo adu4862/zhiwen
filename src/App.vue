@@ -22,6 +22,7 @@
     @import "~@/assets/iconfont/iconfont.css";
     #app {
         font-size: $text-common-size;
+        font-weight: $text-common-weight;
         color: $color-common;
 		font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "SF UI Text",
 			"Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;

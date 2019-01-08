@@ -12,7 +12,21 @@
         >
             <div class="m-dialog-wrap" v-show="visible">
                 <div class="m-dialog-container">
-                    <slot></slot>
+                    <!--<slot></slot>-->
+                    <p class="m-dialog-container-title">
+                        购买
+                    </p>
+                    <p class="m-dialog-container-content">
+                        底价为¥269，请问是否以¥257.5购买该课程？
+                    </p>
+                    <div class="m-dialog-container-footer">
+                        <p class="left-btn">
+                            马上下单
+                        </p>
+                        <p class="right-btn">
+                            继续砍价
+                        </p>
+                    </div>
                 </div>
             </div>
         </transition>
@@ -94,6 +108,44 @@
                 background: #fff;
                 border-radius: 5px;
                 text-align: center;
+                &-title {
+                    margin-top: 20px;
+                    margin-bottom: 8px;
+                    font-size: 18px;
+                }
+                &-content {
+                    margin: 0 auto;
+                    margin-bottom: 24px;
+                    max-width: 60%;
+                    line-height: 1.6;
+                    color: #888888;
+                }
+                &-footer {
+                    @include border-top($border-color: rgba(101,135,248,0.36));
+                    display: flex;
+                    align-items: center;
+                    height: 49px;
+                    line-height: 49px;
+                    align-items: center;
+                    > p {
+                        flex: 1;
+                        position: relative;
+                        height: 100%;
+                        &:active {
+                            opacity: .6;
+                        }
+                    }
+                    .left-btn {
+                        @include border-right($border-color: rgba(101,135,248,0.36));
+                        &:after {
+                            top: 4px;
+                        }
+                        color: #606060;
+                    }
+                    .right-btn {
+                        color: #5C86FB;
+                    }
+                }
             }
         }
     }
