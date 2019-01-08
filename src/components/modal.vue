@@ -12,19 +12,18 @@
         >
             <div class="m-dialog-wrap" v-show="visible">
                 <div class="m-dialog-container">
-                    <!--<slot></slot>-->
                     <p class="m-dialog-container-title">
-                        购买
+                        {{title}}
                     </p>
                     <p class="m-dialog-container-content">
-                        底价为¥269，请问是否以¥257.5购买该课程？
+                        {{content}}
                     </p>
                     <div class="m-dialog-container-footer">
-                        <p class="left-btn">
-                            马上下单
+                        <p class="left-btn" @click="handelCancel">
+                            {{cancel}}
                         </p>
-                        <p class="right-btn">
-                            继续砍价
+                        <p class="right-btn" @click="handelConfirm">
+                            {{confirm}}
                         </p>
                     </div>
                 </div>
@@ -49,6 +48,22 @@
             isMaskClose: {
                 type: Boolean,
                 default: false
+            },
+            title: {
+                type: String,
+                default: ''
+            },
+            content: {
+                type: String,
+                default: ''
+            },
+            cancel: {
+                type: String,
+                default: '取消'
+            },
+            confirm: {
+                type: String,
+                default: '确认'
             }
         },
         data() {
@@ -78,7 +93,13 @@
         methods: {
             closeDialog() {
                 this.$emit('close');
-            }
+            },
+            handelCancel() {
+                this.closeDialog();
+            },
+            handelConfirm() {
+                this.$emit('confirm');
+            },
         }
     }
 </script>
@@ -114,9 +135,11 @@
                     font-size: 18px;
                 }
                 &-content {
+                    @include ftb();
+                    flex: 1;
                     margin: 0 auto;
                     margin-bottom: 24px;
-                    max-width: 60%;
+                    max-width: 70%;
                     line-height: 1.6;
                     color: #888888;
                 }

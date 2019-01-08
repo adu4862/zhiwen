@@ -47,18 +47,23 @@
 			proxy代理：
 			{{rank.ok?'成功':'失败'}}
 		</p>
-        <Dialog :isVisible="isVisible" :showMask="true" @close="closeDialog">
-            <div>
-                123
-            </div>
-        </Dialog>
+        <Modal
+            :isVisible="isVisible"
+            :showMask="true"
+            title="移除"
+            content="所选课程将从我的收藏移除"
+            cancel="以后再说"
+            confirm="确认移除"
+            @close="closeDialog"
+            @confirm="confirmDialog"
+        />
 	</div>
 </template>
 
 <script>
 	// @ is an alias to /src
 	import CountDown from "@/components/countDown.vue";
-	import Dialog from "@/components/dialog.vue";
+	import Modal from "@/components/modal.vue";
 	import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
 	import env from "@/config/env";
 	import { getUserInfo } from "@/api/common";
@@ -67,7 +72,7 @@
 		name: "home",
 		components: {
 			CountDown,
-			Dialog,
+            Modal,
 		},
 		data() {
 			return {
@@ -93,6 +98,11 @@
 			},
             closeDialog() {
                 this.isVisible = false;
+                console.log('取消')
+            },
+            confirmDialog() {
+                this.isVisible = false;
+                console.log('确认')
             },
 			handleI18n() {
 				this.$i18n.locale = this.$i18n.locale === "en-US" ? "zh-CN" : "en-US";
