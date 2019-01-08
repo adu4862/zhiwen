@@ -1,0 +1,35 @@
+.blue-btn-48 {
+    display: block;
+    width: 332px;
+    height: 48px;
+    line-height: 48px;
+    background: linear-gradient(270deg, rgba(127, 156, 255, 1) 0%, rgba(155, 132, 251, 1) 100%);
+    box-shadow: 0 0 7px 1px rgba(188, 176, 253, 1);
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    &:active {
+        //background: #4F1CC3;
+        //border-color: #4F1CC3;
+    }
+}
+
+.white-btn-48 {
+    display: block;
+    width: 332px;
+    height: 48px;
+    line-height: 48px;
+    background: rgba(246, 246, 246, 1);
+    border-radius: 10px;
+    border: 1px solid rgba(101, 135, 248, 1);
+    font-size: 17px;
+    font-weight: 400;
+    color: #666666;
+    text-align: center;
+    &:active {
+        //background: #4F1CC3;
+        //border-color: #4F1CC3;
+    }
+}
