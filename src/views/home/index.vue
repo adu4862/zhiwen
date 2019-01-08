@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <div class="home-swipe">
-            <van-swipe :autoplay="3000" indicator-color="#ff6632">
+            <van-swipe :autoplay="3000" indicator-color="white">
                 <van-swipe-item><img :src="require('@/assets/img/demo_banner.png')" alt="banner"></van-swipe-item>
                 <van-swipe-item><img :src="require('@/assets/img/demo_banner.png')" alt="banner"></van-swipe-item>
                 <van-swipe-item><img :src="require('@/assets/img/demo_banner.png')" alt="banner"></van-swipe-item>
