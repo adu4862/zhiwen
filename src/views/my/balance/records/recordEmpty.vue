@@ -1,6 +1,8 @@
 <template>
     <div class="my-balance-records-empty">
-        暂无数据
+        <p class="my-balance-records-empty-title">微信提现记录</p>
+        <img class="my-balance-records-empty-img" :src="require('@/assets/img/my/balance/withdraw_empty.png')" alt="records-empty">
+        <p class="my-balance-records-empty-tips">暂无提现记录</p>
     </div>
 </template>
 
@@ -13,8 +15,23 @@
 <style scoped lang="scss">
     .my-balance-records-empty {
         display: flex;
-        justify-content: center;
+        flex-flow: column;
         align-items: center;
-        flex: 1;
+        &-title {
+            padding: 16px;
+            width: 100%;
+            font-size: $text-medium-size;
+            color: #828282;
+            background-color: #fff;
+        }
+        &-img {
+            margin-top: 80px;
+            width: 186px;
+        }
+        &-tips {
+            margin-top: 40px;
+            font-size: $text-small-size;
+            color: #909090;
+        }
     }
 </style>

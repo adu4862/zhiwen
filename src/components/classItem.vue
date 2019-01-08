@@ -11,16 +11,18 @@
             </div>
         </div>
         <div class="m-class-item-content">
-            <div class="title ellipsis">法律英语基础版法法律英语基础版法法律英语基础版法</div>
-            <div class="content">熟悉法律条文，具有法律思维，能够把各种生活关系转换为法律关系，以至于在法律层面能担负起真正的法律责任</div>
-            <div class="saled">
+            <div class="info">
+                <div class="title ellipsis">法律英语基础版法法律英语基础版法法律英语基础版法</div>
+                <div class="content">熟悉法律条文，具有法律思维，能够把各种生活关系转换为法律关系，以至于在法律层面能担负起真正的法律责任</div>
+            </div>
+            <div class="saled" v-if="!isLearn">
                 <p class="saled-num"><span>155</span>人开通</p>
                 <div class="saled-price">
                     <p class="new-price">¥299</p>
                     <p class="old-price">¥599</p>
                 </div>
             </div>
-            <!--<div class="process">学习进度0%</div>-->
+            <div class="process" v-if="isLearn">学习进度0%</div>
         </div>
     </div>
 </template>
@@ -32,6 +34,10 @@
             type: {
                 type: String,
                 default: 'voice'
+            },
+            isLearn: {
+                type: Boolean,
+                default: false
             }
         },
         data() {
@@ -76,12 +82,13 @@
             flex: 1;
             overflow: hidden;
             .title {
-                font-size: $text-btn-size;
+                font-size: $text-medium-size;
                 color: #4A4A4A;
             }
             .content {
+                margin-top: 4px;
                 font-size: $text-mini-size;
-                color: #666666;
+                color: #666;
                 @include ellipsis();
             }
             .saled {
@@ -91,7 +98,7 @@
                 width: 100%;
                 &-num {
                     font-size: $text-mini-size;
-                    color: #666666;
+                    color: #666;
                     span {
                         color: #F09300;
                     }
@@ -106,13 +113,13 @@
                         color: #909090;
                     }
                     .new-price {
-                        font-size: $text-btn-size;
+                        font-size: $text-medium-size;
                         color: #F09300;
                     }
                 }
             }
             .process {
-                font-size: $text-mini-size;
+                font-size: $text-small-size;
                 color: #ff6632;
             }
         }

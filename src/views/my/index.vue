@@ -16,7 +16,9 @@
                 </div>
                 <div class="cell-right">
                     <p class="label">未验证</p>
-                    <i class="cell-right-arrow"></i>
+                    <router-link :to="{name: 'bindPhone'}">
+                        <i class="cell-right-arrow"></i>
+                    </router-link>
                 </div>
             </div>
             <div class="cell">
@@ -26,7 +28,9 @@
                 </div>
                 <div class="cell-right">
                     <p class="label">可提现 <span class="cell-right-withdraw">110.13元</span></p>
-                    <i class="cell-right-arrow"></i>
+                    <router-link :to="{name: 'promotion'}">
+                        <i class="cell-right-arrow"></i>
+                    </router-link>
                 </div>
             </div>
             <div class="cell">
@@ -35,7 +39,9 @@
                     <span class="label">我的订单</span>
                 </div>
                 <div class="cell-right">
-                    <i class="cell-right-arrow"></i>
+                    <router-link :to="{name: 'order'}">
+                        <i class="cell-right-arrow"></i>
+                    </router-link>
                 </div>
             </div>
             <div class="cell">
@@ -44,7 +50,9 @@
                     <span class="label">我的收藏</span>
                 </div>
                 <div class="cell-right">
-                    <i class="cell-right-arrow"></i>
+                    <router-link :to="{name: 'collection'}">
+                        <i class="cell-right-arrow"></i>
+                    </router-link>
                 </div>
             </div>
             <div class="cell">
@@ -53,7 +61,9 @@
                     <span class="label">我的余额</span>
                 </div>
                 <div class="cell-right">
-                    <i class="cell-right-arrow"></i>
+                    <router-link :to="{name: 'balance'}">
+                        <i class="cell-right-arrow"></i>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -115,7 +125,7 @@
                     .icon {
                         display: inline-block;
                         vertical-align: middle;
-                        font-size: $text-btn-size;
+                        font-size: $text-medium-size;
                         color: #809CFF;
                     }
                     .label {
@@ -125,7 +135,7 @@
                 }
                 &-right {
                     display: flex;
-                    font-size: $text-info-size;
+                    font-size: $text-small-size;
                     .label {
                         margin-right: 9px;
                         color: #909090;

@@ -64,7 +64,7 @@
 		}
 		&-content {
 			.title {
-				font-size: $text-title-size;
+				font-size: $text-big-size;
 			}
 			.content {
 				margin: 10px 0;

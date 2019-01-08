@@ -1,7 +1,7 @@
 <template>
     <div class="my-promotion-detail">
         <div class="my-promotion-detail-info">
-            <img class="banner-img" src="http://ww1.sinaimg.cn/large/0069osmDly1fxgv7wf2ypj30jk0cun0d.jpg" alt="">
+            <img class="banner-img" :src="require('@/assets/img/demo_class_banner.png')" alt="class_banner">
             <div class="info">
                 <p class="title">
                     商品名称商品名称商品名称商品名称商品名称商品名称

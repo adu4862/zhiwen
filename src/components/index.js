@@ -3,6 +3,7 @@ import Dialog from './dialog'
 import Modal from './modal'
 import SectionTitle from './sectionTitle'
 import ClassItem from './classItem'
+import OrderItem from './orderItem'
 
 export {
     CountDown,
@@ -10,4 +11,5 @@ export {
     Modal,
     SectionTitle,
     ClassItem,
+    OrderItem,
 }

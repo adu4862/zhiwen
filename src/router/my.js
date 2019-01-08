@@ -7,6 +7,7 @@ const Collection = () => import( /* webpackChunkName: "my" */ '../views/my/colle
 const Balance = () => import( /* webpackChunkName: "my" */ '../views/my/balance/index.vue')
 const BalanceRecord = () => import( /* webpackChunkName: "my" */ '../views/my/balance/records/index.vue')
 const BalanceWithdraw = () => import( /* webpackChunkName: "my" */ '../views/my/balance/withdraw/index.vue')
+const BalanceWithdrawSuccess = () => import( /* webpackChunkName: "my" */ '../views/my/balance/withdraw/withdrawSuccess.vue')
 const Promotion = () => import( /* webpackChunkName: "my" */ '../views/my/promotion/index.vue')
 const PromotionDetail = () => import( /* webpackChunkName: "my" */ '../views/my/promotion/promotionDetail.vue')
 
@@ -50,6 +51,11 @@ export default [
         path: '/my/balance/withdraw',
         name: 'balanceWithdraw',
         component: BalanceWithdraw
+    },
+    {
+        path: '/my/balance/withdraw/success',
+        name: 'balanceWithdrawSuccess',
+        component: BalanceWithdrawSuccess
     },
     {
         path: '/my/promotion',

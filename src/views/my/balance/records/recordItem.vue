@@ -1,10 +1,12 @@
 <template>
     <div class="my-balance-records-item">
-        <div>
+        <div class="my-balance-records-item-time">
             <p>提现时间 2018-09-12 12:00:00</p>
             <p>到账时间 2018-09-12 12:00:00</p>
         </div>
-        1000.00元
+        <div class="my-balance-records-item-balance">
+            <span>1000.00</span> 元
+        </div>
     </div>
 </template>
 
@@ -19,7 +21,19 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 15px 20px;
+        padding: 16px 0;
         @include border-bottom();
+        font-size: $text-small-size;
+        color: #828282;
+        background-color: #fff;
+        &-time {
+            p:nth-child(2) {
+                margin-top: 6px;
+            }
+        }
+        &-balance span {
+            font-size: 18px;
+            color: #F09300;
+        }
     }
 </style>

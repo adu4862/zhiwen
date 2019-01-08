@@ -12,13 +12,12 @@
                 </div>
             </div>
             <div class="withdraw-btn">
-                <button>提现</button>
+                <button class="border-btn-28">提现</button>
             </div>
         </div>
-        <div class="my-promotion-title">
-            推广订单
-        </div>
         <div class="my-promotion-list">
+            <SectionTitle title="推广订单" />
+            <!--<PromotionEmpty />-->
             <van-list
                 v-model="loading"
                 :finished="finished"
@@ -36,10 +35,14 @@
 
 <script>
     import PromotionItem from './promotionItem'
+    import PromotionEmpty from './promotionEmpty'
+    import {SectionTitle} from '@/components'
 
     export default {
         components: {
+            PromotionEmpty,
             PromotionItem,
+            SectionTitle,
         },
         data() {
             return {
@@ -71,23 +74,35 @@
 <style scoped lang="scss">
     .my-promotion {
         &-withdraw {
-            padding: 20px;
-            background-color: #fff;
+            height: 157px;
+            background: url("../../../assets/img/my/promotion/bg.png") no-repeat center;
+            background-size: cover;
+            overflow: hidden;
             .balance {
                 display: flex;
-                justify-content: space-around;
+                justify-content: space-between;
+                margin-top: 20px;
+                padding: 0 34px;
                 text-align: center;
+                font-size: $text-small-size;
+                color: #828282;
+                .money-item p:nth-child(2) {
+                    margin-top: 10px;
+                    font-size: 30px;
+                    color: #F09300;
+                }
             }
             .withdraw-btn {
                 display: flex;
                 justify-content: flex-end;
+                margin-top: 20px;
+                padding: 0 34px;
             }
         }
-        &-title {
-            padding: 10px;
-            background-color: #F5F5F5;
-        }
         &-list {
+            margin-top: 8px;
+            padding: 18px 20px;
+            background-color: #fff;
             .last-item:after {
                 background-color: initial;
             }

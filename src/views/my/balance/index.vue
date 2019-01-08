@@ -1,47 +1,106 @@
 <template>
     <div class="my-balance">
-        <div class="my-balance-account">
-            <p>我的余额（元）</p>
-            <p>8789.00</p>
-        </div>
-        <div class="my-balance-income">
-            <div class="my-balance-income-item">
-                <p>今日收益（元）</p>
-                <p>878.00</p>
+        <div class="my-balance-wrap">
+            <div :class="['container', isDisabled?'container-disabled':'container-normal']">
+                <div class="account">
+                    <p class="title">我的余额（元）</p>
+                    <p class="balance">8789.00</p>
+                </div>
+                <div class="income">
+                    <div class="income-item">
+                        <p class="title">今日收益（元）</p>
+                        <p class="balance">878.00</p>
+                    </div>
+                    <div class="income-item">
+                        <p class="title">累计收益（元）</p>
+                        <p class="balance">18789.00</p>
+                    </div>
+                </div>
             </div>
-            <div class="my-balance-income-item">
-                <p>累计收益（元）</p>
-                <p>18789.00</p>
-            </div>
         </div>
-        <div class="my-balance-btns">
-            <button>提现</button>
-            <button>查看提现记录</button>
-        </div>
+        <button
+            :class="['blue-btn-48', 'my-balance-btn', isDisabled?'disabled-btn':'']"
+            :disabled="isDisabled"
+            @click="handleWithdraw"
+        >
+            提现
+        </button>
     </div>
 </template>
 
 <script>
     export default {
-        name: "index"
+        name: "index",
+        data() {
+            return {
+                isDisabled: false
+            }
+        },
+        methods: {
+            handleWithdraw() {
+                this.$router.push({name: 'balanceWithdraw'})
+            }
+        }
     }
 </script>
 
 <style scoped lang="scss">
     .my-balance {
-        padding: 15px 20px;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
         text-align: center;
-        background-color: #fff;
-        &-account {
-
+        &-wrap {
+            position: relative;
+            padding: 15px 20px;
+            width: 100%;
+            height: 232px;
+            text-align: center;
+            background: url("../../../assets/img/my/balance/bg.png") no-repeat center;
+            background-size: cover;
+            .container {
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                .account {
+                    margin-top: 56px;
+                    margin-bottom: 34px;
+                    .title {
+                        font-size: $text-medium-size;
+                        color: #828282;
+                    }
+                    .balance {
+                        margin-top: 4px;
+                        font-size: 40px;
+                        color: #F09300;
+                    }
+                }
+                .income {
+                    display: flex;
+                    justify-content: space-between;
+                    font-weight: 300;
+                    .title {
+                        font-size: $text-small-size;
+                        color: #828282;
+                    }
+                    .balance {
+                        margin-top: 5px;
+                        font-size: 18px;
+                        color: #F09300;
+                    }
+                }
+            }
+            .container-disabled {
+                background: rgba(255, 255, 255, .3);
+            }
+            .container-normal {
+                background: rgba(255, 255, 255, 0);
+            }
         }
-        &-income {
-            display: flex;
-            justify-content: space-between;
-        }
-        &-btns {
-            display: flex;
-            flex-flow: column;
+        &-btn {
+            margin-top: 60px;
         }
     }
 </style>

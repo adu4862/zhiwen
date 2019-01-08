@@ -1,6 +1,6 @@
 <template>
-    <div class="my-promotion-item">
-        <div class="my-promotion-item-banner">
+    <div class="m-order-item">
+        <div class="m-order-item-banner">
             <img class="banner" :src="require('@/assets/img/demo_class_banner.png')"
                  alt="class-banner">
             <div class="icon-wrap">
@@ -10,16 +10,19 @@
                      :src="require('@/assets/img/icon_voice.png')" alt="video_icon">
             </div>
         </div>
-        <div class="my-promotion-item-content">
+        <div class="m-order-item-content">
             <div class="info">
                 <div class="title ellipsis">法律英语基础版法法律英语基础版法法律英语基础版法</div>
-                <div class="reward">
-                    邀请奖励：<span>¥3432.00</span>
+                <div class="pay-time">
+                    <span class="label">付款时间</span> 2018-12-17 01:54:14
+                </div>
+                <div class="order-no">
+                    <span class="label">订单号</span> 010000000000111111000
                 </div>
             </div>
-            <div class="btns">
-                <button class="border-btn-20">继续推广</button>
-                <button class="border-btn-20">查看详情</button>
+            <div class="order-price">
+                <p class="price">价格 ¥299</p>
+                <p class="pay">实付 <span>¥229</span></p>
             </div>
         </div>
     </div>
@@ -33,10 +36,6 @@
                 type: String,
                 default: 'voice'
             },
-            isLearn: {
-                type: Boolean,
-                default: false
-            }
         },
         data() {
             return {};
@@ -45,12 +44,11 @@
 </script>
 
 <style lang="scss" scoped>
-    .my-promotion-item {
+    .m-order-item {
         display: flex;
-        padding: 10px 0;
-        @include border-bottom();
         &-banner {
             position: relative;
+            border-radius: 6px;
             overflow: hidden;
             .banner {
                 width: 114px;
@@ -83,21 +81,23 @@
             .title {
                 font-size: $text-medium-size;
                 color: #4A4A4A;
-                font-weight: bold;
             }
-            .reward {
-                margin-top: 6px;
+            .pay-time,
+            .order-no {
+                margin-top: 4px;
+                font-size: $text-mini-size;
                 color: #666;
-                font-weight: 300;
-                @include ellipsis();
-                span {
-                    color: #F09300;
-                }
             }
-            .btns {
+            .order-price {
                 display: flex;
-                button:nth-child(1) {
-                    margin-right: 20px;
+                justify-content: space-between;
+                font-size: $text-small-size;
+                color: #4A4A4A;
+                .pay {
+                    color: #F09300;
+                    span {
+                        font-size: $text-medium-size;
+                    }
                 }
             }
         }

@@ -1,69 +1,107 @@
 <template>
-    <div class="my-order-item" @click="handleClass">
-        <img class="my-order-item-banner" src="http://ww1.sinaimg.cn/large/0069osmDly1fxgv7wf2ypj30jk0cun0d.jpg" alt="class-banner">
-        <div class="my-order-item-content">
-            <div class="title">
-                课程标题课程标题课程标题课程标题
+    <div class="m-order-item">
+        <div class="m-order-item-banner">
+            <img class="banner" :src="require('@/assets/img/demo_class_banner.png')"
+                 alt="class-banner">
+            <div class="icon-wrap">
+                <img v-if="type === 'video'" class="class-type-icon"
+                     :src="require('@/assets/img/icon_video.png')" alt="video_icon">
+                <img v-if="type === 'voice'" class="class-type-icon"
+                     :src="require('@/assets/img/icon_voice.png')" alt="video_icon">
             </div>
+        </div>
+        <div class="m-order-item-content">
             <div class="info">
-                <p><span class="label">付款时间</span>2018-12-17 01：54：14</p>
-                <p><span class="label">订单号</span>00032828934792374</p>
+                <div class="title ellipsis">法律英语基础版法法律英语基础版法法律英语基础版法</div>
+                <div class="pay-time">
+                    <span class="label">付款时间</span> 2018-12-17 01:54:14
+                </div>
+                <div class="order-no">
+                    <span class="label">订单号</span> 010000000000111111000
+                </div>
             </div>
-            <p class="prices">
-                <span>价格 ¥299</span>
-                <span>实付 ¥269</span>
-            </p>
+            <div class="order-price">
+                <p class="price">价格 ¥299</p>
+                <p class="pay">实付 <span>¥229</span></p>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "order-item",
-        data() {
-            return {}
+        components: {},
+        props: {
+            type: {
+                type: String,
+                default: 'voice'
+            },
         },
-        methods: {
-            handleClass() {
-
-            }
-        }
-    }
+        data() {
+            return {};
+        },
+    };
 </script>
 
-<style scoped lang="scss">
-    .my-order-item {
+<style lang="scss" scoped>
+    .m-order-item {
+        margin-top: 3px;
+        padding: 12px 21px;
         display: flex;
-        margin-bottom: 15px;
-        padding: 20px 15px;
-        overflow: hidden;
         background-color: #fff;
         &-banner {
-            width: 160px;
-            height: 100%;
+            position: relative;
+            overflow: hidden;
+            .banner {
+                width: 114px;
+                height: 100%;
+            }
+            .icon-wrap {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 14px;
+                background-color: rgba(0, 0, 0, .6);
+            }
+            .class-type-icon {
+                @include tb();
+                right: 8px;
+                width: 8px;
+                height: 8px;
+                color: #fff;
+                font-size: 22px;
+            }
         }
         &-content {
-            margin-left: 5px;
+            margin-left: 8px;
             display: flex;
-            flex: 1;
             flex-flow: column;
             justify-content: space-between;
+            flex: 1;
             overflow: hidden;
             .title {
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                font-size: $text-title-size;
+                font-size: $text-medium-size;
+                color: #4A4A4A;
             }
-            .info {
-                color: red;
+            .pay-time,
+            .order-no {
+                margin-top: 4px;
                 font-size: $text-mini-size;
+                color: #666;
             }
-            .prices {
+            .order-price {
                 display: flex;
                 justify-content: space-between;
-                width: 100%;
-                font-size: $text-title-size;
+                align-items: center;
+                font-size: $text-small-size;
+                color: #4A4A4A;
+                .pay {
+                    color: #F09300;
+                    span {
+                        font-size: $text-medium-size;
+                    }
+                }
             }
         }
     }

@@ -2,7 +2,7 @@
     display: block;
     width: 332px;
     height: 48px;
-    line-height: 48px;
+    line-height: 46px;
     background: linear-gradient(270deg, rgba(127, 156, 255, 1) 0%, rgba(155, 132, 251, 1) 100%);
     box-shadow: 0 0 7px 1px rgba(188, 176, 253, 1);
     border-radius: 10px;
@@ -10,8 +10,7 @@
     color: #fff;
     text-align: center;
     &:active {
-        //background: #4F1CC3;
-        //border-color: #4F1CC3;
+        opacity: .6;
     }
 }
 
@@ -19,15 +18,45 @@
     display: block;
     width: 332px;
     height: 48px;
-    line-height: 48px;
+    line-height: 46px;
     background: rgba(246, 246, 246, 1);
     border-radius: 10px;
     border: 1px solid rgba(101, 135, 248, 1);
     font-size: 17px;
-    color: #666666;
+    color: #666;
     text-align: center;
     &:active {
-        //background: #4F1CC3;
-        //border-color: #4F1CC3;
+        opacity: .6;
     }
+}
+
+.border-btn-28 {
+    display: block;
+    width: 70px;
+    height: 28px;
+    line-height: 26px;
+    border-radius: 5px;
+    border: 1px solid rgba(101, 135, 248, 1);
+    font-size: 14px;
+    font-weight: initial;
+    color: #6587F8;
+    background-color: initial;
+    text-align: center;
+    &:active {
+        opacity: .6;
+    }
+}
+
+.border-btn-20 {
+    @extend .border-btn-28;
+    width: 75px;
+    height: 20px;
+    line-height: 18px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.disabled-btn {
+    background: #8E9199;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.31);
 }

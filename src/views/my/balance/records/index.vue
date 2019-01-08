@@ -1,22 +1,21 @@
 <template>
     <div class="my-balance-records">
-        <div class="my-balance-records-title">
-            提现记录
+        <!--<RecordEmpty />-->
+        <div class="my-balance-records-list">
+            <div class="my-balance-records-list-wrap">
+                <van-list
+                    v-model="loading"
+                    :finished="finished"
+                    finished-text="没有更多了"
+                    @load="onLoad"
+                >
+                    <RecordItem
+                        v-for="(item, idx) in list"
+                        :class="[idx+1 === list.length?'last-item':'']"
+                    />
+                </van-list>
+            </div>
         </div>
-        <RecordEmpty />
-        <!--<div class="my-balance-records-list">-->
-            <!--<van-list-->
-                <!--v-model="loading"-->
-                <!--:finished="finished"-->
-                <!--finished-text="没有更多了"-->
-                <!--@load="onLoad"-->
-            <!--&gt;-->
-                <!--<RecordItem-->
-                    <!--v-for="(item, idx) in list"-->
-                    <!--:class="[idx+1 === list.length?'last-item':'']"-->
-                <!--/>-->
-            <!--</van-list>-->
-        <!--</div>-->
     </div>
 </template>
 
@@ -47,7 +46,7 @@
                     this.loading = false;
 
                     // 数据全部加载完成
-                    if (this.list.length >= 10) {
+                    if (this.list.length >= 5) {
                         this.finished = true;
                     }
                 }, 500);
@@ -70,6 +69,9 @@
             background-color: #fff;
             .last-item:after {
                 background-color: initial;
+            }
+            &-wrap {
+                padding: 0 20px;
             }
         }
     }
