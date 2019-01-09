@@ -1,4 +1,5 @@
 <template>
+    <!-- 课程列表组件 -->
     <div class="m-class-panel">
         <div class="m-class-panel-banner">
             <slot name="banner"></slot>
@@ -23,6 +24,7 @@
 <style lang="scss" scoped>
     .m-class-panel {
         display: flex;
+        width: 100%;
         &-banner {
             position: relative;
             overflow: hidden;
@@ -52,11 +54,11 @@
         }
         &-content {
             margin-left: 8px;
-            display: flex;
-            flex-flow: column;
-            justify-content: space-between;
             flex: 1;
             overflow: hidden;
+            > div {
+                height: 100%;
+            }
         }
     }
 </style>

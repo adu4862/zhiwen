@@ -3,8 +3,8 @@
         <div class="my-promotion-detail-info">
             <ClassPanel>
                 <ClassBanner slot="banner"/>
-                <div class="info">
-                    <p class="title ellipsis">法律英语基础版法律英语基础版法律英语基础版法律英语基础版</p>
+                <div class="class-panel-info">
+                    <p class="title ellipsis">法律英语基础版法法律英语基础版法法律英语基础版法</p>
                     <p class="reward">
                         总邀请奖励：
                         <span>¥3432.00</span>
@@ -13,36 +13,37 @@
             </ClassPanel>
         </div>
         <div class="my-promotion-detail-list">
-            <p class="title">
-                订购人列表
-            </p>
+            <SectionTitle title="订购人列表" />
+            <!-- 有数据 -->
             <p class="list-title">
                 <span>用户名称</span>
                 <span>奖励金额</span>
             </p>
             <p class="list-item">
-                <span>xxxxx</span>
+                <span>KKKKK</span>
                 <span>¥ 876</span>
             </p>
-            <div class="list-empty">
-                暂时还没有人响应您的邀请哦～
-            </div>
+            <!-- 无数据 -->
+            <!--<div class="my-promotion-detail-empty">-->
+                <!--<img :src="require('@/assets/img/my/promotion/promotion_detail_empty.png')" alt="promotion_detail_empty">-->
+                <!--<span>您还没有推广订单哦<br/>赶快去发起推广吧～</span>-->
+            <!--</div>-->
         </div>
         <div class="my-promotion-detail-btn">
-            <button>继续推广</button>
+            <button class="blue-btn-48">继续推广</button>
         </div>
     </div>
 </template>
 
 <script>
-    import {ClassBanner} from '@/components'
-    import ClassPanel from '@/containers/classPanel'
+    import {ClassBanner, ClassPanel, SectionTitle} from '@/components'
 
     export default {
         name: "promotionItem",
         components: {
             ClassBanner,
-            ClassPanel
+            ClassPanel,
+            SectionTitle
         }
     }
 </script>
@@ -60,11 +61,10 @@
                 width: 160px;
                 height: 90px;
             }
-            .info {
+            .class-panel-info {
                 display: flex;
                 flex-flow: column;
-                justify-content: space-around;
-                margin-left: 10px;
+                flex: 1;
                 overflow: hidden;
                 .title {
                     font-size: $font-size-md;
@@ -82,22 +82,47 @@
             }
         }
         &-list {
-            .title {
-
-            }
             .list-title,
             .list-item {
                 display: flex;
                 justify-content: space-between;
+                font-size: $font-size-sm;
+                color: #666;
+            }
+            .list-title {
+                margin-top: 14px;
+                margin-bottom: 1px;
+                color: #F09300;
+            }
+            .list-item {
+                margin-top: 5px;
             }
             .list-empty {
                 text-align: center;
             }
         }
+        &-empty {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+            img {
+                margin-top: 40px;
+                margin-bottom: 36px;
+                width: 151px;
+            }
+            span {
+                margin-bottom: 30px;
+                font-size: $font-size-sm;
+                color: #909090;
+            }
+        }
         &-btn {
             position: fixed;
-            bottom: 20px;
+            bottom: 0;
+            @include ftb();
             width: 100%;
+            height: 70px;
             text-align: center;
         }
     }

@@ -13,7 +13,7 @@
 </template>
 
 <script>
-    import {sessionGetItem} from "../../common/util";
+    import {sessionGetItem} from "../common/util";
 
     export default {
         data() {
