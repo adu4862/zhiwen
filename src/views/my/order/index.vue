@@ -1,17 +1,17 @@
 <template>
     <div class="my-order">
-        <OrderEmpty />
-        <!--<van-list-->
-            <!--v-model="loading"-->
-            <!--:finished="finished"-->
-            <!--finished-text="没有更多了"-->
-            <!--@load="onLoad"-->
-        <!--&gt;-->
-            <!--<OrderItem-->
-                <!--v-for="(item, idx) in list"-->
-                <!--:class="idx+1 === list.length?'last-item':''"-->
-            <!--/>-->
-        <!--</van-list>-->
+        <!--<OrderEmpty />-->
+        <van-list
+            v-model="loading"
+            :finished="finished"
+            finished-text="没有更多了"
+            @load="onLoad"
+        >
+            <OrderItem
+                v-for="(item, idx) in list"
+                :class="idx+1 === list.length?'last-item':''"
+            />
+        </van-list>
     </div>
 </template>
 

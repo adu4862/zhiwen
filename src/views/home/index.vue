@@ -18,7 +18,8 @@
 </template>
 
 <script>
-    import {Dialog, ClassItem, SectionTitle} from "@/components";
+    import {Dialog, SectionTitle} from "@/components";
+    import ClassItem from './classItem'
     import {mapState, mapMutations, mapActions, mapGetters} from "vuex";
     import {getUserInfo} from "@/api/common";
 

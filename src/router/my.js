@@ -9,7 +9,7 @@ const BalanceRecord = () => import( /* webpackChunkName: "my" */ '../views/my/ba
 const BalanceWithdraw = () => import( /* webpackChunkName: "my" */ '../views/my/balance/withdraw/index.vue')
 const BalanceWithdrawSuccess = () => import( /* webpackChunkName: "my" */ '../views/my/balance/withdraw/withdrawSuccess.vue')
 const Promotion = () => import( /* webpackChunkName: "my" */ '../views/my/promotion/index.vue')
-const PromotionDetail = () => import( /* webpackChunkName: "my" */ '../views/my/promotion/promotionDetail.vue')
+const PromotionDetail = () => import( /* webpackChunkName: "my" */ '../views/my/promotion/detail/index.vue')
 
 export default [
     {

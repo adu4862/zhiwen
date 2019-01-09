@@ -1,15 +1,6 @@
 <template>
-    <div class="my-promotion-item">
-        <div class="my-promotion-item-banner">
-            <img class="banner" :src="require('@/assets/img/demo_class_banner.png')"
-                 alt="class-banner">
-            <div class="icon-wrap">
-                <img v-if="type === 'video'" class="class-type-icon"
-                     :src="require('@/assets/img/icon_video.png')" alt="video_icon">
-                <img v-if="type === 'voice'" class="class-type-icon"
-                     :src="require('@/assets/img/icon_voice.png')" alt="video_icon">
-            </div>
-        </div>
+    <ClassPanel class="my-promotion-item">
+        <ClassBanner slot="banner" />
         <div class="my-promotion-item-content">
             <div class="info">
                 <div class="title ellipsis">法律英语基础版法法律英语基础版法法律英语基础版法</div>
@@ -22,12 +13,16 @@
                 <button class="border-btn-20">查看详情</button>
             </div>
         </div>
-    </div>
+    </ClassPanel>
 </template>
 
 <script>
+    import {ClassPanel, ClassBanner} from '@/components'
     export default {
-        components: {},
+        components: {
+            ClassPanel,
+            ClassBanner
+        },
         props: {
             type: {
                 type: String,
