@@ -2,6 +2,7 @@
     <div class="my-promotion-detail">
         <div class="my-promotion-detail-info">
             <ClassPanel>
+                <ClassBanner slot="banner"/>
                 <div class="info">
                     <p class="title ellipsis">法律英语基础版法律英语基础版法律英语基础版法律英语基础版</p>
                     <p class="reward">
@@ -34,11 +35,13 @@
 </template>
 
 <script>
-    import {ClassPanel} from '@/components'
+    import {ClassBanner} from '@/components'
+    import ClassPanel from '@/containers/classPanel'
 
     export default {
         name: "promotionItem",
         components: {
+            ClassBanner,
             ClassPanel
         }
     }

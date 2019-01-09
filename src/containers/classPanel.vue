@@ -21,7 +21,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .m-class-item {
+    .m-class-panel {
         display: flex;
         &-banner {
             position: relative;

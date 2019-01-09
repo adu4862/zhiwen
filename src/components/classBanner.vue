@@ -32,8 +32,10 @@
     .m-class-banner {
         position: relative;
         overflow: hidden;
+        width: 114px;
+        height: 80px;
         .banner {
-            width: 114px;
+            width: 100%;
             height: 100%;
         }
         .icon-wrap {

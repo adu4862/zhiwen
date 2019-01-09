@@ -3,7 +3,7 @@ import Dialog from './dialog'
 import Modal from './modal'
 import SectionTitle from './sectionTitle'
 import ClassItem from './classItem'
-import ClassPanel from './classPanel'
+import ClassBanner from './classBanner'
 import OrderItem from './orderItem'
 
 export {
@@ -12,6 +12,6 @@ export {
     Modal,
     SectionTitle,
     ClassItem,
-    ClassPanel,
+    ClassBanner,
     OrderItem,
 }
