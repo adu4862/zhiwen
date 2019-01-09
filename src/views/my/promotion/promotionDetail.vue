@@ -1,15 +1,15 @@
 <template>
     <div class="my-promotion-detail">
         <div class="my-promotion-detail-info">
-            <img class="banner-img" :src="require('@/assets/img/demo_class_banner.png')" alt="class_banner">
-            <div class="info">
-                <p class="title">
-                    商品名称商品名称商品名称商品名称商品名称商品名称
-                </p>
-                <p class="money">
-                    总邀请奖励：<span>¥3420.00</span>
-                </p>
-            </div>
+            <ClassPanel>
+                <div class="info">
+                    <p class="title ellipsis">法律英语基础版法律英语基础版法律英语基础版法律英语基础版</p>
+                    <p class="reward">
+                        总邀请奖励：
+                        <span>¥3432.00</span>
+                    </p>
+                </div>
+            </ClassPanel>
         </div>
         <div class="my-promotion-detail-list">
             <p class="title">
@@ -34,15 +34,20 @@
 </template>
 
 <script>
+    import {ClassPanel} from '@/components'
+
     export default {
-        name: "promotionItem"
+        name: "promotionItem",
+        components: {
+            ClassPanel
+        }
     }
 </script>
 
 <style scoped lang="scss">
     .my-promotion-detail {
         > div {
-            padding: 10px 15px;
+            padding: 14px 21px;
             background-color: #fff;
         }
         &-info {
@@ -59,9 +64,17 @@
                 margin-left: 10px;
                 overflow: hidden;
                 .title {
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
+                    font-size: $font-size-md;
+                    color: #4A4A4A;
+                }
+                .reward {
+                    margin-top: 19px;
+                    font-size: $font-size-sm;
+                    color: #666;
+                    span {
+                        font-size: $font-size-lg;
+                        color: #F09300;
+                    }
                 }
             }
         }
