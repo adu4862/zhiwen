@@ -48,7 +48,7 @@
                 justify-content: space-between;
                 color: #666;
                 span:nth-child(1) {
-                    font-size: $text-medium-size;
+                    font-size: $font-size-md;
                     color: #4A4A4A;
                 }
             }
@@ -79,12 +79,12 @@
                 input {
                     flex: 1;
                     padding-left: 10px;
-                    font-size: $text-big-size;
+                    font-size: $font-size-lg;
                 }
             }
             .withdraw-tips {
                 margin-top: 8px;
-                font-size: $text-mini-size;
+                font-size: $font-size-mini;
                 color: #909090;
                 span {
                     color: #6587F8;

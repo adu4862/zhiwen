@@ -24,7 +24,7 @@
         }
         &-tips {
             margin: 42px 0;
-            font-size: $text-common-size;
+            font-size: $font-size-base;
             font-weight: 300;
             color: #909090;
         }

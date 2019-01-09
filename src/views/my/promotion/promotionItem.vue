@@ -81,7 +81,7 @@
             flex: 1;
             overflow: hidden;
             .title {
-                font-size: $text-medium-size;
+                font-size: $font-size-md;
                 color: #4A4A4A;
                 font-weight: bold;
             }

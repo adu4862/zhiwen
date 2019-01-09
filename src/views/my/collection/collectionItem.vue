@@ -59,18 +59,18 @@
             display: flex;
             flex-flow: column;
             .title {
-                font-size: $text-big-size;
+                font-size: $font-size-lg;
             }
             .content {
                 margin: 10px 0;
-                font-size: $text-common-size;
+                font-size: $font-size-base;
                 @include ellipsis($line: 3);
             }
             .sale-price {
                 display: flex;
                 align-items: flex-end;
                 .old-price {
-                    font-size: $text-mini-size;
+                    font-size: $font-size-mini;
                     text-decoration: line-through;
                 }
                 .new-price {

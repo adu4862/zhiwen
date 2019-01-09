@@ -20,7 +20,7 @@
         &-title {
             padding: 16px;
             width: 100%;
-            font-size: $text-medium-size;
+            font-size: $font-size-md;
             color: #828282;
             background-color: #fff;
         }
@@ -30,7 +30,7 @@
         }
         &-tips {
             margin-top: 40px;
-            font-size: $text-small-size;
+            font-size: $font-size-sm;
             color: #909090;
         }
     }

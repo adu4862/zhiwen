@@ -82,12 +82,12 @@
             flex: 1;
             overflow: hidden;
             .title {
-                font-size: $text-medium-size;
+                font-size: $font-size-md;
                 color: #4A4A4A;
             }
             .content {
                 margin-top: 4px;
-                font-size: $text-mini-size;
+                font-size: $font-size-mini;
                 color: #666;
                 @include ellipsis();
             }
@@ -97,7 +97,7 @@
                 align-items: flex-end;
                 width: 100%;
                 &-num {
-                    font-size: $text-mini-size;
+                    font-size: $font-size-mini;
                     color: #666;
                     span {
                         color: #F09300;
@@ -108,18 +108,18 @@
                     align-items: flex-end;
                     .old-price {
                         margin-left: 8px;
-                        font-size: $text-mini-size;
+                        font-size: $font-size-mini;
                         text-decoration: line-through;
                         color: #909090;
                     }
                     .new-price {
-                        font-size: $text-medium-size;
+                        font-size: $font-size-md;
                         color: #F09300;
                     }
                 }
             }
             .process {
-                font-size: $text-small-size;
+                font-size: $font-size-sm;
                 color: #ff6632;
             }
         }

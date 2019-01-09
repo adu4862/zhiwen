@@ -81,25 +81,25 @@
             flex: 1;
             overflow: hidden;
             .title {
-                font-size: $text-medium-size;
+                font-size: $font-size-md;
                 color: #4A4A4A;
             }
             .pay-time,
             .order-no {
                 margin-top: 4px;
-                font-size: $text-mini-size;
+                font-size: $font-size-mini;
                 color: #666;
             }
             .order-price {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                font-size: $text-small-size;
+                font-size: $font-size-sm;
                 color: #4A4A4A;
                 .pay {
                     color: #F09300;
                     span {
-                        font-size: $text-medium-size;
+                        font-size: $font-size-md;
                     }
                 }
             }

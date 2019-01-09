@@ -64,7 +64,7 @@
 		}
 		&-content {
 			.title {
-				font-size: $text-big-size;
+				font-size: $font-size-lg;
 			}
 			.content {
 				margin: 10px 0;
@@ -75,7 +75,7 @@
 				.old-price {
                     margin-left: 5px;
                     text-decoration: line-through;
-                    font-size: $text-mini-size;
+                    font-size: $font-size-mini;
 				}
 				.people {
 					margin-left: 40px;

@@ -53,7 +53,7 @@
         @include border-top();
         .bar-item {
             flex: 1;
-            font-size: $text-mini-size;
+            font-size: $font-size-mini;
             text-align: center;
             .icon {
                 font-size: 24px;

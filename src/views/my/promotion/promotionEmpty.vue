@@ -27,7 +27,7 @@
         }
         &-tips {
             margin-top: 50px;
-            font-size: $text-small-size;
+            font-size: $font-size-sm;
             color: #909090;
         }
     }

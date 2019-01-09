@@ -68,7 +68,7 @@
                     margin-top: 56px;
                     margin-bottom: 34px;
                     .title {
-                        font-size: $text-medium-size;
+                        font-size: $font-size-md;
                         color: #828282;
                     }
                     .balance {
@@ -82,7 +82,7 @@
                     justify-content: space-around;
                     font-weight: 300;
                     .title {
-                        font-size: $text-small-size;
+                        font-size: $font-size-sm;
                         color: #828282;
                     }
                     .balance {

@@ -23,7 +23,7 @@
         align-items: center;
         padding: 16px 0;
         @include border-bottom();
-        font-size: $text-small-size;
+        font-size: $font-size-sm;
         color: #828282;
         background-color: #fff;
         &-time {

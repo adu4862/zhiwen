@@ -125,7 +125,7 @@
                     .icon {
                         display: inline-block;
                         vertical-align: middle;
-                        font-size: $text-medium-size;
+                        font-size: $font-size-md;
                         color: #809CFF;
                     }
                     .label {
@@ -135,7 +135,7 @@
                 }
                 &-right {
                     display: flex;
-                    font-size: $text-small-size;
+                    font-size: $font-size-sm;
                     .label {
                         margin-right: 9px;
                         color: #909090;
