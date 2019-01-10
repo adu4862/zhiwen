@@ -67,7 +67,7 @@
                     font-size: $font-size-mini;
                     color: #666;
                     span {
-                        color: #F09300;
+                        color: $color-lighting;
                     }
                 }
                 &-price {
@@ -81,7 +81,7 @@
                     }
                     .new-price {
                         font-size: $font-size-md;
-                        color: #F09300;
+                        color: $color-lighting;
                     }
                 }
             }

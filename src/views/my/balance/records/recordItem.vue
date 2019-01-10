@@ -33,7 +33,7 @@
         }
         &-balance span {
             font-size: 18px;
-            color: #F09300;
+            color: $color-lighting;
         }
     }
 </style>

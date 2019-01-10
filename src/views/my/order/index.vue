@@ -9,6 +9,7 @@
         >
             <OrderItem
                 v-for="(item, idx) in list"
+                :key="idx"
                 :class="idx+1 === list.length?'last-item':''"
             />
         </van-list>

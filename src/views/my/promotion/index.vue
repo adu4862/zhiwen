@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="my-promotion-list">
-            <SectionTitle title="推广订单" />
+            <SectionTitle title="推广订单"/>
             <!--<PromotionEmpty />-->
             <van-list
                 v-model="loading"
@@ -26,6 +26,7 @@
             >
                 <PromotionItem
                     v-for="(item, idx) in list"
+                    :key="idx"
                     :class="idx+1 === list.length?'last-item':''"
                 />
             </van-list>
@@ -89,7 +90,7 @@
                 .money-item p:nth-child(2) {
                     margin-top: 10px;
                     font-size: 30px;
-                    color: #F09300;
+                    color: $color-lighting;
                 }
             }
             .withdraw-btn {

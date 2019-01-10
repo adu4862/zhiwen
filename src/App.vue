@@ -26,5 +26,9 @@
         color: $color-common;
 		font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "SF UI Text",
 			"Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
+        .class-item-title {
+            font-size: $font-size-md;
+            color: #4A4A4A;
+        }
 	}
 </style>

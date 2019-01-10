@@ -75,7 +75,7 @@
                     color: #666;
                     span {
                         font-size: $font-size-lg;
-                        color: #F09300;
+                        color: $color-lighting;
                     }
                 }
             }
@@ -91,7 +91,7 @@
             .list-title {
                 margin-top: 14px;
                 margin-bottom: 1px;
-                color: #F09300;
+                color: $color-lighting;
             }
             .list-item {
                 margin-top: 5px;

@@ -74,7 +74,7 @@
                     .balance {
                         margin-top: 4px;
                         font-size: 40px;
-                        color: #F09300;
+                        color: $color-lighting;
                     }
                 }
                 .income {
@@ -88,7 +88,7 @@
                     .balance {
                         margin-top: 5px;
                         font-size: 18px;
-                        color: #F09300;
+                        color: $color-lighting;
                     }
                 }
             }

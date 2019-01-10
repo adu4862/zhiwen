@@ -61,7 +61,7 @@
                 font-size: $font-size-mini;
                 color: #666666;
                 span {
-                    color: #F09300;
+                    color: $color-lighting;
                 }
             }
             .sale-price {
@@ -83,7 +83,7 @@
                     .new-price {
                         margin-right: 8px;
                         font-size: $font-size-md;
-                        color: #F09300;
+                        color: $color-lighting;
                     }
                     .old-price {
                         text-decoration: line-through;

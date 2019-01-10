@@ -94,7 +94,7 @@
                 font-size: $font-size-sm;
                 color: #4A4A4A;
                 .pay {
-                    color: #F09300;
+                    color: $color-lighting;
                     span {
                         font-size: $font-size-md;
                     }

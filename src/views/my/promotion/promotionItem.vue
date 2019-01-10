@@ -86,7 +86,7 @@
                 font-weight: 300;
                 @include ellipsis();
                 span {
-                    color: #F09300;
+                    color: $color-lighting;
                 }
             }
             .btns {

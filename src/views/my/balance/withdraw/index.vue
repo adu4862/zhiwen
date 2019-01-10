@@ -57,7 +57,7 @@
                 p:nth-child(2) {
                     margin-top: 4px;
                     font-size: 32px;
-                    color: #F09300;
+                    color: $color-lighting;
                 }
             }
         }

@@ -26,7 +26,7 @@
         &-tips {
             margin-top: 30px;
             font-size: 24px;
-            color: #F09300;
+            color: $color-lighting;
         }
         &-btn {
             margin-top: 80px;
