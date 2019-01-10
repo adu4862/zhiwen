@@ -1,7 +1,7 @@
 /**
  * 倒计时组件
  * @type {number}
- * Github —— https://github.com/fengyuanchen/vue-countdown#browser-support
+ * https://github.com/fengyuanchen/vue-countdown#browser-support
  */
 const MILLISECONDS_SECOND = 1000;
 const MILLISECONDS_MINUTE = 60 * MILLISECONDS_SECOND;
