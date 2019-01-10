@@ -1,129 +1,110 @@
 <template>
     <div class="bind-phone">
         <div class="bind-phone-title">
-            <i class="iconfont icon-weibo"></i>
-            为了您的帐号安全，请尽快绑定手机
+            <span data-icon="h" class="icon">为了您的帐号安全，请尽快绑定手机</span>
         </div>
         <div class="bind-phone-form">
-            <div class="form-item country-choose">
-                <van-cell class="" is-link :border="false">
-                    <template slot="title">
-                        <span class="area">国家/地区</span>
-                        <span class="country">中国</span>
-                    </template>
-                </van-cell>
+            <div class="cell-item">
+                <span>中国(+86)</span>
+                <i class="cell-item-right-arrow"></i>
             </div>
-            <div class="form-item phone-input">
-                <div class="pre">
-                    +86
-                </div>
-                <div class="phone-code">
-                    <input type="phone" placeholder="请输入您的手机号" maxlength="11">
-                    <van-button
-                        type="default"
-                        :disabled="timer !== null"
-                        class="code-btn"
-                        @click="handleCode">
-                        {{codeTxt}}
-                    </van-button>
-                </div>
+            <div class="cell-item">
+                <input type="phone" placeholder="请输入您的手机号">
+                <button
+                    :class="['code-btn blue-btn-48', counting?'disabled-btn':'']"
+                    :disabled="counting"
+                    @click="startCountdown"
+                >
+                    <CountDown2 v-if="counting" :time="6000" @end="handleCountdownEnd">
+                        <template slot-scope="props">{{ props.totalSeconds }} 秒后重试</template>
+                    </CountDown2>
+                    <span v-else>获取验证码</span>
+                </button>
             </div>
-            <div class="form-item code-input">
-                <input type="text" placeholder="请输入验证码">
+            <div class="cell-item">
+                <input type="phone" placeholder="请输入验证码">
             </div>
         </div>
-        <div class="bind-phone-btn">
-
+        <div class="bind-phone-btn blue-btn-48 disabled-btn">
+            立即绑定
         </div>
     </div>
 </template>
 
 <script>
+    import {CountDown2} from '@/components'
+
     export default {
+        components: {
+            CountDown2
+        },
         data() {
             return {
-                codeTxt: '获取验证码',
-                countDown: 60,
-                timer: null
+                counting: false,
             }
-        },
-        beforeDestroy() {
-            clearInterval(this.timer)
         },
         methods: {
-            handleCode() {
-                console.log(111)
-                this.timer = setInterval(() => {
-                    this.countDown--;
-                    this.codeTxt = this.countDown + '秒后重发';
-                    if (this.countDown < 1) {
-                        clearInterval(this.timer);
-                        this.timer = null;
-                        this.codeTxt = '获取验证码';
-                    }
-                }, 1000)
-            }
+            startCountdown: function () {
+                this.counting = true;
+            },
+            handleCountdownEnd: function () {
+                this.counting = false;
+            },
         }
     }
 </script>
 
 <style scoped lang="scss">
     .bind-phone {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
         height: 100%;
+        background-color: #fff;
         &-title {
+            @include fct();
             margin-top: 30px;
             text-align: center;
+            color: #4A4A4A;
+            span:before {
+                margin-right: 5px;
+                vertical-align: middle;
+                font-size: 24px;
+                color: #6587F8;
+            }
         }
         &-form {
             margin: 0 auto;
             margin-top: 30px;
             width: 80%;
-            .form-item {
+            overflow: hidden;
+            .cell-item {
                 display: flex;
-                margin-bottom: 20px;
-                background-color: #F5F5F5;
-                @include border-bottom();
-                .van-cell {
-                    padding: 0;
-                    background-color: initial;
-                }
-                .country {
-                    margin-left: 20px;
-                }
-                input {
-                    background-color: #F5F5F5;
-                    border: initial;
-                }
-            }
-            .country-choose {
-                padding: 10px 0;
-            }
-            .phone-input {
-                &:after {
-                    background-color: initial;
-                }
-                .pre {
-                    padding: 10px 0;
-                    @include border-bottom();
-                }
-                .phone-code {
-                    margin-left: 10px;
-                    padding: 10px 0;
-                    width: 100%;
-                    @include border-bottom();
-                    .code-btn {
-                        position: absolute;
-                        bottom: 0;
-                        right: 5px;
-                    }
+                justify-content: space-between;
+                margin-top: 30px;
+                padding: 10px 11px;
+                @include border-bottom($border-color: #D2D2D2);
+                font-size: $font-size-sm;
+                color: #4A4A4A;
+                &-right-arrow {
+                    display: inline-block;
+                    width: 8px;
+                    height: 13px;
+                    background: url("../../../assets/img/my/cell-arrow.png") no-repeat center center;
+                    background-size: contain;
                 }
             }
-            .code-input {
-                padding: 10px 0;
-                input {
-                    width: 100%;
-                }
+            .code-btn {
+                width: 70px;
+                height: 27px;
+                line-height: 25px;
+                font-size: $font-size-mini;
+                font-weight: 300;
+                border-radius: 2px;
             }
+        }
+        &-btn {
+            margin-top: 114px;
         }
     }
 </style>

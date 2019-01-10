@@ -29,7 +29,7 @@
 			{{5000039 | toThousands}}
 		</p>
 		<p>倒计时：
-			<count-down
+			<ActiveCountDown
 				v-on:start_callback="timeStart()"
 				v-on:end_callback="timeEnd()"
 				:startTime="'4100829240'"
@@ -41,7 +41,7 @@
 				:hourTxt="':'"
 				:minutesTxt="':'"
 				:secondsTxt="''"
-			></count-down>
+			></ActiveCountDown>
 		</p>
 		<p>
 			proxy代理：
@@ -62,7 +62,7 @@
 
 <script>
 	// @ is an alias to /src
-    import {CountDown, Modal} from '@/components'
+    import {ActiveCountDown, Modal} from '@/components'
 	import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
 	import env from "@/config/env";
 	import { getUserInfo } from "@/api/common";
@@ -70,7 +70,7 @@
 	export default {
 		name: "home",
 		components: {
-			CountDown,
+            ActiveCountDown,
             Modal,
 		},
 		data() {
