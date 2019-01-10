@@ -111,15 +111,16 @@
             flex-flow: column;
             align-items: center;
             background: url("../../assets/img/my/head-bg.png") no-repeat center;
-            background-size: contain;
+            background-size: cover;
             background-color: #fff;
+            overflow: hidden;
             .header {
-                margin-bottom: 15px;
                 width: 80px;
                 height: 80px;
                 border-radius: 50%;
             }
             .name {
+                margin-top: 15px;
                 font-size: 16px;
                 font-weight: 600;
                 color: #fff;
