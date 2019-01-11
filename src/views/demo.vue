@@ -1,52 +1,53 @@
 <template>
-	<div class="home">
-		<div class="border">1像素边框</div>
-		<button @click="handleDialog">Button</button>
-		<p>
-			vuex:
-			<span @click="changeUserInfo(233)">{{getUserInfo}}</span>
-		</p>
-		<p>
-			iconfont:
-			<i class="icon icon--2"></i>
-		</p>
-		<p @click="handleI18n">
-			i18n:
-			{{$t('home.name', {name: 'Jelly'})}}
-		</p>
-		<p>vue过滤器:
-			<br>
+    <div class="home">
+        <div class="border">1像素边框</div>
+        <button @click="handleDialog">Button</button>
+        <p>
+            vuex:
+            <span @click="changeUserInfo(233)">{{getUserInfo}}</span>
+        </p>
+        <p>
+            iconfont:
+            <i class="icon icon--2"></i>
+        </p>
+        <p @click="handleI18n">
+            i18n:
+            {{$t('home.name', {name: 'Jelly'})}}
+        </p>
+        <p>vue过滤器:
+            <br>
             时间戳：
-			{{1544179366 | timeFilter}}
-			<br>
+            {{1544179366 | timeFilter}}
+            <br>
             手机号：
-			{{15311959057 | formatPhone}}
-			<br>
+            {{15311959057 | formatPhone}}
+            <br>
             银行卡：
-			{{123123123123132 | formatBank}}
-			<br>
+            {{123123123123132 | formatBank}}
+            <br>
             千分隔：
-			{{5000039 | toThousands}}
-		</p>
-		<p>倒计时：
-			<ActiveCountDown
-				v-on:start_callback="timeStart()"
-				v-on:end_callback="timeEnd()"
-				:startTime="'4100829240'"
-				:endTime="'4101002040'"
-				:tipText="'距开始还有'"
-				:tipTextEnd="'距结束还有'"
-				:endText="'距结束还有 0天 00:00:00'"
-				:dayTxt="'天'"
-				:hourTxt="':'"
-				:minutesTxt="':'"
-				:secondsTxt="''"
-			></ActiveCountDown>
-		</p>
-		<p>
-			proxy代理：
-			{{rank.ok?'成功':'失败'}}
-		</p>
+            {{5000039 | toThousands}}
+        </p>
+        <p>倒计时：
+            <ActiveCountDown
+                v-on:start_callback="timeStart()"
+                v-on:end_callback="timeEnd()"
+                :startTime="'4100829240'"
+                :endTime="'4101002040'"
+                :tipText="'距开始还有'"
+                :tipTextEnd="'距结束还有'"
+                :endText="'距结束还有 0天 00:00:00'"
+                :dayTxt="'天'"
+                :hourTxt="':'"
+                :minutesTxt="':'"
+                :secondsTxt="''"
+            ></ActiveCountDown>
+        </p>
+        <p>
+            proxy代理：
+            {{rank.ok?'成功':'失败'}}
+        </p>
+        <Ruler />
         <Modal
             :isVisible="isVisible"
             :showMask="true"
@@ -57,44 +58,47 @@
             @close="closeDialog"
             @confirm="confirmDialog"
         />
-	</div>
+    </div>
 </template>
 
 <script>
-	// @ is an alias to /src
-    import {ActiveCountDown, Modal} from '@/components'
-	import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
-	import env from "@/config/env";
-	import { getUserInfo } from "@/api/common";
+    // @ is an alias to /src
+    import {ActiveCountDown, Modal, Ruler} from '@/components'
+    import {mapState, mapMutations, mapActions, mapGetters} from "vuex";
+    import env from "@/config/env";
+    import {getUserInfo} from "@/api/common";
 
-	export default {
-		name: "home",
-		components: {
+    export default {
+        name: "home",
+        components: {
             ActiveCountDown,
             Modal,
-		},
-		data() {
-			return {
+            Ruler
+        },
+        data() {
+            return {
                 isVisible: false,
             };
-		},
-		computed: {
-			...mapState("user", ["userInfo", "rank"]),
-			...mapGetters("user", ["getUserInfo"]),
-		},
-		mounted() {
-			// getUserInfo().then(res => {
-			// 	console.log("proxy", res);
-			// });
-			this.getRank();
-		},
-		methods: {
-			...mapActions("user", ["changeUserInfo", "getRank"]),
-			timeStart() {},
-			timeEnd() {},
-			handleDialog() {
-				this.isVisible = true;
-			},
+        },
+        computed: {
+            ...mapState("user", ["userInfo", "rank"]),
+            ...mapGetters("user", ["getUserInfo"]),
+        },
+        mounted() {
+            // getUserInfo().then(res => {
+            // 	console.log("proxy", res);
+            // });
+            this.getRank();
+        },
+        methods: {
+            ...mapActions("user", ["changeUserInfo", "getRank"]),
+            timeStart() {
+            },
+            timeEnd() {
+            },
+            handleDialog() {
+                this.isVisible = true;
+            },
             closeDialog() {
                 this.isVisible = false;
                 console.log('取消')
@@ -103,41 +107,42 @@
                 this.isVisible = false;
                 console.log('确认')
             },
-			handleI18n() {
-				this.$i18n.locale = this.$i18n.locale === "en-US" ? "zh-CN" : "en-US";
-			}
-		}
-	};
+            handleI18n() {
+                this.$i18n.locale = this.$i18n.locale === "en-US" ? "zh-CN" : "en-US";
+            }
+        }
+    };
 </script>
 
 <style lang="scss" scoped>
-	.home {
-		font-size: 14px;
-		p {
-			margin: 20px auto;
-		}
-		.swiper {
-			width: 100%;
-			height: 200px; /*no*/
-			.swiper-item {
-				height: 200px; /*no*/
-				line-height: 200px; /*no*/
-			}
-		}
-		.border {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 100px;
-			height: 200px;
-			margin: 20px auto;
-			position: relative;
-			@include border();
-		}
-	}
-	.dialog-content {
-		width: 300px;
-		height: 180px;
-		background-color: #fff;
-	}
+    .home {
+        font-size: 14px;
+        p {
+            margin: 20px auto;
+        }
+        .swiper {
+            width: 100%;
+            height: 200px; /*no*/
+            .swiper-item {
+                height: 200px; /*no*/
+                line-height: 200px; /*no*/
+            }
+        }
+        .border {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 200px;
+            margin: 20px auto;
+            position: relative;
+            @include border();
+        }
+    }
+
+    .dialog-content {
+        width: 300px;
+        height: 180px;
+        background-color: #fff;
+    }
 </style>

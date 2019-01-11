@@ -6,6 +6,7 @@ import SectionTitle from './sectionTitle'
 import ClassBanner from './classBanner'
 import ClassPanel from './classPanel'
 import OrderItem from './orderItem'
+import Ruler from './ruler'
 
 export {
     ActiveCountDown,
@@ -16,4 +17,5 @@ export {
     ClassBanner,
     ClassPanel,
     OrderItem,
+    Ruler,
 }
