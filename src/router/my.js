@@ -1,6 +1,8 @@
 // 我的页面
 const My = () => import( /* webpackChunkName: "my" */ '../views/my/index.vue')
 const BindPhone = () => import( /* webpackChunkName: "my" */ '../views/my/bindPhone/index.vue')
+const BindPhoneRes = () => import( /* webpackChunkName: "my" */ '../views/my/bindPhone/bindRes/index.vue')
+const AreaSelect = () => import( /* webpackChunkName: "my" */ '../views/my/bindPhone/areaSelect/index.vue')
 const ConfirmPhone = () => import( /* webpackChunkName: "my" */ '../views/my/confirmPhone/index.vue')
 const Order = () => import( /* webpackChunkName: "my" */ '../views/my/order/index.vue')
 const Collection = () => import( /* webpackChunkName: "my" */ '../views/my/collection/index.vue')
@@ -21,6 +23,16 @@ export default [
         path: '/phone/bind',
         name: 'bindPhone',
         component: BindPhone
+    },
+    {
+        path: '/phone/bind/res',
+        name: 'bindPhoneRes',
+        component: BindPhoneRes
+    },
+    {
+        path: '/area',
+        name: 'areaSelect',
+        component: AreaSelect
     },
     {
         path: '/phone/confirm',

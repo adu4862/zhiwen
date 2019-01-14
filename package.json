@@ -10,6 +10,7 @@
     "amfe-flexible": "^2.2.1",
     "animate.css": "^3.7.0",
     "axios": "^0.18.0",
+    "better-scroll": "^1.13.4",
     "dayjs": "^1.7.7",
     "fastclick": "^1.0.6",
     "html2canvas": "^1.0.0-alpha.12",

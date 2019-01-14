@@ -13,4 +13,6 @@ export default {
     balanceWithdraw: '提现申请',
     promotion: '推广中心',
     promotionDetail: '推广订单详情',
+    areaSelect: '选择国家/地区',
+    bindPhoneRes: '绑定手机号',
 }
