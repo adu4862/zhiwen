@@ -1,6 +1,10 @@
 <template>
     <!-- 课程列表组件 -->
     <div class="m-class-panel">
+        <div class="m-class-panel-select">
+            <slot name="select"></slot>
+            <!--<van-checkbox v-model="checked"></van-checkbox>-->
+        </div>
         <div class="m-class-panel-banner">
             <slot name="banner"></slot>
         </div>
@@ -16,7 +20,9 @@
         props: {
         },
         data() {
-            return {};
+            return {
+                checked: false
+            };
         },
     };
 </script>
@@ -25,6 +31,11 @@
     .m-class-panel {
         display: flex;
         width: 100%;
+        &-select {
+            display: flex;
+            align-items: center;
+            /*margin: 0 8px;*/
+        }
         &-banner {
             position: relative;
             overflow: hidden;

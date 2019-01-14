@@ -1,6 +1,21 @@
 <template>
     <div class="my-collection">
         <!--<CollectionEmpty />-->
+        <div :class="['my-collection-head', isSelect?'':'fe']">
+            <div class="select-all" v-if="isSelect">
+                <van-checkbox v-model="selectAll"></van-checkbox>
+                <span>全选</span>
+            </div>
+            <div class="func" @click="handelSelect">
+                <p v-if="!isSelect">
+                    管理
+                    <i data-icon="a" class="icon"></i>
+                </p>
+                <p v-if="isSelect">
+                    完成
+                </p>
+            </div>
+        </div>
         <van-list
             v-model="loading"
             :finished="finished"
@@ -11,6 +26,7 @@
                 v-for="(item, idx) in list"
                 :key="idx"
                 :class="idx+1 === list.length?'last-item':''"
+                :isSelect="isSelect"
             />
         </van-list>
     </div>
@@ -29,7 +45,9 @@
             return {
                 list: [],
                 loading: false,
-                finished: false
+                finished: false,
+                isSelect: false,
+                selectAll: false
             }
         },
         methods: {
@@ -47,6 +65,12 @@
                         this.finished = true;
                     }
                 }, 500);
+            },
+            handelSelect() {
+                this.isSelect = !this.isSelect;
+                if (!this.isSelect) {
+                    console.log('完成')
+                }
             }
         }
     }
@@ -54,6 +78,34 @@
 
 <style scoped lang="scss">
     .my-collection {
-
+        .fe {
+            justify-content: flex-end;
+        }
+        &-head {
+            display: flex;
+            justify-content: space-between;
+            margin: 6px 0;
+            padding: 0 21px;
+            height: 33px;
+            line-height: 33px;
+            background: #fff;
+            font-size: $font-size-sm;
+            color: #909090;
+            .func {
+                color: #6587F8;
+            }
+            .icon {
+                font-size: $font-size-lg;
+                vertical-align: sub;
+            }
+            .select-all {
+                display: flex;
+                align-items: center;
+                font-size: $font-size-sm;
+                span {
+                    margin-left: 11px;
+                }
+            }
+        }
     }
 </style>

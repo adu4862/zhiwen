@@ -1,5 +1,8 @@
 <template>
-    <ClassPanel class="my-collection-item">
+    <ClassPanel :class="['my-collection-item', isSelect?'my-collection-item-select':'']">
+        <div class="select" slot="select" v-if="isSelect">
+            <van-checkbox v-model="checked"></van-checkbox>
+        </div>
         <ClassBanner slot="banner" />
         <div class="my-collection-item-content">
             <div class="info">
@@ -11,8 +14,8 @@
             </div>
             <div class="sale-price">
                 <!--<div class="saled">-->
-                    <!--<img :src="require('@/assets/img/my/collection/icon_buy.png')" alt="icon_buy">-->
-                    <!--<span>已购买</span>-->
+                <!--<img :src="require('@/assets/img/my/collection/icon_buy.png')" alt="icon_buy">-->
+                <!--<span>已购买</span>-->
                 <!--</div>-->
                 <div class="prices">
                     <p class="new-price">¥299</p>
@@ -31,8 +34,16 @@
             ClassPanel,
             ClassBanner
         },
+        props: {
+            isSelect: {
+                type: Boolean,
+                default: false
+            }
+        },
         data() {
-            return {};
+            return {
+                checked: false
+            };
         },
     };
 </script>
@@ -40,8 +51,15 @@
 <style lang="scss" scoped>
     .my-collection-item {
         margin-bottom: 6px;
-        padding: 20px 15px;
-        background-color: #fff;
+        padding: 15px 21px;
+        background: #fff;
+        .select {
+            margin: 0 8px;
+            .van-checkbox__icon .van-icon {
+                width: 16px;
+                height: 16px;
+            }
+        }
         &-content {
             margin-left: 5px;
             display: flex;
@@ -93,5 +111,8 @@
                 }
             }
         }
+    }
+    .my-collection-item-select {
+        padding-left: initial;
     }
 </style>
