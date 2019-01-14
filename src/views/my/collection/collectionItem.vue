@@ -38,6 +38,10 @@
             isSelect: {
                 type: Boolean,
                 default: false
+            },
+            selectAll: {
+                type: Boolean,
+                default: false
             }
         },
         data() {
@@ -45,6 +49,11 @@
                 checked: false
             };
         },
+        watch: {
+            selectAll(val) {
+                this.checked = val;
+            }
+        }
     };
 </script>
 

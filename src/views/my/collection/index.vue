@@ -27,6 +27,7 @@
                 :key="idx"
                 :class="idx+1 === list.length?'last-item':''"
                 :isSelect="isSelect"
+                :selectAll="selectAll"
             />
         </van-list>
     </div>
