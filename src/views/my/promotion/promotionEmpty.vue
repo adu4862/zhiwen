@@ -1,7 +1,7 @@
 <template>
-    <div class="my-order-empty">
-        <img class="my-order-empty-img" :src="require('../../../assets/img/my/promotion/promotion_empty.png')" alt="promotion_empty">
-        <p class="my-order-empty-tips">
+    <div class="my-promotion-empty">
+        <img class="my-promotion-empty-img" :src="require('../../../assets/img/my/promotion/promotion_empty.png')" alt="promotion_empty">
+        <p class="my-promotion-empty-tips">
             您还没有推广订单哦<br/>
             赶快去发起推广吧～
         </p>
@@ -15,7 +15,7 @@
 </script>
 
 <style scoped lang="scss">
-    .my-order-empty {
+    .my-promotion-empty {
         display: flex;
         flex-flow: column;
         justify-content: center;
