@@ -71,34 +71,55 @@
             <SectionTitle
                 title="我的课程"
             />
-            <ClassPanel class="my-class-item">
-                <ClassBanner slot="banner" />
-                <div class="my-class-item-content">
-                    <div class="info">
-                        <p class="class-item-title ellipsis">法律英语基础版法律英语基础版法律英语基础版</p>
-                        <p class="desc">熟悉法律条文,具有法律思维,能够把各种生活关系转换熟悉法律条文,具有法律思维,能够把各种生活关系转换</p>
-                    </div>
-                    <div class="process">
-                        学习进度37%
-                    </div>
-                </div>
-            </ClassPanel>
+            <van-list
+                v-model="loading"
+                :finished="finished"
+                finished-text="没有更多了"
+                @load="onLoad"
+            >
+                <ClassItem
+                    v-for="(item, idx) in list"
+                    :key="idx"
+                    :class="idx+1 === list.length?'last-item':''"
+                />
+            </van-list>
         </div>
     </div>
 </template>
 
 <script>
-    import {SectionTitle, ClassPanel, ClassBanner} from '@/components'
+    import {SectionTitle} from '@/components'
+    import ClassItem from './classItem'
 
     export default {
         components: {
             SectionTitle,
-            ClassPanel,
-            ClassBanner,
+            ClassItem
         },
         data() {
-            return {}
+            return {
+                list: [],
+                loading: false,
+                finished: false
+            }
         },
+        methods: {
+            onLoad() {
+                // 模拟异步更新数据
+                setTimeout(() => {
+                    for (let i = 0; i < 5; i++) {
+                        this.list.push(this.list.length + 1);
+                    }
+                    // 加载状态结束
+                    this.loading = false;
+
+                    // 数据全部加载完成
+                    if (this.list.length >= 10) {
+                        this.finished = true;
+                    }
+                }, 500);
+            }
+        }
     }
 </script>
 
@@ -174,26 +195,8 @@
         &-class-list {
             padding: 14px 20px;
             background-color: #fff;
-            .my-class-item {
-                padding: 11px 0;
-                @include border-bottom();
-                &-content {
-                    display: flex;
-                    flex-flow: column;
-                    justify-content: space-between;
-                    .info {
-                        @include ellipsis();
-                        font-size: $font-size-mini;
-                        color: #666;
-                        .desc {
-                            margin-top: 4px;
-                        }
-                    }
-                    .process {
-                        font-size: $font-size-sm;
-                        color: $color-lighting;
-                    }
-                }
+            .last-item:after {
+                background-color: initial;
             }
         }
     }
