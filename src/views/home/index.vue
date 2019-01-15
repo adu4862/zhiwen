@@ -64,6 +64,9 @@
 <style lang="scss" scoped>
     .home {
         &-swipe {
+            img {
+                width: 100%;
+            }
             .swipe-item {
                 text-align: center;
                 background-color: cornflowerblue;
