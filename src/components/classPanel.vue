@@ -1,6 +1,6 @@
 <template>
     <!-- 课程列表组件 -->
-    <div class="m-class-panel">
+    <div class="m-class-panel" @click="handleClick">
         <div class="m-class-panel-select">
             <slot name="select"></slot>
             <!--<van-checkbox v-model="checked"></van-checkbox>-->
@@ -24,6 +24,11 @@
                 checked: false
             };
         },
+        methods: {
+            handleClick() {
+                this.$emit('handleClick')
+            }
+        }
     };
 </script>
 

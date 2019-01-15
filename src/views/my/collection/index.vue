@@ -93,18 +93,18 @@
             .left {
                 display: flex;
                 align-items: center;
-                line-height: 33px;
-
                 font-size: $font-size-sm;
                 span {
                     margin-left: 11px;
                 }
             }
             .right {
+                line-height: 36px;
                 color: #6587F8;
                 .icon {
+                    line-height: 33px;
                     font-size: $font-size-lg;
-                    vertical-align: sub;
+                    vertical-align: middle;
                 }
             }
         }

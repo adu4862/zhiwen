@@ -1,5 +1,5 @@
 <template>
-    <ClassPanel :class="['my-collection-item', isSelect?'my-collection-item-select':'']">
+    <ClassPanel :class="['my-collection-item', isSelect?'my-collection-item-select':'']" @handleClick="chooseClass">
         <div class="select" slot="select" v-if="isSelect">
             <van-checkbox v-model="checked"></van-checkbox>
         </div>
@@ -18,8 +18,8 @@
                 <!--<span>已购买</span>-->
                 <!--</div>-->
                 <div class="prices">
-                    <p class="new-price">¥299</p>
-                    <p class="old-price">¥599</p>
+                    <span class="new-price">¥299</span>
+                    <span class="old-price">¥599</span>
                 </div>
             </div>
         </div>
@@ -52,6 +52,14 @@
         watch: {
             selectAll(val) {
                 this.checked = val;
+            }
+        },
+        methods: {
+            chooseClass() {
+                console.log(111)
+                if (this.isSelect) {
+                    this.checked = !this.checked;
+                }
             }
         }
     };
