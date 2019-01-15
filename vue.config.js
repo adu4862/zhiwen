@@ -46,7 +46,11 @@ module.exports = {
     css: {
         loaderOptions: {
             sass: {
-                data: `@import "@/style/mixin.scss";`
+                data: `
+                @import "@/style/mixin.scss";
+                @import "@/style/var.scss";
+                @import "@/style/_btn.scss";
+                `
             },
             less: {
                 modifyVars: {
