@@ -1,19 +1,19 @@
 <template>
     <div class="my-collection">
         <!--<CollectionEmpty />-->
-        <div :class="['my-collection-head', isSelect?'':'fe']">
-            <div class="select-all" v-if="isSelect">
+        <div class="my-collection-head">
+            <div class="left" v-if="isSelect">
                 <van-checkbox v-model="selectAll"></van-checkbox>
                 <span>全选</span>
             </div>
-            <div class="func" @click="handelSelect">
-                <p v-if="!isSelect">
+            <div class="right" @click="handelSelect">
+                <template v-if="!isSelect">
                     管理
                     <i data-icon="a" class="icon"></i>
-                </p>
-                <p v-if="isSelect">
+                </template>
+                <template v-else>
                     完成
-                </p>
+                </template>
             </div>
         </div>
         <van-list
@@ -79,12 +79,10 @@
 
 <style scoped lang="scss">
     .my-collection {
-        .fe {
-            justify-content: flex-end;
+        .van-checkbox {
+            display: flex;
         }
         &-head {
-            display: flex;
-            justify-content: space-between;
             margin: 6px 0;
             padding: 0 21px;
             height: 33px;
@@ -92,19 +90,21 @@
             background: #fff;
             font-size: $font-size-sm;
             color: #909090;
-            .func {
-                color: #6587F8;
-            }
-            .icon {
-                font-size: $font-size-lg;
-                vertical-align: sub;
-            }
-            .select-all {
+            .left {
                 display: flex;
                 align-items: center;
+                line-height: 33px;
+
                 font-size: $font-size-sm;
                 span {
                     margin-left: 11px;
+                }
+            }
+            .right {
+                color: #6587F8;
+                .icon {
+                    font-size: $font-size-lg;
+                    vertical-align: sub;
                 }
             }
         }
