@@ -1,6 +1,6 @@
 // 我的页面
-const Home = () => import( /* webpackChunkName: "home" */ '../views/home/index.vue')
-const ClassDetail = () => import( /* webpackChunkName: "home" */ '../views/home/classDetail/index.vue')
+const Home = () => import( /* webpackChunkName: "home" */ '../views/home/index')
+const ClassDetail = () => import( /* webpackChunkName: "home" */ '../views/home/classDetail/index')
 
 export default [
     {

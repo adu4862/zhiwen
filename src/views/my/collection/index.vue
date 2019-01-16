@@ -6,7 +6,7 @@
                 <van-checkbox v-model="selectAll"></van-checkbox>
                 <span>全选</span>
             </div>
-            <div class="right" @click="handelSelect">
+            <div class="right ftb" @click="handelSelect">
                 <template v-if="!isSelect">
                     管理
                     <i data-icon="a" class="icon"></i>
@@ -99,9 +99,9 @@
                 }
             }
             .right {
-                line-height: 36px;
                 color: #6587F8;
                 .icon {
+                    margin-left: 4px;
                     line-height: 33px;
                     font-size: $font-size-lg;
                     vertical-align: middle;

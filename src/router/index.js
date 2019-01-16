@@ -6,9 +6,9 @@ import homeRouter from './home'
 import myRouter from './my'
 
 // demo页
-const DemoPage = () => import( /* webpackChunkName: "home" */ '../views/demo.vue')
-const CanvasDemo = () => import( /* webpackChunkName: "home" */ '../views/canvasDemo.vue')
-const QRDemo = () => import( /* webpackChunkName: "home" */ '../views/qrDemo.vue')
+const DemoPage = () => import( /* webpackChunkName: "home" */ '../views/demo')
+const CanvasDemo = () => import( /* webpackChunkName: "home" */ '../views/canvasDemo')
+const QRDemo = () => import( /* webpackChunkName: "home" */ '../views/qrDemo')
 
 Vue.use(Router)
 
