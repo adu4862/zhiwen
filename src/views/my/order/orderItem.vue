@@ -50,7 +50,7 @@
             justify-content: space-between;
             .title {
                 font-size: $font-size-md;
-                color: #4A4A4A;
+                color: $color-important;
             }
             .pay-time,
             .order-no {
@@ -63,7 +63,7 @@
                 justify-content: space-between;
                 align-items: center;
                 font-size: $font-size-sm;
-                color: #4A4A4A;
+                color: $color-important;
                 .pay {
                     color: $color-lighting;
                     span {

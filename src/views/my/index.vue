@@ -77,11 +77,11 @@
                 finished-text="没有更多了"
                 @load="onLoad"
             >
-                <ClassItem
-                    v-for="(item, idx) in list"
-                    :key="idx"
-                    :class="idx+1 === list.length?'last-item':''"
-                />
+                <template v-for="(item, idx) in list" >
+                    <div class="my-class-list-item" :key="idx">
+                        <ClassItem :class="idx+1 === list.length?'last-item':''"/>
+                    </div>
+                </template>
             </van-list>
         </div>
     </div>
@@ -166,7 +166,7 @@
                     }
                     .label {
                         margin-left: 8px;
-                        color: #606060;
+                        color: $color-important;
                     }
                 }
                 &-right {
@@ -197,6 +197,10 @@
             background-color: #fff;
             .last-item:after {
                 background-color: initial;
+            }
+            &-item {
+                padding: 11px 0;
+                @include border-bottom();
             }
         }
     }

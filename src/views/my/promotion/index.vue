@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="withdraw-btn">
-                <button class="border-btn-28">提现</button>
+                <button class="blue-btn-48">提现</button>
             </div>
         </div>
         <div class="my-promotion-list">
@@ -86,9 +86,11 @@
                 padding: 0 34px;
                 text-align: center;
                 font-size: $font-size-sm;
-                color: #828282;
+                color: #909090;
                 .money-item p:nth-child(2) {
                     margin-top: 10px;
+                    height: 42px;
+                    line-height: 42px;
                     font-size: 30px;
                     color: $color-lighting;
                 }
@@ -98,6 +100,12 @@
                 justify-content: flex-end;
                 margin-top: 20px;
                 padding: 0 34px;
+                button {
+                    width: 70px;
+                    height: 28px;
+                    line-height: 26px;
+                    font-size: $font-size-base;
+                }
             }
         }
         &-list {

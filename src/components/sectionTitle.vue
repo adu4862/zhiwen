@@ -22,16 +22,19 @@
 <style scoped lang="scss">
     .m-section-title {
         display: flex;
+        align-items: center;
         &-before {
             margin-right: 4px;
-            width:4px;
-            height:20px;
-            background:linear-gradient(180deg,rgba(158,161,252,1) 0%,rgba(101,135,248,1) 100%);
+            width: 4px;
+            height: 16px;
+            background: linear-gradient(180deg, rgba(158, 161, 252, 1) 0%, rgba(101, 135, 248, 1) 100%);
+            border-radius: 2px;
         }
         &-content {
+            @include height(25px);
             font-size: 20px;
-            font-weight:600;
-            color: #4A4A4A;
+            font-weight: 600;
+            color: $color-important;
         }
     }
 </style>

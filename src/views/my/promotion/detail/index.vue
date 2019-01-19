@@ -67,12 +67,11 @@
                 overflow: hidden;
                 .title {
                     font-size: $font-size-md;
-                    color: #4A4A4A;
+                    color: $color-important;
                 }
                 .reward {
                     margin-top: 19px;
                     font-size: $font-size-sm;
-                    color: #666;
                     span {
                         font-size: $font-size-lg;
                         color: $color-lighting;
@@ -81,6 +80,7 @@
             }
         }
         &-list {
+            color: $color-important;
             .list-title,
             .list-item {
                 display: flex;
@@ -91,10 +91,12 @@
             .list-title {
                 margin-top: 14px;
                 margin-bottom: 1px;
-                color: $color-lighting;
             }
             .list-item {
                 margin-top: 5px;
+                span:nth-child(2) {
+                    font-weight: bold;
+                }
             }
             .list-empty {
                 text-align: center;

@@ -56,7 +56,7 @@
 		&-content {
             padding: 13px 20px;
 			.title {
-                color: #4A4A4A;
+                color: $color-important;
 				font-size: $font-size-md;
                 .icon {
                     margin-right: 8px;

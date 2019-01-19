@@ -5,7 +5,7 @@
 
 $font-weight-base: 400;
 
-$border-color-base: rgba(101, 135, 248, 0.36);
+$border-color: rgba(101, 135, 248, 0.36);
 
 $font-size-lg: 18px;
 $font-size-md: 16px;
@@ -13,10 +13,9 @@ $font-size-base: 14px;
 $font-size-sm: 12px;
 $font-size-mini: 10px;
 
-$color-important: #222222;
-$color-common: #606060;
-$color-desc: #909090;
-$color-disabled: #BFBFBF;
-$color-error: #F04134;
-$color-warn: #F5A623;
-$color-lighting: #F09300;
+$color-important: #5F626F;
+$color-common: #969FAF;
+$color-link: #6587F8;
+$color-lighting: #C27CFF;
+$color-border: rgba(101, 135, 248, 0.36);
+$color-linear: linear-gradient(90deg,rgba(106,174,253,1) 0%,rgba(151,132,250,1) 100%);

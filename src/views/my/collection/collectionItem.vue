@@ -84,7 +84,7 @@
             justify-content: space-between;
             .title {
                 font-size: $font-size-md;
-                color: #4A4A4A;
+                color: $color-important;
             }
             .content {
                 margin-top: 8px;
@@ -106,7 +106,7 @@
                 .saled {
                     @include ftb();
                     font-size: $font-size-sm;
-                    color: #4A4A4A;
+                    color: $color-important;
                     img {
                         margin-right: 5px;
                         width: 18px;

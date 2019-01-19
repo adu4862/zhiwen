@@ -49,7 +49,7 @@
                 color: #666;
                 span:nth-child(1) {
                     font-size: $font-size-md;
-                    color: #4A4A4A;
+                    color: $color-important;
                 }
             }
             .balance {
@@ -65,7 +65,7 @@
             margin-top: 8px;
             padding: 12px 19px 21px 19px;
             .title {
-                color: #4A4A4A;
+                color: $color-important;
             }
             .input-container {
                 margin-top: 14px;

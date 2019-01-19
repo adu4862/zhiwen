@@ -27,22 +27,22 @@
 
 <style scoped lang="scss">
     .my-class-item {
-        padding: 11px 0;
-        @include border-bottom();
+        box-shadow: 0 2px 6px 2px rgba(219, 228, 242, 1);
+        border-radius: 4px;
         &-content {
             display: flex;
             flex-flow: column;
             justify-content: space-between;
+            padding: 8px 8px 8px 2px;
             .info {
                 @include ellipsis();
                 font-size: $font-size-mini;
-                color: #666;
                 .desc {
                     margin-top: 4px;
                 }
             }
             .process {
-                font-size: $font-size-sm;
+                font-size: $font-size-mini;
                 color: $color-lighting;
             }
         }

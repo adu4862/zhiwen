@@ -65,7 +65,7 @@
             @include fct();
             margin-top: 30px;
             text-align: center;
-            color: #4A4A4A;
+            color: $color-important;
             span:before {
                 margin-right: 5px;
                 vertical-align: middle;
@@ -85,7 +85,7 @@
                 padding: 10px 11px;
                 @include border-bottom($border-color: #D2D2D2);
                 font-size: $font-size-sm;
-                color: #4A4A4A;
+                color: $color-important;
                 &-right-arrow {
                     display: inline-block;
                     width: 8px;

@@ -50,7 +50,7 @@
             overflow: hidden;
             .title {
                 font-size: $font-size-md;
-                color: #4A4A4A;
+                color: $color-important;
             }
             .content {
                 margin-top: 4px;

@@ -28,7 +28,7 @@
 			"Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
         .class-item-title {
             font-size: $font-size-md;
-            color: #4A4A4A;
+            color: $color-important;
         }
 	}
 </style>

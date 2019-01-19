@@ -1,6 +1,6 @@
 <template>
     <ClassPanel class="my-promotion-item">
-        <ClassBanner slot="banner" />
+        <ClassBanner slot="banner"/>
         <div class="my-promotion-item-content">
             <div class="info">
                 <div class="title ellipsis">法律英语基础版法法律英语基础版法法律英语基础版法</div>
@@ -18,6 +18,7 @@
 
 <script>
     import {ClassPanel, ClassBanner} from '@/components'
+
     export default {
         components: {
             ClassPanel,
@@ -69,16 +70,16 @@
             }
         }
         &-content {
-            margin-left: 8px;
             display: flex;
             flex-flow: column;
             justify-content: space-between;
             flex: 1;
             overflow: hidden;
             .title {
+                @include height($height: 22px);
                 font-size: $font-size-md;
-                color: #4A4A4A;
-                font-weight: bold;
+                color: $color-important;
+                font-weight: 500;
             }
             .reward {
                 margin-top: 6px;

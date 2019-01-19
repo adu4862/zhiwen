@@ -50,8 +50,8 @@
         .class-type-icon {
             @include tb();
             right: 8px;
-            width: 8px;
-            height: 8px;
+            width: 12px;
+            height: 12px;
             color: #fff;
             font-size: 22px;
         }
