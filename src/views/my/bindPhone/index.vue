@@ -70,7 +70,7 @@
                 margin-right: 5px;
                 vertical-align: middle;
                 font-size: 24px;
-                color: #6587F8;
+                color: $color-link;
             }
         }
         &-form {

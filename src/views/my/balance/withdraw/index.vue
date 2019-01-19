@@ -88,7 +88,7 @@
                 font-size: $font-size-mini;
                 color: $color-gary;
                 span {
-                    color: #6587F8;
+                    color: $color-link;
                 }
             }
         }

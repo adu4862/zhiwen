@@ -63,7 +63,7 @@
             }
         }
         .bar-item.active {
-            color: #6587F8;
+            color: $color-link;
         }
     }
 </style>

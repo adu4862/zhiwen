@@ -9,77 +9,36 @@
             </span>
         </div>
         <div class="my-cell-group">
-            <div class="cell">
-                <div class="cell-left">
-                    <i class="icon icon--7"></i>
-                    <span class="label">手机绑定</span>
-                </div>
-                <div class="cell-right">
-                    <p class="label">未验证</p>
-                    <router-link :to="{name: 'bindPhone'}">
-                        <i class="cell-right-arrow"></i>
-                    </router-link>
-                </div>
-            </div>
-            <div class="cell">
-                <div class="cell-left">
-                    <i class="icon icon--9"></i>
-                    <span class="label">推广中心</span>
-                </div>
-                <div class="cell-right">
-                    <p class="label">可提现 <span class="cell-right-withdraw">110.13元</span></p>
-                    <router-link :to="{name: 'promotion'}">
-                        <i class="cell-right-arrow"></i>
-                    </router-link>
-                </div>
-            </div>
-            <div class="cell">
-                <div class="cell-left">
-                    <i class="icon icon-"></i>
-                    <span class="label">我的订单</span>
-                </div>
-                <div class="cell-right">
-                    <router-link :to="{name: 'order'}">
-                        <i class="cell-right-arrow"></i>
-                    </router-link>
-                </div>
-            </div>
-            <div class="cell">
-                <div class="cell-left">
-                    <i class="icon icon--14"></i>
-                    <span class="label">我的收藏</span>
-                </div>
-                <div class="cell-right">
-                    <router-link :to="{name: 'collection'}">
-                        <i class="cell-right-arrow"></i>
-                    </router-link>
-                </div>
-            </div>
-            <div class="cell">
-                <div class="cell-left">
-                    <i class="icon icon-yue"></i>
-                    <span class="label">我的余额</span>
-                </div>
-                <div class="cell-right">
-                    <router-link :to="{name: 'balance'}">
-                        <i class="cell-right-arrow"></i>
-                    </router-link>
-                </div>
-            </div>
+            <CellItem label="手机绑定" link="bindPhone">
+                <i class="icon icon--7" slot="icon"></i>
+                <p class="cell-content">未验证</p>
+            </CellItem>
+            <CellItem label="推广中心" link="promotion">
+                <i class="icon icon--9" slot="icon"></i>
+                <p class="cell-content">可提现 <span class="cell-content-withdraw">110.13元</span></p>
+            </CellItem>
+            <CellItem label="我的订单" link="order">
+                <i class="icon icon-" slot="icon"></i>
+            </CellItem>
+            <CellItem label="我的收藏" link="collection">
+                <i class="icon icon--14" slot="icon"></i>
+            </CellItem>
+            <CellItem label="我的余额" link="balance">
+                <i class="icon icon-yue" slot="icon"></i>
+            </CellItem>
         </div>
         <div class="my-class-list">
-            <SectionTitle
-                title="我的课程"
-            />
+            <SectionTitle title="我的课程"/>
+            <!--<ClassEmpty />-->
             <van-list
                 v-model="loading"
                 :finished="finished"
                 finished-text="没有更多了"
                 @load="onLoad"
             >
-                <template v-for="(item, idx) in list" >
-                    <div class="my-class-list-item" :key="idx">
-                        <ClassItem :class="idx+1 === list.length?'last-item':''"/>
+                <template v-for="(item, idx) in list">
+                    <div :class="['my-class-list-item', idx+1 === list.length?'last-item':'']" :key="idx">
+                        <ClassItem/>
                     </div>
                 </template>
             </van-list>
@@ -89,12 +48,16 @@
 
 <script>
     import {SectionTitle} from '@/components'
+    import CellItem from './cellItem'
     import ClassItem from './classItem'
+    import ClassEmpty from './classEmpty'
 
     export default {
         components: {
+            CellItem,
             SectionTitle,
-            ClassItem
+            ClassItem,
+            ClassEmpty
         },
         data() {
             return {
@@ -151,53 +114,17 @@
             margin-bottom: 6px;
             padding: 0 20px;
             background-color: #fff;
-            .cell {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 13px 0 10px 12px;
-                @include border-bottom();
-                &-left {
-                    .icon {
-                        display: inline-block;
-                        vertical-align: middle;
-                        font-size: $font-size-md;
-                        color: #809CFF;
-                    }
-                    .label {
-                        margin-left: 8px;
-                        color: $color-important;
-                    }
+            .cell-content {
+                margin-right: 9px;
+                color: $color-gary;
+                &-withdraw {
+                    color: $color-lighting;
                 }
-                &-right {
-                    display: flex;
-                    font-size: $font-size-sm;
-                    .label {
-                        margin-right: 9px;
-                        color: $color-gary;
-                    }
-                    &-withdraw {
-                        color: $color-lighting;
-                    }
-                    &-arrow {
-                        display: inline-block;
-                        width: 8px;
-                        height: 13px;
-                        background: url("../../assets/img/my/cell_arrow.png") no-repeat center center;
-                        background-size: contain;
-                    }
-                }
-            }
-            .cell:nth-last-child(1):after {
-                display: none;
             }
         }
         &-class-list {
             padding: 14px 20px;
             background-color: #fff;
-            .last-item:after {
-                background-color: initial;
-            }
             &-item {
                 padding: 11px 0;
                 @include border-bottom();
