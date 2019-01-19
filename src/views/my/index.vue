@@ -125,6 +125,9 @@
         &-class-list {
             padding: 14px 20px;
             background-color: #fff;
+            .last-item:after {
+                background-color: initial;
+            }
             &-item {
                 padding: 11px 0;
                 @include border-bottom();
