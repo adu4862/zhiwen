@@ -50,13 +50,16 @@
         justify-content: space-around;
         align-items: center;
         height: 56px;
-        @include border-top();
+        box-shadow: 0 -2px 2px 0 rgba(101, 135, 248, 0.04);
         .bar-item {
             flex: 1;
             font-size: $font-size-mini;
             text-align: center;
             .icon {
                 font-size: 24px;
+            }
+            .label {
+                margin-top: 4px;
             }
         }
         .bar-item.active {

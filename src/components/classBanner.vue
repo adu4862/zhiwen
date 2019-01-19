@@ -34,7 +34,6 @@
         overflow: hidden;
         width: 114px;
         height: 80px;
-        border-radius: 2px;
         .banner {
             width: 100%;
             height: 100%;

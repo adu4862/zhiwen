@@ -5,7 +5,7 @@
         </div>
         <div class="bind-phone-form">
             <div class="cell-item">
-                <span>中国(+86)</span>
+                <span class="phone-pre">中国(+86)</span>
                 <i class="cell-item-right-arrow"></i>
             </div>
             <div class="cell-item">
@@ -85,13 +85,17 @@
                 padding: 10px 11px;
                 @include border-bottom($border-color: #D2D2D2);
                 font-size: $font-size-sm;
-                color: $color-important;
+                color: $color-gary;
                 &-right-arrow {
                     display: inline-block;
                     width: 8px;
                     height: 13px;
-                    background: url("../../../assets/img/my/cell-arrow.png") no-repeat center center;
+                    background: url("../../../assets/img/my/cell_arrow_gary.png") no-repeat center center;
                     background-size: contain;
+                }
+                .phone-pre {
+                    font-weight: 300;
+                    color: $color-important;
                 }
             }
             .code-btn {
@@ -101,6 +105,9 @@
                 font-size: $font-size-mini;
                 font-weight: 300;
                 border-radius: 2px;
+                background: #8E9199;
+                box-shadow: initial;
+                border: none;
             }
         }
         &-btn {

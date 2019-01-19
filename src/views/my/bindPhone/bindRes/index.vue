@@ -25,6 +25,7 @@
         flex-flow: column;
         align-items: center;
         height: 100vh;
+        color: $color-important;
         background: #fff;
         &-icon {
             margin-top: 45px;
@@ -32,9 +33,8 @@
             height: 50px;
         }
         &-tips {
-            margin-top: 4px;
+            margin-top: 12px;
             font-size: $font-size-md;
-            color: #F09300;
         }
         &-content {
             margin-top: 44px;

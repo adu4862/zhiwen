@@ -29,6 +29,7 @@
     .my-class-item {
         box-shadow: 0 2px 6px 2px rgba(219, 228, 242, 1);
         border-radius: 4px;
+        overflow: hidden;
         &-content {
             display: flex;
             flex-flow: column;

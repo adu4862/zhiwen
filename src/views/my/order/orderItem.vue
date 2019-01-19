@@ -56,14 +56,13 @@
             .order-no {
                 margin-top: 4px;
                 font-size: $font-size-mini;
-                color: #666;
             }
             .order-price {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 font-size: $font-size-sm;
-                color: $color-important;
+                color: $color-gary;
                 .pay {
                     color: $color-lighting;
                     span {
