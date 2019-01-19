@@ -1,9 +1,9 @@
 // 我的页面
 const My = () => import( /* webpackChunkName: "my" */ '../views/my')
-const BindPhone = () => import( /* webpackChunkName: "my" */ '../views/my/bindPhone')
-const BindPhoneRes = () => import( /* webpackChunkName: "my" */ '../views/my/bindPhone/bindRes')
-const AreaSelect = () => import( /* webpackChunkName: "my" */ '../views/my/bindPhone/areaSelect')
-const ConfirmPhone = () => import( /* webpackChunkName: "my" */ '../views/my/confirmPhone')
+const BindPhone = () => import( /* webpackChunkName: "my" */ '../views/my/phoneBind')
+const BindPhoneRes = () => import( /* webpackChunkName: "my" */ '../views/my/phoneBind/bindRes')
+const AreaSelect = () => import( /* webpackChunkName: "my" */ '../views/my/phoneBind/areaSelect')
+const ConfirmPhone = () => import( /* webpackChunkName: "my" */ '../views/my/phoneConfirm')
 const Order = () => import( /* webpackChunkName: "my" */ '../views/my/order')
 const Collection = () => import( /* webpackChunkName: "my" */ '../views/my/collection')
 const Balance = () => import( /* webpackChunkName: "my" */ '../views/my/balance')
