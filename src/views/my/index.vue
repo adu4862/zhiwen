@@ -37,9 +37,7 @@
                 @load="onLoad"
             >
                 <template v-for="(item, idx) in list">
-                    <div :class="['my-class-list-item', idx+1 === list.length?'last-item':'']" :key="idx">
-                        <ClassItem/>
-                    </div>
+                    <ClassItem :class="idx+1 === list.length?'last-item':''"/>
                 </template>
             </van-list>
         </div>
@@ -124,13 +122,6 @@
         &-class-list {
             padding: 14px 20px;
             background-color: #fff;
-            .last-item:after {
-                background-color: initial;
-            }
-            &-item {
-                padding: 11px 0;
-                @include border-bottom();
-            }
         }
     }
 </style>
