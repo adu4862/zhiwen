@@ -11,9 +11,7 @@
         <div class="home-classes">
             <SectionTitle title="法律英语课程" />
             <div class="class-list">
-                <div class="class-list-item">
-                    <ClassItem type="voice"/>
-                </div>
+                <ClassItem type="voice"/>
             </div>
         </div>
     </div>
@@ -77,15 +75,6 @@
         &-classes {
             padding: 13px 20px;
             background-color: #fff;
-            .class-list {
-                &-item {
-                    padding: 11px 0;
-                    @include border-bottom();
-                }
-                &-item:nth-last-child(1):after {
-                    background: initial;
-                }
-            }
         }
     }
 </style>

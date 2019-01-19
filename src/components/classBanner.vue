@@ -31,9 +31,10 @@
 <style scoped lang="scss">
     .m-class-banner {
         position: relative;
-        overflow: hidden;
+        display: flex;
         width: 114px;
-        height: 80px;
+        min-height: 80px;
+        overflow: hidden;
         .banner {
             width: 100%;
             height: 100%;
