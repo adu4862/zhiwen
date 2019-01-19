@@ -64,16 +64,18 @@
                 top: 0;
                 right: 0;
                 bottom: 0;
+                color: $color-gary;
                 .account {
                     margin-top: 56px;
                     margin-bottom: 34px;
                     .title {
                         font-size: $font-size-md;
-                        color: #828282;
                     }
                     .balance {
                         margin-top: 4px;
+                        @include height(47px);
                         font-size: 40px;
+                        font-weight: 500;
                         color: $color-lighting;
                     }
                 }
@@ -83,10 +85,10 @@
                     font-weight: 300;
                     .title {
                         font-size: $font-size-sm;
-                        color: #828282;
                     }
                     .balance {
                         margin-top: 5px;
+                        @include height(25px);
                         font-size: 18px;
                         color: $color-lighting;
                     }

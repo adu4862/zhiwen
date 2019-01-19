@@ -25,7 +25,7 @@
         span {
             margin-bottom: 30px;
             font-size: $font-size-sm;
-            color: #909090;
+            color: $color-gary;
         }
     }
 </style>

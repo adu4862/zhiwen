@@ -2,11 +2,11 @@
     <div class="my-collection">
         <!--<CollectionEmpty />-->
         <div class="my-collection-head">
-            <div class="left" v-if="isSelect">
-                <van-checkbox v-model="selectAll"></van-checkbox>
+            <div class="select" v-if="isSelect">
+                <van-checkbox class="check-box" v-model="selectAll"></van-checkbox>
                 <span>全选</span>
             </div>
-            <div class="right ftb" @click="handelSelect">
+            <div class="option ftb" @click="handelSelect">
                 <template v-if="!isSelect">
                     管理
                     <i data-icon="a" class="icon"></i>
@@ -30,6 +30,10 @@
                 :selectAll="selectAll"
             />
         </van-list>
+        <div class="my-collection-remove">
+            <i class="delete-icon"></i>
+            移除
+        </div>
     </div>
 </template>
 
@@ -89,23 +93,46 @@
             line-height: 33px;
             background: #fff;
             font-size: $font-size-sm;
-            color: #909090;
-            .left {
+            font-weight: 500;
+            color: #222222;
+            .select {
+                float: left;
                 display: flex;
                 align-items: center;
                 font-size: $font-size-sm;
                 span {
-                    margin-left: 11px;
+                    margin-left: 8px;
                 }
             }
-            .right {
-                color: #6587F8;
+            .option {
+                float: right;
                 .icon {
                     margin-left: 4px;
                     line-height: 33px;
                     font-size: $font-size-lg;
                     vertical-align: middle;
                 }
+            }
+            .check-box {
+                transform: scale(.8);
+            }
+        }
+        &-remove {
+            @include fct();
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            @include height(50px);
+            color: #909090;
+            background-color: #fff;
+            box-shadow: 0 2px 4px 0 rgba(101, 135, 248, 0.11);
+            .delete-icon {
+                margin-right: 4px;
+                display: inline-block;
+                width: 30px;
+                height: 30px;
+                background: url("../../../assets/img/my/collection/icon_delete.png") no-repeat center;
+                background-size: contain;
             }
         }
     }

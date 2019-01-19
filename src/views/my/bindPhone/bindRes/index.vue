@@ -1,6 +1,6 @@
 <template>
     <div class="bind-phone-res">
-        <img class="bind-phone-res-icon" :src="require('@/assets/img/my/icon_success.png')" alt="icon_success">
+        <img class="bind-phone-res-icon" :src="require('@/assets/img/icon_success.png')" alt="icon_success">
         <p class="bind-phone-res-tips">已验证</p>
         <div class="bind-phone-res-content">
             <!--<p>如你的手机号已不使用，请及时更换</p>-->

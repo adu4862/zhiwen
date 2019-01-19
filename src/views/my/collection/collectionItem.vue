@@ -1,9 +1,9 @@
 <template>
     <ClassPanel :class="['my-collection-item', isSelect?'my-collection-item-select':'']" @handleClick="chooseClass">
-        <div class="select" slot="select" v-if="isSelect">
-            <van-checkbox v-model="checked"></van-checkbox>
+        <div class="my-collection-item-check" slot="select" v-if="isSelect">
+            <van-checkbox class="check-box" v-model="checked"></van-checkbox>
         </div>
-        <ClassBanner slot="banner" />
+        <ClassBanner slot="banner"/>
         <div class="my-collection-item-content">
             <div class="info">
                 <div class="title ellipsis">法律英语基础版法律英语基础版法律英语基础版法律英语基础版</div>
@@ -56,7 +56,6 @@
         },
         methods: {
             chooseClass() {
-                console.log(111)
                 if (this.isSelect) {
                     this.checked = !this.checked;
                 }
@@ -70,15 +69,13 @@
         margin-bottom: 6px;
         padding: 15px 21px;
         background: #fff;
-        .select {
-            margin: 0 8px;
-            .van-checkbox__icon .van-icon {
-                width: 16px;
-                height: 16px;
+        &-check {
+            margin: 0 6px;
+            .check-box {
+                transform: scale(.8);
             }
         }
         &-content {
-            margin-left: 5px;
             display: flex;
             flex-flow: column;
             justify-content: space-between;
@@ -123,12 +120,13 @@
                     .old-price {
                         text-decoration: line-through;
                         font-size: $font-size-mini;
-                        color: #909090;
+                        color: $color-gary;
                     }
                 }
             }
         }
     }
+
     .my-collection-item-select {
         padding-left: initial;
     }

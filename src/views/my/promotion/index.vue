@@ -86,7 +86,7 @@
                 padding: 0 34px;
                 text-align: center;
                 font-size: $font-size-sm;
-                color: #909090;
+                color: $color-gary;
                 .money-item p:nth-child(2) {
                     margin-top: 10px;
                     height: 42px;

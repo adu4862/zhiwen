@@ -77,7 +77,7 @@
                         margin-left: 8px;
                         font-size: $font-size-mini;
                         text-decoration: line-through;
-                        color: #909090;
+                        color: $color-gary;
                     }
                     .new-price {
                         font-size: $font-size-md;

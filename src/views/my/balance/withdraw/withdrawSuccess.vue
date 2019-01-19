@@ -1,6 +1,6 @@
 <template>
     <div class="my-balance-withdraw-success">
-        <img class="my-balance-withdraw-success-icon" :src="require('@/assets/img/my/balance/icon_withdraw_success.png')" alt="icon_withdraw_success">
+        <img class="my-balance-withdraw-success-icon" :src="require('@/assets/img/icon_success.png')" alt="icon_withdraw_success">
         <p class="my-balance-withdraw-success-tips">提交成功</p>
         <button class="blue-btn-48 my-balance-withdraw-success-btn">查看记录</button>
     </div>
@@ -26,7 +26,7 @@
         &-tips {
             margin-top: 30px;
             font-size: 24px;
-            color: $color-lighting;
+            color: $color-important;
         }
         &-btn {
             margin-top: 80px;

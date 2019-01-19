@@ -24,7 +24,7 @@
         padding: 16px 0;
         @include border-bottom();
         font-size: $font-size-sm;
-        color: #828282;
+        color: $color-gary;
         background-color: #fff;
         &-time {
             p:nth-child(2) {
@@ -33,7 +33,7 @@
         }
         &-balance span {
             font-size: 18px;
-            color: $color-lighting;
+            color: $color-important;
         }
     }
 </style>

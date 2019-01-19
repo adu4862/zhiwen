@@ -46,9 +46,10 @@
             .title {
                 display: flex;
                 justify-content: space-between;
-                color: #666;
+                color: $color-gary;
                 span:nth-child(1) {
                     font-size: $font-size-md;
+                    font-weight: 500;
                     color: $color-important;
                 }
             }
@@ -65,7 +66,7 @@
             margin-top: 8px;
             padding: 12px 19px 21px 19px;
             .title {
-                color: $color-important;
+                color: $color-gary;
             }
             .input-container {
                 margin-top: 14px;
@@ -74,7 +75,7 @@
                 @include border-bottom();
                 .unit {
                     font-size: 28px;
-                    color: #666;
+                    color: $color-important;
                 }
                 input {
                     flex: 1;
@@ -85,7 +86,7 @@
             .withdraw-tips {
                 margin-top: 8px;
                 font-size: $font-size-mini;
-                color: #909090;
+                color: $color-gary;
                 span {
                     color: #6587F8;
                 }

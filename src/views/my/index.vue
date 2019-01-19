@@ -174,7 +174,7 @@
                     font-size: $font-size-sm;
                     .label {
                         margin-right: 9px;
-                        color: #909090;
+                        color: $color-gary;
                     }
                     &-withdraw {
                         color: $color-lighting;

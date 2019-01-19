@@ -26,7 +26,7 @@
             margin: 42px 0;
             font-size: $font-size-base;
             font-weight: 300;
-            color: #909090;
+            color: $color-gary;
         }
     }
 </style>
