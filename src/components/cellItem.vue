@@ -57,11 +57,12 @@
                 display: inline-block;
                 width: 8px;
                 height: 13px;
-                background: url("../../assets/img/my/cell_arrow.png") no-repeat center center;
+                background: url("~@/assets/img/my/cell_arrow.png") no-repeat center center;
                 background-size: contain;
             }
         }
     }
+
     .cell:nth-last-child(1):after {
         display: none;
     }

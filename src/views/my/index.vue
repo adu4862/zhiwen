@@ -47,8 +47,7 @@
 </template>
 
 <script>
-    import {SectionTitle} from '@/components'
-    import CellItem from './cellItem'
+    import {SectionTitle, CellItem} from '@/components'
     import ClassItem from './classItem'
     import ClassEmpty from './classEmpty'
 

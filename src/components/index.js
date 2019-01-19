@@ -1,5 +1,6 @@
 import ActiveCountDown from './activeCountDown'
-import CountDown2 from './countDown.js'
+import CountDown from './countDown.js'
+import CellItem from './cellItem'
 import Dialog from './dialog'
 import Modal from './modal'
 import SectionTitle from './sectionTitle'
@@ -9,7 +10,8 @@ import Ruler from './ruler'
 
 export {
     ActiveCountDown,
-    CountDown2,
+    CountDown,
+    CellItem,
     Dialog,
     Modal,
     SectionTitle,

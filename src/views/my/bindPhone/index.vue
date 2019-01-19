@@ -15,9 +15,9 @@
                     :disabled="counting"
                     @click="startCountdown"
                 >
-                    <CountDown2 v-if="counting" :time="6000" @end="handleCountdownEnd">
+                    <CountDown v-if="counting" :time="6000" @end="handleCountdownEnd">
                         <template slot-scope="props">{{ props.totalSeconds }} 秒后重试</template>
-                    </CountDown2>
+                    </CountDown>
                     <span v-else>获取验证码</span>
                 </button>
             </div>
@@ -32,11 +32,11 @@
 </template>
 
 <script>
-    import {CountDown2} from '@/components'
+    import {CountDown} from '@/components'
 
     export default {
         components: {
-            CountDown2
+            CountDown
         },
         data() {
             return {
