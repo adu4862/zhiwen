@@ -55,7 +55,6 @@
             .content {
                 margin-top: 4px;
                 font-size: $font-size-mini;
-                color: #666;
                 @include ellipsis();
             }
             .saled {

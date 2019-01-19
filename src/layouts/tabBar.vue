@@ -56,7 +56,7 @@
             font-size: $font-size-mini;
             text-align: center;
             .icon {
-                font-size: 24px;
+                font-size: 28px;
             }
             .label {
                 margin-top: 4px;
