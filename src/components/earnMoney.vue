@@ -1,5 +1,5 @@
 <template>
-    <div class="m-earn-money">
+    <div class="m-earn-money" @click="handleMoney">
         <img class="m-earn-money-img" :src="require('@/assets/img/earn_money_img.png')" alt="earn_money">
         <div class="m-earn-money-content">
             可赚¥10.2
@@ -9,7 +9,12 @@
 
 <script>
     export default {
-        name: "earnMoney"
+        name: "earnMoney",
+        methods: {
+            handleMoney() {
+                this.$emit('on-click');
+            }
+        }
     }
 </script>
 
