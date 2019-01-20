@@ -28,6 +28,6 @@
 
 <style lang="scss" scoped>
     .class-detail {
-
+        padding-bottom: 90px;
     }
 </style>

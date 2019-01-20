@@ -6,9 +6,6 @@
             </van-collapse-item>
         </van-collapse>
         <BooksItem title="第一章 法律英语第一章名" />
-        <BooksItem title="第一章 法律英语第一章名" />
-        <BooksItem title="第一章 法律英语第一章名" />
-        <BooksItem title="第一章 法律英语第一章名" />
     </div>
 </template>
 
