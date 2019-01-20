@@ -32,7 +32,7 @@
                 <div class="class-info-buyed-practice">
                     <div class="left">
                         <div class="practice-icon">练</div>
-                        <div class="practice-title">法律英语基础 练习一</div>
+                        <div class="practice-title ellipsis">法律英语基础法律英语基础法律英语基础法律英语基础 练习一</div>
                     </div>
                     <div class="right">
                         <img class="cup-icon" :src="require('@/assets/img/class_cup.png')" alt="class_cup">
@@ -151,6 +151,7 @@
                     padding: 5px 0;
                     .left {
                         @include ftb();
+                        max-width: 70%;
                         .practice-icon {
                             width: 22px;
                             @include height(15px);
@@ -161,6 +162,7 @@
                             text-align: center;
                         }
                         .practice-title {
+                            flex: 1;
                             margin-left: 4px;
                             font-size: $font-size-sm;
                             color: #222;
