@@ -5,7 +5,9 @@ import {
     SwipeItem,
     List,
     Checkbox,
-    CheckboxGroup
+    CheckboxGroup,
+    Collapse,
+    CollapseItem
 } from 'vant';
 
 Vue.use(Button);
@@ -14,3 +16,5 @@ Vue.use(SwipeItem);
 Vue.use(List);
 Vue.use(Checkbox);
 Vue.use(CheckboxGroup);
+Vue.use(Collapse);
+Vue.use(CollapseItem);

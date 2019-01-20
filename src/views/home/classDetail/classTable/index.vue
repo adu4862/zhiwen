@@ -11,17 +11,23 @@
             <!-- 课程概览 -->
             <div class="intro" v-show="activeHeader === '1'">1</div>
             <!-- 课程目录 -->
-            <div class="books" v-show="activeHeader === '2'">2</div>
+            <div class="books" v-show="activeHeader === '2'">
+                <ClassBooks />
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+    import ClassBooks from "./books";
+
     export default {
-        components: {},
+        components: {
+            ClassBooks
+        },
         data() {
             return {
-                activeHeader: "1"
+                activeHeader: "2"
             };
         },
         methods: {
