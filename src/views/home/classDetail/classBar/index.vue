@@ -1,6 +1,6 @@
 <template>
     <div class="class-bar">
-        <div class="class-bar-features">
+        <div class="class-bar-features" v-if="!payed">
             <div class="class-bar-features-item" @click="handleCollect">
                 <i class="icon icon--4"></i>
                 收藏
@@ -10,13 +10,19 @@
                 砍价
             </div>
         </div>
-        <button class="blue-btn-48 class-bar-btn">¥299购买课程</button>
+        <button :class="['blue-btn-48', 'class-bar-btn', payed?'payed-btn':'']">¥299购买课程</button>
     </div>
 </template>
 
 <script>
     export default {
         name: "classBar",
+        props: {
+            payed: {
+                type: Boolean,
+                default: false
+            }
+        },
         methods: {
             handleCollect() {
                 this.$toast({
@@ -60,6 +66,9 @@
         &-btn {
             margin: 0 18px 0 10px;
             width: 200px;
+        }
+        .payed-btn {
+            width: 316px;
         }
     }
 </style>
