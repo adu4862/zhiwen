@@ -5,12 +5,18 @@
                 提供多样店铺模板，快速搭建网上商城
             </van-collapse-item>
         </van-collapse>
+        <BooksItem title="第一章 法律英语第一章名" />
     </div>
 </template>
 
 <script>
+    import BooksItem from "./booksItem";
+
     export default {
         name: "index",
+        components: {
+            BooksItem
+        },
         data() {
             return {
                 activeName: '1'
