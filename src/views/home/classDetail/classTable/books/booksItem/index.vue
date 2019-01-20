@@ -13,33 +13,35 @@
                 <!--</div>-->
             <!--</template>-->
             <!-- 已购买 -->
-            <div class="class-info-buyed">
-                <div class="class-info-buyed-desc">
-                    <div class="info-banner">
-                        <img :src="require('@/assets/img/demo_banner.png')" alt="class_banner">
+            <template v-for="item in 3">
+                <div class="class-info-buyed">
+                    <div class="class-info-buyed-desc">
+                        <div class="info-banner">
+                            <img :src="require('@/assets/img/demo_banner.png')" alt="class_banner">
+                        </div>
+                        <div class="info-content">
+                            <p class="info-content-title ellipsis">1、法律英语基础版课程一法律英语基础版课程法律英语基础版课程</p>
+                            <p class="info-content-info">
+                                <span>时长10:36</span>
+                                <span>播放376次</span>
+                            </p>
+                        </div>
+                        <div class="info-arrow">
+                            <img class="arrow-icon" :src="require('@/assets/img/my/cell_arrow_gary.png')" alt="allow">
+                        </div>
                     </div>
-                    <div class="info-content">
-                        <p class="info-content-title ellipsis">1、法律英语基础版课程一法律英语基础版课程法律英语基础版课程</p>
-                        <p class="info-content-info">
-                            <span>时长10:36</span>
-                            <span>播放376次</span>
-                        </p>
-                    </div>
-                    <div class="info-arrow">
-                        <img class="arrow-icon" :src="require('@/assets/img/my/cell_arrow_gary.png')" alt="allow">
+                    <div class="class-info-buyed-practice">
+                        <div class="left">
+                            <div class="practice-icon">练</div>
+                            <div class="practice-title ellipsis">法律英语基础法律英语基础法律英语基础法律英语基础 练习一</div>
+                        </div>
+                        <div class="right">
+                            <img class="cup-icon" :src="require('@/assets/img/class_cup.png')" alt="class_cup">
+                            <img class="arrow-icon" :src="require('@/assets/img/my/cell_arrow_gary.png')" alt="allow">
+                        </div>
                     </div>
                 </div>
-                <div class="class-info-buyed-practice">
-                    <div class="left">
-                        <div class="practice-icon">练</div>
-                        <div class="practice-title ellipsis">法律英语基础法律英语基础法律英语基础法律英语基础 练习一</div>
-                    </div>
-                    <div class="right">
-                        <img class="cup-icon" :src="require('@/assets/img/class_cup.png')" alt="class_cup">
-                        <img class="arrow-icon" :src="require('@/assets/img/my/cell_arrow_gary.png')" alt="allow">
-                    </div>
-                </div>
-            </div>
+            </template>
         </div>
     </div>
 </template>
@@ -79,37 +81,44 @@
             }
         }
         &-content {
-            padding-left: 21px;
-            padding-right: 19px;
+            background-color: $color-bg;
             .class-info {
-                padding-top: 4px;
-                padding-bottom: 6px;
-                @include border-bottom();
+                padding: 0 19px 0 21px;
+                background-color: #fff;
                 .title {
-                    margin-top: 4px;
+                    padding-top: 8px;
                     @include height(14px);
                     font-size: $font-size-mini;
+                    box-sizing: content-box;
                 }
                 .desc {
-                    margin-top: 3px;
+                    padding-top: 3px;
+                    padding-bottom: 6px;
+                    @include border-bottom();
                     font-size: 8px;
                     text-indent: 15px;
                 }
-                &:nth-last-child(1):after {
+                &:nth-last-child(1) .desc:after {
                     display: none;
                 }
             }
             .class-info-buyed {
+                margin-top: 6px;
+                padding-left: 21px;
+                padding-right: 19px;
+                background-color: #fff;
+                &:nth-child(1) {
+                    margin-top: initial;
+                }
                 .arrow-icon {
                     width: 6px;
                     height: 10px;
                 }
                 &-desc {
                     display: flex;
-                    /*align-items: center;*/
                     padding-top: 14px;
                     padding-bottom: 10px;
-                    @include border-bottom($border-color: #F3F6FE)
+                    @include border-bottom($border-color: #F3F6FE);
                     .info-banner {
                         width: 70px;
                         height: 40px;

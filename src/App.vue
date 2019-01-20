@@ -26,6 +26,7 @@
         font-size: $font-size-base;
         font-weight: $font-weight-base;
         color: $color-common;
+        background-color: $color-bg;
         font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "SF UI Text",
         "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
         -webkit-font-smoothing: antialiased;
