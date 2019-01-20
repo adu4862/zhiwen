@@ -123,7 +123,7 @@
             bottom: 0;
             width: 100%;
             @include height(50px);
-            color: #909090;
+            color: $color-gary;
             background-color: #fff;
             box-shadow: 0 2px 4px 0 rgba(101, 135, 248, 0.11);
             .delete-icon {

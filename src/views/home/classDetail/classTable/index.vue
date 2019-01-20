@@ -69,6 +69,7 @@
             }
         }
         &-content {
+            padding-bottom: 90px;
         }
     }
 </style>
