@@ -1,7 +1,7 @@
 <template>
     <div class="class-bar">
         <div class="class-bar-features">
-            <div class="class-bar-features-item">
+            <div class="class-bar-features-item" @click="handleCollect">
                 <i class="icon icon--4"></i>
                 收藏
             </div>
@@ -16,7 +16,16 @@
 
 <script>
     export default {
-        name: "classBar"
+        name: "classBar",
+        methods: {
+            handleCollect() {
+                this.$toast({
+                    msg: '收藏成功',
+                    type: 'collection',
+                    // duration: 20000
+                })
+            }
+        }
     }
 </script>
 

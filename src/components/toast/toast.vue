@@ -1,7 +1,7 @@
 <template>
     <transition name="fade">
         <div class="m-toast" v-show="show">
-            <span v-if="type === 'success'">成功</span>
+            <i class="icon icon--4" v-if="type === 'collection'"></i>
             {{message}}
         </div>
     </transition>
@@ -24,27 +24,30 @@
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 2001;
+        transform: translate3d(-50%, -50%, 0);
+        z-index: 2099;
         display: flex;
         flex-flow: column;
         align-items: center;
-        padding: 10px 20px;
+        padding: 12px 18px;
         border-radius: 5px;
         color: #fff;
+        font-size: $font-size-base;
+        font-weight: 300;
         text-align: center;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.6);
+        .icon {
+            margin-top: 8px;
+            margin-bottom: 14px;
+            font-size: 24px;
+            color: $color-link;
+        }
     }
 
     .fade-enter-active, .fade-leave-active {
-        transition: 0.3s ease-out;
+        transition: opacity .3s;
     }
-
-    .fade-enter {
-        opacity: 0;
-    }
-
-    .fade-leave-active {
+    .fade-enter, .fade-leave-to {
         opacity: 0;
     }
 </style>

@@ -9,7 +9,7 @@ Toast.install = (Vue) => {
     document.body.appendChild(instance.$el);
 
     // 添加实例方法，以供全局调用
-    Vue.prototype.$toast = (msg, type, duration = 2000) => {
+    Vue.prototype.$toast = ({msg, type, duration = 2000}) => {
         instance.message = msg;
         instance.type = type;
         instance.show = true;
