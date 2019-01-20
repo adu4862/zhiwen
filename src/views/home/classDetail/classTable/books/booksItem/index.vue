@@ -14,7 +14,7 @@
             <!--</template>-->
             <!-- 已购买 -->
             <div class="class-info-buyed">
-                <div class="class-info-buyed-info">
+                <div class="class-info-buyed-desc">
                     <div class="info-banner">
                         <img :src="require('@/assets/img/demo_banner.png')" alt="class_banner">
                     </div>
@@ -26,11 +26,18 @@
                         </p>
                     </div>
                     <div class="info-arrow">
-                        <img :src="require('@/assets/img/my/cell_arrow_gary.png')" alt="">
+                        <img class="arrow-icon" :src="require('@/assets/img/my/cell_arrow_gary.png')" alt="allow">
                     </div>
                 </div>
                 <div class="class-info-buyed-practice">
-
+                    <div class="left">
+                        <div class="practice-icon">练</div>
+                        <div class="practice-title">法律英语基础 练习一</div>
+                    </div>
+                    <div class="right">
+                        <img class="cup-icon" :src="require('@/assets/img/class_cup.png')" alt="class_cup">
+                        <img class="arrow-icon" :src="require('@/assets/img/my/cell_arrow_gary.png')" alt="allow">
+                    </div>
                 </div>
             </div>
         </div>
@@ -93,7 +100,11 @@
                 }
             }
             .class-info-buyed {
-                &-info {
+                .arrow-icon {
+                    width: 6px;
+                    height: 10px;
+                }
+                &-desc {
                     display: flex;
                     /*align-items: center;*/
                     padding-top: 14px;
@@ -130,15 +141,39 @@
                     .info-arrow {
                         @include ftb();
                         margin-left: 10px;
-                        img {
-                            width: 6px;
-                            height: 10px;
-                        }
                     }
                 }
                 &-practice {
-                    padding-top: 12px;
-                    padding-bottom: 10px;
+                    position: relative;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 5px 0;
+                    .left {
+                        @include ftb();
+                        .practice-icon {
+                            width: 22px;
+                            @include height(15px);
+                            background-color: $color-link;
+                            border-radius:8px;
+                            font-size: $font-size-mini;
+                            color: #fff;
+                            text-align: center;
+                        }
+                        .practice-title {
+                            margin-left: 4px;
+                            font-size: $font-size-sm;
+                            color: #222;
+                        }
+                    }
+                    .right {
+                        @include ftb();
+                        .cup-icon {
+                            margin-right: 30px;
+                            width: 33px;
+                            height: 29px;
+                        }
+                    }
                 }
             }
         }
