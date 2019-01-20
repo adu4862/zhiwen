@@ -33,7 +33,6 @@
         border-radius: 5px;
         color: #fff;
         font-size: $font-size-base;
-        font-weight: 300;
         text-align: center;
         background-color: rgba(0, 0, 0, 0.6);
         .icon {

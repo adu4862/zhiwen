@@ -43,6 +43,10 @@
                 .info {
                     @include ellipsis();
                     font-size: $font-size-mini;
+                    .class-item-title {
+                        font-size: $font-size-md;
+                        color: $color-important;
+                    }
                     .desc {
                         margin-top: 4px;
                     }
