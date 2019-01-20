@@ -6,6 +6,7 @@ import Modal from './modal'
 import SectionTitle from './sectionTitle'
 import ClassBanner from './classBanner'
 import ClassPanel from './classPanel'
+import EarnMoney from './earnMoney'
 import Ruler from './ruler'
 
 export {
@@ -17,5 +18,6 @@ export {
     SectionTitle,
     ClassBanner,
     ClassPanel,
+    EarnMoney,
     Ruler,
 }
