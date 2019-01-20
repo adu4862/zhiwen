@@ -1,22 +1,26 @@
 <template>
-	<div class="class-detail">
+    <div class="class-detail">
         <ClassIntro/>
         <ClassTable/>
+        <ClassBar/>
     </div>
 </template>
 
 <script>
-	import ClassIntro from "./classIntro";
-	import ClassTable from "./classTable";
-	export default {
-		components: {
+    import ClassIntro from "./classIntro";
+    import ClassTable from "./classTable";
+    import ClassBar from "./classBar";
+
+    export default {
+        components: {
             ClassIntro,
-            ClassTable
+            ClassTable,
+            ClassBar
         },
-		data() {
-			return {};
-		},
-	};
+        data() {
+            return {};
+        },
+    };
 </script>
 
 <style lang="scss" scoped>

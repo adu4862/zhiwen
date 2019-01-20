@@ -12,16 +12,16 @@
 			<div class="books" v-show="activeHeader === '2'">2</div>
 		</div>
 		<!-- 购买按钮 -->
-		<div class="class-table-btn-wrap">
-			<div class="share-btn">
-				<i class="iconfont icon-weibo"></i>
-				砍价
-			</div>
-			<div class="sale-btn">
-				<span>免费试听</span>
-				<button>¥299购买课程</button>
-			</div>
-		</div>
+		<!--<div class="class-table-btn-wrap">-->
+			<!--<div class="share-btn">-->
+				<!--<i class="iconfont icon-weibo"></i>-->
+				<!--砍价-->
+			<!--</div>-->
+			<!--<div class="sale-btn">-->
+				<!--<span>免费试听</span>-->
+				<!--<button>¥299购买课程</button>-->
+			<!--</div>-->
+		<!--</div>-->
 		<!-- 开始、继续学习 -->
 		<!-- <div class="class-table-btn-wrap">
 			<button>开始学习</button>
