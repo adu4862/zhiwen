@@ -7,9 +7,9 @@
 </template>
 
 <script>
-    import ClassIntro from "./classIntro";
-    import ClassTable from "./classTable";
-    import ClassBar from "./classBar";
+    import ClassIntro from "./classIntro/index";
+    import ClassTable from "./classTable/index";
+    import ClassBar from "./classBar/index";
 
     export default {
         components: {
