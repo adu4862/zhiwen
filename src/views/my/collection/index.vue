@@ -29,7 +29,7 @@
                 :selectAll="selectAll"
             />
         </van-list>
-        <div class="my-collection-remove">
+        <div class="my-collection-remove" v-if="isSelect">
             <i class="delete-icon"></i>
             移除
         </div>
