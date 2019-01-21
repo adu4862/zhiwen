@@ -63,6 +63,9 @@
                     border-radius: 2px;
                     display: none;
                 }
+                &.active {
+                    color: $color-important;
+                }
                 &.active:after {
                     display: block;
                 }
