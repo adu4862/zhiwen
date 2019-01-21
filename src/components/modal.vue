@@ -1,15 +1,9 @@
 <template>
     <div class="m-dialog">
-        <transition
-            enter-active-class="animated fadeIn faster"
-            leave-active-class="animated fadeOut faster"
-        >
+        <transition :name="isTransition?'fade':''">
             <div class="m-dialog-mask" v-show="visible"></div>
         </transition>
-        <transition
-            enter-active-class="animated fadeIn faster"
-            leave-active-class="animated fadeOut faster"
-        >
+        <transition :name="isTransition?'fade':''">
             <div class="m-dialog-wrap" v-show="visible">
                 <div class="m-dialog-container">
                     <p class="m-dialog-container-title">
@@ -33,8 +27,6 @@
 </template>
 
 <script>
-    import animate from 'animate.css';
-
     export default {
         props: {
             isVisible: {
@@ -46,6 +38,10 @@
                 default: false
             },
             isMaskClose: {
+                type: Boolean,
+                default: false
+            },
+            isTransition: {
                 type: Boolean,
                 default: false
             },
@@ -125,13 +121,13 @@
                 z-index: 2001;
                 display: flex;
                 flex-flow: column;
-                min-width: 270px;
+                width: 270px;
                 min-height: 162px;
                 background: #fff;
                 border-radius: 5px;
                 text-align: center;
                 &-title {
-                    margin-top: 41px;
+                    margin-top: 20px;
                     font-size: 18px;
                     color: $color-important;
                 }
@@ -174,5 +170,12 @@
                 }
             }
         }
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .3s;
+    }
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
     }
 </style>
