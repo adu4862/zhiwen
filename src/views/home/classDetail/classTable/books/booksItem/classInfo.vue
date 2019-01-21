@@ -1,5 +1,5 @@
 <template>
-    <div class="class-info">
+    <div :class="['class-info', isTest?'class-info-test':'']">
         <div class="class-info-desc">
             <div class="class-info-desc-banner">
                 <img :src="require('@/assets/img/demo_banner.png')" alt="class_banner">
@@ -11,7 +11,7 @@
                     <span>播放376次</span>
                 </p>
             </div>
-            <div class="class-info-desc-arrow">
+            <div class="class-info-desc-arrow" v-if="!isTest">
                 <img class="arrow-icon" :src="require('@/assets/img/my/cell_arrow_gary.png')" alt="allow">
             </div>
         </div>
@@ -20,7 +20,7 @@
                 <div class="practice-icon">练</div>
                 <div class="practice-title ellipsis">法律英语基础法律英语基础法律英语基础法律英语基础 练习一</div>
             </div>
-            <div class="right">
+            <div class="right" v-if="!isTest">
                 <img class="cup-icon" :src="require('@/assets/img/class_cup.png')" alt="class_cup">
                 <img class="arrow-icon" :src="require('@/assets/img/my/cell_arrow_gary.png')" alt="allow">
             </div>
@@ -31,6 +31,12 @@
 <script>
     export default {
         name: "classInfo",
+        props: {
+            isTest: {
+                type: Boolean,
+                default: false
+            }
+        }
     }
 </script>
 
@@ -117,6 +123,17 @@
                     width: 33px;
                     height: 29px;
                 }
+            }
+        }
+    }
+    .class-info-test {
+        .left {
+            .practice-icon {
+                height: 15px;
+                line-height: 13px;
+                color: $color-gary;
+                border: 1px solid $color-link;
+                background-color: initial;
             }
         }
     }

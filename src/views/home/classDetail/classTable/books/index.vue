@@ -2,33 +2,7 @@
     <div class="class-books">
         <van-collapse v-model="activeName" accordion>
             <van-collapse-item title="试听课" name="1">
-                <div class="class-info-buyed">
-                    <div class="class-info-buyed-desc">
-                        <div class="info-banner">
-                            <img :src="require('@/assets/img/demo_banner.png')" alt="class_banner">
-                        </div>
-                        <div class="info-content">
-                            <div class="info-content-title ellipsis">1、法律英语基础版课程一法律英语基础版课程法律英语基础版课程</div>
-                            <div class="info-content-info">
-                                <p>时长<span>10:36</span></p>
-                                <p>播放<span>376次</span></p>
-                            </div>
-                        </div>
-                        <!--<div class="info-arrow">-->
-                            <!--<img class="arrow-icon" :src="require('@/assets/img/my/cell_arrow_gary.png')" alt="allow">-->
-                        <!--</div>-->
-                    </div>
-                    <div class="class-info-buyed-practice">
-                        <div class="left">
-                            <div class="practice-icon">练</div>
-                            <div class="practice-title ellipsis">法律英语基础法律英语基础法律英语基础法律英语基础 练习一</div>
-                        </div>
-                        <!--<div class="right">-->
-                            <!--<img class="cup-icon" :src="require('@/assets/img/class_cup.png')" alt="class_cup">-->
-                            <!--<img class="arrow-icon" :src="require('@/assets/img/my/cell_arrow_gary.png')" alt="allow">-->
-                        <!--</div>-->
-                    </div>
-                </div>
+                <ClassInfo :isTest="true" />
             </van-collapse-item>
         </van-collapse>
         <BooksItem title="第一章 法律英语第一章名" />
@@ -37,11 +11,13 @@
 
 <script>
     import BooksItem from "./booksItem";
+    import ClassInfo from "./booksItem/classInfo";
 
     export default {
         name: "index",
         components: {
-            BooksItem
+            BooksItem,
+            ClassInfo,
         },
         data() {
             return {
