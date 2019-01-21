@@ -50,6 +50,7 @@
         justify-content: space-around;
         align-items: center;
         height: 56px;
+        background-color: #fff;
         box-shadow: 0 -2px 2px 0 rgba(101, 135, 248, 0.04);
         .bar-item {
             flex: 1;

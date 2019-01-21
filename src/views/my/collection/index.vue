@@ -3,8 +3,7 @@
         <!--<CollectionEmpty />-->
         <div class="my-collection-head">
             <div class="select" v-if="isSelect">
-                <van-checkbox class="check-box" v-model="selectAll"></van-checkbox>
-                <span>全选</span>
+                <van-checkbox class="check-box" v-model="selectAll"><span>全选</span></van-checkbox>
             </div>
             <div class="option ftb" @click="handelSelect">
                 <template v-if="!isSelect">
@@ -99,9 +98,11 @@
                 float: left;
                 display: flex;
                 align-items: center;
+                height: 100%;
                 font-size: $font-size-sm;
                 span {
-                    margin-left: 8px;
+                    margin-left: -4px;
+                    font-size: $font-size-sm;
                 }
             }
             .option {
@@ -113,7 +114,7 @@
                     vertical-align: middle;
                 }
             }
-            .check-box {
+            /deep/ .van-checkbox__icon {
                 transform: scale(.8);
             }
         }
