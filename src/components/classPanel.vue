@@ -19,7 +19,7 @@
         props: {
         },
         data() {
-            return {};``
+            return {};
         },
         methods: {
             handleClick() {
