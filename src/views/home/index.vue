@@ -11,7 +11,7 @@
         <div class="home-classes">
             <SectionTitle title="法律英语课程" />
             <div class="class-list">
-                <ClassItem type="voice"/>
+                <ClassItem type="voice" @click.native="handleClassItem"/>
             </div>
         </div>
     </div>
@@ -32,30 +32,11 @@
         },
         data() {
             return {
-                showDialog: false,
             };
         },
-        computed: {
-            ...mapState("user", ["userInfo", "rank"]),
-            ...mapGetters("user", ["getUserInfo"]),
-        },
-        mounted() {
-            // getUserInfo().then(res => {
-            // 	console.log("proxy", res);
-            // });
-            this.getRank();
-        },
         methods: {
-            ...mapActions("user", ["changeUserInfo", "getRank"]),
-            timeStart() {
-            },
-            timeEnd() {
-            },
-            handleDialog() {
-                this.showDialog = true;
-            },
-            handleI18n() {
-                this.$i18n.locale = this.$i18n.locale === "en-US" ? "zh-CN" : "en-US";
+            handleClassItem() {
+                this.$router.push({name: 'classDetail', params: { id: '1' }})
             }
         }
     };
