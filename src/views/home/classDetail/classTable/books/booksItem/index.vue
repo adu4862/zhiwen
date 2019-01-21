@@ -20,7 +20,7 @@
     import ClassInfo from "./classInfo"
 
     export default {
-        name: "index",
+        name: "booksItem",
         components: {
             ClassInfoSimple,
             ClassInfo,
