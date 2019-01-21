@@ -53,7 +53,7 @@ const router =  new Router({
 });
 
 router.beforeEach((to, from, next) => {
-    if (to.name.indexOf["home", "my"]) sessionSetItem('tabBar', to.name)
+    if (["home", "my"].includes(to.name)) sessionSetItem('tabBar', to.name)
     document.title = title[to.name] || '职问'
     return next()
 })
