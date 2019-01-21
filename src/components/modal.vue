@@ -73,7 +73,6 @@
             }
         },
         mounted() {
-            console.log(this.isMaskClose)
             if (this.isMaskClose) {
                 document.addEventListener('click', (e) => {
                     if (e.target.className === 'm-dialog-wrap') this.closeDialog();
