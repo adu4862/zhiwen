@@ -35,7 +35,6 @@
         </div>
         <Modal
             :showMask="true"
-            :isMaskClose="true"
             :isVisible="isVisible"
             title="移除"
             content="所选课程将从我的收藏移除"
