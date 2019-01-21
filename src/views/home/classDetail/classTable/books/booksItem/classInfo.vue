@@ -32,6 +32,7 @@
     export default {
         name: "classInfo",
         props: {
+            // 试听课样式
             isTest: {
                 type: Boolean,
                 default: false
