@@ -1,12 +1,12 @@
 <template>
-    <div :class="['class-info', isLast?'class-info-last':'']">
+    <div class="class-info">
         <div class="class-info-desc">
-            <div class="info-banner">
+            <div class="class-info-desc-banner">
                 <img :src="require('@/assets/img/demo_banner.png')" alt="class_banner">
             </div>
-            <div class="info-content">
-                <p class="info-content-title ellipsis">1、法律英语基础版课程一法律英语基础版课程法律英语基础版课程</p>
-                <p class="info-content-info">
+            <div class="class-info-desc-content">
+                <p class="class-info-desc-content-title ellipsis">1、法律英语基础版课程一法律英语基础版课程法律英语基础版课程</p>
+                <p class="class-info-desc-content-info">
                     <span>时长10:36</span>
                     <span>播放376次</span>
                 </p>
@@ -30,7 +30,7 @@
 
 <script>
     export default {
-        name: "classInfo"
+        name: "classInfo",
     }
 </script>
 
@@ -52,7 +52,7 @@
             padding-top: 14px;
             padding-bottom: 10px;
             @include border-bottom($border-color: #F3F6FE);
-            .info-banner {
+            &-banner {
                 width: 70px;
                 height: 40px;
                 border-radius: 4px;
@@ -62,7 +62,7 @@
                     height: 100%;
                 }
             }
-            .info-content {
+            &-content {
                 display: flex;
                 flex-flow: column;
                 justify-content: space-between;

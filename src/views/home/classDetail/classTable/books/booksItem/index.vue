@@ -5,13 +5,11 @@
             <p class="value">{{value?'购买后可查看详情':''}}</p>
         </div>
         <div class="class-books-item-content">
-            <!-- 未购买 -->
-            <!--<template v-for="(item, idx) in 3">-->
-                <!--<ClassInfoSimple :isLast="idx+1 === 3?true:false" />-->
-            <!--</template>-->
-            <!-- 已购买 -->
-            <template v-for="item in 3">
-                <ClassInfo />
+            <template v-for="(item, idx) in 3">
+                <!-- 未购买 -->
+                <ClassInfoSimple />
+                <!-- 已购买 -->
+                <!--<ClassInfo />-->
             </template>
         </div>
     </div>

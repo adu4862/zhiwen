@@ -1,5 +1,5 @@
 <template>
-    <div :class="['class-info-simple', isLast?'class-info-simple-last':'']">
+    <div class="class-info-simple">
         <p class="class-info-simple-title">1、法律英语基础版课程一</p>
         <p class="class-info-simple-desc">法律英语基础 练习一</p>
     </div>
@@ -34,8 +34,8 @@
             font-size: 8px;
             text-indent: 15px;
         }
-    }
-    .class-info-simple-last p:nth-child(2):after {
-        display: none;
+        &:nth-last-child(1) &-desc:after {
+            display: none;
+        }
     }
 </style>
