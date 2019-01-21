@@ -2,11 +2,11 @@
     display: block;
     width: 332px;
     height: 48px;
-    line-height: 46px;
+    line-height: 45px;
     background: linear-gradient(90deg, rgba(151, 132, 250, 1) 0%, rgba(106, 174, 253, 1) 100%);
     box-shadow: 0 2px 6px 2px rgba(74, 102, 197, 0.33);
     border-radius: 24px;
-    font-size: 17px;
+    font-size: $font-size-md;
     color: #fff;
     text-align: center;
     &:active {
@@ -18,12 +18,13 @@
     display: block;
     width: 332px;
     height: 48px;
-    line-height: 46px;
-    background: rgba(246, 246, 246, 1);
-    border-radius: 10px;
-    border: 1px solid rgba(101, 135, 248, 1);
-    font-size: 17px;
-    color: #666;
+    line-height: 45px;
+    background: #fff;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.31);
+    border-radius: 23px;
+    border: 1px solid $color-link;
+    font-size: $font-size-md;
+    color: $color-link;
     text-align: center;
     &:active {
         opacity: .6;

@@ -4,6 +4,7 @@ import {sessionSetItem} from '../common/util'
 import title from '@/config/title'
 import homeRouter from './home'
 import myRouter from './my'
+import discountRouter from './discount'
 
 // demo页
 const DemoPage = () => import( /* webpackChunkName: "home" */ '../views/demo')
@@ -35,6 +36,7 @@ const router =  new Router({
         },
         ...homeRouter,
         ...myRouter,
+        ...discountRouter,
         {
             path: '*',
             redirect: '/'
