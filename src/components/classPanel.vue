@@ -3,7 +3,6 @@
     <div class="m-class-panel" @click="handleClick">
         <div class="m-class-panel-select">
             <slot name="select"></slot>
-            <!--<van-checkbox v-model="checked"></van-checkbox>-->
         </div>
         <div class="m-class-panel-banner">
             <slot name="banner"></slot>
@@ -20,9 +19,7 @@
         props: {
         },
         data() {
-            return {
-                checked: false
-            };
+            return {};``
         },
         methods: {
             handleClick() {
