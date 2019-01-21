@@ -23,10 +23,23 @@
                     </div>
                 </ClassPanel>
             </div>
-
             <DividerTitle class="discount-wrap-time">
                 <span class="count-down">24:00:00</span>后失效
             </DividerTitle>
+            <div class="discount-wrap-progress">
+                <div class="discount-wrap-progress-now">
+                    <div class="triangle"></div>
+                </div>
+                <div class="discount-wrap-progress-bg">
+                    <div class="discount-wrap-progress-schedule"></div>
+                </div>
+                <div class="discount-wrap-progress-lowest">
+                    <div class="triangle"></div>
+                    <div class="content">
+                        <p>底价<span>¥269</span></p>
+                    </div>
+                </div>
+            </div>
             <div class="discount-wrap-btns">
                 <button class="blue-btn-48">请好友帮砍价</button>
                 <button class="white-btn-48">价格满意立即下单</button>
@@ -81,6 +94,17 @@
                 padding: 20px 16px 25px 16px;
                 box-shadow: 0 0 29px 0 rgba(73, 124, 183, 0.49);
             }
+            .triangle {
+                position: absolute;
+                bottom: -8px;
+                right: 1px;
+                width: 9px;
+                height: 5px;
+                border-bottom: 5px solid #9486FA;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 0 solid transparent;
+            }
             &-class {
                 &-content {
                     display: flex;
@@ -123,8 +147,54 @@
                     font-size: 19px;
                 }
             }
+            &-progress {
+                position: relative;
+                margin-top: 41px;
+                &-bg {
+                    position: relative;
+                    height: 12px;
+                    background: #F3EFD9;
+                    border-radius: 9px;
+                    overflow: hidden;
+                }
+                &-schedule {
+                    position: absolute;
+                    height: 100%;
+                    width: 30%;
+                    background: linear-gradient(180deg, rgba(255, 218, 79, 1) 0%, rgba(227, 147, 47, 1) 100%);
+                    border-radius: 9px;
+                }
+                &-now {
+                    .triangle {
+                        top: -16px;
+                        left: 0;
+                        transform: rotate(180deg);
+                    }
+
+                }
+                &-lowest {
+                    margin-top: 4px;
+                    .content {
+                        position: absolute;
+                        bottom: -32px;
+                        right: 0;
+                        padding: 4px 6px;
+                        font-size: 8px;
+                        color: #fff;
+                        background-color: #8C8EFB;
+                        border-radius: 2px;
+                        p {
+                            @include height(14px);
+                            span {
+                                font-size: $font-size-mini;
+                                color: #FECB76;
+                            }
+                        }
+                    }
+                }
+            }
             &-btns {
-                margin-top: 12px;
+                margin-top: 45px;
                 button {
                     width: 316px;
                     &:nth-child(2) {
