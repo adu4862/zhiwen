@@ -5,7 +5,7 @@
             <p class="value">{{value?'购买后可查看详情':''}}</p>
         </div>
         <div class="class-books-item-content">
-            <template v-for="(item, idx) in 3">
+            <template v-for="item in 3">
                 <!-- 未购买 -->
                 <ClassInfoSimple />
                 <!-- 已购买 -->
