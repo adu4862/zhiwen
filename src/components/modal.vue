@@ -4,7 +4,7 @@
             enter-active-class="animated fadeIn faster"
             leave-active-class="animated fadeOut faster"
         >
-            <div class="m-dialog-mask" v-if="showMask" v-show="visible"></div>
+            <div class="m-dialog-mask" v-show="visible"></div>
         </transition>
         <transition
             enter-active-class="animated fadeIn faster"
@@ -77,6 +77,7 @@
             }
         },
         mounted() {
+            console.log(this.isMaskClose)
             if (this.isMaskClose) {
                 document.addEventListener('click', (e) => {
                     if (e.target.className === 'm-dialog-wrap') this.closeDialog();
@@ -92,19 +93,19 @@
         },
         methods: {
             closeDialog() {
-                this.$emit('close');
+                this.$emit('on-cancel')
             },
             handelCancel() {
                 this.closeDialog();
             },
             handelConfirm() {
-                this.$emit('confirm');
+                this.$emit('on-confirm');
             },
         }
     }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
     .m-dialog {
         &-mask {
             @include modalbg();
@@ -113,7 +114,7 @@
         &-wrap {
             position: fixed;
             overflow: auto;
-            z-index: 1999;
+            z-index: 2000;
             top: 0;
             right: 0;
             bottom: 0;
@@ -121,7 +122,7 @@
             outline: 0;
             @include fct();
             .m-dialog-container {
-                z-index: 2000;
+                z-index: 2001;
                 display: flex;
                 flex-flow: column;
                 min-width: 270px;

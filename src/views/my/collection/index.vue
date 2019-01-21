@@ -29,21 +29,31 @@
                 :selectAll="selectAll"
             />
         </van-list>
-        <div class="my-collection-remove" v-if="isSelect">
+        <div class="my-collection-remove" v-if="isSelect" @click="handleRemove">
             <i class="delete-icon"></i>
             移除
         </div>
+        <Modal
+            :showMask="true"
+            :isMaskClose="true"
+            :isVisible="isVisible"
+            content="123"
+            @on-cancel="handleCancel"
+            @on-confirm="handelConfirm"
+        />
     </div>
 </template>
 
 <script>
     import CollectionEmpty from './collectionEmpty'
     import CollectionItem from './collectionItem'
+    import {Modal} from "@/components"
 
     export default {
         components: {
             CollectionEmpty,
             CollectionItem,
+            Modal,
         },
         data() {
             return {
@@ -51,7 +61,8 @@
                 loading: false,
                 finished: false,
                 isSelect: false,
-                selectAll: false
+                selectAll: false,
+                isVisible: false
             }
         },
         methods: {
@@ -75,6 +86,15 @@
                 if (!this.isSelect) {
                     console.log('完成')
                 }
+            },
+            handleCancel() {
+                this.isVisible = false;
+            },
+            handelConfirm() {
+                console.log('confirm')
+            },
+            handleRemove() {
+                this.isVisible = true;
             }
         }
     }
