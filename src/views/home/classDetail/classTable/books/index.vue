@@ -2,7 +2,7 @@
     <div class="class-books">
         <van-collapse v-model="activeName" accordion>
             <van-collapse-item title="试听课" name="1">
-                提供多样店铺模板，快速搭建网上商城
+                试听课
             </van-collapse-item>
         </van-collapse>
         <BooksItem title="第一章 法律英语第一章名" />

@@ -4,7 +4,7 @@
             <img class="banner-img" :src="require('@/assets/img/demo_banner.png')" alt="banner">
         </div>
         <div class="class-intro-content">
-            <div class="title-bar">
+            <div class="class-intro-content-head">
                 <div class="ftb">
                     <i class="icon icon--5"></i>
                     <!--<i class="icon icon-icon"></i>-->
@@ -12,17 +12,19 @@
                 </div>
                 <p class="learned">已学习 25/100节</p>
             </div>
-            <div class="content">熟悉法律条文，具有法律思维，能够把各种生活关系转换为法律关系，以至于在法律层面能担负起真正的法律责任熟悉法律条文，具有法律思维，能够把各种生活关系转换为法律关系，以至于在法律层面能担负起真正的法律责任</div>
-            <div class="info">
-                <div class="saled">
-                    <p class="people"><span>155</span>人开通</p>
-                </div>
-                <div class="price">
-                    <span class="old-price">¥599</span>
-                    <span class="now-price">¥299</span>
-                </div>
+            <div class="class-intro-content-desc">
+                熟悉法律条文，具有法律思维，能够把各种生活关系转换为法律关系，以至于在法律层面能担负起真正的法律责任熟悉法律条文，具有法律思维，能够把各种生活关系转换为法律关系，以至于在法律层面能担负起真正的法律责任
             </div>
-            <div class="info-bought">
+            <!--<div class="class-intro-content-info">-->
+                <!--<div class="saled">-->
+                    <!--<p class="people"><span>155</span>人开通</p>-->
+                <!--</div>-->
+                <!--<div class="price">-->
+                    <!--<span class="old-price">¥599</span>-->
+                    <!--<span class="now-price">¥299</span>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="class-intro-content-info-bought">
                 <div class="left ftb">
                     <img class="icon-punch" :src="require('@/assets/img/icon_punch.png')" alt="打卡icon">
                     已连续打卡xx天
@@ -58,7 +60,7 @@
         }
         &-content {
             padding: 13px 20px 9px 20px;
-            .title-bar {
+            &-head {
                 display: flex;
                 align-items: flex-end;
                 color: $color-important;
@@ -76,13 +78,13 @@
                     color: $color-link;
                 }
             }
-            .content {
+            &-desc {
                 margin-top: 10px;
                 font-size: $font-size-mini;
                 @include ellipsis();
                 line-height: 14px;
             }
-            .info {
+            &-info {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -105,7 +107,7 @@
                     }
                 }
             }
-            .info-bought {
+            &-info-bought {
                 display: flex;
                 justify-content: space-between;
                 margin-top: 12px;
