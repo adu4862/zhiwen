@@ -131,23 +131,24 @@
                 border-radius: 5px;
                 text-align: center;
                 &-title {
-                    margin-top: 20px;
-                    margin-bottom: 8px;
+                    margin-top: 41px;
                     font-size: 18px;
+                    color: $color-important;
                 }
                 &-content {
                     @include ftb();
                     flex: 1;
                     margin: 0 auto;
-                    margin-bottom: 24px;
+                    margin-top: 8px;
                     max-width: 70%;
-                    line-height: 1.6;
-                    color: #888888;
+                    @include height(21px);
+                    color: $color-gary;
                 }
                 &-footer {
-                    @include border-top();
+                    @include border-top($border-color: rgba(101, 135, 248, .36));
                     display: flex;
                     align-items: center;
+                    margin-top: 24px;
                     height: 49px;
                     line-height: 49px;
                     align-items: center;
@@ -155,19 +156,20 @@
                         flex: 1;
                         position: relative;
                         height: 100%;
+                        font-size: $font-size-md;
                         &:active {
                             opacity: .6;
                         }
                     }
                     .left-btn {
-                        @include border-right();
+                        @include border-right($border-color: rgba(101, 135, 248, .36));
                         &:after {
                             top: 4px;
                         }
                         color: #606060;
                     }
                     .right-btn {
-                        color: #5C86FB;
+                        color: $color-link;
                     }
                 }
             }

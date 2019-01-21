@@ -37,7 +37,10 @@
             :showMask="true"
             :isMaskClose="true"
             :isVisible="isVisible"
-            content="123"
+            title="移除"
+            content="所选课程将从我的收藏移除"
+            cancel="以后再说"
+            confirm="确认移除"
             @on-cancel="handleCancel"
             @on-confirm="handelConfirm"
         />
