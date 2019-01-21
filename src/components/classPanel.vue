@@ -10,6 +10,7 @@
         <div class="m-class-panel-content">
             <slot></slot>
         </div>
+        <slot name="more"></slot>
     </div>
 </template>
 
