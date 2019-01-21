@@ -53,14 +53,13 @@
                 </p>
             </div>
         </div>
-        <div class="discount-records">
-
-        </div>
+        <Records />
     </div>
 </template>
 
 <script>
     import {ClassPanel, ClassBanner, DividerTitle} from '@/components'
+    import Records from "./records"
 
     export default {
         name: "index",
@@ -68,6 +67,7 @@
             ClassPanel,
             ClassBanner,
             DividerTitle,
+            Records,
         }
     }
 </script>
@@ -82,13 +82,13 @@
         background-size: cover;
         > div {
             margin-top: 12px;
+            padding: 20px 16px;
             width: 350px;
             background: #fff;
             box-shadow: 0 2px 6px 2px rgba(88, 136, 234, 1);
             border-radius: 10px;
         }
         &-wrap {
-            padding: 20px 16px;
             .panel-shadow {
                 margin: -20px -16px 0 -16px;
                 padding: 20px 16px 25px 16px;
