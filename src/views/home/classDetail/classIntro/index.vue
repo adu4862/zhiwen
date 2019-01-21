@@ -13,15 +13,15 @@
                 <p class="learned">已学习 25/100节</p>
             </div>
             <div class="content">熟悉法律条文，具有法律思维，能够把各种生活关系转换为法律关系，以至于在法律层面能担负起真正的法律责任熟悉法律条文，具有法律思维，能够把各种生活关系转换为法律关系，以至于在法律层面能担负起真正的法律责任</div>
-            <!--<div class="info">-->
-                <!--<div class="saled">-->
-                    <!--<p class="people"><span>155</span>人开通</p>-->
-                <!--</div>-->
-                <!--<div class="price">-->
-                    <!--<span class="old-price">¥599</span>-->
-                    <!--<span class="now-price">¥299</span>-->
-                <!--</div>-->
-            <!--</div>-->
+            <div class="info">
+                <div class="saled">
+                    <p class="people"><span>155</span>人开通</p>
+                </div>
+                <div class="price">
+                    <span class="old-price">¥599</span>
+                    <span class="now-price">¥299</span>
+                </div>
+            </div>
             <div class="info-bought">
                 <div class="left ftb">
                     <img class="icon-punch" :src="require('@/assets/img/icon_punch.png')" alt="打卡icon">
@@ -79,8 +79,8 @@
             .content {
                 margin-top: 10px;
                 font-size: $font-size-mini;
-                line-height: 14px;
                 @include ellipsis();
+                line-height: 14px;
             }
             .info {
                 display: flex;
@@ -95,6 +95,7 @@
                 .now-price {
                     margin-left: 4px;
                     font-size: 20px;
+                    font-weight: 600;
                     color: $color-link;
                 }
                 .people {
