@@ -7,9 +7,9 @@
         <div class="class-books-item-content">
             <template v-for="item in 3">
                 <!-- 未购买 -->
-                <ClassInfoSimple />
+                <!--<ClassInfoSimple />-->
                 <!-- 已购买 -->
-                <!--<ClassInfo />-->
+                <ClassInfo />
             </template>
         </div>
     </div>

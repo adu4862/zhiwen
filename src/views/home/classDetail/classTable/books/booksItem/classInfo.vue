@@ -11,7 +11,7 @@
                     <span>播放376次</span>
                 </p>
             </div>
-            <div class="info-arrow">
+            <div class="class-info-desc-arrow">
                 <img class="arrow-icon" :src="require('@/assets/img/my/cell_arrow_gary.png')" alt="allow">
             </div>
         </div>
@@ -80,7 +80,7 @@
                     }
                 }
             }
-            .info-arrow {
+            &-arrow {
                 @include ftb();
                 margin-left: 10px;
             }
