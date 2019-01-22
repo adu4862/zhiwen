@@ -73,7 +73,7 @@
     .m-dialog {
         &-mask {
             @include modalbg();
-            z-index: 1999;
+            z-index: 1998;
         }
         &-wrap {
             position: fixed;
