@@ -5,6 +5,7 @@ import title from '@/config/title'
 import homeRouter from './home'
 import myRouter from './my'
 import discountRouter from './discount'
+import exerciseRouter from './exercise'
 
 // demo页
 const DemoPage = () => import( /* webpackChunkName: "home" */ '../views/demo')
@@ -37,6 +38,7 @@ const router =  new Router({
         ...homeRouter,
         ...myRouter,
         ...discountRouter,
+        ...exerciseRouter,
         {
             path: '*',
             redirect: '/'
