@@ -209,7 +209,7 @@
                     position: absolute;
                     bottom: -32px;
                     right: -5px;
-                    padding: 4px 6px;
+                    padding: 4px 7px;
                     font-size: 8px;
                     color: #fff;
                     background-color: #8C8EFB;
