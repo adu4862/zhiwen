@@ -1,5 +1,6 @@
 <template>
     <div class="exercise-res">
+        <div class="exercise-res-mask"></div>
         <div class="exercise-res-main">
             <img class="exercise-res-main-award" :src="require('@/assets/img/icon_gold_award.png')" alt="award">
             <p class="exercise-res-main-title">80%</p>
@@ -22,16 +23,21 @@
     .exercise-res {
         @include flr();
         height: 100vh;
+        &-mask {
+            @include modalbg($bg-color: rgba(96, 96, 96, .4));
+            z-index: 1999;
+        }
         &-main {
             position: relative;
+            z-index: 2001;
             margin-top: 149px;
             width: 335px;
             height: 388px;
             box-shadow: 0 0 7px 1px rgba(77, 45, 95, 0.5);
             border-radius: 12px;
-            background-color: #fff;
             background: url("~@/assets/img/exercise_bg.png") no-repeat center;
             background-size: cover;
+            background-color: #fff;
             text-align: center;
             &-award {
                 @include lr();
