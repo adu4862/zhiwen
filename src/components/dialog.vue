@@ -87,13 +87,6 @@
             @include fct();
             .m-dialog-container {
                 z-index: 2000;
-                display: flex;
-                flex-flow: column;
-                min-width: 270px;
-                min-height: 162px;
-                background: #fff;
-                border-radius: 5px;
-                text-align: center;
             }
         }
     }
