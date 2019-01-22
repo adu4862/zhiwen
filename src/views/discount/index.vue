@@ -28,10 +28,13 @@
             </DividerTitle>
             <div class="discount-wrap-progress">
                 <div class="discount-wrap-progress-now">
-                    <div class="triangle"></div>
+                    <div class="discount-status" :style="{left: discountStatusLeft + 'px'}" ref="discountStatus">
+                        目前价格 <span class="price">¥269</span>(已砍<span class="earn">13.5</span>元)
+                    </div>
+                    <div class="triangle" :style="{left: 'calc(' + schedule + ' - 5px)'}"></div>
                 </div>
                 <div class="discount-wrap-progress-bg">
-                    <div class="discount-wrap-progress-schedule"></div>
+                    <div class="discount-wrap-progress-schedule" :style="{width: schedule}" ref="schedule"></div>
                 </div>
                 <div class="discount-wrap-progress-lowest">
                     <div class="triangle"></div>
@@ -53,13 +56,14 @@
                 </p>
             </div>
         </div>
-        <Records />
+        <Records/>
     </div>
 </template>
 
 <script>
     import {ClassPanel, ClassBanner, DividerTitle} from '@/components'
     import Records from "./records"
+    import NP from 'number-precision'
 
     export default {
         name: "index",
@@ -68,6 +72,34 @@
             ClassBanner,
             DividerTitle,
             Records,
+        },
+        data() {
+            return {
+                discountStatusLeft: 0,
+                discountStatusWidth: 0,
+                scheduleWidth: 0,
+            }
+        },
+        computed: {
+            schedule() {
+                return '10%'
+            },
+        },
+        mounted() {
+            this.$nextTick(() => {
+                this.calcOffset();
+            })
+        },
+        methods: {
+            // 砍价偏移量
+            calcOffset() {
+                this.scheduleWidth = this.$refs.schedule.offsetWidth;
+                this.discountStatusWidth = this.$refs.discountStatus.offsetWidth;
+                let gap = NP.minus(this.scheduleWidth, this.discountStatusWidth);
+                if (gap > 0) {
+                    this.discountStatusLeft = gap;
+                }
+            }
         }
     }
 </script>
@@ -99,7 +131,7 @@
             .triangle {
                 position: absolute;
                 bottom: -8px;
-                right: 1px;
+                right: -5px;
                 width: 9px;
                 height: 5px;
                 border-bottom: 5px solid #9486FA;
@@ -151,7 +183,7 @@
             }
             &-progress {
                 position: relative;
-                margin-top: 41px;
+                margin-top: 51px;
                 &-bg {
                     position: relative;
                     height: 12px;
@@ -162,24 +194,43 @@
                 &-schedule {
                     position: absolute;
                     height: 100%;
-                    width: 30%;
                     background: linear-gradient(180deg, rgba(255, 218, 79, 1) 0%, rgba(227, 147, 47, 1) 100%);
                     border-radius: 9px;
                 }
                 &-now {
                     .triangle {
-                        top: -16px;
+                        top: -8px;
                         left: 0;
                         transform: rotate(180deg);
                     }
-
+                    .discount-status {
+                        position: absolute;
+                        top: -32px;
+                        left: 0;
+                        display: flex;
+                        padding: 4px 7px;
+                        @include height(14px);
+                        border-radius: 2px;
+                        font-size: 8px;
+                        color: #fff;
+                        background-color: #8C8EFB;
+                        white-space: nowrap;
+                        box-sizing: content-box;
+                        .price {
+                            font-size: $font-size-mini;
+                            color: #FFC94E;
+                        }
+                        .earn {
+                            color: #FFC824;
+                        }
+                    }
                 }
                 &-lowest {
                     margin-top: 4px;
                     .content {
                         position: absolute;
                         bottom: -32px;
-                        right: 0;
+                        right: -5px;
                         padding: 4px 6px;
                         font-size: 8px;
                         color: #fff;
@@ -196,7 +247,7 @@
                 }
             }
             &-btns {
-                margin-top: 45px;
+                margin-top: 50px;
                 button {
                     width: 316px;
                     &:nth-child(2) {
