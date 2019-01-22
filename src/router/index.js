@@ -11,6 +11,8 @@ import exerciseRouter from './exercise'
 const DemoPage = () => import( /* webpackChunkName: "home" */ '../views/demo')
 const CanvasDemo = () => import( /* webpackChunkName: "home" */ '../views/canvasDemo')
 const QRDemo = () => import( /* webpackChunkName: "home" */ '../views/qrDemo')
+const NotFound = () => import( /* webpackChunkName: "home" */ '../views/common/404')
+const BadWay = () => import( /* webpackChunkName: "home" */ '../views/common/502')
 
 Vue.use(Router)
 
@@ -39,6 +41,16 @@ const router =  new Router({
         ...myRouter,
         ...discountRouter,
         ...exerciseRouter,
+        {
+            path: '/404',
+            name: 'notFound',
+            component: NotFound
+        },
+        {
+            path: '/502',
+            name: 'badWay',
+            component: BadWay
+        },
         {
             path: '*',
             redirect: '/'
