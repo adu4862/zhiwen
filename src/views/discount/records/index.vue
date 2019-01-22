@@ -2,7 +2,7 @@
     <div class="discount-records">
         <DividerTitle class="discount-records-title">砍价记录</DividerTitle>
         <div class="discount-records-list">
-            <RecordItem />
+            <RecordItem v-for="item in 100" />
         </div>
     </div>
 </template>

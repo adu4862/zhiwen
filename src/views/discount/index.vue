@@ -77,9 +77,11 @@
         display: flex;
         flex-flow: column;
         align-items: center;
+        padding-bottom: 12px;
         min-height: 100vh;
         background: url("~@/assets/img/discount/discount_bg.png") no-repeat center;
         background-size: cover;
+        overflow-y: scroll;
         > div {
             margin-top: 12px;
             padding: 20px 16px;
