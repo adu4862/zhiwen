@@ -2,6 +2,12 @@
     <div class="exercise-res">
         <div class="exercise-res-main">
             <img class="exercise-res-main-award" :src="require('@/assets/img/icon_gold_award.png')" alt="award">
+            <p class="exercise-res-main-title">80%</p>
+            <p class="exercise-res-main-sub-title">本次练习正确率为 80%</p>
+            <div class="exercise-res-main-btns">
+                <button class="blue-btn-48">¥299购买课程</button>
+                <button class="white-btn-48">¥299购买课程</button>
+            </div>
         </div>
     </div>
 </template>
@@ -18,19 +24,44 @@
         height: 100vh;
         &-main {
             position: relative;
-            margin-top: 109px;
-            width:335px;
-            height:388px;
+            margin-top: 149px;
+            width: 335px;
+            height: 388px;
             box-shadow: 0 0 7px 1px rgba(77, 45, 95, 0.5);
             border-radius: 12px;
             background-color: #fff;
             background: url("~@/assets/img/exercise_bg.png") no-repeat center;
             background-size: cover;
+            text-align: center;
             &-award {
                 @include lr();
                 top: -46.5px;
                 width: 105px;
                 height: 93px;
+            }
+            &-title {
+                margin-top: 83px;
+                @include height(84px);
+                font-size: 60px;
+                font-weight: 500;
+                color: #F5A623;
+            }
+            &-sub-title {
+                margin-top: 13px;
+                @include height(25px);
+                font-size: $font-size-lg;
+                font-weight: 300;
+                color: $color-important;
+            }
+            &-btns {
+                margin-top: 36px;
+                button {
+                    margin: 0 auto;
+                    width: 200px;
+                    &:nth-child(2) {
+                        margin-top: 20px;
+                    }
+                }
             }
         }
     }
