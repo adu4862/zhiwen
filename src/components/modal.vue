@@ -10,7 +10,7 @@
                         {{title}}
                     </p>
                     <p class="m-dialog-container-content">
-                        {{content}}
+                        <slot>{{content}}</slot>
                     </p>
                     <div class="m-dialog-container-footer">
                         <p class="left-btn" @click="handelCancel">
@@ -35,11 +35,11 @@
             },
             showMask: {
                 type: Boolean,
-                default: false
+                default: true
             },
             isMaskClose: {
                 type: Boolean,
-                default: false
+                default: true
             },
             isTransition: {
                 type: Boolean,

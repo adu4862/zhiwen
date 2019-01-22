@@ -44,7 +44,7 @@
         </div>
         <div class="discount-bargain-btns">
             <button class="blue-btn-48" @click="handleBargain">请好友帮砍价</button>
-            <button class="white-btn-48">价格满意立即下单</button>
+            <button class="white-btn-48" @click="handleOrderNow">价格满意立即下单</button>
         </div>
         <div class="discount-bargain-rules">
             <p class="discount-bargain-rules-title">
@@ -54,6 +54,7 @@
                 1. 分享本页面 2.好友帮砍 3.价格满意或达到底价 4.下单
             </p>
         </div>
+        <!-- 砍价结果 -->
         <Dialog :isVisible="isVisible" :isMaskClose="true" @on-close="handleCloseDialog">
             <div class="discount-bargain-dialog">
                 <img class="discount-bargain-dialog-header"
@@ -65,11 +66,24 @@
                 <button class="discount-bargain-dialog-btn-bottom white-btn-48">去商城逛逛</button>
             </div>
         </Dialog>
+        <!-- 满意下单 -->
+        <Modal
+            :isVisible="isOrderVisible"
+            title="购买"
+            cancel="马上下单"
+            confirm="继续砍价"
+            @on-cancel="handleCloseModal"
+            @on-confirm="handleConfirmModal"
+        >
+            <div class="discount-bargain-modal">
+                低价为¥269，请问是否以¥275.7购买该课程？
+            </div>
+        </Modal>
     </div>
 </template>
 
 <script>
-    import {ClassPanel, ClassBanner, DividerTitle, Dialog} from '@/components'
+    import {ClassPanel, ClassBanner, DividerTitle, Dialog, Modal} from '@/components'
     import NP from 'number-precision'
 
     export default {
@@ -79,13 +93,15 @@
             ClassBanner,
             DividerTitle,
             Dialog,
+            Modal,
         },
         data() {
             return {
                 discountStatusLeft: 0,
                 discountStatusWidth: 0,
                 scheduleWidth: 0,
-                isVisible: false
+                isVisible: false,
+                isOrderVisible: false
             }
         },
         computed: {
@@ -113,6 +129,16 @@
             },
             handleCloseDialog() {
                 this.isVisible = false;
+            },
+            handleOrderNow() {
+                this.isOrderVisible = true;
+            },
+            handleCloseModal() {
+                console.log('马上下单')
+                this.isOrderVisible = false;
+            },
+            handleConfirmModal() {
+                console.log('继续砍价')
             }
         }
     }
