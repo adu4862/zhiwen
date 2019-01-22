@@ -1,10 +1,16 @@
 // 练习页面
-const Exerciser = () => import( /* webpackChunkName: "home" */ '../views/exercise/index')
+const Exercise = () => import( /* webpackChunkName: "home" */ '../views/exercise/index')
+const ExerciseRes = () => import( /* webpackChunkName: "home" */ '../views/exercise/resPage/index')
 
 export default [
     {
         path: '/exercise',
         name: 'exercise',
-        component: Exerciser,
+        component: Exercise,
+    },
+    {
+        path: '/exercise/res',
+        name: 'exerciseRes',
+        component: ExerciseRes,
     },
 ]

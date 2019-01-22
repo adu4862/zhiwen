@@ -6,11 +6,13 @@
 
 <script>
     import TitlePage from "./titlePage"
+    import Bar from "./bar"
 
     export default {
         name: "index",
         components: {
             TitlePage,
+            Bar,
         }
     }
 </script>

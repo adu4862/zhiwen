@@ -1,3 +1,4 @@
+<!-- 封面 -->
 <template>
     <div class="exercise-title-page">
         <div class="exercise-title-page-content">
@@ -25,7 +26,7 @@
     .exercise-title-page {
         width: 335px;
         height: 524px;
-        background: url("~@/assets/img/test_bg.png") no-repeat center;
+        background: url("~@/assets/img/exercise_bg.png") no-repeat center;
         background-size: cover;
         background-color: #fff;
         border-radius: 12px;
