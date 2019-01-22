@@ -1,15 +1,9 @@
 <template>
     <div class="m-dialog">
-        <transition
-            enter-active-class="animated fadeIn faster"
-            leave-active-class="animated fadeOut faster"
-        >
+        <transition name="fade">
             <div class="m-dialog-mask" v-if="showMask" v-show="visible"></div>
         </transition>
-        <transition
-            enter-active-class="animated fadeIn faster"
-            leave-active-class="animated fadeOut faster"
-        >
+        <transition name="fade">
             <div class="m-dialog-wrap" v-show="visible">
                 <div class="m-dialog-container">
                     <slot></slot>
