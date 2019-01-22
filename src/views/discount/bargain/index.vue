@@ -57,7 +57,7 @@
         <!-- 砍价结果 -->
         <Dialog :isVisible="isVisible" :isMaskClose="true" @on-close="handleCloseDialog">
             <div class="discount-bargain-dialog">
-                <i class="discount-bargain-dialog-close"></i>
+                <i class="discount-bargain-dialog-close" @click.stop="handleCloseDialog"></i>
                 <img class="discount-bargain-dialog-header"
                      :src="require('@/assets/img/demo_class_banner.png')" alt="header" />
                 <p class="discount-bargain-dialog-title">
