@@ -23,6 +23,8 @@
     .exercise-res {
         @include flr();
         height: 100vh;
+        background: url("~@/assets/img/exercise_res_bg.png") no-repeat center;
+        background-size: cover;
         &-mask {
             @include modalbg($bg-color: rgba(96, 96, 96, .4));
             z-index: 1999;

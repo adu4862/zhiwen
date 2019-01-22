@@ -57,6 +57,7 @@
         <!-- 砍价结果 -->
         <Dialog :isVisible="isVisible" :isMaskClose="true" @on-close="handleCloseDialog">
             <div class="discount-bargain-dialog">
+                <i class="discount-bargain-dialog-close"></i>
                 <img class="discount-bargain-dialog-header"
                      :src="require('@/assets/img/demo_class_banner.png')" alt="header" />
                 <p class="discount-bargain-dialog-title">
@@ -299,6 +300,16 @@
             padding: 35px 45px;
             background: #fff;
             border-radius: 20px;
+            &-close {
+                position: absolute;
+                top: 18px;
+                right: 18px;
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                background: url("~@/assets/img/icon_close.png") no-repeat center;
+                background-size: contain;
+            }
             &-header {
                 @include lr();
                 top: -29.5px;
