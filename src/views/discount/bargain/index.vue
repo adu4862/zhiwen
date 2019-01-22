@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="discount-bargain-btns">
-            <button class="blue-btn-48">请好友帮砍价</button>
+            <button class="blue-btn-48" @click="handleBargain">请好友帮砍价</button>
             <button class="white-btn-48">价格满意立即下单</button>
         </div>
         <div class="discount-bargain-rules">
@@ -54,11 +54,22 @@
                 1. 分享本页面 2.好友帮砍 3.价格满意或达到底价 4.下单
             </p>
         </div>
+        <Dialog :isVisible="isVisible" :isMaskClose="true" @on-close="handleCloseDialog">
+            <div class="discount-bargain-dialog">
+                <img class="discount-bargain-dialog-header"
+                     :src="require('@/assets/img/demo_class_banner.png')" alt="header" />
+                <p class="discount-bargain-dialog-title">
+                    谢谢你帮我砍了3.99元
+                </p>
+                <button class="discount-bargain-dialog-btn-top blue-btn-48">我也要砍价</button>
+                <button class="discount-bargain-dialog-btn-bottom white-btn-48">去商城逛逛</button>
+            </div>
+        </Dialog>
     </div>
 </template>
 
 <script>
-    import {ClassPanel, ClassBanner, DividerTitle} from '@/components'
+    import {ClassPanel, ClassBanner, DividerTitle, Dialog} from '@/components'
     import NP from 'number-precision'
 
     export default {
@@ -67,12 +78,14 @@
             ClassPanel,
             ClassBanner,
             DividerTitle,
+            Dialog,
         },
         data() {
             return {
                 discountStatusLeft: 0,
                 discountStatusWidth: 0,
                 scheduleWidth: 0,
+                isVisible: false
             }
         },
         computed: {
@@ -94,6 +107,12 @@
                 if (gap > 0) {
                     this.discountStatusLeft = NP.plus(gap, 5);
                 }
+            },
+            handleBargain() {
+                this.isVisible = true;
+            },
+            handleCloseDialog() {
+                this.isVisible = false;
             }
         }
     }
@@ -244,6 +263,41 @@
             &-content {
                 margin-top: 2px;
                 font-size: $font-size-mini;
+            }
+        }
+        &-dialog {
+            position: relative;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            padding: 35px 45px;
+            background: #fff;
+            border-radius: 20px;
+            &-header {
+                @include lr();
+                top: -29.5px;
+                width: 59px;
+                height: 59px;
+                border-radius: 50%;
+                border: 2px solid $color-link;
+            }
+            &-title {
+                margin-top: 35px;
+                @include height(28px);
+                font-size: 20px;
+                color: #4A4A4A;
+            }
+            > button {
+                margin-top: 20px;
+                width: 180px;
+                height: 36px;
+                line-height: 33px;
+            }
+            &-btn-top {
+
+            }
+            &-btn-bottom {
+
             }
         }
     }

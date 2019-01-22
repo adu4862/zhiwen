@@ -30,7 +30,7 @@
             },
             showMask: {
                 type: Boolean,
-                default: false
+                default: true
             },
             isMaskClose: {
                 type: Boolean,
@@ -63,7 +63,7 @@
         },
         methods: {
             closeDialog() {
-                this.$emit('close');
+                this.$emit('on-close');
             }
         }
     }

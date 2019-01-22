@@ -1,7 +1,7 @@
 <template>
     <div class="m-dialog">
         <transition :name="isTransition?'fade':''">
-            <div class="m-dialog-mask" v-show="visible"></div>
+            <div class="m-dialog-mask" v-if="showMask" v-show="visible"></div>
         </transition>
         <transition :name="isTransition?'fade':''">
             <div class="m-dialog-wrap" v-show="visible">
