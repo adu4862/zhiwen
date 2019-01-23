@@ -1,3 +1,4 @@
+<!-- 自由度高的弹框 -->
 <template>
     <div class="m-dialog">
         <transition name="fade">

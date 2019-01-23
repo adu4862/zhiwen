@@ -1,5 +1,5 @@
+<!-- 课程列表包裹组件 -->
 <template>
-    <!-- 课程列表组件 -->
     <div class="m-class-panel" @click="handleClick">
         <div class="m-class-panel-select">
             <slot name="select"></slot>

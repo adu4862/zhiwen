@@ -1,3 +1,4 @@
+<!-- 固定推广图标 -->
 <template>
     <div class="m-earn-money" @click="handleMoney">
         <img class="m-earn-money-img" :src="require('@/assets/img/earn_money_img.png')" alt="earn_money">

@@ -1,3 +1,4 @@
+<!-- 公共Modal -->
 <template>
     <div class="m-dialog">
         <transition :name="isTransition?'fade':''">

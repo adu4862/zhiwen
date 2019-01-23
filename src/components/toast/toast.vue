@@ -1,3 +1,4 @@
+<!-- 全局Toast组件 -->
 <template>
     <transition name="fade">
         <div class="m-toast" v-show="show">

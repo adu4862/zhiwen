@@ -1,5 +1,5 @@
+<!-- 课程展示图片组件 -->
 <template>
-    <!-- 课程展示图片组件 -->
     <div :class="['m-class-banner', bannerRadius?'m-class-banner-radius':'']">
         <img class="banner" :src="require('@/assets/img/demo_class_banner.png')"
              alt="class-banner">
