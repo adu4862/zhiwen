@@ -25,6 +25,7 @@
         padding: 11px 0;
         font-size: $font-size-md;
         background-color: #fff;
+        box-shadow: 0 2px 4px 0 rgba(101, 135, 248, 0.11);
         &-prev {
             padding: 4px 35px;
             color: $color-gary;
