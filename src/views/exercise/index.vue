@@ -22,9 +22,11 @@
 <style lang="scss" scoped>
     .exercise {
         position: relative;
-        @include flr();
         height: 100vh;
         background-color: $color-link;
         overflow-y: scroll;
+        > div {
+            margin: 0 auto;
+        }
     }
 </style>

@@ -1,6 +1,14 @@
 <template>
     <div class="exercise-topic">
-        <div class="exercise-topic-container"></div>
+        <p class="exercise-topic-title">
+            <span>单选题</span><span class="no">1/10</span>
+        </p>
+        <p class="exercise-topic-question">
+            这是一个问题这是一个问题这是一个问题这是一个问题这是一个问题这是一个问题
+        </p>
+        <div class="exercise-topic-options">
+            
+        </div>
     </div>
 </template>
 
@@ -13,37 +21,27 @@
 <style lang="scss" scoped>
     .exercise-topic {
         position: relative;
-        margin-top: 15%;
+        @include ftb();
+        flex-flow: column;
+        margin-top: 15%!important;
+        padding: 26px 20px;
         width: 335px;
-        height: 456px;
-        &-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 3;
-            border-radius: 12px;
-            background: url("~@/assets/img/exercise_bg.png") no-repeat center;
-            background-size: cover;
-            background-color: #fff;
+        border-radius: 12px;
+        background: url("~@/assets/img/exercise_bg.png") no-repeat center;
+        background-size: cover;
+        background-color: #fff;
+        font-size: $font-size-md;
+        color: $color-important;
+        &-title {
+            margin-top: 2px;
+            @include height(22px);
+            .no {
+                margin-left: 14px;
+            }
         }
-        &:before,
-        &:after {
-            content: '';
-            @include lr();
-            bottom: -10px;
-            z-index: 2;
-            width: 325px;
-            height: 46px;
-            border-radius: 12px;
-            background-color: rgba(255, 255, 255, .8);
-        }
-        &:after {
-            bottom: -20px;
-            z-index: 1;
-            width: 315px;
-            background-color: rgba(255, 255, 255, .6);
+        &-question {
+            margin-top: 30px;
+            line-height: 24px;
         }
     }
 </style>
