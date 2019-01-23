@@ -48,8 +48,8 @@
                 <p class="exercise-topic-analysis-title">答案解析：</p>
                 <p class="exercise-topic-analysis-content">答案解析答案解析答</p>
             </div>
-            <GuideBar/>
         </div>
+        <GuideBar/>
     </div>
 </template>
 
