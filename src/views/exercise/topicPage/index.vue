@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: "index"
+        name: "TopicPage"
     }
 </script>
 
@@ -14,7 +14,7 @@
     .exercise-topic {
         position: relative;
         width: 335px;
-        min-height: 456px;
+        height: 456px;
         &-container {
             position: absolute;
             top: 0;
@@ -33,15 +33,16 @@
             @include lr();
             bottom: -10px;
             z-index: 2;
-            width: 315px;
-            height: 26px;
-            background-color: red;
+            width: 325px;
+            height: 46px;
+            border-radius: 12px;
+            background-color: rgba(255, 255, 255, .8);
         }
         &:after {
             bottom: -20px;
             z-index: 1;
-            width: 305px;
-            background-color: blue;
+            width: 315px;
+            background-color: rgba(255, 255, 255, .6);
         }
     }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div class="exercise">
-        <TopicPage />
+        <TitlePage />
     </div>
 </template>
 
@@ -21,7 +21,8 @@
 
 <style lang="scss" scoped>
     .exercise {
-        @include fct();
+        position: relative;
+        @include flr();
         height: 100vh;
         background-color: $color-link;
         overflow-y: scroll;

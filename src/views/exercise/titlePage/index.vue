@@ -18,12 +18,13 @@
 
 <script>
     export default {
-        name: "index"
+        name: "TitlePage"
     }
 </script>
 
 <style lang="scss" scoped>
     .exercise-title-page {
+        @include ct();
         width: 335px;
         height: 524px;
         background: url("~@/assets/img/exercise_bg.png") no-repeat center;
