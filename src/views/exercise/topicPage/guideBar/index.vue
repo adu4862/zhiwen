@@ -31,6 +31,9 @@
             color: $color-gary;
             border-right: 1px solid rgba(101, 135, 248, .36);
         }
+        &-prev.disabled {
+            color: #CFCFCF;
+        }
         &-next {
             flex: 1;
             button {
