@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        name: "withdrawSuccess"
+        name: "balanceWithdrawSuccess"
     }
 </script>
 

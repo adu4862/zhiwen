@@ -35,6 +35,7 @@
     import {CountDown} from '@/components'
 
     export default {
+        name: "phoneBind",
         components: {
             CountDown
         },

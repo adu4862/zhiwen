@@ -52,6 +52,7 @@
     import {Modal} from "@/components"
 
     export default {
+        name: "collection",
         components: {
             CollectionEmpty,
             CollectionItem,

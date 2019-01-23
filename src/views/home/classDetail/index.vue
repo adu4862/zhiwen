@@ -14,6 +14,7 @@
     import {EarnMoney} from "@/components";
 
     export default {
+        name: "classDetail",
         components: {
             ClassIntro,
             ClassTable,

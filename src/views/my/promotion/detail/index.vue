@@ -37,7 +37,7 @@
     import DetailEmpty from './detailEmpty'
 
     export default {
-        name: "promotionItem",
+        name: "promotionDetail",
         components: {
             ClassBanner,
             ClassPanel,

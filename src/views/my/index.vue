@@ -50,6 +50,7 @@
     import ClassEmpty from './classEmpty'
 
     export default {
+        name: "my",
         components: {
             CellItem,
             SectionTitle,

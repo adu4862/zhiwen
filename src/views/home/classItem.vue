@@ -24,7 +24,7 @@
     import {ClassPanel, ClassBanner} from '@/components'
 
     export default {
-        name: "classItem",
+        name: "homeClassItem",
         components: {
             ClassPanel,
             ClassBanner,

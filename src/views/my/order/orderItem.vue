@@ -23,6 +23,7 @@
     import {ClassPanel, ClassBanner} from '@/components'
 
     export default {
+        name: "orderItem",
         components: {
             ClassPanel,
             ClassBanner

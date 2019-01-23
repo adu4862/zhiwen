@@ -21,7 +21,7 @@
     import OrderItem from './orderItem'
 
     export default {
-        name: "index",
+        name: "order",
         components: {
             OrderEmpty,
             OrderItem

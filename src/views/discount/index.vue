@@ -10,7 +10,7 @@
     import Records from "./records"
 
     export default {
-        name: "index",
+        name: "discount",
         components: {
             Bargain,
             Records,

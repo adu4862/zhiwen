@@ -10,7 +10,7 @@
     import Bar from "./bar"
 
     export default {
-        name: "index",
+        name: "Exercise",
         components: {
             TitlePage,
             TopicPage,

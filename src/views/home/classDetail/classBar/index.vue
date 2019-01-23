@@ -16,7 +16,7 @@
 
 <script>
     export default {
-        name: "classBar",
+        name: "classDetailTableBar",
         props: {
             payed: {
                 type: Boolean,

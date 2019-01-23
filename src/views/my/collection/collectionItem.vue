@@ -30,6 +30,7 @@
     import {ClassPanel, ClassBanner} from '@/components'
 
     export default {
+        name: "collectionItem",
         components: {
             ClassPanel,
             ClassBanner

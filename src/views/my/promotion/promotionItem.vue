@@ -20,6 +20,7 @@
     import {ClassPanel, ClassBanner} from '@/components'
 
     export default {
+        name: "promotionEmpty",
         components: {
             ClassPanel,
             ClassBanner

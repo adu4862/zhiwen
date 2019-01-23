@@ -40,6 +40,7 @@
     import {SectionTitle} from '@/components'
 
     export default {
+        name: "promotion",
         components: {
             PromotionEmpty,
             PromotionItem,

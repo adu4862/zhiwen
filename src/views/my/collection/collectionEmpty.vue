@@ -9,7 +9,7 @@
 
 <script>
     export default {
-        name: "collection-empty"
+        name: "collectionEmpty"
     }
 </script>
 

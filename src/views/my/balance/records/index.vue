@@ -24,6 +24,7 @@
     import RecordItem from './recordItem'
 
     export default {
+        name: "balanceRecords",
         components: {
             RecordEmpty,
             RecordItem,

@@ -22,6 +22,7 @@
     import ClassBooks from "./books";
 
     export default {
+        name: "classDetailTable",
         components: {
             ClassBooks
         },

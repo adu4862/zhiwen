@@ -7,7 +7,7 @@
 
 <script>
     export default {
-        name: "detailEmpty"
+        name: "promotionDetailEmpty"
     }
 </script>
 

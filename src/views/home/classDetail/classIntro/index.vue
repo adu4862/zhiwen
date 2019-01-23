@@ -40,6 +40,7 @@
 
 <script>
     export default {
+        name: "classDetailIntro",
         data() {
             return {};
         },

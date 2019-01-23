@@ -10,7 +10,7 @@
 
 <script>
     export default {
-        name: "collection-empty"
+        name: "promotionEmpty"
     }
 </script>
 

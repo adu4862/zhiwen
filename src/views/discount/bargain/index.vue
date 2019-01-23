@@ -88,7 +88,7 @@
     import NP from 'number-precision'
 
     export default {
-        name: "index",
+        name: "discountBargain",
         components: {
             ClassPanel,
             ClassBanner,

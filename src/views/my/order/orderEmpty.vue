@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        name: "collection-empty"
+        name: "orderEmpty"
     }
 </script>
 

@@ -12,7 +12,7 @@
 
 <script>
     export default {
-        name: "recordItem"
+        name: "balanceRecordsItem"
     }
 </script>
 

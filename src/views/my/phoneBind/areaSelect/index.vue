@@ -36,6 +36,7 @@
     import BScroll from 'better-scroll'
 
     export default {
+        name: "areaSelect",
         data () {
             return {
                 singers: [

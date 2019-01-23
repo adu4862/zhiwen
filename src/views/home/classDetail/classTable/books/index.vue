@@ -14,7 +14,7 @@
     import ClassInfo from "./booksItem/classInfo";
 
     export default {
-        name: "index",
+        name: "classDetailTableBooks",
         components: {
             BooksItem,
             ClassInfo,

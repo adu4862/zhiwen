@@ -12,7 +12,7 @@
     import RecordItem from './recordItem'
 
     export default {
-        name: "index",
+        name: "discountRecords",
         components: {
             DividerTitle,
             RecordItem,
