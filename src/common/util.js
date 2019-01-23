@@ -267,7 +267,7 @@ export const generateUUID = () => {
  * @param str
  * @returns {string | * | void}
  */
-function trim(str) {
+export const trim = (str) => {
     return str.replace(/(^\s*)|(\s*$)/g, "");
 }
 
@@ -276,7 +276,7 @@ function trim(str) {
  * @param str
  * @returns {string | * | void}
  */
-function ltrim(str) {
+export const ltrim = (str) => {
     return str.replace(/(^\s*)/g, "");
 }
 
@@ -285,7 +285,7 @@ function ltrim(str) {
  * @param str
  * @returns {string | * | void}
  */
-function rtrim(str) {
+export const rtrim = (str) => {
     return str.replace(/(\s*$)/g, "");
 }
 
@@ -293,7 +293,7 @@ function rtrim(str) {
  * 对象数组转二维数组
  * @param objArr
  */
-function obj2Arr(objArr) {
+export const obj2Arr = (objArr) => {
     objArr.length > 0 && objArr.map(item => {
         return Object.values(item);
     })
@@ -305,9 +305,39 @@ function obj2Arr(objArr) {
  * @param item
  * @returns val
  */
-function maxItemInObjArr(array, item) {
+export const maxItemInObjArr = (array, item) => {
     let max = Math.max.apply(Math, array.map(function (obj) {
         return obj[item];
     }));
     return max;
 }
+
+/**
+ * 判断当前网络环境
+ */
+export const isWifi = () => {
+    try {
+        let wifi = true;
+        let ua = window.navigator.userAgent;
+        let con = window.navigator.connection;
+        // 如果是微信
+        if (/MicroMessenger/.test(ua)) {
+            if (ua.indexOf('WIFI') >= 0) {
+                return true
+            } else {
+                wifi = false
+            }
+            // 如果支持navigator.connection
+        } else if (con) {
+            let network = con.type;
+            if (network !== 'wifi' && network !== '2' && network !== 'unknown') {
+                wifi = false
+            }
+        }
+        return wifi
+    } catch (e) {
+        return false
+    }
+};
+
+
