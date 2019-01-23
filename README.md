@@ -12,8 +12,8 @@ yarn run serve
 项目打包
 yarn run build
 
-修复ESLint
-yarn run lint
+分析打包体积
+yarn analyz
 
 提交代码
 yarn push
