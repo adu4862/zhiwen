@@ -7,14 +7,51 @@
             这是一个问题这是一个问题这是一个问题这是一个问题这是一个问题这是一个问题
         </p>
         <div class="exercise-topic-options">
-            
+            <p class="exercise-topic-options-item" @click="handleOption">
+                <span>A</span><span>restraintrestraintrestrai</span>
+            </p>
+            <p class="exercise-topic-options-item" @click="handleOption">
+                <span>B</span><span>123</span>
+            </p>
+            <p class="exercise-topic-options-item" @click="handleOption">
+                <span>C</span><span>234234werfwe</span>
+            </p>
+            <p class="exercise-topic-options-item" @click="handleOption">
+                <span>D</span><span>gxcbdsfg434sdf</span>
+            </p>
         </div>
+        <button class="blue-btn-48 exercise-topic-btn" v-if="!isCheck" @click="handleCheckAnswer">
+            查看答案
+        </button>
+        <div class="exercise-topic-analysis" v-if="isCheck">
+            <p class="exercise-topic-analysis-title">答案解析：</p>
+            <p class="exercise-topic-analysis-content">答案解析答案解析答案解析答案解析答案解析答案解析答案解析答案解析答案解析</p>
+        </div>
+        <GuideBar />
     </div>
 </template>
 
 <script>
+    import GuideBar from "./guideBar"
+
     export default {
-        name: "TopicPage"
+        name: "TopicPage",
+        components: {
+            GuideBar,
+        },
+        data() {
+            return {
+                isCheck: false
+            }
+        },
+        methods: {
+            handleOption() {
+                console.log('选项')
+            },
+            handleCheckAnswer() {
+                this.isCheck = true;
+            }
+        }
     }
 </script>
 
@@ -23,7 +60,7 @@
         position: relative;
         @include ftb();
         flex-flow: column;
-        margin-top: 15%!important;
+        margin-top: 15% !important;
         padding: 26px 20px;
         width: 335px;
         border-radius: 12px;
@@ -42,6 +79,45 @@
         &-question {
             margin-top: 30px;
             line-height: 24px;
+        }
+        &-options {
+            margin-top: 20px;
+            min-width: 200px;
+            max-width: 100%;
+            &-item {
+                @include ftb();
+                margin-top: 20px;
+                padding: 6px 20px;
+                line-height: 17px;
+                border-radius: 15px;
+                border: 1px solid rgba(227, 229, 233, 1);
+                background-color: #fff;
+                font-size: $font-size-sm;
+                span:nth-child(2) {
+                    margin-left: 20px;
+                    word-wrap: break-word;
+                    overflow: hidden;
+                }
+                &:nth-child(1) {
+                    margin-top: initial;
+                }
+            }
+        }
+        &-btn {
+            margin-top: 30px;
+            width: 295px;
+        }
+        &-analysis {
+            margin-top: 40px;
+            &-title {
+                @include height(17px);
+                font-size: $font-size-sm;
+            }
+            &-content {
+                margin-top: 10px;
+                line-height: 20px;
+                color: $color-important;
+            }
         }
     }
 </style>
