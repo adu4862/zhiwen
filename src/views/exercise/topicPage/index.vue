@@ -13,6 +13,7 @@
 <style lang="scss" scoped>
     .exercise-topic {
         position: relative;
+        margin-top: 15%;
         width: 335px;
         height: 456px;
         &-container {
