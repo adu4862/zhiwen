@@ -8,18 +8,38 @@
                 这是一个问题这是一个问题这是一个问题这是一个问题这是一个问题这是一个问题
             </p>
             <div class="exercise-topic-options">
-                <p class="exercise-topic-options-item" @click="handleOption">
-                    <span>A</span><span>restraintrestraintrestrai</span>
-                </p>
-                <p class="exercise-topic-options-item" @click="handleOption">
-                    <span>B</span><span>123</span>
-                </p>
-                <p class="exercise-topic-options-item" @click="handleOption">
-                    <span>C</span><span>234234werfwe</span>
-                </p>
-                <p class="exercise-topic-options-item" @click="handleOption">
-                    <span>D</span><span>gxcbdsfg434sdf</span>
-                </p>
+                <div class="exercise-topic-options-item mistake" @click="handleOption">
+                    <p>
+                        <!--<span>A</span>-->
+                        <i class="icon icon-mistake"></i>
+                        <!--<i class="icon icon-correct"></i>-->
+                    </p>
+                    <span>restraintrestraintrestrai</span>
+                </div>
+                <div class="exercise-topic-options-item correct" @click="handleOption">
+                    <p>
+                        <!--<span>A</span>-->
+                        <!--<i class="icon icon-mistake"></i>-->
+                        <i class="icon icon-correct"></i>
+                    </p>
+                    <span>123</span>
+                </div>
+                <div class="exercise-topic-options-item" @click="handleOption">
+                    <p>
+                        <span>C</span>
+                        <!--<i class="icon icon-mistake"></i>-->
+                        <!--<i class="icon icon-correct"></i>-->
+                    </p>
+                    <span>234234werfwe</span>
+                </div>
+                <div class="exercise-topic-options-item" @click="handleOption">
+                    <p>
+                        <span>D</span>
+                        <!--<i class="icon icon-mistake"></i>-->
+                        <!--<i class="icon icon-correct"></i>-->
+                    </p>
+                    <span>gxcbdsfg434sdf</span>
+                </div>
             </div>
             <button class="blue-btn-48 exercise-topic-btn" v-if="!isCheck" @click="handleCheckAnswer">
                 查看答案
@@ -28,7 +48,7 @@
                 <p class="exercise-topic-analysis-title">答案解析：</p>
                 <p class="exercise-topic-analysis-content">答案解析答案解析答</p>
             </div>
-            <GuideBar />
+            <GuideBar/>
         </div>
     </div>
 </template>
@@ -102,14 +122,39 @@
                     border: 1px solid rgba(227, 229, 233, 1);
                     background-color: #fff;
                     font-size: $font-size-sm;
+                    p {
+                        width: 24px;
+                        .icon {
+                            width: 8px;
+                            height: 8px;
+                        }
+                        .icon-mistake {
+                            background: url("~@/assets/img/icon_mistake.png") no-repeat center;
+                            background-size: contain;
+                        }
+                        .icon-correct {
+                            width: 11px;
+                            background: url("~@/assets/img/icon_correct.png") no-repeat center;
+                            background-size: contain;
+                        }
+                    }
                     span:nth-child(2) {
-                        margin-left: 20px;
                         word-wrap: break-word;
                         overflow: hidden;
                     }
                     &:nth-child(1) {
                         margin-top: initial;
                     }
+                }
+                &-item.mistake {
+                    color: #fff;
+                    border-color: #F86565;
+                    background-color: #F86565;
+                }
+                &-item.correct {
+                    color: #fff;
+                    border-color: #48D39A;
+                    background-color: #48D39A;
                 }
             }
             &-btn {
