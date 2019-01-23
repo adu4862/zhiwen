@@ -24,5 +24,6 @@
         @include fct();
         height: 100vh;
         background-color: $color-link;
+        overflow-y: scroll;
     }
 </style>
