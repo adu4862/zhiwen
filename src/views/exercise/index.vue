@@ -1,17 +1,19 @@
 <template>
     <div class="exercise">
-        <TitlePage />
+        <TopicPage />
     </div>
 </template>
 
 <script>
     import TitlePage from "./titlePage"
+    import TopicPage from "./topicPage"
     import Bar from "./bar"
 
     export default {
         name: "index",
         components: {
             TitlePage,
+            TopicPage,
             Bar,
         }
     }
