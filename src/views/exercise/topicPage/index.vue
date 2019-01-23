@@ -16,7 +16,7 @@
     .exercise-topic {
         > div {
             @include lr();
-            height: 456px;
+            min-height: 456px;
             border-radius: 12px;
         }
         &-main {
