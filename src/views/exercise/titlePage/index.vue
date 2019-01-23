@@ -11,7 +11,7 @@
         </div>
         <div class="exercise-title-page-btns">
             <button class="blue-btn-48">开始练习</button>
-            <button class="white-btn-48">再来一遍</button>
+            <button class="white-btn-48">再做一遍</button>
         </div>
     </div>
 </template>
