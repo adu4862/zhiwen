@@ -27,11 +27,11 @@
             <div class="class-media-point-list">
                 <div class="class-media-point-list-item" @click="handlePoint(5)">
                     <p>法律英语主要有哪些类型</p>
-                    <p>00:25</p>
+                    <p>00:05</p>
                 </div>
                 <div class="class-media-point-list-item" @click="handlePoint(15)">
                     <p>法律英语主要有哪些类型</p>
-                    <p>00:25</p>
+                    <p>00:15</p>
                 </div>
                 <div class="class-media-point-list-item" @click="handlePoint(25)">
                     <p>法律英语主要有哪些类型</p>
