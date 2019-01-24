@@ -121,6 +121,7 @@
                 // player.[methods]
             },
             handlePoint(currentTime) {
+                this.player.play();
                 this.player.currentTime(currentTime);
                 this.player.pause();
             },
