@@ -64,16 +64,17 @@
 
 <style lang="scss" scoped>
     .punch {
-        @include ftb();
-        flex-flow: column;
-        padding-bottom: 15px;
-        height: 100vh;
+        padding: 15px 0;
+        min-height: 100vh;
         background: url("~@/assets/img/punch/punch_bg.png") no-repeat center;
         background-size: cover;
+        overflow-y: scroll;
+        > div {
+            margin: 0 auto;
+        }
         &-card {
             @include ftb();
             flex-flow: column;
-            margin-top: 13px;
             padding: 0 30px;
             width: 346px;
             height: 570px;
@@ -141,7 +142,9 @@
             }
         }
         &-operate {
-            overflow-x: scroll;
+            @include ftb();
+            flex-flow: column;
+            /*overflow-x: scroll;*/
             font-size: $font-size-sm;
             color: #606060;
             &-selector {
