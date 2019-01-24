@@ -18,7 +18,8 @@
             </div>
             <img class="punch-card-img" :src="require('@/assets/img/punch/punch_01.png')" alt="punch_img"/>
             <div class="punch-card-qr">
-                <img :src="require('@/assets/img/punch/demo_qr.png')" alt="qr">
+                <!--<img :src="require('@/assets/img/punch/demo_qr.png')" alt="qr">-->
+                <div class="punch-card-qr-img" ref="qrCodeUrl"></div>
                 <p>长按识别左边二维码<br/>马上加入该课程学习！</p>
             </div>
         </div>
@@ -38,8 +39,27 @@
 </template>
 
 <script>
+    import QRCode from 'qrcodejs2'
+
     export default {
-        name: "Punch"
+        name: "Punch",
+        mounted() {
+            this.$nextTick(() => {
+                this.creatQrCode()
+            })
+        },
+        methods: {
+            creatQrCode() {
+                let qrcode = new QRCode(this.$refs.qrCodeUrl, {
+                    text: 'www.baidu.com',
+                    width: 74,
+                    height: 74,
+                    colorDark: '#000000',
+                    colorLight: '#ffffff',
+                    correctLevel: QRCode.CorrectLevel.H
+                })
+            }
+        }
     }
 </script>
 
@@ -116,6 +136,8 @@
                     margin-left: 9px;
                     line-height: 17px;
                     font-weight: 600;
+                    color: $color-important;
+                    text-align: left;
                 }
             }
         }
