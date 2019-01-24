@@ -1,7 +1,43 @@
 <template>
     <div class="class-media">
         <div class="class-media-video">
-            <Xgplayer :config="config" @player="Player = $event"/>
+            <video-player class="video-player-box"
+                          ref="videoPlayer"
+                          :options="playerOptions"
+                          :playsinline="true"
+                          customEventName="customstatechangedeventname"
+
+                          @play="onPlayerPlay($event)"
+                          @pause="onPlayerPause($event)"
+
+                          @statechanged="playerStateChanged($event)"
+                          @ready="playerReadied">
+            </video-player>
+        </div>
+        <div class="class-media-info">
+            <div class="class-media-info-title ellipsis">法律英语基础版</div>
+            <div class="class-media-info-content">
+                <p class="times">播放155次</p>
+                <p class="source">打开课件<i class="icon icon--2"></i></p>
+            </div>
+        </div>
+        <div class="class-media-point">
+            <p class="class-media-point-title">本节课程知识点</p>
+            <p class="class-media-point-sub-title">点击相应的知识点可以快速跳转到该处进行观看</p>
+            <div class="class-media-point-list">
+                <div class="class-media-point-list-item">
+                    <p>法律英语主要有哪些类型</p>
+                    <p>00:25</p>
+                </div>
+                <div class="class-media-point-list-item">
+                    <p>法律英语主要有哪些类型</p>
+                    <p>00:25</p>
+                </div>
+                <div class="class-media-point-list-item">
+                    <p>法律英语主要有哪些类型</p>
+                    <p>00:25</p>
+                </div>
+            </div>
         </div>
         <img class="class-media-punch" :src="require('@/assets/img/icon_punch_circle.png')" alt="icon_punch">
         <Modal
@@ -17,31 +53,66 @@
 </template>
 
 <script>
-    import Xgplayer from 'xgplayer-vue'
     import {Modal} from "@/components"
     import {isWifi} from "@/common/util"
+    import 'video.js/dist/video-js.css'
+    import {videoPlayer} from 'vue-video-player'
 
     export default {
         name: "classMedia",
         components: {
-            Xgplayer,
+            videoPlayer,
             Modal,
         },
         data() {
             return {
-                config: {
-                    id: 'vs',
-                    url: '/xgplayer-demo.mp4'
+                playerOptions: {
+                    width: window.innerWidth,
+                    height: 200,
+                    loop: false,
+                    muted: true,    // 静音
+                    // controls: false,
+                    language: 'zh-CN',
+                    playbackRates: [0.7, 1.0, 1.5, 2.0],
+                    sources: [{
+                        type: "video/mp4",
+                        src: "https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm"
+                    }],
+                    poster: require('@/assets/img/demo_banner.png'),
                 },
-                Player: null,
                 checkWifiVisible: false,
+            }
+        },
+        computed: {
+            player() {
+                return this.$refs.videoPlayer.player
             }
         },
         mounted() {
             // this.checkWifi();
-            // this.checkWifiVisible = true;
+            console.log('this is current player instance object', this.player)
         },
         methods: {
+            // listen event
+            onPlayerPlay(player) {
+                // console.log('player play!', player)
+            },
+            onPlayerPause(player) {
+                // console.log('player pause!', player)
+            },
+            // ...player event
+
+            // or listen state event
+            playerStateChanged(playerCurrentState) {
+                // console.log('player current update state', playerCurrentState)
+            },
+
+            // player is ready
+            playerReadied(player) {
+                console.log('the player is readied', player)
+                // you can use it to do something...
+                // player.[methods]
+            },
             checkWifi() {
                 if (!isWifi) {
                     this.checkWifiVisible = true;
@@ -59,6 +130,62 @@
 
 <style lang="scss" scoped>
     .class-media {
+        &-info {
+            padding: 14px 20px;
+            background-color: #fff;
+            &-title {
+                @include height(22px);
+                font-size: $font-size-md;
+                color: $color-important;
+            }
+            &-content {
+                @include ftb();
+                justify-content: space-between;
+                margin-top: 4px;
+                font-size: $font-size-mini;
+                color: $color-gary;
+                .source {
+                    @include ftb();
+                    color: $color-link;
+                    .icon {
+                        margin-left: 6px;
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+        &-point {
+            margin-top: 12px;
+            padding: 14px 20px;
+            background-color: #fff;
+            &-title {
+                @include height(22px);
+                font-size: $font-size-md;
+                color: $color-important;
+            }
+            &-sub-title {
+                @include height(14px);
+                font-size: $font-size-mini;
+                color: #666666;
+            }
+            &-list {
+                margin-top: 3px;
+                &-item {
+                    @include ftb();
+                    justify-content: space-between;
+                    padding: 10px 0 1px 0;
+                    @include border-bottom($border-color: rgba(101, 135, 248, .36));
+                    font-size: 12px;
+                    p:nth-child(1) {
+                        @include height(17px);
+                    }
+                    p:nth-child(2) {
+                        font-size: $font-size-sm;
+                        color: #989BA0;
+                    }
+                }
+            }
+        }
         &-punch {
             position: fixed;
             right: 0;
