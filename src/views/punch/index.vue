@@ -19,7 +19,7 @@
             <img class="punch-card-img" :src="require('@/assets/img/punch/punch_01.png')" alt="punch_img"/>
             <div class="punch-card-qr">
                 <div class="punch-card-qr-img" ref="qrCodeUrl"></div>
-                <p punch-card-qr-tips>长按识别左边二维码<br/>马上加入该课程学习！</p>
+                <p class="punch-card-qr-tips">长按识别左边二维码<br/>马上加入该课程学习！</p>
             </div>
         </div>
         <div class="punch-operate">
