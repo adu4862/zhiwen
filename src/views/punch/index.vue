@@ -18,9 +18,8 @@
             </div>
             <img class="punch-card-img" :src="require('@/assets/img/punch/punch_01.png')" alt="punch_img"/>
             <div class="punch-card-qr">
-                <!--<img :src="require('@/assets/img/punch/demo_qr.png')" alt="qr">-->
                 <div class="punch-card-qr-img" ref="qrCodeUrl"></div>
-                <p>长按识别左边二维码<br/>马上加入该课程学习！</p>
+                <p punch-card-qr-tips>长按识别左边二维码<br/>马上加入该课程学习！</p>
             </div>
         </div>
         <div class="punch-operate">
@@ -128,11 +127,11 @@
                 @include ftb();
                 justify-content: center;
                 margin-top: 3px;
-                img {
+                &-img {
                     width: 74px;
                     height: 74px;
                 }
-                p {
+                &-tips {
                     margin-left: 9px;
                     line-height: 17px;
                     font-weight: 600;
