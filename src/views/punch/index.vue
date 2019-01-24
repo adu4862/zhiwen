@@ -1,6 +1,7 @@
 <template>
     <div class="punch">
-        <div class="punch-card">
+        <img :src="imgSrc" alt="">
+        <div class="punch-card" ref="we">
             <div class="punch-card-head">
                 <img :src="require('@/assets/img/demo_class_banner.png')" alt="wx_header">
                 <span>用户名称</span>
@@ -38,17 +39,23 @@
                     <div class="punch-operate-selector-cards-item"></div>
                 </div>
             </div>
-            <button class="blue-btn-48">保存</button>
+            <button class="blue-btn-48" @click="handleCreateImg">保存</button>
             <p class="punch-operate-tips">保存海报并分享朋友圈，客服查看后，即可完成当日打卡</p>
         </div>
     </div>
 </template>
 
 <script>
+    import html2canvas from 'html2canvas'
     import QRCode from 'qrcodejs2'
 
     export default {
         name: "Punch",
+        data() {
+            return {
+                imgSrc: ''
+            }
+        },
         mounted() {
             this.$nextTick(() => {
                 this.creatQrCode()
@@ -64,6 +71,35 @@
                     colorLight: '#ffffff',
                     correctLevel: QRCode.CorrectLevel.H
                 })
+            },
+            handleCreateImg() {
+                this.toImage();
+            },
+            toImage() {
+                let dom = this.$refs.we
+                console.log(dom)
+                let width = dom.offsetWidth
+                let height = dom.offsetHeight
+                let canvasBox = document.createElement("canvas");
+                let scale = window.devicePixelRatio;
+                canvasBox.width = width * scale;
+                canvasBox.height = height * scale;
+
+                canvasBox.style.width = width + "px";
+                canvasBox.style.height = height + "px";
+                canvasBox.getContext("2d").scale(scale, scale);
+                console.log(scale)
+                html2canvas(this.$refs.we, {
+                    backgroundColor: null,
+                    // allowTaint: true,
+                    useCORS: true,
+                    // width: 300,
+                    // height: 480,
+                    // scale: scale,
+                }).then((canvas) => {
+                    let dataURL = canvas.toDataURL("image/png");
+                    this.imgSrc = dataURL;
+                });
             }
         }
     }
