@@ -46,7 +46,7 @@
             </button>
             <div class="exercise-topic-analysis" v-if="isCheck">
                 <p class="exercise-topic-analysis-title">答案解析：</p>
-                <p class="exercise-topic-analysis-content">答案解析答案解析答</p>
+                <p class="exercise-topic-analysis-content">答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答答案解析答案解析答</p>
             </div>
         </div>
         <GuideBar/>
@@ -79,13 +79,13 @@
 
 <style lang="scss" scoped>
     .exercise-topic-container {
-        position: relative;
         width: 100%;
         height: 100%;
-        padding-bottom: 90px;
+        padding-bottom: 120px;
         overflow-x: hidden;
         overflow-y: scroll;
         .exercise-topic {
+            position: relative;
             @include ftb();
             flex-flow: column;
             margin: 0 auto;
@@ -175,6 +175,22 @@
                     word-wrap: break-word;
                     overflow: hidden;
                 }
+            }
+            &:before,
+            &:after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                width: 325px;
+                height: 20px;
+                border-radius: 12px;
+                background-color: rgba(255, 255, 255, .8);
+            }
+            &:after {
+                bottom: -20px;
+                width: 315px;
+                height: 40px;
+                background-color: rgba(255, 255, 255, .6);
             }
         }
     }
