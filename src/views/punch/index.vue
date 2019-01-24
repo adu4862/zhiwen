@@ -77,7 +77,7 @@
             flex-flow: column;
             padding: 0 30px;
             width: 346px;
-            height: 570px;
+            height: 507px;
             background: url("~@/assets/img/punch/punch_card_bg.png") no-repeat center;
             background-size: cover;
             text-align: center;
