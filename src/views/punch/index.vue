@@ -26,9 +26,16 @@
             <div class="punch-operate-selector">
                 <p class="punch-operate-selector-title">选择皮肤</p>
                 <div class="punch-operate-selector-cards">
-                    <div class="punch-operate-selector-cards-item">
-
-                    </div>
+                    <div class="punch-operate-selector-cards-item"></div>
+                    <div class="punch-operate-selector-cards-item"></div>
+                    <div class="punch-operate-selector-cards-item"></div>
+                    <div class="punch-operate-selector-cards-item"></div>
+                    <div class="punch-operate-selector-cards-item"></div>
+                    <div class="punch-operate-selector-cards-item"></div>
+                    <div class="punch-operate-selector-cards-item"></div>
+                    <div class="punch-operate-selector-cards-item"></div>
+                    <div class="punch-operate-selector-cards-item"></div>
+                    <div class="punch-operate-selector-cards-item"></div>
                 </div>
             </div>
             <button class="blue-btn-48">保存</button>
@@ -144,7 +151,6 @@
         &-operate {
             @include ftb();
             flex-flow: column;
-            /*overflow-x: scroll;*/
             font-size: $font-size-sm;
             color: #606060;
             &-selector {
@@ -154,6 +160,22 @@
                 background-color: #fff;
                 &-title {
                     @include height(17px);
+                }
+                &-cards {
+                    display: flex;
+                    flex-wrap: nowrap;
+                    margin-top: 6px;
+                    overflow-x: scroll;
+                    &-item {
+                        margin-left: 13px;
+                        width: 38px;
+                        height: 36px;
+                        flex: 0 0 38px;
+                        background-color: #969FAF;
+                        &:nth-child(1) {
+                            margin-left: initial;
+                        }
+                    }
                 }
             }
             button {
