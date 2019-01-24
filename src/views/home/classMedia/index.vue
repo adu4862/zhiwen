@@ -1,7 +1,7 @@
 <template>
     <div class="class-media">
         <div class="class-media-video">
-            <video-player class="video-player-box"
+            <video-player class="vjs-custom-skin vjs-big-play-centered"
                           ref="videoPlayer"
                           :options="playerOptions"
                           :playsinline="true"
@@ -25,15 +25,15 @@
             <p class="class-media-point-title">本节课程知识点</p>
             <p class="class-media-point-sub-title">点击相应的知识点可以快速跳转到该处进行观看</p>
             <div class="class-media-point-list">
-                <div class="class-media-point-list-item">
+                <div class="class-media-point-list-item" @click="handlePoint(5)">
                     <p>法律英语主要有哪些类型</p>
                     <p>00:25</p>
                 </div>
-                <div class="class-media-point-list-item">
+                <div class="class-media-point-list-item" @click="handlePoint(15)">
                     <p>法律英语主要有哪些类型</p>
                     <p>00:25</p>
                 </div>
-                <div class="class-media-point-list-item">
+                <div class="class-media-point-list-item" @click="handlePoint(25)">
                     <p>法律英语主要有哪些类型</p>
                     <p>00:25</p>
                 </div>
@@ -71,12 +71,19 @@
                     height: 200,
                     loop: false,
                     muted: true,    // 静音
-                    // controls: false,
+                    bigPlayButton: false,
+                    controlBar: {
+                        // timeDivider: true,
+                        // durationDisplay: true,
+                        remainingTimeDisplay: false,
+                        playbackRateMenuButton: false,
+                        fullscreenToggle: true  //全屏按钮
+                    },
                     language: 'zh-CN',
                     playbackRates: [0.7, 1.0, 1.5, 2.0],
                     sources: [{
                         type: "video/mp4",
-                        src: "https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm"
+                        src: "https://vjs.zencdn.net/v/oceans.mp4"
                     }],
                     poster: require('@/assets/img/demo_banner.png'),
                 },
@@ -112,6 +119,10 @@
                 console.log('the player is readied', player)
                 // you can use it to do something...
                 // player.[methods]
+            },
+            handlePoint(currentTime) {
+                this.player.currentTime(currentTime);
+                this.player.pause();
             },
             checkWifi() {
                 if (!isWifi) {
@@ -194,4 +205,8 @@
             height: 58px;
         }
     }
+</style>
+
+<style>
+    @import "video.scss";
 </style>
