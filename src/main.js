@@ -11,6 +11,7 @@ import Toast from './components/toast/index'
 Vue.use(Toast);
 
 // 消除 click 移动浏览器300ms延迟
+// 因为fastclick会影响video.js控件，所以在node_modules里的fastclick.js中找到return (/\bneedsclick\b/).test(target.className);替换为return ((/\bneedsclick\b/).test(target.className) || (/\bvjs/).test(target.className));
 import attachFastClick from 'fastclick'
 attachFastClick.attach(document.body);
 
