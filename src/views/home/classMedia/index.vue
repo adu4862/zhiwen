@@ -71,7 +71,7 @@
                     height: 200,
                     loop: false,
                     muted: true,    // 静音
-                    bigPlayButton: false,
+                    // bigPlayButton: false,
                     controlBar: {
                         // timeDivider: true,
                         // durationDisplay: true,

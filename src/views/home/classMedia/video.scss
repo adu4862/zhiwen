@@ -36,7 +36,9 @@ $height: 40px;
 }
 
 .vjs-paused.vjs-has-started.vjs-custom-skin > .video-js .vjs-big-play-button, .video-js.vjs-ended .vjs-big-play-button, .video-js.vjs-paused .vjs-big-play-button {
-    display: block
+    display: block;
+    border: initial;
+    background-color: initial!important;
 }
 
 .vjs-custom-skin > .video-js .vjs-load-progress div, .vjs-seeking .vjs-big-play-button, .vjs-waiting .vjs-big-play-button {
