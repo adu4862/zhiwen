@@ -36,3 +36,10 @@ yarn push
     - style             // 公共样式目录
     - views             // 页面目录
 ```
+
+## 常见问题
+
+1、video.js在移动端会触发两次事件，怎么解决？
+
+>原因是fastclick和video.js冲突导致的，本来准备把fastclick.js放在本地引入，但是遇到报错没能处理，为了上线，解决方法为：
+ 在node_modules里的fastclick.js中找到return (/\bneedsclick\b/).test(target.className);替换为return ((/\bneedsclick\b/).test(target.className) || (/\bvjs/).test(target.className));
