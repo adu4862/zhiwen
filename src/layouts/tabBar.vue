@@ -7,6 +7,7 @@
             @click="clickHandler(item.name)"
         >
             <i :class="['icon', tabBar === item.name ? item.activeIcon:item.icon]"></i>
+            <!--<img class="icon" :src="tabBar === item.name ? item.activeImgSrc: item.imgSrc" alt="">-->
             <div class="label">{{item.label}}</div>
         </div>
     </div>
@@ -23,12 +24,16 @@
                         label: "首页",
                         icon: "icon--10",
                         activeIcon: "icon--13",
+                        imgSrc: require('@/assets/img/icon_home.png'),
+                        activeImgSrc: require('@/assets/img/icon_home_active.png'),
                         name: "home"
                     },
                     {
                         label: "我的",
                         icon: "icon--11",
                         activeIcon: "icon--12",
+                        imgSrc: require('@/assets/img/icon_my.png'),
+                        activeImgSrc: require('@/assets/img/icon_my_active.png'),
                         name: "my"
                     }
                 ],
@@ -53,10 +58,14 @@
         background-color: #fff;
         box-shadow: 0 -2px 2px 0 rgba(101, 135, 248, 0.04);
         .bar-item {
+            @include ftb();
+            flex-flow: column;
             flex: 1;
             font-size: $font-size-mini;
             text-align: center;
             .icon {
+                width: 28px;
+                height: 28px;
                 font-size: 28px;
             }
             .label {
