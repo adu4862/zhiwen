@@ -141,6 +141,7 @@
             }
         }
         &-operate {
+            overflow-x: scroll;
             font-size: $font-size-sm;
             color: #606060;
             &-selector {
