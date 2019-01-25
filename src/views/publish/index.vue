@@ -42,7 +42,7 @@
             @include ftb();
             flex-flow: column;
             margin: 0 auto;
-            margin-top: 53px;
+            margin-top: 23px;
             padding: 25px 30px;
             padding-bottom: 80px;
             width: 362px;
