@@ -6,14 +6,14 @@
                 <span>用户名称</span>
             </div>
             <p class="punch-card-title">
-                我已连续1323天学习《词汇解释词汇解词汇解释词汇解词汇解释词汇解词汇解释词汇解》课程！
+                我已连续133天学习《释词汇解释词汇解释》课程！
             </p>
             <div class="punch-card-info">
                 <p class="punch-card-info-title ellipsis">
                     statute
                 </p>
                 <p class="punch-card-info-content">
-                    词汇解释词汇解释词汇解释词汇解释词汇解释词汇解释词汇解释词汇解释词汇解释词汇解释词汇解释
+                    释词汇解释词汇解释
                 </p>
             </div>
             <img class="punch-card-img" :src="require('@/assets/img/punch/punch_01.png')" alt="punch_img"/>
@@ -96,6 +96,7 @@
 <style lang="scss" scoped>
     .punch {
         padding: 15px 0;
+        padding-bottom: 86px;
         min-height: 100vh;
         background: url("~@/assets/img/punch/punch_bg.png") no-repeat center;
         background-size: cover;
@@ -107,8 +108,9 @@
             @include ftb();
             flex-flow: column;
             padding: 0 30px;
+            padding-bottom: 28px;
             width: 346px;
-            height: 507px;
+            flex: 0 0 346px;
             background: url("~@/assets/img/punch/punch_card_bg.png") no-repeat center;
             background-size: cover;
             text-align: center;
@@ -131,15 +133,15 @@
             }
             &-title {
                 margin-top: 18px;
-                height: 50px;
+                /*height: 50px;*/
+                line-height: 25px;
                 font-size: 18px;
                 font-weight: 500;
                 color: $color-important;
-                @include ellipsis();
-                line-height: 25px;
+                overflow: hidden;
             }
             &-info {
-                margin-top: 25px;
+                margin-top: 36px;
                 &-title {
                     font-size: 26px;
                     font-weight: 600;
@@ -149,8 +151,8 @@
                     margin-top: 17px;
                     font-size: $font-size-sm;
                     color: #909090;
-                    @include ellipsis();
                     line-height: 17px;
+                    overflow: hidden;
                 }
             }
             &-img {
