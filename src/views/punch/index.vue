@@ -1,16 +1,15 @@
 <template>
     <div class="punch">
-        <!--<img :src="imgSrc" alt="">-->
         <div class="punch-card" ref="we">
             <div class="punch-card-head">
                 <img :src="require('@/assets/img/demo_class_banner.png')" alt="wx_header">
                 <span>用户名称</span>
             </div>
             <p class="punch-card-title">
-                我已连续XX天学习XXXX X课程！
+                我已连续1323天学习《词汇解释词汇解词汇解释词汇解词汇解释词汇解词汇解释词汇解》课程！
             </p>
             <div class="punch-card-info">
-                <p class="punch-card-info-title">
+                <p class="punch-card-info-title ellipsis">
                     statute
                 </p>
                 <p class="punch-card-info-content">
@@ -132,13 +131,15 @@
             }
             &-title {
                 margin-top: 18px;
-                @include height(25px);
+                height: 50px;
                 font-size: 18px;
                 font-weight: 500;
                 color: $color-important;
+                @include ellipsis();
+                line-height: 25px;
             }
             &-info {
-                margin-top: 38px;
+                margin-top: 25px;
                 &-title {
                     font-size: 26px;
                     font-weight: 600;
@@ -146,9 +147,10 @@
                 }
                 &-content {
                     margin-top: 17px;
-                    line-height: 17px;
                     font-size: $font-size-sm;
                     color: #909090;
+                    @include ellipsis();
+                    line-height: 17px;
                 }
             }
             &-img {
