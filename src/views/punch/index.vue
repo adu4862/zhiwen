@@ -1,6 +1,6 @@
 <template>
     <div class="punch">
-        <img :src="imgSrc" alt="">
+        <!--<img :src="imgSrc" alt="">-->
         <div class="punch-card" ref="we">
             <div class="punch-card-head">
                 <img :src="require('@/assets/img/demo_class_banner.png')" alt="wx_header">
@@ -23,24 +23,16 @@
                 <p class="punch-card-qr-tips">长按识别左边二维码<br/>马上加入该课程学习！</p>
             </div>
         </div>
-        <div class="punch-operate">
-            <div class="punch-operate-selector">
-                <p class="punch-operate-selector-title">选择皮肤</p>
-                <div class="punch-operate-selector-cards">
-                    <div class="punch-operate-selector-cards-item"></div>
-                    <div class="punch-operate-selector-cards-item"></div>
-                    <div class="punch-operate-selector-cards-item"></div>
-                    <div class="punch-operate-selector-cards-item"></div>
-                    <div class="punch-operate-selector-cards-item"></div>
-                    <div class="punch-operate-selector-cards-item"></div>
-                    <div class="punch-operate-selector-cards-item"></div>
-                    <div class="punch-operate-selector-cards-item"></div>
-                    <div class="punch-operate-selector-cards-item"></div>
-                    <div class="punch-operate-selector-cards-item"></div>
-                </div>
+        <div class="punch-operates">
+            <span class="punch-operates-title">选择皮肤：</span>
+            <div class="punch-operates-cards">
+                <div class="punch-operates-cards-item"></div>
+                <div class="punch-operates-cards-item"></div>
+                <div class="punch-operates-cards-item"></div>
+                <div class="punch-operates-cards-item"></div>
+                <div class="punch-operates-cards-item"></div>
             </div>
-            <button class="blue-btn-48" @click="handleCreateImg">保存</button>
-            <p class="punch-operate-tips">保存海报并分享朋友圈，客服查看后，即可完成当日打卡</p>
+            <button class="blue-btn-48" @click="handleCreateImg">打卡</button>
         </div>
     </div>
 </template>
@@ -53,7 +45,6 @@
         name: "Punch",
         data() {
             return {
-                imgSrc: ''
             }
         },
         mounted() {
@@ -76,10 +67,9 @@
                 this.toImage();
             },
             toImage() {
-                let dom = this.$refs.we
-                console.log(dom)
-                let width = dom.offsetWidth
-                let height = dom.offsetHeight
+                let dom = this.$refs.we;
+                let width = dom.offsetWidth;
+                let height = dom.offsetHeight;
                 let canvasBox = document.createElement("canvas");
                 let scale = window.devicePixelRatio;
                 canvasBox.width = width * scale;
@@ -88,7 +78,6 @@
                 canvasBox.style.width = width + "px";
                 canvasBox.style.height = height + "px";
                 canvasBox.getContext("2d").scale(scale, scale);
-                console.log(scale)
                 html2canvas(this.$refs.we, {
                     backgroundColor: null,
                     // allowTaint: true,
@@ -98,7 +87,7 @@
                     // scale: scale,
                 }).then((canvas) => {
                     let dataURL = canvas.toDataURL("image/png");
-                    this.imgSrc = dataURL;
+                    this.$router.push({name: 'punchSuccess', params: { imgSrc: dataURL }})
                 });
             }
         }
@@ -184,43 +173,38 @@
                 }
             }
         }
-        &-operate {
+        &-operates {
+            position: fixed;
+            bottom: 0;
             @include ftb();
-            flex-flow: column;
-            font-size: $font-size-sm;
-            color: #606060;
-            &-selector {
-                margin-top: 8px;
-                padding: 11px 26px 15px 26px;
-                width: 346px;
-                background-color: #fff;
-                &-title {
-                    @include height(17px);
-                }
-                &-cards {
-                    display: flex;
-                    flex-wrap: nowrap;
-                    margin-top: 6px;
-                    overflow-x: scroll;
-                    &-item {
-                        margin-left: 13px;
-                        width: 38px;
-                        height: 36px;
-                        flex: 0 0 38px;
-                        background-color: #969FAF;
-                        &:nth-child(1) {
-                            margin-left: initial;
-                        }
+            justify-content: space-between;
+            padding: 9px 10px;
+            width: 100%;
+            font-size: 12px;
+            color: $color-gary;
+            background-color: #fff;
+            &-title {
+                flex: 0 0 65px;
+            }
+            &-cards {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: scroll;
+                &-item {
+                    margin-left: 13px;
+                    width: 38px;
+                    height: 36px;
+                    flex: 0 0 38px;
+                    background-color: #969FAF;
+                    &:nth-child(1) {
+                        margin-left: initial;
                     }
                 }
             }
             button {
-                margin-top: 20px;
-                width: 346px;
-            }
-            &-tips {
-                margin-top: 4px;
-                text-align: center;
+                margin-left: 29px;
+                width: 111px;
+                flex: 0 0 111px;
             }
         }
     }
