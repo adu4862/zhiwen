@@ -17,7 +17,8 @@
                 <img :src="require('@/assets/img/demo_banner.png')" alt="banner">
             </div>
             <div class="publish-card-content">
-                推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则
+                推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推
+                广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则
             </div>
         </div>
         <button class="blue-btn-48">分享链接</button>
@@ -45,11 +46,11 @@
             padding: 25px 30px;
             padding-bottom: 80px;
             width: 362px;
-            min-height: 529px;
+            min-height: 539px;
             font-size: $font-size-sm;
             color: $color-gary;
             background: url("~@/assets/img/publish_card_bg.png") no-repeat center;
-            background-size: cover;
+            background-size: 100% 100%;
             &-user {
                 @include ftb();
                 width: 100%;
