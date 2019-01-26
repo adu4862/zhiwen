@@ -29,6 +29,9 @@
                 </div>
                 <img class="class-voice-audio-control-next-img" :src="require('@/assets/img/icon_voice_arrow.png')"
                      alt="icon_voice_arrow" @click="">
+                <div class="class-voice-audio-control-speed" @click="changeSpeed">
+                    {{audio.speed}}x
+                </div>
             </div>
         </div>
     </div>
@@ -56,16 +59,7 @@
         name: "AudioDemo",
         data() {
             return {
-                musicList: [
-                    'http://sc1.111ttt.cn:8282/2018/1/03m/13/396131232171.m4a?tflag=1519095601&pin=6cd414115fdb9a950d827487b16b5f97#.mp3',
-                    'http://sc1.111ttt.cn:8282/2018/1/03m/13/396131229550.m4a?tflag=1519095601&pin=6cd414115fdb9a950d827487b16b5f97#.mp3',
-                    'http://sc1.111ttt.cn:8282/2018/1/03m/13/396131225385.m4a?tflag=1519095601&pin=6cd414115fdb9a950d827487b16b5f97#.mp3',
-                ],
                 musicSrc: 'http://sc1.111ttt.cn:8282/2018/1/03m/13/396131229550.m4a?tflag=1519095601&pin=6cd414115fdb9a950d827487b16b5f97#.mp3',
-                control: '播放',
-                isPlaying: false,
-                currentIndex: 0,
-                value: 0,
                 audio: {
                     currentTime: 0,
                     maxTime: 0,
@@ -76,6 +70,7 @@
                     preload: 'auto'
                 },
                 sliderTime: 0,
+                speeds: [0.7, 1, 1.5, 2],
             }
         },
         methods: {
@@ -105,6 +100,11 @@
             },
             changeCurrentTime(index) {
                 this.$refs.audio.currentTime = parseInt(index / 100 * this.audio.maxTime);
+            },
+            changeSpeed() {
+                let index = this.speeds.indexOf(this.audio.speed) + 1;
+                this.audio.speed = this.speeds[index % this.speeds.length];
+                this.$refs.audio.playbackRate = this.audio.speed;
             },
         },
         filters: {
@@ -145,6 +145,7 @@
                 }
             }
             &-control {
+                position: relative;
                 @include fct();
                 margin-top: 10px;
                 img {
@@ -163,6 +164,16 @@
                 }
                 &-next-img {
                     transform: rotate(180deg);
+                }
+                &-speed {
+                    @include tb();
+                    right: 20px;
+                    width: 50px;
+                    @include height(18px);
+                    border-radius: 18px;
+                    border: 1px solid #fff;
+                    font-size: $font-size-sm;
+                    text-align: center;
                 }
             }
         }
