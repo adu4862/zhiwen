@@ -12,13 +12,13 @@
         ></audio>
         <div class="class-voice-audio">
             <div class="class-voice-audio-process">
-                <span>{{audio.currentTime | formatSecond}}</span>
+                <p class="time">{{audio.currentTime | formatSecond}}</p>
                 <div class="class-voice-audio-process-slider">
-                    <van-slider v-model="value" @change="onChange" >
+                    <van-slider v-model="sliderTime" @change="changeCurrentTime">
                         <div slot="button" class="slider-button"></div>
                     </van-slider>
                 </div>
-                <span>{{audio.maxTime | formatSecond}}</span>
+                <p class="time">{{audio.maxTime | formatSecond}}</p>
             </div>
             <div class="class-voice-audio-control">
                 <img class="class-voice-audio-control-last-img" :src="require('@/assets/img/icon_voice_arrow.png')"
@@ -75,12 +75,10 @@
                     waiting: true,
                     preload: 'auto'
                 },
+                sliderTime: 0,
             }
         },
         methods: {
-            onChange() {
-
-            },
             startPlayOrPause() {
                 return this.audio.playing ? this.pausePlay() : this.startPlay()
             },
@@ -104,7 +102,10 @@
             },
             onLoadedmetadata(res) {
                 this.audio.maxTime = parseInt(res.target.duration);
-            }
+            },
+            changeCurrentTime(index) {
+                this.$refs.audio.currentTime = parseInt(index / 100 * this.audio.maxTime);
+            },
         },
         filters: {
             formatSecond(second = 0) {
@@ -129,6 +130,9 @@
                 @include fct();
                 font-size: $font-size-mini;
                 color: #fff;
+                .time {
+                    width: 40px;
+                }
                 &-slider {
                     margin: 0 10px;
                     width: 240px;
