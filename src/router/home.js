@@ -2,6 +2,7 @@
 const Home = () => import( /* webpackChunkName: "home" */ '../views/home/index')
 const ClassDetail = () => import( /* webpackChunkName: "home" */ '../views/home/classDetail/index')
 const ClassMedia = () => import( /* webpackChunkName: "home" */ '../views/home/classMedia/index')
+const ClassVoice = () => import( /* webpackChunkName: "home" */ '../views/home/classVoice/index')
 
 export default [
     {
@@ -18,5 +19,10 @@ export default [
         path: '/class/:id/media',
         name: 'classMedia',
         component: ClassMedia,
+    },
+    {
+        path: '/class/:id/voice',
+        name: 'classVoice',
+        component: ClassVoice,
     },
 ]

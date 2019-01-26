@@ -7,7 +7,8 @@ import {
     Checkbox,
     CheckboxGroup,
     Collapse,
-    CollapseItem
+    CollapseItem,
+    Slider,
 } from 'vant';
 
 Vue.use(Button);
@@ -18,3 +19,4 @@ Vue.use(Checkbox);
 Vue.use(CheckboxGroup);
 Vue.use(Collapse);
 Vue.use(CollapseItem);
+Vue.use(Slider);

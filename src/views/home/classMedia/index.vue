@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <img class="class-media-punch" :src="require('@/assets/img/icon_punch_circle.png')" alt="icon_punch">
+        <PunchEnter />
         <Modal
             :isVisible="checkWifiVisible"
             title="继续播放将消耗流量"
@@ -57,12 +57,14 @@
     import {isWifi} from "@/common/util"
     import 'video.js/dist/video-js.css'
     import {videoPlayer} from 'vue-video-player'
+    import PunchEnter from "../punchEnter"
 
     export default {
         name: "classMedia",
         components: {
             videoPlayer,
             Modal,
+            PunchEnter,
         },
         data() {
             return {
@@ -197,13 +199,6 @@
                     }
                 }
             }
-        }
-        &-punch {
-            position: fixed;
-            right: 0;
-            bottom: 25px;
-            width: 58px;
-            height: 58px;
         }
     }
 </style>
