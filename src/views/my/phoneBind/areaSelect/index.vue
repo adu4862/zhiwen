@@ -87,17 +87,25 @@
             },
             searchVal(val) {
                 let data = copyObj(code);
+                let arr = [];
                 if (trim(val)) {
                     data.map((group, idx) => {
-                        group.items.map((item, index) => {
-                            if (item.label.indexOf(val) === -1) {
-                                data.splice(idx, 1)
-                            }
-                        })
-                    })
-                    console.log(data)
+                        if (JSON.stringify(group.items).indexOf(val) !== -1) {
+                            let array = {
+                                title: group.title,
+                                items: []
+                            };
+                            group.items.map((item, index) => {
+                                if (JSON.stringify(item).indexOf(val) !== -1) {
+                                    array.items.push(item);
+                                }
+                            });
+                            arr.push(array)
+                        }
+                    });
+                    this.code = arr;
                 } else {
-
+                    this.code = data;
                 }
             }
         },
