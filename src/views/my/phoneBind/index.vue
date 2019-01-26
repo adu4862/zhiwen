@@ -5,8 +5,8 @@
         </div>
         <div class="bind-phone-form">
             <div class="cell-item">
-                <span class="phone-pre">中国(+86)</span>
-                <i class="cell-item-right-arrow"></i>
+                <span class="phone-pre">中国({{phoneCode}})</span>
+                <router-link :to="{name: 'areaSelect'}"><i class="cell-item-right-arrow"></i></router-link>
             </div>
             <div class="cell-item">
                 <input type="phone" placeholder="请输入您的手机号">
@@ -33,6 +33,7 @@
 
 <script>
     import {CountDown} from '@/components'
+    import {mapState, mapMutations, mapActions, mapGetters} from "vuex";
 
     export default {
         name: "phoneBind",
@@ -43,6 +44,9 @@
             return {
                 counting: false,
             }
+        },
+        computed: {
+            ...mapState(['phoneCode'])
         },
         methods: {
             startCountdown: function () {

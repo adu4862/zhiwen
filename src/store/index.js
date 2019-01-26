@@ -13,7 +13,7 @@ let modules = {
 
 export default new Vuex.Store({
     state: {
-        groups: [1]
+        phoneCode: '+86',
     },
     modules,
     actions,    // 根级别的 action

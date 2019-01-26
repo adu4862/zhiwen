@@ -7,7 +7,8 @@
                     <template v-if="group.items.length">
                         <h2 class="country-list-group-title">{{ group.title }}</h2>
                         <ul class="country-list-group-box">
-                            <li v-for="item in group.items" class="country-list-group-box-item" :key="item.id">
+                            <li v-for="item in group.items" class="country-list-group-box-item"
+                                :key="item.id" @click="handleCode(item.code)">
                                 <span class="name">{{ item.label }}</span>
                                 <span class="name">{{ item.code }}</span>
                             </li>
@@ -37,6 +38,7 @@
 <script>
     import BScroll from 'better-scroll'
     import code from './phoneCode'
+    import {mapState, mapMutations, mapActions, mapGetters} from "vuex";
 
     export default {
         name: "areaSelect",
@@ -50,7 +52,7 @@
         computed: {
             shortcutList () {
                 return this.code.map((group) => {
-                    return group.title
+                    return group.title;
                 })
             }
         },
@@ -79,46 +81,49 @@
             }
         },
         created () {
-            this.touch = {}
+            this.touch = {};
             // 初始化 better-scroll 必须要等 dom 加载完毕
             setTimeout(() => {
-                this._initSrcoll()
-                this._calculateHeight()
+                this._initSrcoll();
+                this._calculateHeight();
             }, 20)
         },
         methods: {
+            ...mapMutations({
+                setPhoneCode: "SET_PHONE_CODE"
+            }),
             _initSrcoll () {
                 this.scroll = new BScroll(this.$refs.listView, {
                     probeType: 3,
                     click: true
-                })
+                });
 
                 this.scroll.on('scroll', (pos) => {
-                    this.scrollY = pos.y
+                    this.scrollY = pos.y;
                 })
             },
             onShortcutStart (e) {
                 // 获取到绑定的 index
-                let index = e.target.getAttribute('data-index')
+                let index = e.target.getAttribute('data-index');
                 // 使用 better-scroll 的 scrollToElement 方法实现跳转
-                this.scrollToElement(index)
+                this.scrollToElement(index);
 
                 // 记录一下点击时候的 Y坐标 和 index
-                let firstTouch = e.touches[0].pageY
-                this.touch.y1 = firstTouch
-                this.touch.anchorIndex = index
+                let firstTouch = e.touches[0].pageY;
+                this.touch.y1 = firstTouch;
+                this.touch.anchorIndex = index;
             },
             onShortcutMove (e) {
                 // 再记录一下移动时候的 Y坐标，然后计算出移动了几个索引
-                let touchMove = e.touches[0].pageY
-                this.touch.y2 = touchMove
+                let touchMove = e.touches[0].pageY;
+                this.touch.y2 = touchMove;
                 // 这里的 16.7 是索引元素的高度
-                let delta = Math.floor((this.touch.y2 - this.touch.y1) / 16.7)
+                let delta = Math.floor((this.touch.y2 - this.touch.y1) / 16.7);
 
                 // 计算最后的位置
                 // * 1 是因为 this.touch.anchorIndex 是字符串，用 * 1 偷懒的转化一下，转成数字
-                let index = this.touch.anchorIndex * 1 + delta
-                this.scrollToElement(index)
+                let index = this.touch.anchorIndex * 1 + delta;
+                this.scrollToElement(index);
             },
             scrollToElement (index) {
                 // 处理边界情况
@@ -130,19 +135,23 @@
                     index = this.listHeight.length - 2
                 }
                 // listHeight 是正的， 所以加个 -
-                this.scrollY = -this.listHeight[index]
-                this.scroll.scrollToElement(this.$refs.listGroup[index])
+                this.scrollY = -this.listHeight[index];
+                this.scroll.scrollToElement(this.$refs.listGroup[index]);
             },
             _calculateHeight () {
-                this.listHeight = []
-                const list = this.$refs.listGroup
-                let height = 0
-                this.listHeight.push(height)
+                this.listHeight = [];
+                const list = this.$refs.listGroup;
+                let height = 0;
+                this.listHeight.push(height);
                 for (let i = 0; i < list.length; i++) {
-                    let item = list[i]
-                    height += item.clientHeight
-                    this.listHeight.push(height)
+                    let item = list[i];
+                    height += item.clientHeight;
+                    this.listHeight.push(height);
                 }
+            },
+            handleCode(code) {
+                this.setPhoneCode(code);
+                this.$router.go(-1);
             }
         },
     }
