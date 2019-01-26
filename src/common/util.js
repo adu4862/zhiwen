@@ -350,4 +350,11 @@ export const isWifi = () => {
     }
 };
 
-
+/**
+ * 首字母大写
+ * @param str
+ * @returns {string}
+ */
+export const fistLetterUpper = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+};

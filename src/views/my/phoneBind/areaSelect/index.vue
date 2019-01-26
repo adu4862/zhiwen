@@ -47,7 +47,7 @@
 <script>
     import BScroll from 'better-scroll'
     import code from './phoneCode'
-    import {copyObj, trim} from '@/common/util'
+    import {copyObj, trim, fistLetterUpper} from '@/common/util'
     import {mapState, mapMutations, mapActions, mapGetters} from "vuex";
 
     export default {
@@ -97,13 +97,13 @@
                 if (trim(val)) {
                     this.isHolder = false;
                     data.map((group, idx) => {
-                        if (JSON.stringify(group.items).indexOf(val) !== -1) {
+                        if (JSON.stringify(group.items).toLowerCase().indexOf(val) !== -1) {
                             let array = {
                                 title: group.title,
                                 items: []
                             };
                             group.items.map((item, index) => {
-                                if (JSON.stringify(item).indexOf(val) !== -1) {
+                                if (JSON.stringify(item).toLowerCase().indexOf(val) !== -1) {
                                     array.items.push(item);
                                 }
                             });
