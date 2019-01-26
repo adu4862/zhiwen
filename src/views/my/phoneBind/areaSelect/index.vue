@@ -156,15 +156,15 @@
     }
     .list-view {
         position: relative;
+        padding-bottom: 20px;
         width: 100%;
         height: 100%;
         overflow: hidden;
-        background: rgb(223, 223, 223);
         .list-group {
             &-title {
                 height: 30px;
                 line-height: 30px;
-                padding-left: 20px;
+                padding-left: 16px;
                 font-size: 12px;
                 color: $color-gary;
             }
@@ -190,22 +190,17 @@
         .list-shortcut {
             position: absolute;
             z-index: 30;
-            right: 0;
+            right: 14px;
             top: 50%;
             transform: translateY(-50%);
-            width: 20px;
-            padding: 20px 0;
-            border-radius: 10px;
             text-align: center;
-            background: rgba(167, 167, 167, 0.5);
             .item {
                 padding: 3px;
-                line-height: 1;
-                color: black;
-                font-size: 11px;
+                line-height: 9px;
+                font-size: $font-size-sm;
+                color: $color-important;
                 &.current {
                     color: #C20C0C;
-                    // font-weight: bold;
                 }
             }
         }
