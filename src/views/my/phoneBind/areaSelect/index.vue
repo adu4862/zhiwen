@@ -1,13 +1,13 @@
 <template>
-    <div class="box" >
-        <div class="list-view" ref="listView">
+    <div class="country" >
+        <div class="country-list" ref="listView">
             <!-- 列表 -->
             <ul>
-                <li v-for="group in code" class="list-group" :key="group.id" ref="listGroup">
+                <li v-for="group in code" class="country-list-group" :key="group.id" ref="listGroup">
                     <template v-if="group.items.length">
-                        <h2 class="list-group-title">{{ group.title }}</h2>
-                        <ul class="list-group-box">
-                            <li v-for="item in group.items" class="list-group-item" :key="item.id">
+                        <h2 class="country-list-group-title">{{ group.title }}</h2>
+                        <ul class="country-list-group-box">
+                            <li v-for="item in group.items" class="country-list-group-box-item" :key="item.id">
                                 <span class="name">{{ item.label }}</span>
                                 <span class="name">{{ item.code }}</span>
                             </li>
@@ -15,21 +15,21 @@
                     </template>
                 </li>
             </ul>
-            <!-- 右侧导航 -->
-            <div class="list-shortcut">
-                <ul>
-                    <li v-for="(item, index) in shortcutList"
-                        class="item"
-                        :data-index="index"
-                        :key="item.id"
-                        @touchstart="onShortcutStart"
-                        @touchmove.stop.prevent="onShortcutMove"
-                        :class="{'current': currentIndex === index}"
-                    >
-                        {{ item }}
-                    </li>
-                </ul>
-            </div>
+        </div>
+        <!-- 右侧导航 -->
+        <div class="country-guide">
+            <ul>
+                <li v-for="(item, index) in shortcutList"
+                    class="country-guide-item"
+                    :data-index="index"
+                    :key="item.id"
+                    @touchstart="onShortcutStart"
+                    @touchmove.stop.prevent="onShortcutMove"
+                    :class="{'current': currentIndex === index}"
+                >
+                    {{ item }}
+                </li>
+            </ul>
         </div>
     </div>
 </template>
@@ -149,52 +149,52 @@
 </script>
 
 <style lang="scss">
-    .box {
+    .country {
         position: fixed;
         width: 100%;
         height: 100%;
-    }
-    .list-view {
-        position: relative;
-        padding-bottom: 20px;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        .list-group {
-            &-title {
-                height: 30px;
-                line-height: 30px;
-                padding-left: 16px;
-                font-size: 12px;
-                color: $color-gary;
-            }
-            &-box {
-                margin: 0 auto;
-                width: 357px;
-                background-color: #fff;
-            }
-            &-item {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-left: 18px;
-                padding: 10px 5px;
-                width: 308px;
-                @include border-bottom($border-color: #BCBCBC);
-                color: $color-important;
-                &:nth-last-child(1):after {
-                    display: none;
+        &-list {
+            position: relative;
+            padding-bottom: 20px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            &-group {
+                &-title {
+                    height: 30px;
+                    line-height: 30px;
+                    padding-left: 16px;
+                    font-size: 12px;
+                    color: $color-gary;
+                }
+                &-box {
+                    margin: 0 auto;
+                    width: 357px;
+                    background-color: #fff;
+                    &-item {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-left: 18px;
+                        padding: 10px 5px;
+                        width: 308px;
+                        @include border-bottom($border-color: #BCBCBC);
+                        color: $color-important;
+                        &:nth-last-child(1):after {
+                            display: none;
+                        }
+                    }
                 }
             }
         }
-        .list-shortcut {
+        &-guide {
             position: absolute;
             z-index: 30;
             right: 14px;
             top: 50%;
             transform: translateY(-50%);
             text-align: center;
-            .item {
+            &-item {
                 padding: 3px;
                 line-height: 9px;
                 font-size: $font-size-sm;
