@@ -3,14 +3,16 @@
         <div class="list-view" ref="listView">
             <!-- 列表 -->
             <ul>
-                <li v-for="group in singers" class="list-group" :key="group.id" ref="listGroup">
-                    <h2 class="list-group-title">{{ group.title }}</h2>
-                    <ul>
-                        <li v-for="item in group.items" class="list-group-item" :key="item.id">
-                            <span class="name">{{ item.label }}</span>
-                            <span class="name">{{ item.pre }}</span>
-                        </li>
-                    </ul>
+                <li v-for="group in code" class="list-group" :key="group.id" ref="listGroup">
+                    <template v-if="group.items.length">
+                        <h2 class="list-group-title">{{ group.title }}</h2>
+                        <ul class="list-group-box">
+                            <li v-for="item in group.items" class="list-group-item" :key="item.id">
+                                <span class="name">{{ item.label }}</span>
+                                <span class="name">{{ item.code }}</span>
+                            </li>
+                        </ul>
+                    </template>
                 </li>
             </ul>
             <!-- 右侧导航 -->
@@ -34,411 +36,21 @@
 
 <script>
     import BScroll from 'better-scroll'
+    import code from './phoneCode'
 
     export default {
         name: "areaSelect",
         data () {
             return {
-                singers: [
-                    {
-                        title: 'A',
-                        items: [
-                            {
-                                label: '阿尔巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '阿尔巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '阿尔巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '阿尔巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '阿尔巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '阿尔巴尼亚',
-                                pre: '+355'
-                            },
-                        ]
-                    },
-                    {
-                        title: 'B',
-                        items: [
-                            {
-                                label: '巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '巴尼亚',
-                                pre: '+355'
-                            },
-                        ]
-                    },
-                    {
-                        title: 'C',
-                        items: [
-                            {
-                                label: '出巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '出巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '出巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '出巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '出巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '出巴尼亚',
-                                pre: '+355'
-                            },
-                        ]
-                    },
-                    {
-                        title: 'E',
-                        items: [
-                            {
-                                label: '额巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '额巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '额巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '额巴尼亚',
-                                pre: '+355'
-                            },
-                        ]
-                    },
-                    {
-                        title: 'F',
-                        items: [
-                            {
-                                label: '分巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '分巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '分巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '分巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '分巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '分巴尼亚',
-                                pre: '+355'
-                            },
-                        ]
-                    },
-                    {
-                        title: 'G',
-                        items: [
-                            {
-                                label: '哥巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '哥巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '哥巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '哥巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '哥巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '哥巴尼亚',
-                                pre: '+355'
-                            },
-                        ]
-                    },
-                    {
-                        title: 'H',
-                        items: [
-                            {
-                                label: '湖巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '湖巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '湖巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '湖巴尼亚',
-                                pre: '+355'
-                            },
-                        ]
-                    },
-                    {
-                        title: 'I',
-                        items: [
-                            {
-                                label: '爱巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '爱巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '爱巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '爱巴尼亚',
-                                pre: '+355'
-                            },
-                        ]
-                    },
-                    {
-                        title: 'J',
-                        items: [
-                            {
-                                label: '句巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '句巴尼亚',
-                                pre: '+355'
-                            },
-                        ]
-                    },
-                    {
-                        title: 'K',
-                        items: [
-                            {
-                                label: '可巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '可巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '可巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '可巴尼亚',
-                                pre: '+355'
-                            },
-                        ]
-                    },
-                    {
-                        title: 'L',
-                        items: [
-                            {
-                                label: '里巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '里巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '里巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '里巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '里巴尼亚',
-                                pre: '+355'
-                            },
-                        ]
-                    },
-                    {
-                        title: 'M',
-                        items: [
-                            {
-                                label: '莫巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '莫巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '莫巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '莫巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '莫巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '莫巴尼亚',
-                                pre: '+355'
-                            },
-                        ]
-                    },
-                    {
-                        title: 'N',
-                        items: [
-                            {
-                                label: '呢巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '呢巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '呢巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '呢巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '呢巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '呢巴尼亚',
-                                pre: '+355'
-                            },
-                        ]
-                    },
-                    {
-                        title: 'O',
-                        items: [
-                            {
-                                label: '哦巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '哦巴尼亚',
-                                pre: '+355'
-                            },
-                            {
-                                label: '哦巴尼亚',
-                                pre: '+355'
-                            },
-                        ]
-                    },
-                    {
-                        title: 'P',
-                        items: [
-
-                        ]
-                    },
-                    {
-                        title: 'R',
-                        items: [
-
-                        ]
-                    },
-                    {
-                        title: 'S',
-                        items: [
-
-                        ]
-                    },
-                    {
-                        title: 'T',
-                        items: [
-
-                        ]
-                    },
-                    {
-                        title: 'W',
-                        items: [
-
-                        ]
-                    },
-                    {
-                        title: 'X',
-                        items: [
-
-                        ]
-                    },
-                    {
-                        title: 'Y',
-                        items: [
-
-                        ]
-                    },
-                    {
-                        title: 'Z',
-                        items: [
-
-                        ]
-                    }
-                ],
+                code,
                 scrollY: 0,
                 currentIndex: 0
             }
         },
         computed: {
             shortcutList () {
-                return this.singers.map((group) => {
-                    return group.title.substr(0, 1)
+                return this.code.map((group) => {
+                    return group.title
                 })
             }
         },
@@ -549,30 +161,29 @@
         overflow: hidden;
         background: rgb(223, 223, 223);
         .list-group {
-            padding-bottom: 30px;
-            .list-group-title {
+            &-title {
                 height: 30px;
                 line-height: 30px;
                 padding-left: 20px;
                 font-size: 12px;
-                color: #FFF;
-                background: #C20C0C;
+                color: $color-gary;
             }
-            .list-group-item {
+            &-box {
+                margin: 0 auto;
+                width: 357px;
+                background-color: #fff;
+            }
+            &-item {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: 20px 0;
-                .avatar {
-                    width: 50px;
-                    height: 50px;
-                    border-radius: 5%;
-                }
-                .name {
-                    /*margin-left: 20px;*/
-                    color: black;
-                    font-size: 14px;
-                    // font-weight: 500;
+                margin-left: 18px;
+                padding: 10px 5px;
+                width: 308px;
+                @include border-bottom($border-color: #BCBCBC);
+                color: $color-important;
+                &:nth-last-child(1):after {
+                    display: none;
                 }
             }
         }
