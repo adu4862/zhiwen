@@ -7,6 +7,7 @@
             controls
             @play="onPlay"
             @pause="onPause"
+            @error="onError"
             @timeupdate="onTimeupdate"
             @loadedmetadata="onLoadedmetadata"
         ></audio>
@@ -77,11 +78,9 @@
             startPlayOrPause() {
                 return this.audio.playing ? this.pausePlay() : this.startPlay()
             },
-            // 开始播放
             startPlay() {
                 this.$refs.audio.play()
             },
-            // 暂停
             pausePlay() {
                 this.$refs.audio.pause()
             },
@@ -90,6 +89,11 @@
             },
             onPause() {
                 this.audio.playing = false;
+            },
+            onError() {
+                this.$toast({
+                    msg: '出错了'
+                })
             },
             onTimeupdate(res) {
                 this.audio.currentTime = res.target.currentTime;
@@ -147,16 +151,16 @@
             &-control {
                 position: relative;
                 @include fct();
-                margin-top: 10px;
+                margin-top: 15px;
                 img {
-                    width: 15px;
-                    height: 15px;
+                    width: 20px;
+                    height: 20px;
                 }
                 &-main {
                     margin: 0 37px;
                     img {
-                        width: 20px;
-                        height: 20px;
+                        width: 25px;
+                        height: 25px;
                     }
                 }
                 &-last-img {
@@ -167,7 +171,7 @@
                 }
                 &-speed {
                     @include tb();
-                    right: 20px;
+                    right: 0;
                     width: 50px;
                     @include height(18px);
                     border-radius: 18px;
