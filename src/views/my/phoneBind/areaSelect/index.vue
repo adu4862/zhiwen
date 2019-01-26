@@ -1,5 +1,5 @@
 <template>
-    <div class="country" >
+    <div class="country">
         <div class="country-list" ref="listView">
             <!-- 列表 -->
             <ul>
@@ -32,32 +32,38 @@
                 </li>
             </ul>
         </div>
+        <!--上方搜索-->
+        <div class="country-search">
+            <input v-model="searchVal" type="text" placeholder="搜索" class="country-search-input">
+        </div>
     </div>
 </template>
 
 <script>
     import BScroll from 'better-scroll'
     import code from './phoneCode'
+    import {copyObj, trim} from '@/common/util'
     import {mapState, mapMutations, mapActions, mapGetters} from "vuex";
 
     export default {
         name: "areaSelect",
-        data () {
+        data() {
             return {
                 code,
                 scrollY: 0,
-                currentIndex: 0
+                currentIndex: 0,
+                searchVal: ''
             }
         },
         computed: {
-            shortcutList () {
+            shortcutList() {
                 return this.code.map((group) => {
                     return group.title;
                 })
             }
         },
         watch: {
-            scrollY (newVal) {
+            scrollY(newVal) {
                 // 向下滑动的时候 newVal 是一个负数，所以当 newVal > 0 时，currentIndex 直接为 0
                 if (newVal > 0) {
                     this.currentIndex = 0
@@ -78,9 +84,24 @@
                 // 当超 -newVal > 最后一个高度的时候
                 // 因为 this.listHeight 有头尾，所以需要 - 2
                 this.currentIndex = this.listHeight.length - 2
+            },
+            searchVal(val) {
+                let data = copyObj(code);
+                if (trim(val)) {
+                    data.map((group, idx) => {
+                        group.items.map((item, index) => {
+                            if (item.label.indexOf(val) === -1) {
+                                data.splice(idx, 1)
+                            }
+                        })
+                    })
+                    console.log(data)
+                } else {
+
+                }
             }
         },
-        created () {
+        created() {
             this.touch = {};
             // 初始化 better-scroll 必须要等 dom 加载完毕
             setTimeout(() => {
@@ -92,7 +113,7 @@
             ...mapMutations({
                 setPhoneCode: "SET_PHONE_CODE"
             }),
-            _initSrcoll () {
+            _initSrcoll() {
                 this.scroll = new BScroll(this.$refs.listView, {
                     probeType: 3,
                     click: true
@@ -102,7 +123,7 @@
                     this.scrollY = pos.y;
                 })
             },
-            onShortcutStart (e) {
+            onShortcutStart(e) {
                 // 获取到绑定的 index
                 let index = e.target.getAttribute('data-index');
                 // 使用 better-scroll 的 scrollToElement 方法实现跳转
@@ -113,7 +134,7 @@
                 this.touch.y1 = firstTouch;
                 this.touch.anchorIndex = index;
             },
-            onShortcutMove (e) {
+            onShortcutMove(e) {
                 // 再记录一下移动时候的 Y坐标，然后计算出移动了几个索引
                 let touchMove = e.touches[0].pageY;
                 this.touch.y2 = touchMove;
@@ -125,7 +146,7 @@
                 let index = this.touch.anchorIndex * 1 + delta;
                 this.scrollToElement(index);
             },
-            scrollToElement (index) {
+            scrollToElement(index) {
                 // 处理边界情况
                 // 因为 index 通过滑动距离计算出来的
                 // 所以向上滑超过索引框框的时候就会 < 0，向上就会超过最大值
@@ -135,10 +156,10 @@
                     index = this.listHeight.length - 2
                 }
                 // listHeight 是正的， 所以加个 -
-                this.scrollY = -this.listHeight[index];
+                this.scrollY = -(this.listHeight[index] + 60);
                 this.scroll.scrollToElement(this.$refs.listGroup[index]);
             },
-            _calculateHeight () {
+            _calculateHeight() {
                 this.listHeight = [];
                 const list = this.$refs.listGroup;
                 let height = 0;
@@ -164,9 +185,10 @@
         height: 100%;
         &-list {
             position: relative;
-            padding-bottom: 20px;
+            margin-top: 60px;
+            margin-bottom: 20px;
             width: 100%;
-            height: 100%;
+            height: 88%;
             overflow: hidden;
             &-group {
                 &-title {
@@ -211,6 +233,20 @@
                 &.current {
                     color: #C20C0C;
                 }
+            }
+        }
+        &-search {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 14px 21px;
+            background-color: #fff;
+            &-input {
+                width: 333px;
+                height: 32px;
+                text-align: center;
+                background: rgba(129, 153, 252, .1);
             }
         }
     }

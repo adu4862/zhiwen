@@ -68,6 +68,16 @@ export const sessionClear = () => {
 };
 
 /**
+ * vue拷贝对象
+ * @param obj、arr
+ * @returns {any}
+ */
+export const copyObj = (obj) => {
+    let objCopy = JSON.parse(JSON.stringify(obj));
+    return objCopy
+};
+
+/**
  * 生成随机字符串(可指定长度)
  * @param len
  * @returns {string}
