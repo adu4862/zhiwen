@@ -129,11 +129,11 @@
             bottom: 0;
             padding: 12px 20px;
             width: 100%;
+            color: #fff;
             background: rgba(1, 16, 43, .8);
             &-process {
                 @include fct();
                 font-size: $font-size-mini;
-                color: #fff;
                 .time {
                     width: 40px;
                 }
@@ -173,7 +173,8 @@
                     @include tb();
                     right: 0;
                     width: 50px;
-                    @include height(18px);
+                    height: 18px;
+                    line-height: 16px;
                     border-radius: 18px;
                     border: 1px solid #fff;
                     font-size: $font-size-sm;
