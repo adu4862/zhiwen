@@ -34,7 +34,12 @@
         </div>
         <!--上方搜索-->
         <div class="country-search">
-            <input v-model="searchVal" type="text" placeholder="搜索" class="country-search-input">
+            <input id="q" v-model="searchVal" type="text" class="country-search-input">
+            <div class="country-search-holder" v-show="isHolder">
+                <img class="country-search-holder-icon" :src="require('@/assets/img/icon_search.png')"
+                     alt="icon_search">
+                <label class="country-search-holder-label" for="q">搜索</label>
+            </div>
         </div>
     </div>
 </template>
@@ -52,7 +57,8 @@
                 code,
                 scrollY: 0,
                 currentIndex: 0,
-                searchVal: ''
+                searchVal: '',
+                isHolder: true
             }
         },
         computed: {
@@ -89,6 +95,7 @@
                 let data = copyObj(code);
                 let arr = [];
                 if (trim(val)) {
+                    this.isHolder = false;
                     data.map((group, idx) => {
                         if (JSON.stringify(group.items).indexOf(val) !== -1) {
                             let array = {
@@ -105,6 +112,7 @@
                     });
                     this.code = arr;
                 } else {
+                    this.isHolder = true;
                     this.code = data;
                 }
             }
@@ -255,6 +263,18 @@
                 height: 32px;
                 text-align: center;
                 background: rgba(129, 153, 252, .1);
+            }
+            &-holder {
+                @include ct();
+                @include ftb();
+                &-icon {
+                    width: 14px;
+                    height: 14px;
+                }
+                &-label {
+                    margin-left: 3px;
+                    font-size: 15px;
+                }
             }
         }
     }
