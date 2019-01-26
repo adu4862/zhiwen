@@ -1,5 +1,7 @@
 <template>
     <div class="class-voice">
+        <div class="class-voice-lyrics" id="parent">
+        </div>
         <audio
             ref="audio"
             class="audio"
@@ -11,6 +13,7 @@
             @timeupdate="onTimeupdate"
             @loadedmetadata="onLoadedmetadata"
         ></audio>
+        <!-- 底部控制条 -->
         <div class="class-voice-audio">
             <div class="class-voice-audio-process">
                 <p class="time">{{audio.currentTime | formatSecond}}</p>
@@ -39,6 +42,8 @@
 </template>
 
 <script>
+    import Vue from 'vue';
+
     function realFormatSecond(second) {
         let secondType = typeof second;
 
@@ -72,9 +77,35 @@
                 },
                 sliderTime: 0,
                 speeds: [0.7, 1, 1.5, 2],
+                lyrics: '<div>能够把各种<span @click="handleLabel(1)" class="label">生活关系</span>转换为法律关系<span @click="handleLabel(2)" class="label">生活关系</span>。</div>',
+                component: null,
             }
         },
+        mounted() {
+            this.handleLyrics();
+            this.$nextTick().then(() => {
+                document.getElementById('parent').appendChild(this.component.$el);
+            })
+        },
         methods: {
+            handleLyrics() {
+                // let data = this.lyrics;
+                // let arr = data.match(/@\$.*?#\)/g);
+                // console.log(arr)
+                // arr.map((str) => {
+                //     console.log(data.indexOf(str))
+                // })
+                // data = data.replace(/@\$/g, '<span @click="show" class="label">').replace(/\$@/g, '</span>');
+                let MyComponent = Vue.extend({
+                    template: this.lyrics,
+                    methods: {
+                        handleLabel(id) {
+                            console.log(id);
+                        },
+                    }
+                });
+                this.component = new MyComponent().$mount();
+            },
             startPlayOrPause() {
                 return this.audio.playing ? this.pausePlay() : this.startPlay()
             },
@@ -109,7 +140,7 @@
                 let index = this.speeds.indexOf(this.audio.speed) + 1;
                 this.audio.speed = this.speeds[index % this.speeds.length];
                 this.$refs.audio.playbackRate = this.audio.speed;
-            },
+            }
         },
         filters: {
             formatSecond(second = 0) {
@@ -121,8 +152,11 @@
 
 <style scoped lang="scss">
     .class-voice {
-        audio {
-            height: 100px;
+        &-lyrics {
+            padding: 20px 20px 100px 20px;
+            line-height: 21px;
+            color: #737993;
+
         }
         &-audio {
             position: fixed;
@@ -182,5 +216,14 @@
                 }
             }
         }
+        audio {
+            display: none;
+        }
+    }
+</style>
+
+<style>
+    .class-voice a {
+        color: #ff6632;
     }
 </style>
