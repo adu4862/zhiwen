@@ -17,9 +17,10 @@ const AJAX = axios.create({
 AJAX.interceptors.request.use(function (config) {
     // 在发送请求之前做些什么
     let localbase = window.location.host;
-    if (config.url.indexOf('api') != -1) {
-        config.url = `http://${localbase}/` + config.url;           // 自定义反向代理
-    }
+    config.url = `http://${localbase}/api` + config.url;           // 自定义反向代理
+    // if (config.url.indexOf('api') != -1) {
+    //     config.url = `http://${localbase}/api` + config.url;           // 自定义反向代理
+    // }
     return config;
 }, function (error) {
     // 对请求错误做些什么

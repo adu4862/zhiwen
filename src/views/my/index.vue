@@ -45,6 +45,7 @@
 </template>
 
 <script>
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
     import {SectionTitle, CellItem} from '@/components'
     import ClassItem from './classItem'
     import ClassEmpty from './classEmpty'
@@ -64,7 +65,11 @@
                 finished: false
             }
         },
+        mounted() {
+            this.userLogin();
+        },
         methods: {
+            ...mapActions(['userLogin']),
             onLoad() {
                 // 模拟异步更新数据
                 setTimeout(() => {

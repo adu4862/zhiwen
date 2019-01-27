@@ -14,6 +14,7 @@ let modules = {
 export default new Vuex.Store({
     state: {
         phoneCode: '+86',
+        token: '',
     },
     modules,
     actions,    // 根级别的 action
