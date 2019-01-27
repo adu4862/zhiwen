@@ -38,7 +38,15 @@
             if (GetRequest().authorization) sessionSetItem('token', GetRequest().authorization)
             next();
         },
+        mounted() {
+            this.getBanner();
+            this.getClassList({
+                skip: 0,
+                limit: 10
+            });
+        },
         methods: {
+            ...mapActions('home', ['getBanner', 'getClassList']),
             handleClassItem() {
                 this.$router.push({name: 'classDetail', params: {id: '1'}})
             }

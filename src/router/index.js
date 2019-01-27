@@ -8,7 +8,6 @@ import discountRouter from './discount'
 import exerciseRouter from './exercise'
 
 // demo页
-const DemoPage = () => import( /* webpackChunkName: "home" */ '../views/demo')
 const CanvasDemo = () => import( /* webpackChunkName: "home" */ '../views/canvasDemo')
 const QRDemo = () => import( /* webpackChunkName: "home" */ '../views/qrDemo')
 const NotFound = () => import( /* webpackChunkName: "home" */ '../views/common/404')
@@ -22,11 +21,6 @@ const router =  new Router({
     mode: 'history',
     base: base,
     routes: [
-        {
-            path: '/demo',
-            name: 'demopage',
-            component: DemoPage
-        },
         {
             path: '/canvas',
             name: 'canvasDemo',

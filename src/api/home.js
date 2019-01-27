@@ -3,5 +3,7 @@
  */
 import Request from '@/common/request';
 
+/* Banner */
+export const banner = data => Request.get('/banner', data);
 /* 课程列表 */
-export const classList = data => Request.get('/product', data);
+export const classlist = data => Request.get('/product', data);

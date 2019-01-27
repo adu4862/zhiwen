@@ -9,7 +9,7 @@ import my from './my';
 Vue.use(Vuex);
 
 let modules = {
-    ...home,
+    home,
     my,
 };
 
