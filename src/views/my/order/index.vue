@@ -17,6 +17,7 @@
 </template>
 
 <script>
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
     import OrderEmpty from './orderEmpty'
     import OrderItem from './orderItem'
 
@@ -33,7 +34,14 @@
                 finished: false
             }
         },
+        mounted() {
+            this.getUserOrders({
+                skip: 0,
+                limit: 10
+            });
+        },
         methods: {
+            ...mapActions('my', ['getUserOrders']),
             onLoad() {
                 // 模拟异步更新数据
                 setTimeout(() => {
