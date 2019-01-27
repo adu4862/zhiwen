@@ -35,6 +35,7 @@
 </template>
 
 <script>
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
     import PromotionItem from './promotionItem'
     import PromotionEmpty from './promotionEmpty'
     import {SectionTitle} from '@/components'
@@ -53,7 +54,15 @@
                 finished: false
             }
         },
+        mounted() {
+            this.getUserRewardAmount();
+            this.getUserPunches({
+                skip: 0,
+                limit: 10
+            });
+        },
         methods: {
+            ...mapActions('my', ['getUserRewardAmount', 'getUserPunches']),
             onLoad() {
                 // 模拟异步更新数据
                 setTimeout(() => {

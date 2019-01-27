@@ -68,11 +68,9 @@
         mounted() {
             this.userLogin();
             this.getUserInfo();
-            this.userRewardAmount();
         },
         methods: {
             ...mapActions(['userLogin', 'getUserInfo']),
-            ...mapActions('my', ['userRewardAmount']),
             onLoad() {
                 // 模拟异步更新数据
                 setTimeout(() => {

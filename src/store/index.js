@@ -10,7 +10,7 @@ Vue.use(Vuex);
 
 let modules = {
     ...home,
-    ...my,
+    my,
 };
 
 export default new Vuex.Store({

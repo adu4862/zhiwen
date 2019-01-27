@@ -46,6 +46,7 @@ AJAX.interceptors.response.use(function (response) {
 // 定义对外Get、Post、File请求
 export default {
     get(url, param = {}, headers = {}, notUseBaseURL = false) {
+        console.log(headers)
         return AJAX.get(url, {
             params: param,
             headers,
