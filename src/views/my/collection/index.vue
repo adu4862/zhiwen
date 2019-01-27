@@ -47,6 +47,7 @@
 </template>
 
 <script>
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
     import CollectionEmpty from './collectionEmpty'
     import CollectionItem from './collectionItem'
     import {Modal} from "@/components"
@@ -68,7 +69,14 @@
                 isVisible: false
             }
         },
+        mounted() {
+            this.getUserCollections({
+                skip: 0,
+                limit: 10
+            });
+        },
         methods: {
+            ...mapActions('my', ['getUserCollections']),
             onLoad() {
                 // 模拟异步更新数据
                 setTimeout(() => {

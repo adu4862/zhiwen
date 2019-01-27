@@ -9,3 +9,5 @@ export const userRewardAmount = data => Request.get('/user/reward/amount', data)
 export const userPunches = data => Request.get('/user/punches', data);
 /* 我的订单 */
 export const userOrders = data => Request.get('/user/orders', data);
+/* 我的收藏 */
+export const userCollections = data => Request.get('/user/collections', data);
