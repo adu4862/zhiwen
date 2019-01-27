@@ -54,7 +54,8 @@
                 if (!this.phone) {
                     this.$toast({
                         msg: '请先填写手机号'
-                    })
+                    });
+                    return
                 }
                 this.counting = true;
             },
