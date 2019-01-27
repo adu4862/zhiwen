@@ -11,3 +11,5 @@ export const userPunches = data => Request.get('/user/punches', data);
 export const userOrders = data => Request.get('/user/orders', data);
 /* 我的收藏 */
 export const userCollections = data => Request.get('/user/collections', data);
+/* 我的课程 */
+export const userProducts = data => Request.get('/user/products', data);

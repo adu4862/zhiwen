@@ -68,9 +68,14 @@
         mounted() {
             this.userLogin();
             this.getUserInfo();
+            this.getUserProducts({
+                skip: 0,
+                limit: 10
+            });
         },
         methods: {
             ...mapActions(['userLogin', 'getUserInfo']),
+            ...mapActions('my', ['getUserProducts']),
             onLoad() {
                 // 模拟异步更新数据
                 setTimeout(() => {

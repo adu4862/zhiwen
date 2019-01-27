@@ -29,6 +29,8 @@
 </template>
 
 <script>
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
+
     export default {
         name: "balance",
         data() {
@@ -36,7 +38,11 @@
                 isDisabled: false
             }
         },
+        mounted() {
+              this.getUserRewardAmount();
+        },
         methods: {
+            ...mapActions('my', ['getUserRewardAmount']),
             handleWithdraw() {
                 this.$router.push({name: 'balanceWithdraw'})
             }

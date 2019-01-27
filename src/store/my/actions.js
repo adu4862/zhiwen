@@ -1,5 +1,5 @@
 import * as types from '@/store/mutation-types.js';
-import {userRewardAmount, userPunches, userOrders, userCollections} from "@/api/my";
+import {userRewardAmount, userPunches, userOrders, userCollections, userProducts} from "@/api/my";
 
 export default {
     // 获取用户收益
@@ -44,6 +44,18 @@ export default {
             const res = await userCollections(opts);
             if (res) {
                 console.log("getUserCollections--------", res);
+                // commit(types.SET_TOKEN, res);
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    },
+    // 获取用户课程
+    async getUserProducts({}, opts) {
+        try {
+            const res = await userProducts(opts);
+            if (res) {
+                console.log("getUserProducts--------", res);
                 // commit(types.SET_TOKEN, res);
             }
         } catch (e) {
