@@ -22,6 +22,7 @@
     import ClassItem from './classItem'
     import {mapState, mapMutations, mapActions, mapGetters} from "vuex";
     import {getUserInfo} from "@/api/common";
+    import {GetRequest, sessionSetItem} from '@/common/util'
 
     export default {
         name: "home",
@@ -32,6 +33,10 @@
         },
         data() {
             return {}
+        },
+        beforeRouteEnter(to, from, next) {
+            if (GetRequest().authorization) sessionSetItem('token', GetRequest().authorization)
+            next();
         },
         methods: {
             handleClassItem() {
