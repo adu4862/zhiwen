@@ -4,17 +4,18 @@ import mutations from './mutations'
 import actions from './actions'
 
 import home from './home';
+import my from './my';
 
 Vue.use(Vuex);
 
 let modules = {
     ...home,
+    ...my,
 };
 
 export default new Vuex.Store({
     state: {
         phoneCode: '+86',
-        token: '',
     },
     modules,
     actions,    // 根级别的 action

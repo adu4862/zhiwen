@@ -1,6 +1,6 @@
 import axios from 'axios';
 import env from '@/config/env';
-import store from '@/store';
+import {sessionGetItem} from '@/common/util';
 
 const MOCKURL = ''; // mock数据地址
 
@@ -18,6 +18,12 @@ AJAX.interceptors.request.use(function (config) {
     // 在发送请求之前做些什么
     let localbase = window.location.host;
     config.url = `http://${localbase}/api` + config.url;           // 自定义反向代理
+
+    let token = sessionGetItem('token');
+    if (token) {
+        config.headers["Authorization"] = 'Bearer ' + token;
+    }
+
     // if (config.url.indexOf('api') != -1) {
     //     config.url = `http://${localbase}/api` + config.url;           // 自定义反向代理
     // }
@@ -30,6 +36,7 @@ AJAX.interceptors.request.use(function (config) {
 // 添加响应拦截器
 AJAX.interceptors.response.use(function (response) {
     // 对响应数据做点什么
+    // console.log(response)
     return response.data;
 }, function (error) {
     // 对响应错误做点什么
