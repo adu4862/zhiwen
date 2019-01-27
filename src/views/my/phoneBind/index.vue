@@ -9,7 +9,7 @@
                 <router-link :to="{name: 'areaSelect'}"><i class="cell-item-right-arrow"></i></router-link>
             </div>
             <div class="cell-item">
-                <input type="phone" placeholder="请输入您的手机号">
+                <input v-model="phone" type="phone" placeholder="请输入您的手机号">
                 <button
                     :class="['code-btn blue-btn-48', counting?'disabled-btn':'']"
                     :disabled="counting"
@@ -42,6 +42,7 @@
         },
         data() {
             return {
+                phone: '',
                 counting: false,
             }
         },
@@ -50,6 +51,11 @@
         },
         methods: {
             startCountdown: function () {
+                if (!this.phone) {
+                    this.$toast({
+                        msg: '请先填写手机号'
+                    })
+                }
                 this.counting = true;
             },
             handleCountdownEnd: function () {
