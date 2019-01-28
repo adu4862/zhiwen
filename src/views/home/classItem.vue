@@ -1,17 +1,17 @@
 <template>
     <div class="home-class-item">
         <ClassPanel class="home-class-item-panel">
-            <ClassBanner slot="banner" />
+            <ClassBanner slot="banner" :uri="classDetail.image_uri" :type="classDetail.type" />
             <div class="home-class-item-panel-content">
                 <div class="info">
-                    <div class="title ellipsis">法律英语基础版法法律英语基础版法法律英语基础版法</div>
-                    <div class="content">熟悉法律条文，具有法律思维，能够把各种生活关系转换为法律关系，以至于在法律层面能担负起真正的法律责任</div>
+                    <div class="title ellipsis">{{classDetail.subject}}</div>
+                    <div class="content">{{classDetail.introduction}}</div>
                 </div>
                 <div class="saled" v-if="!isLearn">
-                    <p class="saled-num"><span>155</span>人开通</p>
+                    <p class="saled-num"><span>{{classDetail.pay_count}}</span>人开通</p>
                     <div class="saled-price">
-                        <p class="new-price">¥299</p>
-                        <p class="old-price">¥599</p>
+                        <p class="new-price">¥{{classDetail.price | formatWechatPrice}}</p>
+                        <p class="old-price">¥{{classDetail.old_price | formatWechatPrice}}</p>
                     </div>
                 </div>
                 <div class="process" v-if="isLearn">学习进度0%</div>
@@ -30,6 +30,10 @@
             ClassBanner,
         },
         props: {
+            classDetail: {
+                type: Object,
+                default: {}
+            },
             type: {
                 type: String,
                 default: 'voice'

@@ -2,16 +2,17 @@
     <div class="home">
         <div class="home-swipe">
             <van-swipe :autoplay="3000" indicator-color="white" :height="150">
-                <van-swipe-item><img :src="require('@/assets/img/demo_banner.png')" alt="banner"></van-swipe-item>
-                <van-swipe-item><img :src="require('@/assets/img/demo_banner.png')" alt="banner"></van-swipe-item>
-                <van-swipe-item><img :src="require('@/assets/img/demo_banner.png')" alt="banner"></van-swipe-item>
-                <van-swipe-item><img :src="require('@/assets/img/demo_banner.png')" alt="banner"></van-swipe-item>
+                <template v-for="item in banners">
+                    <van-swipe-item :key="item.id"><img :src="item.uri" alt="banner"></van-swipe-item>
+                </template>
             </van-swipe>
         </div>
         <div class="home-classes">
             <SectionTitle title="法律英语课程"/>
             <div class="class-list">
-                <ClassItem type="voice" @click.native="handleClassItem"/>
+                <template v-for="item in classList.list">
+                    <ClassItem :key="item.id" :classDetail="item" @click.native="handleClassItem"/>
+                </template>
             </div>
         </div>
     </div>
@@ -32,17 +33,24 @@
             SectionTitle,
         },
         data() {
-            return {}
+            return {
+                banners: [],
+                classList: []
+            }
         },
         beforeRouteEnter(to, from, next) {
-            if (GetRequest().authorization) sessionSetItem('token', GetRequest().authorization)
+            if (GetRequest().authorization) sessionSetItem('token', GetRequest().authorization);
             next();
         },
         mounted() {
-            this.getBanner();
+            this.getBanner().then((res) => {
+                this.banners = res;
+            });
             this.getClassList({
                 skip: 0,
                 limit: 10
+            }).then((res) => {
+                this.classList = res;
             });
         },
         methods: {

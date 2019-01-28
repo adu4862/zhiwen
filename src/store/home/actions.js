@@ -1,5 +1,5 @@
 import * as types from '@/store/mutation-types.js';
-import {banner, classlist} from "@/api/home";
+import {banner, classList, classDetail} from "@/api/home";
 
 export default {
     // 获取Banner
@@ -9,6 +9,7 @@ export default {
             if (res) {
                 console.log("getBanner--------", res);
                 // commit(types.SET_TOKEN, res);
+                return res;
             }
         } catch (e) {
             console.log(e)
@@ -17,9 +18,24 @@ export default {
     // 获取课程列表
     async getClassList({}, opts) {
         try {
-            const res = await classlist(opts);
+            const res = await classList(opts);
             if (res) {
                 console.log("getClassList--------", res);
+                // commit(types.SET_TOKEN, res);
+                return res;
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    },
+    // 获取课程详情
+    async getClassDetail({}, id) {
+        try {
+            const res = await classDetail({
+                id: 1
+            });
+            if (res) {
+                console.log("getClassDetail--------", res);
                 // commit(types.SET_TOKEN, res);
             }
         } catch (e) {

@@ -1,7 +1,7 @@
 <!-- 课程展示图片组件 -->
 <template>
     <div :class="['m-class-banner', bannerRadius?'m-class-banner-radius':'']">
-        <img class="banner" :src="require('@/assets/img/demo_class_banner.png')"
+        <img class="banner" :src="uri"
              alt="class-banner">
         <div class="icon-wrap">
             <img v-if="type === 'video'" class="class-type-icon"
@@ -16,6 +16,10 @@
     export default {
         name: "classBanner",
         props: {
+            uri: {
+                type: String,
+                default: ''
+            },
             type: {
                 type: String,
                 default: 'video'

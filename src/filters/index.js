@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import NP from 'number-precision';
 
 /**
  * 格式化时间戳（秒|毫秒）
@@ -76,10 +77,15 @@ const formatFloat = (val, pos = 2) => {
     return s;
 }
 
+const formatWechatPrice = (val) => {
+    return NP.divide(val, 100);
+};
+
 export default {
     timeFilter,
     formatPhone,
     formatBank,
     toThousands,
     formatFloat,
+    formatWechatPrice,
 }

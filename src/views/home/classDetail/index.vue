@@ -8,6 +8,7 @@
 </template>
 
 <script>
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
     import ClassIntro from "./classIntro/index";
     import ClassTable from "./classTable/index";
     import ClassBar from "./classBar/index";
@@ -24,6 +25,12 @@
         data() {
             return {};
         },
+        mounted() {
+            this.getClassDetail(1);
+        },
+        methods: {
+            ...mapActions('home', ['getClassDetail'])
+        }
     };
 </script>
 
