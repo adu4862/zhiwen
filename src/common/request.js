@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import axios from 'axios';
 import env from '@/config/env';
 import {sessionGetItem} from '@/common/util';
@@ -35,8 +36,13 @@ AJAX.interceptors.request.use(function (config) {
 
 // 添加响应拦截器
 AJAX.interceptors.response.use(function (response) {
-    // 对响应数据做点什么
-    // console.log(response)
+    // 错误拦截
+    if (response.status !== 200) {
+        new Vue().$toast({
+            msg: response.statusText
+        })
+    }
+
     return response.data;
 }, function (error) {
     // 对响应错误做点什么
@@ -46,7 +52,6 @@ AJAX.interceptors.response.use(function (response) {
 // 定义对外Get、Post、File请求
 export default {
     get(url, param = {}, headers = {}, notUseBaseURL = false) {
-        console.log(headers)
         return AJAX.get(url, {
             params: param,
             headers,
