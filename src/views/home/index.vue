@@ -11,7 +11,7 @@
             <SectionTitle title="法律英语课程"/>
             <div class="class-list">
                 <template v-for="item in classList.list">
-                    <ClassItem :key="item.id" :classDetail="item" @click.native="handleClassItem"/>
+                    <ClassItem :key="item.id" :classDetail="item" @click.native="handleClassItem(item.id)"/>
                 </template>
             </div>
         </div>
@@ -55,8 +55,8 @@
         },
         methods: {
             ...mapActions('home', ['getBanner', 'getClassList']),
-            handleClassItem() {
-                this.$router.push({name: 'classDetail', params: {id: '1'}})
+            handleClassItem(id) {
+                this.$router.push({name: 'classDetail', params: {id}})
             }
         }
     };

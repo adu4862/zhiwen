@@ -1,7 +1,7 @@
 <template>
     <div class="class-detail">
         <EarnMoney />
-        <ClassIntro/>
+        <ClassIntro :classDetail="classDetail"/>
         <ClassTable/>
         <ClassBar/>
     </div>
@@ -23,10 +23,14 @@
             EarnMoney,
         },
         data() {
-            return {};
+            return {
+                classDetail: {}
+            };
         },
         mounted() {
-            this.getClassDetail(1);
+            this.getClassDetail(this.$route.params.id).then((res) => {
+                this.classDetail = res;
+            });
         },
         methods: {
             ...mapActions('home', ['getClassDetail'])

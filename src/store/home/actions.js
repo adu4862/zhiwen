@@ -28,11 +28,10 @@ export default {
     async getClassDetail({}, id) {
         try {
             const res = await classDetail({
-                id: 1
+                id
             });
             if (res) {
-                console.log("getClassDetail--------", res);
-                // commit(types.SET_TOKEN, res);
+                return res;
             }
         } catch (e) {
             console.log(e)
