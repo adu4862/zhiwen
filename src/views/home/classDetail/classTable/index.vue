@@ -9,7 +9,11 @@
         </div>
         <div class="class-table-content">
             <!-- 课程概览 -->
-            <div class="intro" v-show="activeHeader === '1'">1</div>
+            <div class="intro" v-show="activeHeader === '1'">
+                <template v-for="item in classDetail.overviews">
+                    <img :src="item.image_uri" :style="{order: item.order}" alt="" class="intro-img">
+                </template>
+            </div>
             <!-- 课程目录 -->
             <div class="books" v-show="activeHeader === '2'">
                 <ClassBooks />
@@ -25,6 +29,12 @@
         name: "classDetailTable",
         components: {
             ClassBooks
+        },
+        props: {
+            classDetail: {
+                type: Object,
+                default: {}
+            }
         },
         data() {
             return {
@@ -70,6 +80,12 @@
                 &.active:after {
                     display: block;
                 }
+            }
+        }
+        &-content {
+            .intro {
+                display: flex;
+                flex-flow: column;
             }
         }
     }

@@ -2,7 +2,7 @@
     <div class="class-detail">
         <EarnMoney />
         <ClassIntro :classDetail="classDetail"/>
-        <ClassTable/>
+        <ClassTable :classDetail="classDetail"/>
         <ClassBar/>
     </div>
 </template>
