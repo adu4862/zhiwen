@@ -7,8 +7,6 @@ export default {
         try {
             const res = await banner();
             if (res) {
-                console.log("getBanner--------", res);
-                // commit(types.SET_TOKEN, res);
                 return res;
             }
         } catch (e) {
@@ -20,8 +18,6 @@ export default {
         try {
             const res = await classList(opts);
             if (res) {
-                console.log("getClassList--------", res);
-                // commit(types.SET_TOKEN, res);
                 return res;
             }
         } catch (e) {
