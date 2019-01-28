@@ -7,14 +7,14 @@
                     <div class="title ellipsis">{{classDetail.subject}}</div>
                     <div class="content">{{classDetail.introduction}}</div>
                 </div>
-                <div class="saled" v-if="!isLearn">
+                <div class="saled" v-if="!classDetail.is_pay">
                     <p class="saled-num"><span>{{classDetail.pay_count}}</span>人开通</p>
                     <div class="saled-price">
                         <p class="new-price">¥{{classDetail.price | formatWechatPrice}}</p>
                         <p class="old-price">¥{{classDetail.old_price | formatWechatPrice}}</p>
                     </div>
                 </div>
-                <div class="process" v-if="isLearn">学习进度0%</div>
+                <div class="process" v-else>已购买</div>
             </div>
         </ClassPanel>
     </div>
