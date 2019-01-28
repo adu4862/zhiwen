@@ -41,6 +41,7 @@ AJAX.interceptors.response.use(function (response) {
         new Vue().$toast({
             msg: response.statusText
         })
+        // new Vue().$notify(response.statusText)
     }
 
     return response.data;

@@ -9,6 +9,7 @@ import {
     Collapse,
     CollapseItem,
     Slider,
+    Notify,
 } from 'vant';
 
 Vue.use(Button);
@@ -20,3 +21,4 @@ Vue.use(CheckboxGroup);
 Vue.use(Collapse);
 Vue.use(CollapseItem);
 Vue.use(Slider);
+Vue.use(Notify);
