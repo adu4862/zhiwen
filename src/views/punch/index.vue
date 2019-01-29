@@ -5,15 +5,20 @@
                 <img :src="require('@/assets/img/demo_class_banner.png')" alt="wx_header">
                 <span>用户名称</span>
             </div>
-            <p class="punch-card-title">
-                我已连续133天学习《释词汇解释词汇解释》课程！
-            </p>
+            <div class="punch-card-title">
+                <p class="punch-card-title-day">我已连续21天学习</p>
+                <p class="punch-card-title-class">法律英语基础版法律英语基础版法律英语基础版法律英语基础版法律英语基础版法律英语基础版法律英语基础版-诉讼部分</p>
+            </div>
             <div class="punch-card-info">
-                <p class="punch-card-info-title ellipsis">
-                    statute
+                <p class="punch-card-info-word">
+                    <i><!--这个标签只有一个作用——html2canvas保证布局--></i>statutestatute
                 </p>
+                <p class="punch-card-info-symbol">
+                    <i><!--这个标签只有一个作用——html2canvas保证布局--></i>/'atenia/
+                </p>
+                <p class="punch-card-info-mean">n.律师释词汇解释词汇解</p>
                 <p class="punch-card-info-content">
-                    释词汇解释词汇解释
+                    释词汇解释词汇解释释词汇解释词汇解释释词汇解释词汇解释释词汇解释词汇解释释词汇解释词汇解释释词汇解释词汇解释
                 </p>
             </div>
             <img class="punch-card-img" :src="require('@/assets/img/punch/punch_01.png')" alt="punch_img"/>
@@ -133,7 +138,6 @@
             }
             &-title {
                 margin-top: 18px;
-                /*height: 50px;*/
                 line-height: 25px;
                 font-size: 18px;
                 font-weight: 500;
@@ -141,17 +145,30 @@
                 overflow: hidden;
             }
             &-info {
-                margin-top: 36px;
-                &-title {
+                margin-top: 17px;
+                word-break: break-all;
+                &-word {
+                    line-height: 26px;
                     font-size: 26px;
-                    font-weight: 600;
+                    font-weight:600;
                     color: $color-link;
                 }
+                &-symbol {
+                    margin-top: 8px;
+                    line-height: 16px;
+                    font-size: $font-size-md;
+                    color: $color-gary;
+                }
+                &-mean {
+                    margin-top: 18px;
+                    line-height: 18px;
+                    color: $color-gary;
+                }
                 &-content {
-                    margin-top: 17px;
+                    margin-top: 11px;
                     font-size: $font-size-sm;
                     color: #909090;
-                    line-height: 17px;
+                    line-height: 18px;
                     overflow: hidden;
                 }
             }

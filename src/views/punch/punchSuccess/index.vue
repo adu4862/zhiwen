@@ -40,10 +40,11 @@
 
 <style lang="scss" scoped>
     .punch-success {
-        padding: 11px 0 85px 0;
-        height: 100vh;
+        padding: 11px 0 135px 0;
+        min-height: 100vh;
         background: url("~@/assets/img/punch_success_bg.png") no-repeat center;
         background-size: cover;
+        overflow-y: scroll;
         &-card {
             @include ftb();
             flex-flow: column;
