@@ -36,12 +36,10 @@
     .m-class-banner {
         position: relative;
         display: flex;
-        width: 114px;
-        min-height: 80px;
         overflow: hidden;
         .banner {
-            width: 100%;
-            height: 100%;
+            width: 114px;
+            height: 80px;
         }
         .icon-wrap {
             position: absolute;
