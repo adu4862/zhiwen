@@ -1,5 +1,5 @@
 import * as types from '@/store/mutation-types.js';
-import {banner, classList, classDetail} from "@/api/home";
+import {banner, classList, classDetail, classCollection} from "@/api/home";
 
 export default {
     // 获取Banner
@@ -30,6 +30,17 @@ export default {
             const res = await classDetail({
                 id
             });
+            if (res) {
+                return res;
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    },
+    // 收藏课程
+    async setClassCollection({}, opts) {
+        try {
+            const res = await classCollection(opts);
             if (res) {
                 return res;
             }

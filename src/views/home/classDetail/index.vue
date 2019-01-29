@@ -3,7 +3,7 @@
         <EarnMoney />
         <ClassIntro :classDetail="classDetail"/>
         <ClassTable :classDetail="classDetail"/>
-        <ClassBar/>
+        <ClassBar :classDetail="classDetail"/>
     </div>
 </template>
 

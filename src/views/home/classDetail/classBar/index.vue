@@ -1,6 +1,6 @@
 <template>
     <div class="class-bar">
-        <div class="class-bar-features" v-if="!payed">
+        <div class="class-bar-features" v-if="!classDetail.is_pay">
             <div class="class-bar-features-item" @click="handleCollect">
                 <i class="icon icon--4"></i>
                 收藏
@@ -10,26 +10,32 @@
                 砍价
             </div>
         </div>
-        <button :class="['blue-btn-48', 'class-bar-btn', payed?'payed-btn':'']">¥299购买课程</button>
+        <button :class="['blue-btn-48', 'class-bar-btn', classDetail.is_pay?'payed-btn':'']">¥299购买课程</button>
     </div>
 </template>
 
 <script>
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
+
     export default {
         name: "classDetailTableBar",
         props: {
-            payed: {
-                type: Boolean,
-                default: false
+            classDetail: {
+                type: Object,
+                default: {}
             }
         },
         methods: {
+            ...mapActions('home', ['setClassCollection']),
             handleCollect() {
-                this.$toast({
-                    msg: '收藏成功',
-                    type: 'collection',
-                    // duration: 20000
+                this.setClassCollection({
+                    product_id: ''
                 })
+                // this.$toast({
+                //     msg: '收藏成功',
+                //     type: 'collection',
+                //     // duration: 20000
+                // })
             }
         }
     }

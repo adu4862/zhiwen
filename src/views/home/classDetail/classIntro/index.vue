@@ -39,6 +39,8 @@
 </template>
 
 <script>
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
+
     export default {
         name: "classDetailIntro",
         props: {
@@ -55,7 +57,9 @@
                 console.log(888, val)
             }
         },
-        components: {}
+        methods: {
+
+        }
     };
 </script>
 
