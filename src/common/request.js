@@ -37,7 +37,7 @@ AJAX.interceptors.request.use(function (config) {
 // 添加响应拦截器
 AJAX.interceptors.response.use(function (response) {
     // 错误拦截
-    if ([200, 201].indexOf(response.status) !== -1) {
+    if ([200, 201].indexOf(response.status) === -1) {
         new Vue().$toast({
             msg: response.statusText
         })

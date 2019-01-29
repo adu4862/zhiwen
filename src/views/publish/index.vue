@@ -40,6 +40,7 @@ console.log(location.href.split('#')[0])
             handleShare() {
                 this.getWechatShare({
                     url: encodeURIComponent(location.href.split('#')[0]),
+                    // url: location.href.split('#')[0],
                     jsApiList: [
                         "onMenuShareWeibo"
                     ]
