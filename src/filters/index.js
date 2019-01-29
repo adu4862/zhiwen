@@ -78,7 +78,7 @@ const formatFloat = (val, pos = 2) => {
 };
 
 const formatWechatPrice = (val) => {
-    return NP.divide(val, 100);
+    if (val) return NP.divide(val, 100);
 };
 
 const realFormatSecond = (second) => {

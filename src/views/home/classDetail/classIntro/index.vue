@@ -20,14 +20,14 @@
                     <p class="people"><span>155</span>人开通</p>
                 </div>
                 <div class="price">
-                    <span class="old-price">¥599</span>
-                    <span class="now-price">¥299</span>
+                    <span class="old-price">¥{{classDetail.old_price | formatWechatPrice}}</span>
+                    <span class="now-price">¥{{classDetail.price | formatWechatPrice}}</span>
                 </div>
             </div>
             <div class="class-intro-content-info-bought" v-else>
                 <div class="left ftb">
                     <img class="icon-punch" :src="require('@/assets/img/icon_punch.png')" alt="打卡icon">
-                    已连续打卡xx天
+                    已连续打卡{{classDetail.punch_count}}天
                 </div>
                 <div class="right ftb">
                     收藏
