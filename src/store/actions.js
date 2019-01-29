@@ -1,5 +1,5 @@
 import * as types from '@/store/mutation-types.js';
-import {login, userInfo} from '@/api/common';
+import {login, userInfo, wechatShare} from '@/api/common';
 
 export default {
 	changeUserInfo({commit}, info) {
@@ -25,6 +25,17 @@ export default {
             if (res) {
                 console.log("getUserInfo--------", res);
                 // commit(types.SET_TOKEN, res);
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    },
+    /* 获取微信分享信息 */
+    async getWechatShare({commit}, opts) {
+        try {
+            const res = await wechatShare(opts);
+            if (res) {
+                return res;
             }
         } catch (e) {
             console.log(e)
