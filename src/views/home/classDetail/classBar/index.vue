@@ -29,7 +29,9 @@
             ...mapActions('home', ['setClassCollection']),
             handleCollect() {
                 this.setClassCollection({
-                    product_id: ''
+                    product_id: this.classDetail.id
+                }).then((res) => {
+                    console.log('setClassCollection', res)
                 })
                 // this.$toast({
                 //     msg: '收藏成功',
