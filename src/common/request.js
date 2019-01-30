@@ -3,8 +3,6 @@ import axios from 'axios';
 import env from '@/config/env';
 import {sessionGetItem} from '@/common/util';
 
-const MOCKURL = ''; // mock数据地址
-
 /**
  * 自定义Axios实例
  */
@@ -35,7 +33,8 @@ AJAX.interceptors.response.use(function (response) {
     if ([200, 201].indexOf(response.status) === -1) {
         new Vue().$toast({
             msg: response.statusText
-        })
+        });
+        return
         // new Vue().$notify(response.statusText)
     }
 
