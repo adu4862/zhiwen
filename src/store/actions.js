@@ -1,5 +1,5 @@
 import * as types from '@/store/mutation-types.js';
-import {login, userInfo, wechatShare, phoneCode, phoneBind} from '@/api/common';
+import {login, wxLogin, userInfo, wechatShare, phoneCode, phoneBind} from '@/api/common';
 
 export default {
 	changeUserInfo({commit}, info) {
@@ -13,6 +13,17 @@ export default {
             if (res) {
                 console.log("userLogin--------", res);
                 commit(types.SET_TOKEN, res);
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    },
+    /* 微信登陆 */
+    async wechatLogin({commit}, opts) {
+        try {
+            const res = await wxLogin();
+            if (res) {
+                console.log("wechatLogin--------", res);
             }
         } catch (e) {
             console.log(e)

@@ -73,6 +73,8 @@ router.beforeEach((to, from, next) => {
     if (!sessionGetItem('token')) {
         window.location.href = 'http://learning.zhiwen.me/api/user/wechat/login';
     } else {
+        // 判断登陆超时
+
         next();
     }
 
