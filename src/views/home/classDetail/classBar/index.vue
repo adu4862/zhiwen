@@ -31,13 +31,11 @@
                 this.setClassCollection({
                     product_id: this.classDetail.id
                 }).then((res) => {
-                    console.log('setClassCollection', res)
+                    this.$toast({
+                        msg: '收藏成功',
+                        type: 'collection'
+                    })
                 })
-                // this.$toast({
-                //     msg: '收藏成功',
-                //     type: 'collection',
-                //     // duration: 20000
-                // })
             }
         }
     }
