@@ -111,6 +111,7 @@
             display: flex;
             flex-flow: column;
             align-items: center;
+            min-height: 160px;
             background: url("../../assets/img/my/head-bg.png") no-repeat center;
             background-size: cover;
             background-color: #fff;

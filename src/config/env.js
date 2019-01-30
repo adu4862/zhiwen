@@ -17,7 +17,7 @@ const dev = {
 
 const prod = {
     ...dev,
-    baseUrl: "http://learning.zhiwen.me",
+    baseUrl: "https://learning.zhiwen.me/api",
 };
 
 export default process.env.NODE_ENV === 'development' ? dev : prod;

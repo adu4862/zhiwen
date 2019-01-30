@@ -136,7 +136,7 @@
             .code-btn {
                 width: 70px;
                 height: 27px;
-                line-height: 25px;
+                line-height: 27px;
                 font-size: $font-size-mini;
                 font-weight: 300;
                 border-radius: 2px;
