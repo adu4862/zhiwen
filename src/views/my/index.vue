@@ -69,7 +69,6 @@
             }
         },
         async mounted() {
-            await this.userLogin();
             this.getUserInfo();
             this.getUserProducts({
                 skip: this.skip,
