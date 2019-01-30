@@ -83,21 +83,21 @@
         methods: {
             ...mapActions(['userLogin', 'getUserInfo']),
             ...mapActions('my', ['getUserProducts']),
-            onLoad() {
-                // 模拟异步更新数据
-                setTimeout(() => {
-                    for (let i = 0; i < 5; i++) {
-                        this.list.push(this.list.length + 1);
-                    }
-                    // 加载状态结束
-                    this.loading = false;
-
-                    // 数据全部加载完成
-                    if (this.list.length >= 10) {
-                        this.finished = true;
-                    }
-                }, 500);
-            }
+            // onLoad() {
+            //     // 模拟异步更新数据
+            //     setTimeout(() => {
+            //         for (let i = 0; i < 5; i++) {
+            //             this.list.push(this.list.length + 1);
+            //         }
+            //         // 加载状态结束
+            //         this.loading = false;
+            //
+            //         // 数据全部加载完成
+            //         if (this.list.length >= 10) {
+            //             this.finished = true;
+            //         }
+            //     }, 500);
+            // }
         }
     }
 </script>

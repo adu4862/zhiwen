@@ -68,8 +68,9 @@ export default {
         try {
             const res = await userProducts(opts);
             if (res) {
-                console.log("getUserProducts--------", res);
+                // console.log("getUserProducts--------", res);
                 // commit(types.SET_TOKEN, res);
+                return res
             }
         } catch (e) {
             console.log(e)

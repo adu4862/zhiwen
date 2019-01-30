@@ -4,6 +4,7 @@
         <div class="my-class-list-empty-content">
             <p>暂无记录</p>
             <p>快去 <router-link :to="{name: 'home'}">首页</router-link> 逛逛吧</p>
+            <!--<p>快去 <span @click="handleHome">首页</span> 逛逛吧</p>-->
         </div>
     </div>
 </template>
@@ -11,6 +12,11 @@
 <script>
     export default {
         name: "classEmpty",
+        methods: {
+            handleHome() {
+                this.$router.push({name: 'home'})
+            }
+        }
     }
 </script>
 
