@@ -18,7 +18,7 @@ export default {
         try {
             const res = await userPunches(opts);
             if (res) {
-                console.log("getUserPunches--------", res);
+                // console.log("getUserPunches--------", res);
                 // commit(types.SET_TOKEN, res);
                 return res
             }

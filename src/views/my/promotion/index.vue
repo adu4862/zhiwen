@@ -17,19 +17,21 @@
         </div>
         <div class="my-promotion-list">
             <SectionTitle title="推广订单"/>
-            <!--<PromotionEmpty />-->
-            <van-list
-                v-model="loading"
-                :finished="finished"
-                finished-text="没有更多了"
-                @load="onLoad"
-            >
-                <PromotionItem
-                    v-for="(item, idx) in list"
-                    :key="idx"
-                    :class="idx+1 === list.length?'last-item':''"
-                />
-            </van-list>
+            <template v-if="promotionList.length">
+                <van-list
+                    v-model="loading"
+                    :finished="finished"
+                    finished-text="没有更多了"
+                    @load="onLoad"
+                >
+                    <PromotionItem
+                        v-for="(item, idx) in promotionList"
+                        :key="idx"
+                        :class="idx+1 === promotionList.length?'last-item':''"
+                    />
+                </van-list>
+            </template>
+            <PromotionEmpty v-else />
         </div>
     </div>
 </template>
@@ -52,7 +54,8 @@
                 list: [],
                 loading: false,
                 finished: false,
-                account: {}
+                account: {},
+                promotionList: []
             }
         },
         mounted() {
@@ -62,6 +65,8 @@
             this.getUserPunches({
                 skip: this.skip,
                 limit: this.limit
+            }).then((res) => {
+                this.promotionList = res.list;
             })
         },
         methods: {
