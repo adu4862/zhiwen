@@ -3,20 +3,18 @@
         <img class="my-class-list-empty-img" :src="require('@/assets/img/my/class_list_empty.png')" alt="class_list_empty">
         <div class="my-class-list-empty-content">
             <p>暂无记录</p>
-            <p>快去 <router-link :to="{name: 'home'}">首页</router-link> 逛逛吧</p>
-            <!--<p>快去 <span @click="handleHome">首页</span> 逛逛吧</p>-->
+            <!--<p>快去 <router-link :to="{name: 'home'}">首页</router-link> 逛逛吧</p>-->
+            <p>快去 <span @click="toHome">首页</span> 逛逛吧</p>
         </div>
     </div>
 </template>
 
 <script>
+    import commonMixin from '@/common/mixin'
+
     export default {
         name: "classEmpty",
-        methods: {
-            handleHome() {
-                this.$router.push({name: 'home'})
-            }
-        }
+        mixins: [commonMixin],
     }
 </script>
 
@@ -35,7 +33,7 @@
             color: $color-gary;
             p:nth-child(2) {
                 margin-top: 6px;
-                a {
+                span {
                     color: $color-link;
                 }
             }

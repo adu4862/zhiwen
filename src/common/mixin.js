@@ -11,6 +11,9 @@ export default {
         nextPage() {
             this.skip = this.skip + 10;
             this.limit = this.limit + 10;
+        },
+        toHome() {
+            this.$router.push({name: 'home'});
         }
     },
 }

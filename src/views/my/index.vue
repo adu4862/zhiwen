@@ -51,11 +51,11 @@
     import {SectionTitle, CellItem} from '@/components'
     import ClassItem from './classItem'
     import ClassEmpty from './classEmpty'
-    import pageMixin from '@/common/mixin'
+    import commonMixin from '@/common/mixin'
 
     export default {
         name: "my",
-        mixins: [pageMixin],
+        mixins: [commonMixin],
         components: {
             CellItem,
             SectionTitle,
