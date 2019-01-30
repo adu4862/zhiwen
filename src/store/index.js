@@ -15,6 +15,7 @@ let modules = {
 
 export default new Vuex.Store({
     state: {
+        userInfo: {},
         phoneCode: '+86',
     },
     modules,

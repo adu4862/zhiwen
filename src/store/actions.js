@@ -23,8 +23,7 @@ export default {
         try {
             const res = await userInfo();
             if (res) {
-                console.log("getUserInfo--------", res);
-                // commit(types.SET_TOKEN, res);
+                commit(types.SET_USER_INFO, res);
             }
         } catch (e) {
             console.log(e)

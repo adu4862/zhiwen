@@ -40,9 +40,9 @@
             }
         },
         mounted() {
-              this.getUserRewardAmount().then((res) => {
-                  this.balance = res;
-              });
+            this.getUserRewardAmount().then((res) => {
+                this.balance = res;
+            });
         },
         methods: {
             ...mapActions('my', ['getUserRewardAmount']),

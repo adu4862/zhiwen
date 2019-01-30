@@ -7,17 +7,17 @@
             </p>
             <div class="balance">
                 <p>您当前可提现金额（元）</p>
-                <p>8789.00</p>
+                <p>{{userInfo.price | formatFloat}}</p>
             </div>
         </div>
         <div class="my-balance-withdraw-form">
             <p class="title">提现金额（元）</p>
             <div class="input-container">
                 <span class="unit">¥</span>
-                <input type="number">
+                <input v-model="withdrawAccount" type="number">
             </div>
             <p class="withdraw-tips">
-                当前可提现金额8789.00元，<span>全部提现</span>
+                当前可提现金额{{userInfo.price | formatFloat}}元，<span @click="handleAll(userInfo.price)">全部提现</span>
             </p>
         </div>
         <button class="my-balance-withdraw-btn blue-btn-48">确认提现</button>
@@ -25,8 +25,23 @@
 </template>
 
 <script>
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
+
     export default {
-        name: "balanceWithdraw"
+        name: "balanceWithdraw",
+        data() {
+            return {
+                withdrawAccount: ''
+            }
+        },
+        computed: {
+            ...mapState(['userInfo'])
+        },
+        methods: {
+            handleAll(balance) {
+                this.withdrawAccount = balance;
+            }
+        }
     }
 </script>
 
