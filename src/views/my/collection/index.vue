@@ -22,8 +22,9 @@
             @load="onLoad"
         >
             <CollectionItem
-                v-for="(item, idx) in list"
+                v-for="(item, idx) in collectionList"
                 :key="idx"
+                :classDetail="item.product"
                 :class="idx+1 === list.length?'last-item':''"
                 :isSelect="isSelect"
                 :selectAll="selectAll"
@@ -51,9 +52,11 @@
     import CollectionEmpty from './collectionEmpty'
     import CollectionItem from './collectionItem'
     import {Modal} from "@/components"
+    import pageMixin from '@/common/mixin'
 
     export default {
         name: "collection",
+        mixins: [pageMixin],
         components: {
             CollectionEmpty,
             CollectionItem,
@@ -66,13 +69,16 @@
                 finished: false,
                 isSelect: false,
                 selectAll: false,
-                isVisible: false
+                isVisible: false,
+                collectionList: []
             }
         },
         mounted() {
             this.getUserCollections({
-                skip: 0,
-                limit: 10
+                skip: this.skip,
+                limit: this.limit
+            }).then((res) => {
+                this.collectionList = res.list
             });
         },
         methods: {

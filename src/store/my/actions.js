@@ -43,8 +43,9 @@ export default {
         try {
             const res = await userCollections(opts);
             if (res) {
-                console.log("getUserCollections--------", res);
+                // console.log("getUserCollections--------", res);
                 // commit(types.SET_TOKEN, res);
+                return res
             }
         } catch (e) {
             console.log(e)

@@ -3,11 +3,11 @@
         <div class="my-collection-item-check" slot="select" v-if="isSelect">
             <van-checkbox class="check-box" v-model="checked"></van-checkbox>
         </div>
-        <ClassBanner slot="banner"/>
+        <ClassBanner slot="banner" :uri="classDetail.image_uri" />
         <div class="my-collection-item-content">
             <div class="info">
-                <div class="title ellipsis">法律英语基础版法律英语基础版法律英语基础版法律英语基础版</div>
-                <div class="content">熟悉法律条文，具有法律思维，能够把各种生活关系转换为法律关系，以至于在法律层面能担负起真正的法律责任</div>
+                <div class="title ellipsis">{{classDetail.subject}}</div>
+                <div class="content">{{classDetail.introduction}}</div>
                 <div class="buy-num">
                     <span>1444</span>人已购买
                 </div>
@@ -18,8 +18,8 @@
                 <!--<span>已购买</span>-->
                 <!--</div>-->
                 <div class="prices">
-                    <span class="new-price">¥299</span>
-                    <span class="old-price">¥599</span>
+                    <span class="new-price">¥{{classDetail.price | formatWechatPrice}}</span>
+                    <span class="old-price">¥{{classDetail.old_price | formatWechatPrice}}</span>
                 </div>
             </div>
         </div>
@@ -36,6 +36,10 @@
             ClassBanner
         },
         props: {
+            classDetail: {
+                type: Object,
+                default: {}
+            },
             isSelect: {
                 type: Boolean,
                 default: false
