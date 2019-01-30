@@ -37,7 +37,7 @@
                         name: "my"
                     }
                 ],
-                tabBar: sessionGetItem('tabBar') || 'home'
+                tabBar: sessionGetItem('tabBar') || 'home',
             };
         },
         methods: {
