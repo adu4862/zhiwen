@@ -56,16 +56,23 @@ console.log(location.href.split('#')[0])
                             "updateAppMessageShareData"
                         ] // 必填，需要使用的JS接口列表
                     });
-                    wx.updateAppMessageShareData({
-                        title: '测试标题', // 分享标题
-                        desc: '测试内容', // 分享描述
-                        link: location.href.split('#')[0], // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                        imgUrl: 'https://xuetang-public.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E5%A4%A7%E5%9B%BE.jpg', // 分享图标
-                        success: function () {
-                            // 设置成功
-                            alert('success')
-                        }
-                    })
+                    wx.ready(function(){
+                        // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+                        wx.updateAppMessageShareData({
+                            title: '测试标题', // 分享标题
+                            desc: '测试内容', // 分享描述
+                            link: location.href.split('#')[0], // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                            imgUrl: 'https://xuetang-public.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E5%A4%A7%E5%9B%BE.jpg', // 分享图标
+                            success: function () {
+                                // 设置成功
+                                alert('success')
+                            }
+                        })
+                    });
+                    wx.error(function(res){
+                        // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+                        console.log('error', res)
+                    });
                 });
             }
         }

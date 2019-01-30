@@ -68,6 +68,7 @@ router.beforeEach((to, from, next) => {
     document.title = title[to.name] || '职问';
 
     if (GetRequest().authorization) sessionSetItem('token', GetRequest().authorization);
+    if (GetRequest().user_id) sessionSetItem('userId', GetRequest().user_id);
 
     // 判断登陆
     if (!sessionGetItem('token')) {
