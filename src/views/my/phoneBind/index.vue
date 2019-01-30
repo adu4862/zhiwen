@@ -13,7 +13,7 @@
                 <button
                     :class="['code-btn blue-btn-48', counting?'disabled-btn':'']"
                     :disabled="counting"
-                    @click="startCountdown"
+                    @click="handleCode"
                 >
                     <CountDown v-if="counting" :time="6000" @end="handleCountdownEnd">
                         <template slot-scope="props">{{ props.totalSeconds }} 秒后重试</template>
@@ -28,6 +28,7 @@
         <div
             :class="['bind-phone-btn blue-btn-48', isDisabled?'disabled-btn':'']"
             :disabled="isDisabled"
+            @click="handleBindPhone"
         >
             立即绑定
         </div>
@@ -51,25 +52,39 @@
             }
         },
         computed: {
-            ...mapState(['phoneCode']),
+            ...mapState(['phoneCode', 'userInfo']),
             isDisabled() {
                 if (!this.phone && !this.code) return true;
                 return false;
             }
         },
         methods: {
-            startCountdown: function () {
+            ...mapActions(['getPhoneCode', 'bindPhone']),
+            handleCode: function () {
                 if (!this.phone) {
                     this.$toast({
                         msg: '请先填写手机号'
                     });
                     return
                 }
-                this.counting = true;
+                this.getPhoneCode({
+                    phone: this.phone
+                }).then((res) => {
+                    this.counting = true;
+                })
             },
             handleCountdownEnd: function () {
                 this.counting = false;
             },
+            handleBindPhone() {
+                this.bindPhone({
+                    id: this.userInfo.id,
+                    phone: this.phone,
+                    code: this.code
+                }).then((res) => {
+
+                })
+            }
         }
     }
 </script>
