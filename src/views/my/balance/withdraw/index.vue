@@ -3,7 +3,7 @@
         <div class="my-balance-withdraw-balance">
             <p class="title">
                 <span>微信提现</span>
-                <span>提现记录</span>
+                <span @click="handleRecords">提现记录</span>
             </p>
             <div class="balance">
                 <p>您当前可提现金额（元）</p>
@@ -40,6 +40,9 @@
         methods: {
             handleAll(balance) {
                 this.withdrawAccount = balance;
+            },
+            handleRecords() {
+                this.$router.push({name: 'balanceRecord'})
             }
         }
     }
