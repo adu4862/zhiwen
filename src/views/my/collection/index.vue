@@ -1,40 +1,42 @@
 <template>
     <div class="my-collection">
-        <!--<CollectionEmpty />-->
-        <div class="my-collection-head">
-            <div class="select" v-if="isSelect">
-                <van-checkbox class="check-box" v-model="selectAll"><span>全选</span></van-checkbox>
+        <template v-if="collectionList.length">
+            <div class="my-collection-head">
+                <div class="select" v-if="isSelect">
+                    <van-checkbox class="check-box" v-model="selectAll"><span>全选</span></van-checkbox>
+                </div>
+                <div class="option ftb" @click="handelSelect">
+                    <template v-if="!isSelect">
+                        管理
+                        <i data-icon="a" class="icon"></i>
+                    </template>
+                    <template v-else>
+                        完成
+                    </template>
+                </div>
             </div>
-            <div class="option ftb" @click="handelSelect">
-                <template v-if="!isSelect">
-                    管理
-                    <i data-icon="a" class="icon"></i>
-                </template>
-                <template v-else>
-                    完成
-                </template>
+            <van-list
+                v-model="loading"
+                :finished="finished"
+                finished-text="没有更多了"
+                @load="onLoad"
+            >
+                <CollectionItem
+                    v-for="(item, idx) in collectionList"
+                    :key="idx"
+                    :collectionDetail="item"
+                    :class="idx+1 === list.length?'last-item':''"
+                    :isSelect="isSelect"
+                    :selectAll="selectAll"
+                    @addDelete="addDelete"
+                />
+            </van-list>
+            <div class="my-collection-remove" v-if="isSelect" @click="handleRemove">
+                <i class="delete-icon"></i>
+                移除
             </div>
-        </div>
-        <van-list
-            v-model="loading"
-            :finished="finished"
-            finished-text="没有更多了"
-            @load="onLoad"
-        >
-            <CollectionItem
-                v-for="(item, idx) in collectionList"
-                :key="idx"
-                :collectionDetail="item"
-                :class="idx+1 === list.length?'last-item':''"
-                :isSelect="isSelect"
-                :selectAll="selectAll"
-                @addDelete="addDelete"
-            />
-        </van-list>
-        <div class="my-collection-remove" v-if="isSelect" @click="handleRemove">
-            <i class="delete-icon"></i>
-            移除
-        </div>
+        </template>
+        <CollectionEmpty v-else />
         <Modal
             :showMask="true"
             :isVisible="isVisible"

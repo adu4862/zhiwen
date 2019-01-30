@@ -4,16 +4,16 @@
             <div :class="['container', isDisabled?'container-disabled':'container-normal']">
                 <div class="account">
                     <p class="title">我的余额（元）</p>
-                    <p class="balance">8789.00</p>
+                    <p class="balance">{{balance.amount | formatFloat}}</p>
                 </div>
                 <div class="income">
                     <div class="income-item">
                         <p class="title">今日收益（元）</p>
-                        <p class="balance">878.00</p>
+                        <p class="balance">{{balance.today_amount | formatFloat}}</p>
                     </div>
                     <div class="income-item">
                         <p class="title">累计收益（元）</p>
-                        <p class="balance">18789.00</p>
+                        <p class="balance">{{balance.amount | formatFloat}}</p>
                     </div>
                 </div>
             </div>
@@ -35,11 +35,14 @@
         name: "balance",
         data() {
             return {
-                isDisabled: false
+                isDisabled: false,
+                balance: {}
             }
         },
         mounted() {
-              this.getUserRewardAmount();
+              this.getUserRewardAmount().then((res) => {
+                  this.balance = res;
+              });
         },
         methods: {
             ...mapActions('my', ['getUserRewardAmount']),

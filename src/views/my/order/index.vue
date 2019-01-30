@@ -1,18 +1,20 @@
 <template>
     <div class="my-order">
-        <!--<OrderEmpty />-->
-        <van-list
-            v-model="loading"
-            :finished="finished"
-            finished-text="没有更多了"
-            @load="onLoad"
-        >
-            <OrderItem
-                v-for="(item, idx) in list"
-                :key="idx"
-                :class="idx+1 === list.length?'last-item':''"
-            />
-        </van-list>
+        <template v-if="orderList.length">
+            <van-list
+                v-model="loading"
+                :finished="finished"
+                finished-text="没有更多了"
+                @load="onLoad"
+            >
+                <OrderItem
+                    v-for="(item, idx) in orderList"
+                    :key="idx"
+                    :class="idx+1 === orderList.length?'last-item':''"
+                />
+            </van-list>
+        </template>
+        <OrderEmpty v-else />
     </div>
 </template>
 
@@ -20,9 +22,11 @@
     import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
     import OrderEmpty from './orderEmpty'
     import OrderItem from './orderItem'
+    import pageMixin from '@/common/mixin'
 
     export default {
         name: "order",
+        mixins: [pageMixin],
         components: {
             OrderEmpty,
             OrderItem
@@ -31,13 +35,16 @@
             return {
                 list: [],
                 loading: false,
-                finished: false
+                finished: false,
+                orderList: [],
             }
         },
         mounted() {
             this.getUserOrders({
-                skip: 0,
-                limit: 10
+                skip: this.skip,
+                limit: this.limit
+            }).then((res) => {
+                this.orderList = res.list
             });
         },
         methods: {

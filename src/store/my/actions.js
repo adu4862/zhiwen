@@ -7,8 +7,7 @@ export default {
         try {
             const res = await userRewardAmount();
             if (res) {
-                console.log("getUserRewardAmount--------", res);
-                // commit(types.SET_TOKEN, res);
+                return res;
             }
         } catch (e) {
             console.log(e)
@@ -21,6 +20,7 @@ export default {
             if (res) {
                 console.log("getUserPunches--------", res);
                 // commit(types.SET_TOKEN, res);
+                return res
             }
         } catch (e) {
             console.log(e)
@@ -33,6 +33,7 @@ export default {
             if (res) {
                 console.log("getUserOrders--------", res);
                 // commit(types.SET_TOKEN, res);
+                return res
             }
         } catch (e) {
             console.log(e)
