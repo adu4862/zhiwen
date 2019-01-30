@@ -5,7 +5,7 @@
                 <i class="icon icon--4"></i>
                 收藏
             </div>
-            <div class="class-bar-features-item">
+            <div class="class-bar-features-item" @click="handleTest">
                 <i class="icon icon--1"></i>
                 砍价
             </div>
@@ -26,7 +26,10 @@
             }
         },
         methods: {
-            ...mapActions('home', ['setClassCollection'])
+            ...mapActions('home', ['setClassCollection']),
+            handleTest() {
+                this.$router.push({name: 'punch'})
+            }
         }
     }
 </script>

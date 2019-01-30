@@ -1,6 +1,6 @@
 <template>
     <div class="class-detail">
-        <EarnMoney />
+        <EarnMoney @click.native="handleTest" />
         <ClassIntro :classDetail="classDetail"/>
         <ClassTable :classDetail="classDetail"/>
         <ClassBar :classDetail="classDetail"/>
@@ -33,7 +33,10 @@
             });
         },
         methods: {
-            ...mapActions('home', ['getClassDetail'])
+            ...mapActions('home', ['getClassDetail']),
+            handleTest() {
+                this.$router.push({name: 'publish'})
+            }
         }
     };
 </script>
