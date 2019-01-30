@@ -4,11 +4,11 @@
             <div class="balance">
                 <div class="money-item">
                     <p>今日收益（元）</p>
-                    <p>878.00</p>
+                    <p>{{account.today_amount | formatFloat}}</p>
                 </div>
                 <div class="money-item">
                     <p>累计收益（元）</p>
-                    <p>1878.00</p>
+                    <p>{{account.amount | formatFloat}}</p>
                 </div>
             </div>
             <div class="withdraw-btn">
@@ -51,15 +51,18 @@
             return {
                 list: [],
                 loading: false,
-                finished: false
+                finished: false,
+                account: {}
             }
         },
         mounted() {
-            this.getUserRewardAmount();
-            this.getUserPunches({
-                skip: 0,
-                limit: 10
+            this.getUserRewardAmount().then((res) => {
+                this.account = res;
             });
+            this.getUserPunches({
+                skip: this.skip,
+                limit: this.limit
+            })
         },
         methods: {
             ...mapActions('my', ['getUserRewardAmount', 'getUserPunches']),
