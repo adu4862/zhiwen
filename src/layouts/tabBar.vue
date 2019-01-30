@@ -42,7 +42,9 @@
         },
         watch: {
             '$route' (to, from) {
-                this.tabBar = to.name;
+                if (["home", "my"].includes(to.name)) {
+                    this.tabBar = to.name;
+                }
             }
         },
         methods: {
