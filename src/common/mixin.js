@@ -1,5 +1,3 @@
-import {mapState, mapMutations, mapGetters, mapActions} from 'vuex'
-
 export default {
     data() {
         return {
