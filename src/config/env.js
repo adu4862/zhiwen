@@ -11,12 +11,13 @@ const dev = {
     routerMode: 'history', // hash
 
     /* beta */
-    baseUrl: "https://api.douban.com",
+    baseUrl: `http://${location.host}/api`,
     credential: true,
 };
 
 const prod = {
     ...dev,
+    baseUrl: "http://learning.zhiwen.me",
 };
 
 export default process.env.NODE_ENV === 'development' ? dev : prod;

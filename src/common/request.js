@@ -16,18 +16,14 @@ const AJAX = axios.create({
 
 // 添加请求拦截器
 AJAX.interceptors.request.use(function (config) {
-    if (process.env.NODE_ENV === 'development') {
-        config.url = `http://${location.host}/api` + config.url;           // 自定义反向代理
-    }
+    console.log(config)
+    config.url = config.baseURL + config.url;           // 自定义反向代理
 
     let token = sessionGetItem('token');
     if (token) {
         config.headers["Authorization"] = 'Bearer ' + token;
     }
 
-    // if (config.url.indexOf('api') != -1) {
-    //     config.url = `http://${localbase}/api` + config.url;           // 自定义反向代理
-    // }
     return config;
 }, function (error) {
     // 对请求错误做些什么
