@@ -39,10 +39,10 @@ console.log(location.href.split('#')[0])
             ...mapActions(['getWechatShare']),
             handleShare() {
                 this.getWechatShare({
-                    url: encodeURIComponent(location.href.split('#')[0]),
+                    url: encodeURIComponent('http://learning.zhiwen.me/publish'),
                     // url: location.href.split('#')[0],
                     jsApiList: [
-                        "onMenuShareWeibo"
+                        "updateTimelineShareData"
                     ]
                 }).then((res) => {
                     let { appId, timestamp, nonceStr, signature, jsApiList } = res;

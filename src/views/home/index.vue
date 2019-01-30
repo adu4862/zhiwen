@@ -38,10 +38,6 @@
                 classList: []
             }
         },
-        beforeRouteEnter(to, from, next) {
-            if (GetRequest().authorization) sessionSetItem('token', GetRequest().authorization);
-            next();
-        },
         mounted() {
             this.getBanner().then((res) => {
                 this.banners = res;

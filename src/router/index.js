@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import {sessionSetItem, sessionGetItem, isWeiXin} from '../common/util'
+import {sessionSetItem, sessionGetItem, isWeiXin, GetRequest} from '../common/util'
 import Request from '@/common/request';
 import title from '@/config/title'
 import homeRouter from './home'
@@ -67,6 +67,8 @@ router.beforeEach((to, from, next) => {
     if (["home", "my"].includes(to.name)) sessionSetItem('tabBar', to.name);
     document.title = title[to.name] || '职问';
 
+    if (GetRequest().authorization) sessionSetItem('token', GetRequest().authorization);
+
     // 判断登陆
     if (!sessionGetItem('token')) {
         window.location.href = 'http://learning.zhiwen.me/api/user/wechat/login';
@@ -87,8 +89,6 @@ router.beforeEach((to, from, next) => {
     // } else {
     //     next();
     // }
-
-    next();
 });
 
 export default router;
