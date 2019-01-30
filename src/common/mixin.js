@@ -20,6 +20,12 @@ export default {
             this.setClassCollection({
                 product_id: this.classDetail.id
             }).then((res) => {
+                if (res.statusCode) {
+                    this.$toast({
+                        msg: res.message
+                    });
+                    return
+                }
                 this.$toast({
                     msg: '收藏成功',
                     type: 'collection'
