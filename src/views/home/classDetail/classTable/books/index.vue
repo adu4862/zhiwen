@@ -1,23 +1,38 @@
+<!-- 课程目录 -->
 <template>
     <div class="class-books">
-        <van-collapse v-model="activeName" accordion>
-            <van-collapse-item title="试听课" name="1">
-                <ClassInfo :isTest="true" />
-            </van-collapse-item>
-        </van-collapse>
-        <BooksItem title="第一章 法律英语第一章名" />
+        <!-- 试听课 -->
+        <template v-for="item in classDetail.chapters">
+            <van-collapse :style="{ order: item.order }" :key="item.id" v-model="activeName" accordion>
+                <van-collapse-item title="试听课" name="1">
+                    <ClassInfo :isTest="true" />
+                </van-collapse-item>
+            </van-collapse>
+        </template>
+        <!-- 未购买样式 -->
+        <!--<ClassInfoSimple />-->
+        <!-- 已购买样式 -->
+        <!--<BooksItem title="第一章 法律英语第一章名" />-->
     </div>
 </template>
 
 <script>
     import BooksItem from "./booksItem";
     import ClassInfo from "./booksItem/classInfo";
+    import ClassInfoSimple from "./booksItem/classInfoSimple";
 
     export default {
         name: "classDetailTableBooks",
         components: {
             BooksItem,
             ClassInfo,
+            ClassInfoSimple,
+        },
+        props: {
+            classDetail: {
+                type: Object,
+                default: {}
+            }
         },
         data() {
             return {
@@ -29,6 +44,8 @@
 
 <style lang="scss" scoped>
     .class-books {
+        display: flex;
+        flex-flow: column;
         /deep/ .van-cell {
             padding: 3px 20px;
             font-size: $font-size-sm;

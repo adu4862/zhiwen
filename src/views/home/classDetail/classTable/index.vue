@@ -16,7 +16,7 @@
             </div>
             <!-- 课程目录 -->
             <div class="books" v-show="activeHeader === '2'">
-                <ClassBooks />
+                <ClassBooks :classDetail="classDetail" />
             </div>
         </div>
     </div>
