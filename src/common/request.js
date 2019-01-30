@@ -69,5 +69,12 @@ export default {
                 'Content-Type': 'multipart/form-data'
             }, headers)
         })
+    },
+    delete(url, param = null, headers = {}, notUseBaseURL = false) {
+        return AJAX.delete(url, param, {
+            headers: Object.assign({
+                'Content-Type': 'multipart/form-data'
+            }, headers)
+        })
     }
 }

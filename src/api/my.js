@@ -12,6 +12,6 @@ export const userOrders = data => Request.get('/user/orders', data);
 /* 我的收藏 */
 export const userCollections = data => Request.get('/user/collections', data);
 /* 我的收藏 - 删除 */
-export const deleteUserCollections = data => Request.get('/collection/' + data.id);
+export const deleteUserCollections = data => Request.delete('/collection/' + data.id);
 /* 我的课程 */
 export const userProducts = data => Request.get('/user/products', data);
