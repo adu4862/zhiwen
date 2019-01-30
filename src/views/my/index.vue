@@ -29,17 +29,19 @@
         </div>
         <div class="my-class-list">
             <SectionTitle title="我的课程"/>
-            <!--<ClassEmpty />-->
-            <van-list
-                v-model="loading"
-                :finished="finished"
-                finished-text="没有更多了"
-                @load="onLoad"
-            >
-                <template v-for="(item, idx) in list">
-                    <ClassItem :class="idx+1 === list.length?'last-item':''"/>
-                </template>
-            </van-list>
+            <template v-if="userClassList.length">
+                <van-list
+                    v-model="loading"
+                    :finished="finished"
+                    finished-text="没有更多了"
+                    @load="onLoad"
+                >
+                    <template v-for="(item, idx) in userClassList">
+                        <ClassItem :class="idx+1 === userClassList.length?'last-item':''"/>
+                    </template>
+                </van-list>
+            </template>
+            <ClassEmpty v-else/>
         </div>
     </div>
 </template>
@@ -49,9 +51,11 @@
     import {SectionTitle, CellItem} from '@/components'
     import ClassItem from './classItem'
     import ClassEmpty from './classEmpty'
+    import pageMixin from '@/common/mixin'
 
     export default {
         name: "my",
+        mixins: [pageMixin],
         components: {
             CellItem,
             SectionTitle,
@@ -62,15 +66,18 @@
             return {
                 list: [],
                 loading: false,
-                finished: false
+                finished: false,
+                userClassList: []
             }
         },
         async mounted() {
             await this.userLogin();
             this.getUserInfo();
             this.getUserProducts({
-                skip: 0,
-                limit: 10
+                skip: this.skip,
+                limit: this.limit
+            }).then((res) => {
+                this.userClassList = res.list;
             });
         },
         methods: {
