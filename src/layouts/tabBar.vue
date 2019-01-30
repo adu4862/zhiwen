@@ -40,6 +40,11 @@
                 tabBar: sessionGetItem('tabBar') || 'home',
             };
         },
+        watch: {
+            '$route' (to, from) {
+                this.tabBar = to.name;
+            }
+        },
         methods: {
             clickHandler(routerName) {
                 this.tabBar = routerName;
