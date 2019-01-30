@@ -2,10 +2,10 @@
     <div class="my">
         <div class="my-head">
             <img class="header"
-                 src="http://cdn.zmqnw-images.zmqnw.com.cn/2017/12/28/132806689309a1.jpg?width=640&amp;height=640"
+                 :src="userInfo.headimgurl"
                  alt="head-img">
             <span class="name">
-                我是袁哲
+                {{userInfo.nickname}}
             </span>
         </div>
         <div class="my-cell-group">
@@ -15,7 +15,7 @@
             </CellItem>
             <CellItem label="推广中心" link="promotion">
                 <i class="icon icon--9" slot="icon"></i>
-                <p class="cell-content">可提现 <span class="cell-content-withdraw">110.13元</span></p>
+                <p class="cell-content">可提现 <span class="cell-content-withdraw">{{userInfo.balance}}元</span></p>
             </CellItem>
             <CellItem label="我的订单" link="order">
                 <i class="icon icon-" slot="icon"></i>
@@ -77,6 +77,9 @@
             }).then((res) => {
                 this.userClassList = res.list;
             });
+        },
+        computed: {
+            ...mapState(['userInfo'])
         },
         methods: {
             ...mapActions(['userLogin', 'getUserInfo']),

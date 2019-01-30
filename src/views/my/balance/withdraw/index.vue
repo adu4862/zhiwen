@@ -7,7 +7,7 @@
             </p>
             <div class="balance">
                 <p>您当前可提现金额（元）</p>
-                <p>{{userInfo.price | formatFloat}}</p>
+                <p>{{userInfo.balance | formatFloat}}</p>
             </div>
         </div>
         <div class="my-balance-withdraw-form">
@@ -17,7 +17,7 @@
                 <input v-model="withdrawAccount" type="number">
             </div>
             <p class="withdraw-tips">
-                当前可提现金额{{userInfo.price | formatFloat}}元，<span @click="handleAll(userInfo.price)">全部提现</span>
+                当前可提现金额{{userInfo.balance | formatFloat}}元，<span @click="handleAll(userInfo.balance)">全部提现</span>
             </p>
         </div>
         <button class="my-balance-withdraw-btn blue-btn-48">确认提现</button>
