@@ -11,7 +11,7 @@
             <!-- 课程概览 -->
             <div class="intro" v-show="activeHeader === '1'">
                 <template v-for="item in classDetail.overviews">
-                    <img :src="item.image_uri" :style="{order: item.order}" alt="" class="intro-img">
+                    <img :src="item.uri" :style="{order: item.order}" alt="" class="intro-img">
                 </template>
             </div>
             <!-- 课程目录 -->

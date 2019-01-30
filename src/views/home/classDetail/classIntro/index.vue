@@ -15,7 +15,7 @@
             <div class="class-intro-content-desc">
                 {{classDetail.introduction}}
             </div>
-            <div class="class-intro-content-info" v-if="classDetail.is_pay">
+            <div class="class-intro-content-info" v-if="!classDetail.is_pay">
                 <div class="saled">
                     <p class="people"><span>155</span>人开通</p>
                 </div>
