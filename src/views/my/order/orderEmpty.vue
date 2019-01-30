@@ -7,11 +7,8 @@
 </template>
 
 <script>
-    import commonMixin from '@/common/mixin'
-
     export default {
         name: "orderEmpty",
-        mixins: [commonMixin],
     }
 </script>
 

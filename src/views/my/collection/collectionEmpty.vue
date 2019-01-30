@@ -8,11 +8,8 @@
 </template>
 
 <script>
-    import commonMixin from '@/common/mixin'
-
     export default {
-        name: "collectionEmpty",
-        mixins: [commonMixin],
+        name: "collectionEmpty"
     }
 </script>
 

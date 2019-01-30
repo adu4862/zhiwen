@@ -22,11 +22,9 @@
     import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
     import OrderEmpty from './orderEmpty'
     import OrderItem from './orderItem'
-    import commonMixin from '@/common/mixin'
 
     export default {
         name: "order",
-        mixins: [commonMixin],
         components: {
             OrderEmpty,
             OrderItem

@@ -27,6 +27,10 @@ Object.keys(filters).forEach(filterName => {
     Vue.filter(filterName, filters[filterName])
 })
 
+import commonMixin from '@/common/mixin'
+
+Vue.mixin(commonMixin);
+
 /* eslint-disable no-new */
 new Vue({
     router,
