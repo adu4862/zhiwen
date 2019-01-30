@@ -1,5 +1,5 @@
 <template>
-    <ClassPanel :class="['my-collection-item', isSelect?'my-collection-item-select':'']" @handleClick="chooseClass">
+    <ClassPanel :class="['my-collection-item', isSelect?'my-collection-item-select':'']" @handleClick="chooseClass(classDetail.id)">
         <div class="my-collection-item-check" slot="select" v-if="isSelect">
             <van-checkbox class="check-box" v-model="checked"></van-checkbox>
         </div>
@@ -60,9 +60,11 @@
             }
         },
         methods: {
-            chooseClass() {
+            chooseClass(id) {
                 if (this.isSelect) {
                     this.checked = !this.checked;
+                } else {
+                    this.$router.push({name: 'classDetail', params: {id}})
                 }
             }
         }
