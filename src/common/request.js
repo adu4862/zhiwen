@@ -16,8 +16,7 @@ const AJAX = axios.create({
 
 // 添加请求拦截器
 AJAX.interceptors.request.use(function (config) {
-    console.log(config)
-    config.url = config.baseURL + config.url;           // 自定义反向代理
+    config.url = config.baseURL + config.url;
 
     let token = sessionGetItem('token');
     if (token) {

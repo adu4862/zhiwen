@@ -11,7 +11,7 @@ const dev = {
     routerMode: 'history', // hash
 
     /* beta */
-    baseUrl: `http://${location.host}/api`,
+    baseUrl: `http://${location.host}/api`,         // 自定义反向代理
     credential: true,
 };
 
