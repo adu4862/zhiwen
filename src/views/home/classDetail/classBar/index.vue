@@ -28,14 +28,7 @@
         methods: {
             ...mapActions('home', ['setClassCollection']),
             handleCollect() {
-                this.setClassCollection({
-                    product_id: this.classDetail.id
-                }).then((res) => {
-                    this.$toast({
-                        msg: '收藏成功',
-                        type: 'collection'
-                    })
-                })
+                this.addCollect();
             }
         }
     }

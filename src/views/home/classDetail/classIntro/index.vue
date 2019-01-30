@@ -10,7 +10,7 @@
                     <i class="icon icon-icon" v-else></i>
                     <p class="title ellipsis">{{classDetail.subject}}</p>
                 </div>
-                <p class="learned" v-if="classDetail.is_pay">已学习 25/100节</p>
+                <p class="learned" v-if="classDetail.is_pay">已学习 {{classDetail.learn_count}}/{{classDetail.lesson_count}}节</p>
             </div>
             <div class="class-intro-content-desc">
                 {{classDetail.introduction}}
@@ -78,6 +78,7 @@
             padding: 13px 20px 9px 20px;
             &-head {
                 display: flex;
+                justify-content: space-between;
                 align-items: flex-end;
                 color: $color-important;
                 font-size: $font-size-md;
