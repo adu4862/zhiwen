@@ -1,13 +1,13 @@
 <template>
-    <ClassPanel :class="['my-collection-item', isSelect?'my-collection-item-select':'']" @handleClick="chooseClass(classDetail.id)">
+    <ClassPanel :class="['my-collection-item', isSelect?'my-collection-item-select':'']" @handleClick="chooseClass(collectionDetail.id)">
         <div class="my-collection-item-check" slot="select" v-if="isSelect">
             <van-checkbox class="check-box" v-model="checked"></van-checkbox>
         </div>
-        <ClassBanner slot="banner" :uri="classDetail.image_uri" />
+        <ClassBanner slot="banner" :uri="collectionDetail.product.image_uri" />
         <div class="my-collection-item-content">
             <div class="info">
-                <div class="title ellipsis">{{classDetail.subject}}</div>
-                <div class="content">{{classDetail.introduction}}</div>
+                <div class="title ellipsis">{{collectionDetail.product.subject}}</div>
+                <div class="content">{{collectionDetail.product.introduction}}</div>
                 <div class="buy-num">
                     <span>1444</span>人已购买
                 </div>
@@ -18,8 +18,8 @@
                 <!--<span>已购买</span>-->
                 <!--</div>-->
                 <div class="prices">
-                    <span class="new-price">¥{{classDetail.price | formatWechatPrice}}</span>
-                    <span class="old-price">¥{{classDetail.old_price | formatWechatPrice}}</span>
+                    <span class="new-price">¥{{collectionDetail.product.price | formatWechatPrice}}</span>
+                    <span class="old-price">¥{{collectionDetail.product.old_price | formatWechatPrice}}</span>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
             ClassBanner
         },
         props: {
-            classDetail: {
+            collectionDetail: {
                 type: Object,
                 default: {}
             },

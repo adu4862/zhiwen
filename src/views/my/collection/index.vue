@@ -24,7 +24,7 @@
             <CollectionItem
                 v-for="(item, idx) in collectionList"
                 :key="idx"
-                :classDetail="item.product"
+                :collectionDetail="item"
                 :class="idx+1 === list.length?'last-item':''"
                 :isSelect="isSelect"
                 :selectAll="selectAll"
@@ -131,6 +131,7 @@
                     }).then((res) => {
                         if (res) success++;
                         if (success === this.deleteList.length) {
+                            this.handleCancel();
                             this.$toast({
                                 msg: '删除成功'
                             });
