@@ -55,11 +55,9 @@
     import CollectionEmpty from './collectionEmpty'
     import CollectionItem from './collectionItem'
     import {Modal} from "@/components"
-    import commonMixin from '@/common/mixin'
 
     export default {
         name: "collection",
-        mixins: [commonMixin],
         components: {
             CollectionEmpty,
             CollectionItem,
