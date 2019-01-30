@@ -25,7 +25,10 @@
                 <input v-model="code" type="phone" placeholder="请输入验证码">
             </div>
         </div>
-        <div :class="['bind-phone-btn blue-btn-48', isDisabled?'disabled-btn':'']">
+        <div
+            :class="['bind-phone-btn blue-btn-48', isDisabled?'disabled-btn':'']"
+            :disabled="isDisabled"
+        >
             立即绑定
         </div>
     </div>
@@ -50,7 +53,7 @@
         computed: {
             ...mapState(['phoneCode']),
             isDisabled() {
-                if (!this.phone && this.code) return true;
+                if (!this.phone && !this.code) return true;
                 return false;
             }
         },
