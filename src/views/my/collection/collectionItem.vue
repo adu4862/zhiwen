@@ -63,6 +63,7 @@
             chooseClass(id) {
                 if (this.isSelect) {
                     this.checked = !this.checked;
+                    this.$emit('addDelete', id)
                 } else {
                     this.$router.push({name: 'classDetail', params: {id}})
                 }

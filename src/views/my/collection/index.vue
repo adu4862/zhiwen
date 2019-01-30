@@ -28,6 +28,7 @@
                 :class="idx+1 === list.length?'last-item':''"
                 :isSelect="isSelect"
                 :selectAll="selectAll"
+                @addDelete="addDelete"
             />
         </van-list>
         <div class="my-collection-remove" v-if="isSelect" @click="handleRemove">
@@ -70,7 +71,8 @@
                 isSelect: false,
                 selectAll: false,
                 isVisible: false,
-                collectionList: []
+                collectionList: [],
+                deleteList: [],
             }
         },
         mounted() {
@@ -82,7 +84,7 @@
             });
         },
         methods: {
-            ...mapActions('my', ['getUserCollections']),
+            ...mapActions('my', ['getUserCollections', 'deleteUserCollections']),
             onLoad() {
                 // 模拟异步更新数据
                 setTimeout(() => {
@@ -104,15 +106,38 @@
                     console.log('完成')
                 }
             },
+            addDelete(id) {
+                this.deleteList.push(id);
+                console.log(this.deleteList)
+            },
+            handleRemove() {
+                this.isVisible = true;
+            },
             handleCancel() {
                 this.isVisible = false;
             },
             handelConfirm() {
                 console.log('confirm')
+                if (!this.deleteList.length) {
+                    this.$toast({
+                        msg: '请选择课程'
+                    });
+                    return
+                }
+                let success = 0;
+                this.deleteList.map((item) => {
+                    this.deleteUserCollections({
+                        id: item
+                    }).then((res) => {
+                        if (res) success++;
+                        if (success === this.deleteList.length) {
+                            this.$toast({
+                                msg: '删除成功'
+                            });
+                        }
+                    })
+                })
             },
-            handleRemove() {
-                this.isVisible = true;
-            }
         }
     }
 </script>
