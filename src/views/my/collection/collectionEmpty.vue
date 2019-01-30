@@ -3,13 +3,16 @@
         <img class="my-collection-empty-img"
              :src="require('@/assets/img/my/collection/collection_empty.png')" alt="collection_empty">
         <span class="my-collection-empty-tips">暂无收藏记录</span>
-        <button class="my-collection-empty-btn blue-btn-48">去商城逛逛</button>
+        <button class="my-collection-empty-btn blue-btn-48" @click="toHome">去商城逛逛</button>
     </div>
 </template>
 
 <script>
+    import commonMixin from '@/common/mixin'
+
     export default {
-        name: "collectionEmpty"
+        name: "collectionEmpty",
+        mixins: [commonMixin],
     }
 </script>
 
