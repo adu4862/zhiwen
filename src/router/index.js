@@ -19,7 +19,7 @@ Vue.use(Router)
 let base = `${process.env.BASE_URL}` // 动态获取二级目录
 
 const router =  new Router({
-    mode: 'history',
+    // mode: 'history',
     base: base,
     routes: [
         {

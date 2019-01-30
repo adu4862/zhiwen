@@ -31,25 +31,58 @@
 <script>
     import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
     import wx from 'weixin-js-sdk'
+    import {wechatShare} from '@/api/common';
 
     export default {
         name: "publish",
-        beforeCreate() {
+        mounted() {
             // console.log(location.href.split('#')[0])
-            this.init();
+            this.$nextTick(() => {
+                this.init();
+            })
         },
         methods: {
             ...mapActions(['getWechatShare']),
             init() {
-                console.log(location.href.split('#')[0])
-                console.log(encodeURIComponent(location.href.split('#')[0]))
-                this.getWechatShare({
+                wechatShare({
                     url: encodeURIComponent(location.href.split('#')[0]),
-                    // url: location.href.split('#')[0],
                     jsApiList: [
-                        "onMenuShareTimeline", "onMenuShareAppMessage", "onMenuShareQQ", "onMenuShareWeibo","onMenuShareQZone",
-                        "chooseImage", "getNetworkType", "hideOptionMenu", "showOptionMenu", "hideMenuItems",
-                        "showMenuItems", "hideAllNonBaseMenuItem", "showAllNonBaseMenuItem", "closeWindow"
+                        'checkJsApi',
+                        'onMenuShareTimeline',
+                        'onMenuShareAppMessage',
+                        'onMenuShareQQ',
+                        'onMenuShareWeibo',
+                        'onMenuShareQZone',
+                        'hideMenuItems',
+                        'showMenuItems',
+                        'hideAllNonBaseMenuItem',
+                        'showAllNonBaseMenuItem',
+                        'translateVoice',
+                        'startRecord',
+                        'stopRecord',
+                        'onVoiceRecordEnd',
+                        'playVoice',
+                        'onVoicePlayEnd',
+                        'pauseVoice',
+                        'stopVoice',
+                        'uploadVoice',
+                        'downloadVoice',
+                        'chooseImage',
+                        'previewImage',
+                        'uploadImage',
+                        'downloadImage',
+                        'getNetworkType',
+                        'openLocation',
+                        'getLocation',
+                        'hideOptionMenu',
+                        'showOptionMenu',
+                        'closeWindow',
+                        'scanQRCode',
+                        'chooseWXPay',
+                        'openProductSpecificView',
+                        'addCard',
+                        'chooseCard',
+                        'openCard'
                     ]
                 }).then((res) => {
                     let {appId, timestamp, nonceStr, signature, jsApiList} = res;
@@ -72,16 +105,22 @@
                 });
             },
             handleShare() {
-                wx.updateAppMessageShareData({
-                    title: '测试标题', // 分享标题
+                wx.onMenuShareAppMessage({
+                    title: '测试', // 分享标题
                     desc: '测试内容', // 分享描述
                     link: location.href.split('#')[0], // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                     imgUrl: 'https://xuetang-public.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E5%A4%A7%E5%9B%BE.jpg', // 分享图标
+                    type: 'link', // 分享类型,music、video或link，不填默认为link
+                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                     success: function () {
-                        // 设置成功
-                        alert('success')
+                        // 用户点击了分享后执行的回调函数
+                        console.log('分享成功')
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                        console.log('取消分享')
                     }
-                })
+                });
             }
         }
     }
