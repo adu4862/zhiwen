@@ -4,7 +4,7 @@
             <div :class="['container', isDisabled?'container-disabled':'container-normal']">
                 <div class="account">
                     <p class="title">我的余额（元）</p>
-                    <p class="balance">{{balance.amount | formatFloat}}</p>
+                    <p class="balance">{{userInfo.price | formatFloat}}</p>
                 </div>
                 <div class="income">
                     <div class="income-item">
@@ -35,8 +35,14 @@
         name: "balance",
         data() {
             return {
-                isDisabled: false,
                 balance: {}
+            }
+        },
+        computed: {
+            ...mapState(['userInfo']),
+            isDisabled() {
+                if (!this.userInfo.price) return true;
+                return false;
             }
         },
         mounted() {
