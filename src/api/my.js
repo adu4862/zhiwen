@@ -6,7 +6,7 @@ import Request from '@/common/request';
 /* 用户收益 */
 export const userRewardAmount = data => Request.get('/user/reward/amount', data);
 /* 推广订单 */
-export const userPunches = data => Request.get('/user/punches', data);
+export const userRewards = data => Request.get('/user/rewards', data);
 /* 我的订单 */
 export const userOrders = data => Request.get('/user/orders', data);
 /* 我的收藏 */

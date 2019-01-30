@@ -22,10 +22,10 @@
                 </button>
             </div>
             <div class="cell-item">
-                <input type="phone" placeholder="请输入验证码">
+                <input v-model="code" type="phone" placeholder="请输入验证码">
             </div>
         </div>
-        <div class="bind-phone-btn blue-btn-48 disabled-btn">
+        <div :class="['bind-phone-btn blue-btn-48', isDisabled?'disabled-btn':'']">
             立即绑定
         </div>
     </div>
@@ -43,11 +43,16 @@
         data() {
             return {
                 phone: '',
+                code: '',
                 counting: false,
             }
         },
         computed: {
-            ...mapState(['phoneCode'])
+            ...mapState(['phoneCode']),
+            isDisabled() {
+                if (!this.phone && this.code) return true;
+                return false;
+            }
         },
         methods: {
             startCountdown: function () {
