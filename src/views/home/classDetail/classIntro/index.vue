@@ -15,7 +15,7 @@
             <div class="class-intro-content-desc">
                 {{classDetail.introduction}}
             </div>
-            <div class="class-intro-content-info" v-if="!classDetail.is_pay">
+            <div class="class-intro-content-info" v-if="classDetail.is_pay">
                 <div class="saled">
                     <p class="people"><span>155</span>人开通</p>
                 </div>
@@ -29,7 +29,7 @@
                     <img class="icon-punch" :src="require('@/assets/img/icon_punch.png')" alt="打卡icon">
                     已连续打卡{{classDetail.punch_count}}天
                 </div>
-                <div class="right ftb">
+                <div class="right ftb" @click="addCollect">
                     收藏
                     <i class="icon icon--4"></i>
                 </div>

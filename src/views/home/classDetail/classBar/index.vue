@@ -1,7 +1,7 @@
 <template>
     <div class="class-bar">
         <div class="class-bar-features" v-if="!classDetail.is_pay">
-            <div class="class-bar-features-item" @click="handleCollect">
+            <div class="class-bar-features-item" @click="addCollect">
                 <i class="icon icon--4"></i>
                 收藏
             </div>
@@ -26,10 +26,7 @@
             }
         },
         methods: {
-            ...mapActions('home', ['setClassCollection']),
-            handleCollect() {
-                this.addCollect();
-            }
+            ...mapActions('home', ['setClassCollection'])
         }
     }
 </script>
