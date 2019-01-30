@@ -16,7 +16,10 @@ let modules = {
 export default new Vuex.Store({
     state: {
         userInfo: {},
-        phoneCode: '+86',
+        phoneCode: {
+            label: '中国',
+            code: '+86'
+        },
     },
     modules,
     actions,    // 根级别的 action

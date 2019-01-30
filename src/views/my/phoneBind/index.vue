@@ -5,7 +5,7 @@
         </div>
         <div class="bind-phone-form">
             <div class="cell-item">
-                <span class="phone-pre">中国({{phoneCode}})</span>
+                <span class="phone-pre">{{phoneCode.label}}({{phoneCode.code}})</span>
                 <router-link :to="{name: 'areaSelect'}"><i class="cell-item-right-arrow"></i></router-link>
             </div>
             <div class="cell-item">

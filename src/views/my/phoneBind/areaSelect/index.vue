@@ -8,7 +8,7 @@
                         <h2 class="country-list-group-title">{{ group.title }}</h2>
                         <ul class="country-list-group-box">
                             <li v-for="item in group.items" class="country-list-group-box-item"
-                                :key="item.id" @click="handleCode(item.code)">
+                                :key="item.id" @click="handleCode(item)">
                                 <span class="name">{{ item.label }}</span>
                                 <span class="name">{{ item.code }}</span>
                             </li>
@@ -186,8 +186,8 @@
                     this.listHeight.push(height);
                 }
             },
-            handleCode(code) {
-                this.setPhoneCode(code);
+            handleCode(obj) {
+                this.setPhoneCode(obj);
                 this.$router.go(-1);
             }
         },

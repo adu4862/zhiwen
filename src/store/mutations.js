@@ -10,7 +10,7 @@ export default {
         sessionSetItem('token', toekn);
     },
     // 设置国家手机号前缀
-    [types.SET_PHONE_CODE](state, code) {
-        state.phoneCode = code;
+    [types.SET_PHONE_CODE](state, obj) {
+        state.phoneCode = obj;
     },
 }
