@@ -15,3 +15,9 @@ export const classCollection = data => Request.post('/collection', data);
 export const singleClassInfo = data => Request.get('/lesson/' + data.id);
 /* 单节课资源链接 */
 export const resourseUrl = data => Request.get('/lesson/' + data.id + '/url');
+/* 创建砍价 */
+export const bargainCreate = data => Request.post('/bargain', data);
+/* 获取单个砍价的金额 */
+export const bargainMoney = data => Request.get('/bargain/' + data.id);
+
+

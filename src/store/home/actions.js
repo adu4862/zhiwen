@@ -1,5 +1,5 @@
 import * as types from '@/store/mutation-types.js';
-import {banner, classList, classDetail, classCollection, resourseUrl, singleClassInfo} from "@/api/home";
+import {banner, classList, classDetail, classCollection, resourseUrl, singleClassInfo, bargainCreate} from "@/api/home";
 
 export default {
     // 获取Banner
@@ -62,6 +62,28 @@ export default {
     async getSingleClassInfo({}, opts) {
         try {
             const res = await singleClassInfo(opts);
+            if (res) {
+                return res;
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    },
+    // 创建砍价
+    async createBargain({}, opts) {
+        try {
+            const res = await bargainCreate(opts);
+            if (res) {
+                return res;
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    },
+    // 获取单个砍价的金额
+    async getBarginMoney({}, opts) {
+        try {
+            const res = await bargainMoney(opts);
             if (res) {
                 return res;
             }

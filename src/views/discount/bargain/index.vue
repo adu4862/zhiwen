@@ -38,7 +38,7 @@
             <div class="discount-bargain-progress-lowest">
                 <div class="triangle"></div>
                 <div class="content">
-                    <p>底价<span>¥269</span></p>
+                    <p>底价<span>¥{{classDetail.lowest_price | formatWechatPrice}}</span></p>
                 </div>
             </div>
         </div>
@@ -103,7 +103,8 @@
                 discountStatusWidth: 0,
                 scheduleWidth: 0,
                 isVisible: false,
-                isOrderVisible: false
+                isOrderVisible: false,
+                bargainDetail: {}
             }
         },
         computed: {
@@ -113,11 +114,18 @@
             },
         },
         mounted() {
+            this.createBargain({
+                product_id: this.classDetail.id
+            }).then((res) => {
+                console.log(res)
+                this.bargainDetail = res;
+            });
             this.$nextTick(() => {
                 this.calcOffset();
             })
         },
         methods: {
+            ...mapActions('home', ['createBargain', 'getBarginMoney']),
             // 砍价偏移量
             calcOffset() {
                 this.scheduleWidth = this.$refs.schedule.offsetWidth;
