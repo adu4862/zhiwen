@@ -25,17 +25,15 @@
             <p class="class-media-point-title">本节课程知识点</p>
             <p class="class-media-point-sub-title">点击相应的知识点可以快速跳转到该处进行观看</p>
             <div class="class-media-point-list">
-                <div class="class-media-point-list-item" @click="handlePoint(5)">
-                    <p>法律英语主要有哪些类型</p>
-                    <p>00:05</p>
-                </div>
-                <div class="class-media-point-list-item" @click="handlePoint(15)">
-                    <p>法律英语主要有哪些类型</p>
-                    <p>00:15</p>
-                </div>
-                <div class="class-media-point-list-item" @click="handlePoint(25)">
-                    <p>法律英语主要有哪些类型</p>
-                    <p>00:25</p>
+                <div
+                    v-for="item in pointList"
+                    :key="item.id"
+                    class="class-media-point-list-item"
+                    :style="{order: item.order}"
+                    @click="handlePoint(5)"
+                >
+                    <p>{{item.subject}}</p>
+                    <p>{{item.point | realFormatSecond}}</p>
                 </div>
             </div>
         </div>
@@ -58,6 +56,7 @@
     import 'video.js/dist/video-js.css'
     import {videoPlayer} from 'vue-video-player'
     import PunchEnter from "../punchEnter"
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
 
     export default {
         name: "classMedia",
@@ -90,6 +89,7 @@
                     poster: require('@/assets/img/demo_banner.png'),
                 },
                 checkWifiVisible: false,
+                pointList: [],
             }
         },
         computed: {
@@ -99,9 +99,24 @@
         },
         mounted() {
             // this.checkWifi();
-            console.log('this is current player instance object', this.player)
+            // console.log('this is current player instance object', this.player)
+            this.getResourseUrl({
+                id: this.$route.params.sourceId
+            }).then((res) => {
+                console.log(res)
+                this.playerOptions.sources[0].src = res.url;
+            });
+            this.getSingleClassInfo({
+                id: this.$route.params.sourceId
+            }).then((res) => {
+                console.log(res)
+                let {img_uri, knowledge_points} = res;
+                this.playerOptions.sources[0].poster = img_uri;
+                this.pointList = knowledge_points;
+            });
         },
         methods: {
+            ...mapActions('home', ['getResourseUrl', 'getSingleClassInfo']),
             // listen event
             onPlayerPlay(player) {
                 // console.log('player play!', player)
@@ -183,6 +198,8 @@
                 color: #666666;
             }
             &-list {
+                display: flex;
+                flex-flow: column;
                 margin-top: 3px;
                 &-item {
                     @include ftb();

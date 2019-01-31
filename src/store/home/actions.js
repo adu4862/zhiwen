@@ -1,5 +1,5 @@
 import * as types from '@/store/mutation-types.js';
-import {banner, classList, classDetail, classCollection, resourseUrl} from "@/api/home";
+import {banner, classList, classDetail, classCollection, resourseUrl, singleClassInfo} from "@/api/home";
 
 export default {
     // 获取Banner
@@ -52,6 +52,17 @@ export default {
     async getResourseUrl({}, opts) {
         try {
             const res = await resourseUrl(opts);
+            if (res) {
+                return res;
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    },
+    // 获取单节课信息
+    async getSingleClassInfo({}, opts) {
+        try {
+            const res = await singleClassInfo(opts);
             if (res) {
                 return res;
             }

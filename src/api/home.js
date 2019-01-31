@@ -11,5 +11,7 @@ export const classList = data => Request.get('/product', data);
 export const classDetail = data => Request.get('/product/' + data.id);
 /* 课程收藏 */
 export const classCollection = data => Request.post('/collection', data);
-/* 获取视、音频链接 */
-export const resourseUrl = data => Request.post('/lesson/' + data.id + '/url');
+/* 单节课信息 */
+export const singleClassInfo = data => Request.get('/lesson/' + data.id);
+/* 单节课资源链接 */
+export const resourseUrl = data => Request.get('/lesson/' + data.id + '/url');
