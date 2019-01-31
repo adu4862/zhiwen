@@ -66,7 +66,6 @@
                     this.getWechatPayConfig({
                         id: res.id
                     }).then((res) => {
-                        console.log(123, res)
                         let {timeStamp, nonceStr, signType, paySign} = res;
                         wx.chooseWXPay({
                             timestamp: timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
@@ -76,7 +75,7 @@
                             paySign, // 支付签名
                             success: function (res) {
                                 // 支付成功后的回调函数
-                            }
+                            },
                         });
                     })
                 })
