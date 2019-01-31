@@ -9,6 +9,7 @@
                     :key="item.id"
                     :lesson="item"
                     :isTest="true"
+                    :style="{order: item.order}"
                 />
             </van-collapse-item>
         </van-collapse>
@@ -62,6 +63,7 @@
         }
         /deep/ .van-collapse-item__content {
             padding: initial;
+            background-color: $color-bg;
         }
     }
 </style>
