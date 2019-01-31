@@ -49,14 +49,14 @@
                     this.$router.push({
                         name: 'classMedia',
                         params: {
-                            sourceId: id
+                            id
                         }
                     })
                 } else {
                     this.$router.push({
                         name: 'classVoice',
                         params: {
-                            sourceId: lesson.id
+                            id
                         }
                     })
                 }

@@ -16,7 +16,7 @@ export default [
         component: ClassDetail,
     },
     {
-        path: '/class/:id/media',
+        path: '/class/:id/media/:id',
         name: 'classMedia',
         component: ClassMedia,
     },

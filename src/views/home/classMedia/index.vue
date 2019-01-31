@@ -30,7 +30,7 @@
                     :key="item.id"
                     class="class-media-point-list-item"
                     :style="{order: item.order}"
-                    @click="handlePoint(5)"
+                    @click="handlePoint(item.point)"
                 >
                     <p>{{item.subject}}</p>
                     <p>{{item.point | realFormatSecond}}</p>
@@ -100,16 +100,15 @@
         mounted() {
             // this.checkWifi();
             // console.log('this is current player instance object', this.player)
+            console.log(this.$route)
             this.getResourseUrl({
-                id: this.$route.params.sourceId
+                id: this.$route.params.id
             }).then((res) => {
-                console.log(res)
                 this.playerOptions.sources[0].src = res.url;
             });
             this.getSingleClassInfo({
-                id: this.$route.params.sourceId
+                id: this.$route.params.id
             }).then((res) => {
-                console.log(res)
                 let {img_uri, knowledge_points} = res;
                 this.playerOptions.sources[0].poster = img_uri;
                 this.pointList = knowledge_points;
