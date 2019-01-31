@@ -10,7 +10,11 @@
                 砍价
             </div>
         </div>
-        <button :class="['blue-btn-48', 'class-bar-btn', classDetail.is_pay?'payed-btn':'']">¥299购买课程</button>
+        <button
+            :class="['blue-btn-48', 'class-bar-btn', classDetail.is_pay?'payed-btn':'']"
+            @click="handleBuy">
+            ¥299购买课程
+        </button>
     </div>
 </template>
 
@@ -26,9 +30,16 @@
             }
         },
         methods: {
+            ...mapActions(['getWechatPayConfig', 'setOrder']),
             ...mapActions('home', ['setClassCollection']),
             handleTest() {
                 this.$router.push({name: 'punch'})
+            },
+            handleBuy() {
+                this.setOrder({
+                    product_id: '',
+                    referrer_id: ''
+                })
             }
         }
     }

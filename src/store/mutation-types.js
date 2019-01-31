@@ -6,3 +6,5 @@ export const SET_TOKEN = 'SET_TOKEN';
 // my
 export const SET_PHONE_CODE = 'SET_PHONE_CODE';
 
+// home
+export const SET_CLASS_DETAIL = 'SET_CLASS_DETAIL';

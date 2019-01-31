@@ -1,5 +1,5 @@
 import * as types from '@/store/mutation-types.js';
-import {userInfo, wechatShare, phoneCode, phoneBind} from '@/api/common';
+import {userInfo, wechatShare, phoneCode, phoneBind, createOrder, wechatPayConfig} from '@/api/common';
 
 export default {
 	changeUserInfo({commit}, info) {
@@ -21,6 +21,28 @@ export default {
     async getWechatShare({commit}, opts) {
         try {
             const res = await wechatShare(opts);
+            if (res) {
+                return res;
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    },
+    /* 创建订单 */
+    async setOrder({commit}, opts) {
+        try {
+            const res = await createOrder(opts);
+            if (res) {
+                return res;
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    },
+    /* 获取微信支付信息 */
+    async getWechatPayConfig({commit}, opts) {
+        try {
+            const res = await wechatPayConfig(opts);
             if (res) {
                 return res;
             }

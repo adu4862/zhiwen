@@ -25,12 +25,11 @@ export default {
         }
     },
     // 获取课程详情
-    async getClassDetail({}, id) {
+    async getClassDetail({commit}, id) {
         try {
-            const res = await classDetail({
-                id
-            });
+            const res = await classDetail({id});
             if (res) {
+                // commit(types.SET_CLASS_DETAIL, res);
                 return res;
             }
         } catch (e) {
