@@ -2,12 +2,12 @@
     <div :class="['class-info', isTest?'class-info-test':'']">
         <div class="class-info-desc">
             <div class="class-info-desc-banner">
-                <img :src="require('@/assets/img/demo_banner.png')" alt="class_banner">
+                <img :src="lesson.img_uri" alt="class_banner">
             </div>
             <div class="class-info-desc-content">
-                <p class="class-info-desc-content-title ellipsis">1、法律英语基础版课程一法律英语基础版课程法律英语基础版课程</p>
+                <p class="class-info-desc-content-title ellipsis">{{lesson.subject}}</p>
                 <p class="class-info-desc-content-info">
-                    <span>时长10:36</span>
+                    <span>时长{{lesson.duration | realFormatSecond}}</span>
                     <span>播放376次</span>
                 </p>
             </div>
@@ -36,6 +36,10 @@
             isTest: {
                 type: Boolean,
                 default: false
+            },
+            lesson: {
+                type: Object,
+                default: {}
             }
         }
     }

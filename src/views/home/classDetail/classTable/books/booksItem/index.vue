@@ -1,17 +1,19 @@
 <template>
     <div class="class-books-item">
-        <div class="class-books-item-title">
-            <p class="title">{{title}}</p>
-            <p class="value">{{value?'购买后可查看详情':''}}</p>
-        </div>
-        <div class="class-books-item-content">
-            <template v-for="item in 3">
-                <!-- 未购买 -->
-                <!--<ClassInfoSimple />-->
-                <!-- 已购买 -->
-                <ClassInfo />
-            </template>
-        </div>
+        <template v-for="item in classDetail.chapters">
+            <div :key="item.id" class="class-books-item-title">
+                <p class="title">{{item.subject}}</p>
+                <p class="value">{{classDetail.is_pay?'':'购买后可查看详情'}}</p>
+            </div>
+            <div class="class-books-item-content">
+                <template v-for="lesson in item.lessons">
+                    <!-- 未购买 -->
+                    <ClassInfoSimple v-if="!classDetail.is_pay" :lesson="lesson" />
+                    <!-- 已购买 -->
+                    <ClassInfo v-else :lesson="lesson" />
+                </template>
+            </div>
+        </template>
     </div>
 </template>
 
@@ -26,8 +28,8 @@
             ClassInfo,
         },
         props: {
-            title: {
-                type: String,
+            classDetail: {
+                type: Object,
                 default: ''
             },
             value: {

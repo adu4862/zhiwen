@@ -2,17 +2,17 @@
 <template>
     <div class="class-books">
         <!-- 试听课 -->
-        <template v-for="item in classDetail.chapters">
-            <van-collapse :style="{ order: item.order }" :key="item.id" v-model="activeName" accordion>
-                <van-collapse-item title="试听课" name="1">
-                    <ClassInfo :isTest="true" />
-                </van-collapse-item>
-            </van-collapse>
-        </template>
-        <!-- 未购买样式 -->
-        <!--<ClassInfoSimple />-->
-        <!-- 已购买样式 -->
-        <!--<BooksItem title="第一章 法律英语第一章名" />-->
+        <van-collapse v-model="activeName" accordion>
+            <van-collapse-item title="试听课" name="1">
+                <ClassInfo
+                    v-for="item in classDetail.trial_lessons"
+                    :key="item.id"
+                    :lesson="item"
+                    :isTest="true"
+                />
+            </van-collapse-item>
+        </van-collapse>
+        <BooksItem :classDetail="classDetail" />
     </div>
 </template>
 

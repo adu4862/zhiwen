@@ -1,6 +1,6 @@
 <template>
     <div class="class-info-simple">
-        <p class="class-info-simple-title">1、法律英语基础版课程一</p>
+        <p class="class-info-simple-title">{{lesson.subject}}</p>
         <p class="class-info-simple-desc">法律英语基础 练习一</p>
     </div>
 </template>
@@ -9,9 +9,9 @@
     export default {
         name: "classInfoSimple",
         props: {
-            isLast: {
-                type: Boolean,
-                default: false
+            lesson: {
+                type: Object,
+                default: {}
             }
         }
     }

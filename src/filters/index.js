@@ -77,10 +77,20 @@ const formatFloat = (val, pos = 2) => {
     return s;
 };
 
+/**
+ * 格式化微信金额
+ * @param val
+ * @returns {number}
+ */
 const formatWechatPrice = (val) => {
     if (val) return NP.divide(val, 100);
 };
 
+/**
+ * 格式化时长
+ * @param second
+ * @returns {string}
+ */
 const realFormatSecond = (second) => {
     let secondType = typeof second;
 
