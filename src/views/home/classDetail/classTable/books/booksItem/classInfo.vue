@@ -1,6 +1,6 @@
 <template>
     <div :class="['class-info', isTest?'class-info-test':'']">
-        <div class="class-info-desc">
+        <div class="class-info-desc" @click="handleClass(lesson)">
             <div class="class-info-desc-banner">
                 <img :src="lesson.img_uri" alt="class_banner">
             </div>
@@ -40,6 +40,26 @@
             lesson: {
                 type: Object,
                 default: {}
+            }
+        },
+        methods: {
+            handleClass(lesson) {
+                let {type, id} = lesson;
+                if (type === 'video') {
+                    this.$router.push({
+                        name: 'classMedia',
+                        params: {
+                            sourceId: id
+                        }
+                    })
+                } else {
+                    this.$router.push({
+                        name: 'classVoice',
+                        params: {
+                            sourceId: lesson.id
+                        }
+                    })
+                }
             }
         }
     }
@@ -131,6 +151,7 @@
             }
         }
     }
+
     .class-info-test {
         .left {
             .practice-icon {
