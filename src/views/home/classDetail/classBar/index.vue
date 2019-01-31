@@ -23,12 +23,24 @@
     import wx from 'weixin-js-sdk'
     import {wechatShare} from '@/api/common';
 
+    function directRightUrl () {
+        let { href, protocol, host, search, hash } = window.location
+        const pathname = '/frontend/' // 解决支付路径问题添加的前缀，替换成你的
+        search = search || '?'
+        hash = hash || '#/'
+        let newHref = `${protocol}//${host}${pathname}${search}${hash}`
+        if (newHref !== href) {
+            window.location.replace(newHref)
+        }
+    }
+
     export default {
         name: "classDetailTableBar",
         computed: {
             ...mapState('home', ['classDetail'])
         },
         mounted() {
+            directRightUrl();
             this.$nextTick(() => {
                 this.init();
             })
