@@ -101,12 +101,12 @@
             // this.checkWifi();
             // console.log('this is current player instance object', this.player)
             this.getResourseUrl({
-                id: this.$route.params.id
+                id: this.$route.params.lessonId
             }).then((res) => {
                 this.playerOptions.sources[0].src = res.url;
             });
             this.getSingleClassInfo({
-                id: this.$route.params.id
+                id: this.$route.params.lessonId
             }).then((res) => {
                 let {img_uri} = res;
                 this.playerOptions.sources[0].poster = img_uri;
