@@ -20,3 +20,6 @@ export const userCollections = data => Request.get('/user/' + userId + '/collect
 export const deleteUserCollections = data => Request.delete('/collection/' + data.id);
 /* 我的课程 */
 export const userProducts = data => Request.get('/user/' + userId + '/products', data);
+
+/* 打卡信息 */
+export const punchInfo = data => Request.get('/user/' + userId + '/punch', data);

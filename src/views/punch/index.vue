@@ -30,11 +30,13 @@
         <div class="punch-operates">
             <span class="punch-operates-title">选择皮肤：</span>
             <div class="punch-operates-cards">
-                <div class="punch-operates-cards-item"></div>
-                <div class="punch-operates-cards-item"></div>
-                <div class="punch-operates-cards-item"></div>
-                <div class="punch-operates-cards-item"></div>
-                <div class="punch-operates-cards-item"></div>
+                <div class="punch-operates-cards-item">
+                    <img :src="require('@/assets/img/punch/icon_punch_01.png')" alt="icon_punch">
+                </div>
+                <!--<div class="punch-operates-cards-item"></div>-->
+                <!--<div class="punch-operates-cards-item"></div>-->
+                <!--<div class="punch-operates-cards-item"></div>-->
+                <!--<div class="punch-operates-cards-item"></div>-->
             </div>
             <button class="blue-btn-48" @click="handleCreateImg">打卡</button>
         </div>
@@ -44,19 +46,35 @@
 <script>
     import html2canvas from 'html2canvas'
     import QRCode from 'qrcodejs2'
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
 
     export default {
         name: "Punch",
+        props: {
+            lessonDetail: {
+                type: Object,
+                default: {}
+            }
+        },
         data() {
             return {
             }
         },
+        computed: {
+            ...mapState(['userInfo'])
+        },
         mounted() {
             this.$nextTick(() => {
                 this.creatQrCode()
+            });
+            this.getPunchInfo({
+                product_id: 'e75fa570-0678-484a-b79f-890010398d0d'
+            }).then((res) => {
+                console.log(res)
             })
         },
         methods: {
+            ...mapActions('my', ['getPunchInfo']),
             creatQrCode() {
                 let qrcode = new QRCode(this.$refs.qrCodeUrl, {
                     text: 'www.baidu.com',
@@ -210,6 +228,7 @@
             &-cards {
                 display: flex;
                 flex-wrap: nowrap;
+                flex: 1;
                 overflow-x: scroll;
                 &-item {
                     margin-left: 13px;
