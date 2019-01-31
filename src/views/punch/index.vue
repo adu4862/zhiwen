@@ -50,12 +50,6 @@
 
     export default {
         name: "Punch",
-        props: {
-            lessonDetail: {
-                type: Object,
-                default: {}
-            }
-        },
         data() {
             return {
             }

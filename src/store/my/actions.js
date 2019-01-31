@@ -85,7 +85,7 @@ export default {
             console.log(e)
         }
     },
-    // 用户打开
+    // 用户打卡
     async setPunch({}, opts) {
         try {
             const res = await punch(opts);
