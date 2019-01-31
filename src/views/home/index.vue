@@ -48,13 +48,13 @@
             }).then((res) => {
                 this.classList = res;
             });
-            this.wechatLogin().then((res) => {
+            this.getUserInfo().then((res) => {
                 console.log(res)
             })
         },
         methods: {
             ...mapActions('home', ['getBanner', 'getClassList']),
-            ...mapActions(['wechatLogin']),
+            ...mapActions(['getUserInfo']),
             handleClassItem(id) {
                 this.$router.push({name: 'classDetail', params: {id}})
             }

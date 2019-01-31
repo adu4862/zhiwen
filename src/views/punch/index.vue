@@ -2,8 +2,8 @@
     <div class="punch">
         <div class="punch-card" ref="we">
             <div class="punch-card-head">
-                <img :src="require('@/assets/img/demo_class_banner.png')" alt="wx_header">
-                <span>用户名称</span>
+                <img :src="userInfo.headimgurl" alt="wx_header">
+                <span>{{userInfo.nickname}}</span>
             </div>
             <div class="punch-card-title">
                 <p class="punch-card-title-day">我已连续21天学习</p>
@@ -83,7 +83,6 @@
                 this.setPunch({
                     product_id: 'e75fa570-0678-484a-b79f-890010398d0d'
                 }).then((res) => {
-                    console.log(res)
                     if (res.statusCode) {
                         this.$toast({
                             msg: res.message
