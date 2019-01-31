@@ -112,8 +112,8 @@
         computed: {
             ...mapState('home', ['classDetail'])
         },
-        mounted() {
-            this.createBargain({
+        async mounted() {
+            await this.createBargain({
                 product_id: this.classDetail.id
             }).then((res) => {
                 console.log(new Date(res.deadline).getTime())
@@ -121,12 +121,15 @@
                 this.nowPrice = NP.minus(this.classDetail.price, this.bargainDetail.price);
                 this.schedule = NP.divide(this.bargainDetail.price, this.classDetail.price);
             });
+            this.getBargainMoney({
+                id: this.bargainDetail.id
+            });
             this.$nextTick(() => {
                 this.calcOffset();
             })
         },
         methods: {
-            ...mapActions('home', ['createBargain', 'getBarginMoney']),
+            ...mapActions('home', ['createBargain', 'getBargainMoney']),
             // 砍价偏移量
             calcOffset() {
                 this.scheduleWidth = this.$refs.schedule.offsetWidth;

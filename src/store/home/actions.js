@@ -1,5 +1,5 @@
 import * as types from '@/store/mutation-types.js';
-import {banner, classList, classDetail, classCollection, resourseUrl, singleClassInfo, bargainCreate} from "@/api/home";
+import {banner, classList, classDetail, classCollection, resourseUrl, singleClassInfo, bargainCreate, bargainMoney} from "@/api/home";
 
 export default {
     // 获取Banner
@@ -81,10 +81,11 @@ export default {
         }
     },
     // 获取单个砍价的金额
-    async getBarginMoney({}, opts) {
+    async getBargainMoney({commit}, opts) {
         try {
             const res = await bargainMoney(opts);
             if (res) {
+                commit(types.SET_BARGAIN_DETAIL, res);
                 return res;
             }
         } catch (e) {

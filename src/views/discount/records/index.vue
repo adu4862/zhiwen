@@ -10,12 +10,16 @@
 <script>
     import {DividerTitle} from '@/components'
     import RecordItem from './recordItem'
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
 
     export default {
         name: "discountRecords",
         components: {
             DividerTitle,
             RecordItem,
+        },
+        computed: {
+            ...mapState('home', ['bargainDetail'])
         }
     }
 </script>
