@@ -13,29 +13,72 @@
         <button
             :class="['blue-btn-48', 'class-bar-btn', classDetail.is_pay?'payed-btn':'']"
             @click="handleBuy">
-            ¥299购买课程
+            ¥{{classDetail.price | formatWechatPrice}}购买课程
         </button>
     </div>
 </template>
 
 <script>
     import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
+    import wx from 'weixin-js-sdk'
+    import {wechatShare} from '@/api/common';
 
     export default {
         name: "classDetailTableBar",
         computed: {
             ...mapState('home', ['classDetail'])
         },
+        mounted() {
+            this.$nextTick(() => {
+                this.init();
+            })
+        },
         methods: {
             ...mapActions(['getWechatPayConfig', 'setOrder']),
             ...mapActions('home', ['setClassCollection']),
+            init() {
+                wechatShare({
+                    url: encodeURIComponent(location.href.split('#')[0]),
+                    jsApiList: [
+                        'chooseWXPay',
+                    ]
+                }).then((res) => {
+                    let {appId, timestamp, nonceStr, signature, jsApiList} = res;
+                    wx.config({
+                        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                        appId: appId, // 必填，公众号的唯一标识
+                        timestamp, // 必填，生成签名的时间戳
+                        nonceStr, // 必填，生成签名的随机串
+                        signature,// 必填，签名
+                        jsApiList // 必填，需要使用的JS接口列表
+                    });
+                });
+            },
             handleTest() {
                 this.$router.push({name: 'punch'})
             },
             handleBuy() {
                 this.setOrder({
-                    product_id: '',
-                    referrer_id: ''
+                    product_id: this.classDetail.id,
+                    referrer_id: null
+                }).then((res) => {
+                    console.log(res)
+                    this.getWechatPayConfig({
+                        id: res.id
+                    }).then((res) => {
+                        console.log(123, res)
+                        let {timeStamp, nonceStr, signType, paySign} = res;
+                        wx.chooseWXPay({
+                            timestamp: timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+                            nonceStr, // 支付签名随机串，不长于 32 位
+                            package: res.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=\*\*\*）
+                            signType, // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+                            paySign, // 支付签名
+                            success: function (res) {
+                                // 支付成功后的回调函数
+                            }
+                        });
+                    })
                 })
             }
         }

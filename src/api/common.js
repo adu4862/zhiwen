@@ -20,4 +20,4 @@ export const wechatShare = data => Request.post('/wechat/config', data);
 /* 创建订单 */
 export const createOrder = data => Request.post('/order', data);
 /* 微信支付 */
-export const wechatPayConfig = data => Request.post('/order/' + data.id + '/sign');
+export const wechatPayConfig = data => Request.get('/order/' + data.id + '/sign');
