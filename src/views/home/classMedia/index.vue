@@ -26,7 +26,7 @@
             <p class="class-media-point-sub-title">点击相应的知识点可以快速跳转到该处进行观看</p>
             <div class="class-media-point-list">
                 <div
-                    v-for="item in pointList"
+                    v-for="item in lessonDetail.knowledge_points"
                     :key="item.id"
                     class="class-media-point-list-item"
                     :style="{order: item.order}"
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <PunchEnter />
+        <PunchEnter :lessonDetail="lessonDetail"/>
         <Modal
             :isVisible="checkWifiVisible"
             title="继续播放将消耗流量"
@@ -89,7 +89,7 @@
                     poster: require('@/assets/img/demo_banner.png'),
                 },
                 checkWifiVisible: false,
-                pointList: [],
+                lessonDetail: {},
             }
         },
         computed: {
@@ -100,7 +100,6 @@
         mounted() {
             // this.checkWifi();
             // console.log('this is current player instance object', this.player)
-            console.log(this.$route)
             this.getResourseUrl({
                 id: this.$route.params.id
             }).then((res) => {
@@ -109,9 +108,9 @@
             this.getSingleClassInfo({
                 id: this.$route.params.id
             }).then((res) => {
-                let {img_uri, knowledge_points} = res;
+                let {img_uri} = res;
                 this.playerOptions.sources[0].poster = img_uri;
-                this.pointList = knowledge_points;
+                this.lessonDetail = res;
             });
         },
         methods: {

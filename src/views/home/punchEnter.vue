@@ -1,12 +1,28 @@
 <template>
-    <div class="class-punch-enter">
+    <div class="class-punch-enter" @click="handlePunch">
         <img class="class-punch-enter-img" :src="require('@/assets/img/icon_punch_circle.png')" alt="icon_punch">
     </div>
 </template>
 
 <script>
     export default {
-        name: "classPunch"
+        name: "classPunch",
+        props: {
+            lessonDetail: {
+                type: Object,
+                default: {}
+            }
+        },
+        methods: {
+            handlePunch() {
+                this.$router.push({
+                    name: 'punch',
+                    params: {
+                        lessonDetail: this.lessonDetail
+                    }
+                })
+            }
+        }
     }
 </script>
 
