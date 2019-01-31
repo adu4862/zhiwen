@@ -23,11 +23,8 @@
 
     export default {
         name: "classDetailTableBar",
-        props: {
-            classDetail: {
-                type: Object,
-                default: {}
-            }
+        computed: {
+            ...mapState('home', ['classDetail'])
         },
         methods: {
             ...mapActions(['getWechatPayConfig', 'setOrder']),

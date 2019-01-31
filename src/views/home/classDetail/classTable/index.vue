@@ -24,22 +24,20 @@
 
 <script>
     import ClassBooks from "./books";
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
 
     export default {
         name: "classDetailTable",
         components: {
             ClassBooks
         },
-        props: {
-            classDetail: {
-                type: Object,
-                default: {}
-            }
-        },
         data() {
             return {
                 activeHeader: "2"
             };
+        },
+        computed: {
+            ...mapState('home', ['classDetail'])
         },
         methods: {
             handleHeader(type) {

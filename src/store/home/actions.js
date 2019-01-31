@@ -29,8 +29,8 @@ export default {
         try {
             const res = await classDetail({id});
             if (res) {
-                // commit(types.SET_CLASS_DETAIL, res);
-                return res;
+                commit(types.SET_CLASS_DETAIL, res);
+                // return res;
             }
         } catch (e) {
             console.log(e)

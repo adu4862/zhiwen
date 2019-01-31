@@ -21,6 +21,7 @@
     import BooksItem from "./booksItem";
     import ClassInfo from "./booksItem/classInfo";
     import ClassInfoSimple from "./booksItem/classInfoSimple";
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
 
     export default {
         name: "classDetailTableBooks",
@@ -29,17 +30,14 @@
             ClassInfo,
             ClassInfoSimple,
         },
-        props: {
-            classDetail: {
-                type: Object,
-                default: {}
-            }
-        },
         data() {
             return {
                 activeName: '1'
             };
-        }
+        },
+        computed: {
+            ...mapState('home', ['classDetail'])
+        },
     }
 </script>
 

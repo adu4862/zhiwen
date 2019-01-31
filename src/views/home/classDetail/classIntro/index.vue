@@ -43,19 +43,11 @@
 
     export default {
         name: "classDetailIntro",
-        props: {
-            classDetail: {
-                type: Object,
-                default: {}
-            }
-        },
         data() {
             return {};
         },
-        watch: {
-            classDetail(val) {
-                console.log(888, val)
-            }
+        computed: {
+            ...mapState('home', ['classDetail'])
         },
         methods: {
 

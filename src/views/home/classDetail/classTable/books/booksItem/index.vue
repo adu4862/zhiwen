@@ -20,6 +20,7 @@
 <script>
     import ClassInfoSimple from "./classInfoSimple"
     import ClassInfo from "./classInfo"
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
 
     export default {
         name: "booksItem",
@@ -28,15 +29,14 @@
             ClassInfo,
         },
         props: {
-            classDetail: {
-                type: Object,
-                default: ''
-            },
             value: {
                 type: Boolean,
                 default: true
             }
-        }
+        },
+        computed: {
+            ...mapState('home', ['classDetail'])
+        },
     }
 </script>
 

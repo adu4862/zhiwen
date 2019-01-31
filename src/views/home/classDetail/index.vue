@@ -24,13 +24,13 @@
         },
         data() {
             return {
-                classDetail: {}
             };
         },
+        computed: {
+            ...mapState('home', ['classDetail'])
+        },
         mounted() {
-            this.getClassDetail(this.$route.params.id).then((res) => {
-                this.classDetail = res;
-            });
+            this.getClassDetail(this.$route.params.id)
         },
         methods: {
             ...mapActions('home', ['getClassDetail']),
