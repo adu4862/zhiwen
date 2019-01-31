@@ -71,10 +71,9 @@ router.beforeEach((to, from, next) => {
     if (GetRequest().user_id) {
         sessionSetItem('userId', GetRequest().user_id);
         // 去掉问号后面的参数，还原url，防止分享URL泄露信息
-        let urlArr = location.href.split('#');
-        history.pushState({}, null, `${urlArr[0].split('?')[0]}#${urlArr[1]}`);
+        history.pushState({}, null, location.href.replace(/\/\?(.*?)\#\//, '/#/'));
     }
-
+    
     // 判断登陆
     if (!sessionGetItem('token')) {
         window.location.href = 'http://learning.zhiwen.me/api/user/wechat/login';
