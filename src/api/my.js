@@ -23,3 +23,5 @@ export const userProducts = data => Request.get('/user/' + userId + '/products',
 
 /* 打卡信息 */
 export const punchInfo = data => Request.get('/user/' + userId + '/punch', data);
+/* 用户打卡 */
+export const punch = data => Request.post('/punch', data);

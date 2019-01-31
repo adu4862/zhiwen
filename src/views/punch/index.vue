@@ -74,7 +74,7 @@
             })
         },
         methods: {
-            ...mapActions('my', ['getPunchInfo']),
+            ...mapActions('my', ['getPunchInfo', 'setPunch']),
             creatQrCode() {
                 let qrcode = new QRCode(this.$refs.qrCodeUrl, {
                     text: 'www.baidu.com',
@@ -86,7 +86,18 @@
                 })
             },
             handleCreateImg() {
-                this.toImage();
+                this.setPunch({
+                    product_id: 'e75fa570-0678-484a-b79f-890010398d0d'
+                }).then((res) => {
+                    console.log(res)
+                    if (res.statusCode) {
+                        this.$toast({
+                            msg: res.message
+                        });
+                        return
+                    }
+                    // this.toImage();
+                });
             },
             toImage() {
                 let dom = this.$refs.we;
