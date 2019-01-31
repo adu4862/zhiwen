@@ -82,7 +82,9 @@
                         'openProductSpecificView',
                         'addCard',
                         'chooseCard',
-                        'openCard'
+                        'openCard',
+                        'updateAppMessageShareData',
+                        'updateTimelineShareData',
                     ]
                 }).then((res) => {
                     let {appId, timestamp, nonceStr, signature, jsApiList} = res;
@@ -105,22 +107,37 @@
                 });
             },
             handleShare() {
-                wx.onMenuShareAppMessage({
-                    title: '测试', // 分享标题
-                    desc: '测试内容', // 分享描述
-                    link: location.href.split('#')[0], // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                    imgUrl: 'https://xuetang-public.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E5%A4%A7%E5%9B%BE.jpg', // 分享图标
-                    type: 'link', // 分享类型,music、video或link，不填默认为link
-                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-                    success: function () {
-                        // 用户点击了分享后执行的回调函数
-                        console.log('分享成功')
-                    },
-                    cancel: function () {
-                        // 用户取消分享后执行的回调函数
-                        console.log('取消分享')
-                    }
+                wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
+                    wx.updateAppMessageShareData({
+                        title: '123', // 分享标题
+                        desc: '123', // 分享描述
+                        link: location.href.split('#')[0], // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                        imgUrl: 'https://xuetang-public.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E5%A4%A7%E5%9B%BE.jpg', // 分享图标
+                        success: function () {
+                            // 用户点击了分享后执行的回调函数
+                            console.log('分享成功')
+                        },
+                        cancel: function () {
+                            // 用户取消分享后执行的回调函数
+                            console.log('取消分享')
+                        },
+                        fail: function(e) {
+                            console.log('错误', e)
+                        },
+                        complete: function(e) {
+                            console.log('complete', e)
+                        },
+                    })
                 });
+                // wx.chooseImage({
+                //     count: 1, // 默认9
+                //     sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                //     sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                //     success: function (res) {
+                //         let localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                //         console.log(res)
+                //     }
+                // });
             }
         }
     }

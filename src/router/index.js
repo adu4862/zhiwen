@@ -68,7 +68,11 @@ router.beforeEach((to, from, next) => {
     document.title = title[to.name] || '职问';
 
     if (GetRequest().authorization) sessionSetItem('token', GetRequest().authorization);
-    if (GetRequest().user_id) sessionSetItem('userId', GetRequest().user_id);
+    if (GetRequest().user_id) {
+        sessionSetItem('userId', GetRequest().user_id);
+        // 去掉问号后面的参数，还原url，防止分享URL泄露信息
+        history.pushState({}, null, `${location.href.split('#')[0].split('?')[0]}#/`);
+    }
 
     // 判断登陆
     if (!sessionGetItem('token')) {
