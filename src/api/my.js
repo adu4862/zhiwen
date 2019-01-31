@@ -10,6 +10,8 @@ const userId = sessionGetItem('userId');
 export const userRewardAmount = data => Request.get('/user/' + userId + '/reward/amount', data);
 /* 推广订单 */
 export const userRewards = data => Request.get('/user/' + userId + '/rewards', data);
+/* 推广订单详情 */
+export const userRewardDetail = data => Request.get('/reward/' + data.id + '/reward-record', data);
 /* 我的订单 */
 export const userOrders = data => Request.get('/user/' + userId + '/orders', data);
 /* 我的收藏 */
