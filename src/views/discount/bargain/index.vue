@@ -2,21 +2,21 @@
     <div class="discount-bargain">
         <div class="panel-shadow">
             <ClassPanel class="discount-bargain-class">
-                <ClassBanner slot="banner"/>
+                <ClassBanner slot="banner" :uri="classDetail.image_uri" :type="classDetail.type" />
                 <div class="discount-bargain-class-content">
                     <div class="top">
                         <div class="class-title ellipsis">
-                            法律英语进阶版-模块法律英语进阶版-模块法律英语进阶版-模块
+                            {{classDetail.subject}}
                         </div>
                         <div class="class-content">
-                            熟悉法律条文,具有法律思维,能够把各种生熟悉法律条文,具有法律思维,能够把各种生熟悉法律条文,具有法律思维,能够把各种生
+                            {{classDetail.introduction}}
                         </div>
                     </div>
                     <div class="class-info">
-                        <p class="saled left">已有<span>155</span>人购买</p>
+                        <p class="saled left">已有<span>{{classDetail.pay_count}}</span>人购买</p>
                         <p class="prices right">
-                            <span class="old-price">¥599</span>
-                            <span class="now-price">现价¥299</span>
+                            <span class="old-price">¥{{classDetail.old_price | formatWechatPrice}}</span>
+                            <span class="now-price">现价¥{{classDetail.price | formatWechatPrice}}</span>
                         </p>
                     </div>
                 </div>
@@ -86,6 +86,7 @@
 <script>
     import {ClassPanel, ClassBanner, DividerTitle, Dialog, Modal} from '@/components'
     import NP from 'number-precision'
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
 
     export default {
         name: "discountBargain",
@@ -106,6 +107,7 @@
             }
         },
         computed: {
+            ...mapState('home', ['classDetail']),
             schedule() {
                 return '10%'
             },
