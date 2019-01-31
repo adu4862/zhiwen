@@ -28,7 +28,7 @@
         <div class="discount-bargain-progress">
             <div class="discount-bargain-progress-now">
                 <div class="discount-status" :style="{left: discountStatusLeft + 'px'}" ref="discountStatus">
-                    目前价格 <span class="price">¥269</span>(已砍<span class="earn">13.5</span>元)
+                    目前价格 <span class="price">¥{{nowPrice | formatWechatPrice}}</span>(已砍<span class="earn">{{bargainDetail.price}}</span>元)
                 </div>
                 <div class="triangle" :style="{left: 'calc(' + schedule + ' - 5px)'}"></div>
             </div>
@@ -104,21 +104,22 @@
                 scheduleWidth: 0,
                 isVisible: false,
                 isOrderVisible: false,
-                bargainDetail: {}
+                bargainDetail: {},
+                nowPrice: 0,
+                schedule: '0%'
             }
         },
         computed: {
-            ...mapState('home', ['classDetail']),
-            schedule() {
-                return '10%'
-            },
+            ...mapState('home', ['classDetail'])
         },
         mounted() {
             this.createBargain({
                 product_id: this.classDetail.id
             }).then((res) => {
-                console.log(res)
+                console.log(new Date(res.deadline).getTime())
                 this.bargainDetail = res;
+                this.nowPrice = NP.minus(this.classDetail.price, this.bargainDetail.price);
+                this.schedule = NP.divide(this.bargainDetail.price, this.classDetail.price);
             });
             this.$nextTick(() => {
                 this.calcOffset();
