@@ -18,7 +18,7 @@
         <div class="class-info-practice">
             <div class="left">
                 <div class="practice-icon">练</div>
-                <div class="practice-title ellipsis">法律英语基础法律英语基础法律英语基础法律英语基础 练习一</div>
+                <div class="practice-title ellipsis">{{lesson.subject}} 练习题</div>
             </div>
             <div class="right" v-if="!isTest">
                 <img class="cup-icon" :src="require('@/assets/img/class_cup.png')" alt="class_cup">
@@ -49,14 +49,14 @@
                     this.$router.push({
                         name: 'classMedia',
                         params: {
-                            id
+                            lessonId: id
                         }
                     })
                 } else {
                     this.$router.push({
                         name: 'classVoice',
                         params: {
-                            id
+                            lessonId: id
                         }
                     })
                 }
@@ -72,7 +72,7 @@
         padding-right: 19px;
         background-color: #fff;
         &:nth-child(1) {
-            margin-top: initial;
+            /*margin-top: initial;*/
         }
         .arrow-icon {
             width: 6px;

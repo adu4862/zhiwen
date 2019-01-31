@@ -60,6 +60,8 @@
             }
         }
         /deep/ .van-collapse-item__content {
+            display: flex;
+            flex-flow: column;
             padding: initial;
             background-color: $color-bg;
         }

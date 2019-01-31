@@ -1,7 +1,7 @@
 <template>
     <div class="class-info-simple">
         <p class="class-info-simple-title">{{lesson.subject}}</p>
-        <p class="class-info-simple-desc">法律英语基础 练习一</p>
+        <p class="class-info-simple-desc">{{lesson.subject}} 练习题</p>
     </div>
 </template>
 
