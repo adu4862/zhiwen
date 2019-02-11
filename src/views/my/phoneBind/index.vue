@@ -67,8 +67,10 @@
                     });
                     return
                 }
+                // 获取验证码
                 this.getPhoneCode({
-                    phone: this.phone
+                    phone: this.phone,
+                    mobile_country_number: this.phoneCode
                 }).then((res) => {
                     this.counting = true;
                 })
@@ -76,6 +78,7 @@
             handleCountdownEnd: function () {
                 this.counting = false;
             },
+            // 绑定手机号
             handleBindPhone() {
                 this.bindPhone({
                     id: this.userInfo.id,
