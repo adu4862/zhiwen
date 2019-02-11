@@ -1,11 +1,14 @@
 import * as types from '@/store/mutation-types.js';
 import {userInfo, wechatShare, phoneCode, phoneBind, createOrder, wechatPayConfig} from '@/api/common';
+import {sessionGetItem} from "../common/util";
 
 export default {
     /* 获取用户信息 */
     async getUserInfo({commit}, opts) {
         try {
-            const res = await userInfo();
+            const res = await userInfo({
+                id: sessionGetItem('userId')
+            });
             if (res) {
                 commit(types.SET_USER_INFO, res);
             }

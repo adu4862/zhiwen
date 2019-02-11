@@ -10,7 +10,7 @@ const userId = sessionGetItem('userId');
 export const rankGender = data => Request.get('api/ranking/gender', data);
 
 /* login */
-export const userInfo = data => Request.get('/user/' + userId, data);
+export const userInfo = data => Request.get('/user/' + data.id, data);
 /* 创建验证码 */
 export const phoneCode = data => Request.post('/user/phone/code', data);
 /* 绑定手机号 */
