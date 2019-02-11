@@ -9,7 +9,7 @@ const userId = sessionGetItem('userId');
 /* Common */
 export const rankGender = data => Request.get('api/ranking/gender', data);
 
-/* login */
+/* 登陆 */
 export const userInfo = data => Request.get('/user/' + data.id, data);
 /* 创建验证码 */
 export const phoneCode = data => Request.post('/user/phone/code', data);

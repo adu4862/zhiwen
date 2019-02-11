@@ -3,6 +3,7 @@
     <transition name="fade">
         <div class="m-toast" v-show="show">
             <i class="icon icon--4" v-if="type === 'collection'"></i>
+            <i class="icon icon--3" v-if="type === 'success'"></i>
             {{message}}
         </div>
     </transition>
