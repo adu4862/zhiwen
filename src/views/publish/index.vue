@@ -3,20 +3,20 @@
         <div class="publish">
             <div class="publish-card">
                 <div class="publish-card-user">
-                    <img class="publish-card-user-header" :src="require('@/assets/img/demo_class_banner.png')"
+                    <img class="publish-card-user-header" :src="userInfo.headimgurl"
                          alt="header">
                     <div class="publish-card-user-info">
-                        <p class="name">用户名称</p>
-                        <p class="invite">邀请您来学习XXXX的知识</p>
+                        <p class="name">{{userInfo.nickname}}</p>
+                        <p class="invite">邀请您来学习《{{classDetail.subject}}》的知识</p>
                     </div>
                 </div>
                 <div class="publish-card-title">
                     <p>
-                        课程名称课程名称课程名称课程名
+                        {{classDetail.subject}}
                     </p>
                 </div>
                 <div class="publish-card-banner">
-                    <img :src="require('@/assets/img/demo_banner.png')" alt="banner">
+                    <img :src="classDetail.image_uri" alt="banner">
                 </div>
                 <div class="publish-card-content">
                     推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推广游戏规则推
@@ -44,6 +44,10 @@
             this.$nextTick(() => {
                 this.init();
             })
+        },
+        computed: {
+            ...mapState(['userInfo']),
+            ...mapState('home', ['classDetail']),
         },
         methods: {
             ...mapActions(['getWechatShare']),
@@ -125,10 +129,10 @@
                             // 用户取消分享后执行的回调函数
                             console.log('取消分享')
                         },
-                        fail: function(e) {
+                        fail: function (e) {
                             console.log('错误', e)
                         },
-                        complete: function(e) {
+                        complete: function (e) {
                             console.log('complete', e)
                         },
                     })
@@ -196,8 +200,10 @@
                     background: url("~@/assets/img/publish_title_bg.png") no-repeat center;
                     background-size: contain;
                     p {
+                        @include fct();
                         margin: 0 auto;
                         width: 220px;
+                        min-height: 38px;
                         font-size: $font-size-md;
                         color: $color-important;
                         text-align: center;
