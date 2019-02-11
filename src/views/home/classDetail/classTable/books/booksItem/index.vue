@@ -1,5 +1,5 @@
 <template>
-    <div class="class-books-item">
+    <div class="class-books-item" v-if="classDetail.length">
         <template v-for="item in classDetail.chapters">
             <div :key="item.id" class="class-books-item-title">
                 <p class="title">{{item.subject}}</p>

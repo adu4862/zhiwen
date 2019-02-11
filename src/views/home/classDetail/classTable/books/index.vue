@@ -13,7 +13,7 @@
                 />
             </van-collapse-item>
         </van-collapse>
-        <BooksItem :classDetail="classDetail" />
+        <BooksItem />
     </div>
 </template>
 
