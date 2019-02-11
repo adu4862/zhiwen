@@ -127,6 +127,7 @@
         },
         computed: {
             ...mapState('home', ['classDetail']),
+            // 判断是否为分享砍价
             isBargain() {
                 let bargain_id = GetRequest().bargain_id;
                 if (bargain_id) return true;
@@ -134,6 +135,7 @@
             }
         },
         async mounted() {
+            // 创建砍价
             await this.createBargain({
                 product_id: this.classDetail.id
             }).then((res) => {
@@ -142,9 +144,12 @@
                 this.schedule = NP.divide(this.bargainDetail.price, this.classDetail.price);
                 this.countDownTime = new Date(res.deadline).getTime() - new Date().getTime();
             });
+
+            // 获取单个砍价的金额
             this.getBargainMoney({
                 id: this.bargainDetail.id
             });
+
             this.$nextTick(() => {
                 // 砍价偏移
                 this.calcOffset();
