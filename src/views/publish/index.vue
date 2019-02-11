@@ -1,6 +1,6 @@
 <template>
     <div class="publish-container">
-        <div class="publish" v-if="false">
+        <div class="publish">
             <div class="publish-card">
                 <div class="publish-card-user">
                     <img class="publish-card-user-header" :src="require('@/assets/img/demo_class_banner.png')"
@@ -25,7 +25,7 @@
             </div>
             <button class="blue-btn-48" @click="handleShare">分享链接</button>
         </div>
-        <WxShare />
+        <!--<WxShare />-->
     </div>
 </template>
 
@@ -41,7 +41,6 @@
             WxShare
         },
         mounted() {
-            // console.log(location.href.split('#')[0])
             this.$nextTick(() => {
                 this.init();
             })

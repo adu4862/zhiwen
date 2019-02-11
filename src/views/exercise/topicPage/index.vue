@@ -70,7 +70,7 @@
             }
         },
         methods: {
-            ...mapActions('home', ['getSingleTest', 'setTestRecord']),
+            ...mapActions('home', ['getSingleTest', 'setTestRecord', 'setTestScore']),
             // 选项
             handleOption(option, idx) {
                 if (this.selectHistory[this.currentTest]) {
@@ -121,12 +121,19 @@
             handleNext() {
                 if (this.currentTest + 1 === this.lessonDetail.test_questions.length) {
                     let score = NP.times(NP.divide(this.correctNum, this.lessonDetail.test_questions.length), 100);
-                    this.$router.push({
-                        name: 'exerciseRes',
-                        params: {
-                            score
-                        }
-                    })
+                    // 创建答题总成绩记录
+                    this.setTestScore({
+                        lesson_id: this.lessonDetail.id,
+                        score
+                    }).then((res) => {
+                        // 跳转结果页
+                        this.$router.push({
+                            name: 'exerciseRes',
+                            params: {
+                                score
+                            }
+                        })
+                    });
                 } else {
                     this.currentTest = this.currentTest + 1;
                     this.init();
