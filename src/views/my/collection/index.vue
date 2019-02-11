@@ -29,6 +29,7 @@
                     :isSelect="isSelect"
                     :selectAll="selectAll"
                     @addDelete="addDelete"
+                    @removeDelete="removeDelete"
                 />
             </van-list>
             <div class="my-collection-remove" v-if="isSelect" @click="handleRemove">
@@ -83,6 +84,11 @@
                 this.collectionList = res.list
             });
         },
+        watch: {
+            deleteList(val) {
+                console.log(val)
+            }
+        },
         methods: {
             ...mapActions('my', ['getUserCollections', 'deleteUserCollections']),
             onLoad() {
@@ -106,9 +112,14 @@
                     console.log('完成')
                 }
             },
+            // 添加删除课程
             addDelete(id) {
                 this.deleteList.push(id);
-                console.log(this.deleteList)
+            },
+            // 减少删除课程
+            removeDelete(id) {
+                let idx = this.deleteList.indexOf(id);
+                this.deleteList.splice(idx, 1)
             },
             handleRemove() {
                 this.isVisible = true;

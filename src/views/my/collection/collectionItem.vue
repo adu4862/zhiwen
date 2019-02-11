@@ -1,9 +1,10 @@
 <template>
-    <ClassPanel :class="['my-collection-item', isSelect?'my-collection-item-select':'']" @handleClick="chooseClass(collectionDetail.id)">
+    <ClassPanel :class="['my-collection-item', isSelect?'my-collection-item-select':'']"
+                @handleClick="chooseClass(collectionDetail.id)">
         <div class="my-collection-item-check" slot="select" v-if="isSelect">
             <van-checkbox class="check-box" v-model="checked"></van-checkbox>
         </div>
-        <ClassBanner slot="banner" :uri="collectionDetail.product.image_uri" />
+        <ClassBanner slot="banner" :uri="collectionDetail.product.image_uri"/>
         <div class="my-collection-item-content">
             <div class="info">
                 <div class="title ellipsis">{{collectionDetail.product.subject}}</div>
@@ -57,13 +58,20 @@
         watch: {
             selectAll(val) {
                 this.checked = val;
+                this.chooseClass(this.collectionDetail.id, 'all')
             }
         },
         methods: {
-            chooseClass(id) {
+            chooseClass(id, type = '') {
                 if (this.isSelect) {
-                    this.checked = !this.checked;
-                    this.$emit('addDelete', id)
+                    if (type = '') {
+                        this.checked = !this.checked;
+                    }
+                    if (this.checked) {
+                        this.$emit('addDelete', id)
+                    } else {
+                        this.$emit('removeDelete', id)
+                    }
                 } else {
                     this.$router.push({name: 'classDetail', params: {id}})
                 }
