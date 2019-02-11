@@ -91,6 +91,7 @@
                 }).then((res) => {
                     this.result = res;
 
+                    // 答题记录
                     let {option, idx} = this.historyData;
                     this.$set(this.selectHistory, this.currentTest, {
                         option,
