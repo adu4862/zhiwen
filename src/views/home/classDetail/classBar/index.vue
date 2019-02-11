@@ -25,11 +25,6 @@
 
     export default {
         name: "classDetailTableBar",
-        watch: {
-            // '$route' (to, from) {
-            //     this.directRightUrl()
-            // }
-        },
         computed: {
             ...mapState('home', ['classDetail'])
         },
@@ -41,14 +36,6 @@
         methods: {
             ...mapActions(['getWechatPayConfig', 'setOrder']),
             ...mapActions('home', ['setClassCollection']),
-            directRightUrl() {
-                let { href, protocol, host, pathname, search, hash } = window.location
-                search = search || '?'
-                let newHref = `${protocol}//${host}${pathname}${search}${hash}`
-                if (newHref !== href) {
-                    window.location.replace(newHref)
-                }
-            },
             init() {
                 wechatShare({
                     url: encodeURIComponent(location.href.split('#')[0]),
