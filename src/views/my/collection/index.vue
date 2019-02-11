@@ -84,11 +84,6 @@
                 this.collectionList = res.list
             });
         },
-        watch: {
-            deleteList(val) {
-                console.log(val)
-            }
-        },
         methods: {
             ...mapActions('my', ['getUserCollections', 'deleteUserCollections']),
             onLoad() {
