@@ -10,10 +10,11 @@
                 砍价
             </div>
         </div>
-        <button
-            :class="['blue-btn-48', 'class-bar-btn', classDetail.is_pay?'payed-btn':'']"
-            @click="handleBuy">
+        <button v-if="!classDetail.is_pay" :class="['blue-btn-48', 'class-bar-btn']" @click="handleBuy">
             ¥{{classDetail.price | formatWechatPrice}}购买课程
+        </button>
+        <button v-else :class="['blue-btn-48', 'class-bar-btn', 'payed-btn']" @click="handleLearn">
+            继续学习
         </button>
     </div>
 </template>
@@ -83,6 +84,10 @@
                         });
                     })
                 })
+            },
+            // 继续学习
+            handleLearn() {
+
             }
         }
     }
