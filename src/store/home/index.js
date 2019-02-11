@@ -3,8 +3,12 @@ import mutations from './mutations';
 import getters from './getters';
 
 const state = {
-    classDetail: {},
-    lessonDetail: {},
+    classDetail: {
+        chapters: [],
+    },
+    lessonDetail: {
+        test_questions: [],
+    },
     bargainDetail: {},
 };
 

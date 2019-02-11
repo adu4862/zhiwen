@@ -2,51 +2,62 @@
     <div class="exercise-topic-container">
         <div class="exercise-topic">
             <p class="exercise-topic-title">
-                <span>单选题</span><span class="no">1/10</span>
+                <span>单选题</span><span class="no">{{currentTest + 1}}/{{lessonDetail.test_questions.length}}</span>
             </p>
             <p class="exercise-topic-question">
-                这是一个问题这是一个问题这是一个问题这是一个问题这是一个问题这是一个问题
+                {{lessonDetail.test_questions[currentTest].subject}}
             </p>
             <div class="exercise-topic-options">
-                <div class="exercise-topic-options-item mistake" @click="handleOption">
+                <div v-for="(item, idx) in lessonDetail.test_questions[currentTest].options"
+                     :class="['exercise-topic-options-item', selectOptionIdx === idx?'active':'']"
+                     :style="{order: item.number}" @click="handleOption(idx)">
                     <p>
-                        <!--<span>A</span>-->
-                        <i class="icon icon-mistake"></i>
-                        <!--<i class="icon icon-correct"></i>-->
-                    </p>
-                    <span>restraintrestraintrestrai</span>
-                </div>
-                <div class="exercise-topic-options-item correct" @click="handleOption">
-                    <p>
-                        <!--<span>A</span>-->
-                        <!--<i class="icon icon-mistake"></i>-->
-                        <i class="icon icon-correct"></i>
-                    </p>
-                    <span>123</span>
-                </div>
-                <div class="exercise-topic-options-item" @click="handleOption">
-                    <p>
-                        <span>C</span>
+                        <span>{{options[item.number]}}</span>
                         <!--<i class="icon icon-mistake"></i>-->
                         <!--<i class="icon icon-correct"></i>-->
                     </p>
-                    <span>234234werfwe</span>
+                    <span>{{item.subject}}</span>
                 </div>
-                <div class="exercise-topic-options-item" @click="handleOption">
-                    <p>
-                        <span>D</span>
+                <!--<div class="exercise-topic-options-item mistake" @click="handleOption">-->
+                    <!--<p>-->
+                        <!--&lt;!&ndash;<span>A</span>&ndash;&gt;-->
                         <!--<i class="icon icon-mistake"></i>-->
+                        <!--&lt;!&ndash;<i class="icon icon-correct"></i>&ndash;&gt;-->
+                    <!--</p>-->
+                    <!--<span>restraintrestraintrestrai</span>-->
+                <!--</div>-->
+                <!--<div class="exercise-topic-options-item correct" @click="handleOption">-->
+                    <!--<p>-->
+                        <!--&lt;!&ndash;<span>A</span>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<i class="icon icon-mistake"></i>&ndash;&gt;-->
                         <!--<i class="icon icon-correct"></i>-->
-                    </p>
-                    <span>gxcbdsfg434sdf</span>
-                </div>
+                    <!--</p>-->
+                    <!--<span>123</span>-->
+                <!--</div>-->
+                <!--<div class="exercise-topic-options-item" @click="handleOption">-->
+                    <!--<p>-->
+                        <!--<span>C</span>-->
+                        <!--&lt;!&ndash;<i class="icon icon-mistake"></i>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<i class="icon icon-correct"></i>&ndash;&gt;-->
+                    <!--</p>-->
+                    <!--<span>234234werfwe</span>-->
+                <!--</div>-->
+                <!--<div class="exercise-topic-options-item" @click="handleOption">-->
+                    <!--<p>-->
+                        <!--<span>D</span>-->
+                        <!--&lt;!&ndash;<i class="icon icon-mistake"></i>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<i class="icon icon-correct"></i>&ndash;&gt;-->
+                    <!--</p>-->
+                    <!--<span>gxcbdsfg434sdf</span>-->
+                <!--</div>-->
             </div>
-            <button class="blue-btn-48 exercise-topic-btn" v-if="!isCheck" @click="handleCheckAnswer">
+            <button class="blue-btn-48 exercise-topic-btn" v-if="!isCheck"
+                    @click="handleCheckAnswer(lessonDetail.test_questions[currentTest].id)">
                 查看答案
             </button>
             <div class="exercise-topic-analysis" v-if="isCheck">
                 <p class="exercise-topic-analysis-title">答案解析：</p>
-                <p class="exercise-topic-analysis-content">答案解析答案解析答答</p>
+                <p class="exercise-topic-analysis-content">{{result.analysis}}</p>
             </div>
         </div>
         <GuideBar/>
@@ -55,6 +66,7 @@
 
 <script>
     import GuideBar from "./guideBar"
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
 
     export default {
         name: "TopicPage",
@@ -63,15 +75,35 @@
         },
         data() {
             return {
-                isCheck: true
+                isCheck: false,
+                currentTest: 0,
+                options: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N'],
+                selectOptionIdx: null,
+                result: ''
             }
         },
+        computed: {
+            ...mapState('home', ['lessonDetail'])
+        },
         methods: {
-            handleOption() {
-                console.log('选项')
+            ...mapActions('home', ['getSingleTest']),
+            handleOption(idx) {
+                this.selectOptionIdx = idx;
             },
-            handleCheckAnswer() {
+            handleCheckAnswer(id) {
                 this.isCheck = true;
+                this.getSingleTest({
+                    id
+                }).then((res) => {
+                    this.result = res;
+                });
+            },
+            checkAnswer() {
+                let selectOptionIdx = this.selectOptionIdx;
+                if (this.result.answer === this.lessonDetail.test_questions[this.currentTest].options[selectOptionIdx].subject) {
+                    return true
+                }
+                return false
             }
         }
     }
@@ -110,6 +142,8 @@
                 line-height: 24px;
             }
             &-options {
+                display: flex;
+                flex-flow: column;
                 margin-top: 20px;
                 min-width: 200px;
                 max-width: 100%;
@@ -145,6 +179,10 @@
                     &:nth-child(1) {
                         margin-top: initial;
                     }
+                }
+                &-item.active {
+                    color: #fff;
+                    background-color: $color-link;
                 }
                 &-item.mistake {
                     color: #fff;

@@ -95,12 +95,12 @@ export default {
         }
     },
     // 获取单个测试题
-    async getClassTest({commit}, opts) {
+    async getSingleTest({commit}, opts) {
         try {
             const res = await classTest(opts);
             if (res) {
                 // commit(types.SET_BARGAIN_DETAIL, res);
-                console.log('getClassTest', res);
+                console.log('getSingleTest', res);
                 return res;
             }
         } catch (e) {
