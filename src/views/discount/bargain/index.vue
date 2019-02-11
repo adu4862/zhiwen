@@ -68,8 +68,13 @@
                 <p class="discount-bargain-dialog-title">
                     谢谢你帮我砍了3.99元
                 </p>
-                <button class="discount-bargain-dialog-btn-top blue-btn-48">我也要砍价</button>
-                <button class="discount-bargain-dialog-btn-bottom white-btn-48">去商城逛逛</button>
+                <template v-if="isBargain">
+                    <button class="discount-bargain-dialog-btn-top blue-btn-48">我也要砍价</button>
+                    <button class="discount-bargain-dialog-btn-bottom white-btn-48">去商城逛逛</button>
+                </template>
+                <template v-else>
+                    <button class="discount-bargain-dialog-btn-top blue-btn-48" @click="handleBargainFriend">帮好友砍价</button>
+                </template>
             </div>
         </Dialog>
         <!-- 满意下单 -->
@@ -142,7 +147,7 @@
             })
         },
         methods: {
-            ...mapActions('home', ['createBargain', 'getBargainMoney']),
+            ...mapActions('home', ['createBargain', 'getBargainMoney', 'helpBargain']),
             // 砍价偏移量
             calcOffset() {
                 this.scheduleWidth = this.$refs.schedule.offsetWidth;
@@ -167,6 +172,12 @@
             },
             handleConfirmModal() {
                 console.log('继续砍价')
+            },
+            // 帮好友砍价
+            handleBargainFriend() {
+                this.helpBargain({
+                    bargain_id: GetRequest().bargain_id
+                })
             }
         }
     }

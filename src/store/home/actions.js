@@ -96,7 +96,7 @@ export default {
         }
     },
     // 帮别人砍价
-    async setBargainClass({commit}, opts) {
+    async helpBargain({commit}, opts) {
         try {
             const res = await bargainClass(opts);
             if (res) {
