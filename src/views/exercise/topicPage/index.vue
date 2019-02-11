@@ -45,14 +45,11 @@
 </template>
 
 <script>
-    import GuideBar from "./guideBar"
     import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
+    import NP from 'number-precision';
 
     export default {
         name: "TopicPage",
-        components: {
-            GuideBar,
-        },
         data() {
             return {
                 isCheck: false,
@@ -60,7 +57,8 @@
                 options: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N'],
                 selectOptionIdx: null,
                 result: '',
-                selectHistory: []
+                selectHistory: [],
+                correctNum: 0,
             }
         },
         computed: {
@@ -92,11 +90,15 @@
                 }).then((res) => {
                     this.result = res;
                     this.$set(this.selectHistory[this.currentTest], 'result', res);
+                    if (this.selectHistory[this.currentTest].option === res.answer) {
+                        this.correctNum = this.correctNum + 1;
+                    }
                 });
-                this.setTestRecord({
-                    test_question_id: this.result.id,
-                    answer: this.selectHistory[this.currentTest].option
-                })
+                // 储存用户答题记录
+                // this.setTestRecord({
+                //     test_question_id: this.result.id,
+                //     answer: this.selectHistory[this.currentTest].option
+                // })
             },
             // 判断正确答案
             checkAnswer(option, idx) {
@@ -117,12 +119,18 @@
             },
             // 下一题
             handleNext() {
-                this.currentTest = this.currentTest + 1;
-                if (this.currentTest === lessonDetail.test_questions.length) {
-                    console.log('做完了')
-                    return
+                if (this.currentTest + 1 === this.lessonDetail.test_questions.length) {
+                    let score = NP.times(NP.divide(this.correctNum, this.lessonDetail.test_questions.length), 100);
+                    this.$router.push({
+                        name: 'exerciseRes',
+                        params: {
+                            score
+                        }
+                    })
+                } else {
+                    this.currentTest = this.currentTest + 1;
+                    this.init();
                 }
-                this.init();
             },
             init() {
                 if (this.selectHistory[this.currentTest]) {

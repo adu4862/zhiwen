@@ -3,8 +3,8 @@
         <div class="exercise-res-mask"></div>
         <div class="exercise-res-main">
             <img class="exercise-res-main-award" :src="require('@/assets/img/icon_gold_award.png')" alt="award">
-            <p class="exercise-res-main-title">80%</p>
-            <p class="exercise-res-main-sub-title">本次练习正确率为 80%</p>
+            <p class="exercise-res-main-title">{{score}}%</p>
+            <p class="exercise-res-main-sub-title">本次练习正确率为 {{score}}%</p>
             <div class="exercise-res-main-btns">
                 <button class="blue-btn-48">¥299购买课程</button>
                 <button class="white-btn-48">¥299购买课程</button>
@@ -15,7 +15,19 @@
 
 <script>
     export default {
-        name: "index"
+        name: "index",
+        data() {
+            return {
+                score: 0
+            }
+        },
+        mounted() {
+            if (this.$route.params.score) {
+                this.score = this.$route.params.score;
+            } else {
+                this.$router.go(-2);
+            }
+        }
     }
 </script>
 
