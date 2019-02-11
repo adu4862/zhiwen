@@ -4,8 +4,6 @@
 import Request from '@/common/request';
 import {sessionSetItem, sessionGetItem, isWeiXin, GetRequest} from '../common/util'
 
-const userId = sessionGetItem('userId');
-
 /* 用户收益 */
 export const userRewardAmount = data => Request.get('/user/' + data.id + '/reward/amount', data);
 /* 推广订单 */
