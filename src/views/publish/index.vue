@@ -1,6 +1,6 @@
 <template>
     <div class="publish-container">
-        <div class="publish">
+        <div class="publish" v-if="false">
             <div class="publish-card">
                 <div class="publish-card-user">
                     <img class="publish-card-user-header" :src="require('@/assets/img/demo_class_banner.png')"
@@ -25,16 +25,21 @@
             </div>
             <button class="blue-btn-48" @click="handleShare">分享链接</button>
         </div>
+        <WxShare />
     </div>
 </template>
 
 <script>
     import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
     import wx from 'weixin-js-sdk'
-    import {wechatShare} from '@/api/common';
+    import {wechatShare} from '@/api/common'
+    import {WxShare} from '@/components'
 
     export default {
         name: "publish",
+        components: {
+            WxShare
+        },
         mounted() {
             // console.log(location.href.split('#')[0])
             this.$nextTick(() => {

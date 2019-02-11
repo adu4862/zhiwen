@@ -9,6 +9,7 @@ import ClassBanner from './classBanner'
 import ClassPanel from './classPanel'
 import EarnMoney from './earnMoney'
 import Ruler from './ruler'
+import WxShare from './wxShare'
 
 export {
     ActiveCountDown,
@@ -22,4 +23,5 @@ export {
     ClassPanel,
     EarnMoney,
     Ruler,
+    WxShare,
 }
