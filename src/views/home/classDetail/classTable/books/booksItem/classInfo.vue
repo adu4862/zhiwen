@@ -15,7 +15,7 @@
                 <img class="arrow-icon" :src="require('@/assets/img/my/cell_arrow_gary.png')" alt="allow">
             </div>
         </div>
-        <div class="class-info-practice">
+        <div class="class-info-practice" @click="handleClassTest(lesson.id)">
             <div class="left">
                 <div class="practice-icon">练</div>
                 <div class="practice-title ellipsis">{{lesson.subject}} 练习题</div>
@@ -60,6 +60,14 @@
                         }
                     })
                 }
+            },
+            handleClassTest(id) {
+                this.$router.push({
+                    name: 'exercise',
+                    params: {
+                        id
+                    }
+                })
             }
         }
     }

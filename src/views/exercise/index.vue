@@ -8,6 +8,7 @@
     import TitlePage from "./titlePage"
     import TopicPage from "./topicPage"
     import Bar from "./bar"
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
 
     export default {
         name: "Exercise",
@@ -15,6 +16,14 @@
             TitlePage,
             TopicPage,
             Bar,
+        },
+        mounted() {
+            this.getClassTest({
+                id: this.$route.params.id
+            });
+        },
+        methods: {
+            ...mapActions('home', ['getClassTest'])
         }
     }
 </script>

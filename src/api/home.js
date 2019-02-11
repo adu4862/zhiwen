@@ -19,5 +19,7 @@ export const resourseUrl = data => Request.get('/lesson/' + data.id + '/url');
 export const bargainCreate = data => Request.post('/bargain', data);
 /* 获取单个砍价的金额 */
 export const bargainMoney = data => Request.get('/bargain/' + data.id);
+/* 获取单个测试题 */
+export const classTest = data => Request.get('/test-question/' + data.id);
 
 

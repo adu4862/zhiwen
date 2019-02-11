@@ -4,12 +4,12 @@ const ExerciseRes = () => import( /* webpackChunkName: "home" */ '../views/exerc
 
 export default [
     {
-        path: '/exercise',
+        path: '/exercise/:id',
         name: 'exercise',
         component: Exercise,
     },
     {
-        path: '/exercise/res',
+        path: '/exercise/:id/res',
         name: 'exerciseRes',
         component: ExerciseRes,
     },
