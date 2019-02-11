@@ -28,7 +28,7 @@ export default {
     // 获取用户推广订单
     async getUserPunches({}, opts) {
         try {
-            const res = await userRewards(Object.assign(opts, {id: sessionGetItem('userId')}));
+            const res = await userRewards(Object.assign(opts, {userId: sessionGetItem('userId')}));
             if (res) {
                 return res
             }
@@ -39,7 +39,7 @@ export default {
     // 获取用户订单
     async getUserOrders({}, opts) {
         try {
-            const res = await userOrders(Object.assign(opts, {id: sessionGetItem('userId')}));
+            const res = await userOrders(Object.assign(opts, {userId: sessionGetItem('userId')}));
             if (res) {
                 console.log("getUserOrders--------", res);
                 // commit(types.SET_TOKEN, res);
@@ -52,7 +52,7 @@ export default {
     // 获取用户收藏
     async deleteUserCollections({}, opts) {
         try {
-            const res = await deleteUserCollections(Object.assign(opts, {id: sessionGetItem('userId')}));
+            const res = await deleteUserCollections(Object.assign(opts, {userId: sessionGetItem('userId')}));
             if (res) {
                 return res
             }
@@ -63,7 +63,7 @@ export default {
     // 删除用户收藏
     async getUserCollections({}, opts) {
         try {
-            const res = await userCollections(Object.assign(opts, {id: sessionGetItem('userId')}));
+            const res = await userCollections(Object.assign(opts, {userId: sessionGetItem('userId')}));
             if (res) {
                 return res
             }
@@ -74,7 +74,7 @@ export default {
     // 获取用户课程
     async getUserProducts({}, opts) {
         try {
-            const res = await userProducts(Object.assign(opts, {id: sessionGetItem('userId')}));
+            const res = await userProducts(Object.assign(opts, {userId: sessionGetItem('userId')}));
             if (res) {
                 return res
             }
@@ -85,7 +85,7 @@ export default {
     // 获取打卡信息
     async getPunchInfo({}, opts) {
         try {
-            const res = await punchInfo(Object.assign(opts, {id: sessionGetItem('userId')}));
+            const res = await punchInfo(Object.assign(opts, {userId: sessionGetItem('userId')}));
             if (res) {
                 return res
             }
@@ -96,7 +96,7 @@ export default {
     // 用户打卡
     async setPunch({}, opts) {
         try {
-            const res = await punch(Object.assign(opts, {id: sessionGetItem('userId')}));
+            const res = await punch(Object.assign(opts, {userId: sessionGetItem('userId')}));
             if (res) {
                 return res
             }
