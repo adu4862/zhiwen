@@ -26,12 +26,25 @@
             </div>
         </div>
         <button
+            v-if="type===''"
             :class="['bind-phone-btn blue-btn-48', isDisabled?'disabled-btn':'']"
             :disabled="isDisabled"
             @click="handleBindPhone"
         >
             立即绑定
         </button>
+        <div class="bind-phone-change-btns" v-else>
+            <button
+                :class="['bind-phone-change-btn blue-btn-48', isDisabled?'disabled-btn':'']"
+                :disabled="isDisabled"
+                @click="handleBindPhone"
+            >
+                更换绑定
+            </button>
+            <button class="bind-phone-change-btn blue-btn-48" @click="handleCancelChange">
+                取消更换
+            </button>
+        </div>
     </div>
 </template>
 
@@ -49,7 +62,11 @@
                 phone: '',
                 code: '',
                 counting: false,
+                type: ''
             }
+        },
+        mounted() {
+            if (this.$route.params.type) this.type = this.$route.params.type;
         },
         computed: {
             ...mapState(['phoneCode', 'userInfo']),
@@ -93,9 +110,18 @@
                             type: 'success',
                             msg: '绑定成功'
                         });
-                        this.$router.go(-1);
+                        this.$router.push({
+                            name: 'bindPhoneRes',
+                            params: {
+                                type: 'normal'
+                            }
+                        });
                     }
                 })
+            },
+            // 取消绑定
+            handleCancelChange() {
+                this.$router.go(-2);
             }
         }
     }
@@ -159,6 +185,12 @@
         }
         &-btn {
             margin-top: 114px;
+        }
+        &-change-btns {
+            margin-top: 106px;
+            button:nth-child(2) {
+                margin-top: 40px;
+            }
         }
     }
 </style>

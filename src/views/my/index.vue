@@ -9,7 +9,7 @@
             </span>
         </div>
         <div class="my-cell-group">
-            <CellItem label="手机绑定" link="bindPhone">
+            <CellItem label="手机绑定" :link="userInfo.phone?'bindPhoneRes':'bindPhone'">
                 <i class="icon icon--7" slot="icon"></i>
                 <p class="cell-content">{{userInfo.phone?'已验证':'未验证'}}</p>
             </CellItem>
@@ -65,7 +65,8 @@
                 list: [],
                 loading: false,
                 finished: false,
-                userClassList: []
+                userClassList: [],
+                bindPhone: 'bindPhone'
             }
         },
         async mounted() {

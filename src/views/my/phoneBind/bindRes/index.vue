@@ -3,19 +3,54 @@
         <img class="bind-phone-res-icon" :src="require('@/assets/img/icon_success.png')" alt="icon_success">
         <p class="bind-phone-res-tips">已验证</p>
         <div class="bind-phone-res-content">
-            <!--<p>如你的手机号已不使用，请及时更换</p>-->
-            <!--<p>手机号 13888888888</p>-->
-            <p>如你的手机号已不使用，请及时更换</p>
-            <p>手机号 13888888888</p>
+            <template v-if="type==='normal'">
+                <p>手机号 {{userInfo.phone}}</p>
+            </template>
+            <template v-else>
+                <p>如你的手机号已不使用，请及时更换</p>
+                <p>手机号 {{userInfo.phone}}</p>
+            </template>
         </div>
-        <!--<button class="blue-btn-48">更换手机号</button>-->
-        <button class="blue-btn-48">完成</button>
+        <button class="blue-btn-48" @click="handleFinish" v-if="type==='normal'">完成</button>
+        <button class="blue-btn-48" @click="handleChange" v-else>更换手机号</button>
     </div>
 </template>
 
 <script>
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
+
     export default {
-        name: "phoneBindRes"
+        name: "phoneBindRes",
+        data() {
+            return {
+                type: 'normal'
+            }
+        },
+        computed: {
+            ...mapState(['userInfo'])
+        },
+        mounted() {
+            if (this.$route.params.type) {
+                this.type = this.$route.params.type;
+            } else {
+                this.type = '';
+            }
+        },
+        methods: {
+            // 更换手机号
+            handleChange() {
+                this.$router.push({
+                    name: 'bindPhone',
+                    params: {
+                        type: 'change'
+                    }
+                })
+            },
+            // 完成
+            handleFinish() {
+                this.$router.go(-2);
+            }
+        }
     }
 </script>
 
