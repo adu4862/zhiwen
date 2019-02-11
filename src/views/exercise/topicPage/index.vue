@@ -9,49 +9,20 @@
             </p>
             <div class="exercise-topic-options">
                 <div v-for="(item, idx) in lessonDetail.test_questions[currentTest].options"
-                     :class="['exercise-topic-options-item', selectOptionIdx === idx?'active':'']"
+                     :class="['exercise-topic-options-item', selectOptionIdx === idx?'active':'',
+                     checkAnswer(item.subject, idx)]"
                      :style="{order: item.number}" @click="handleOption(idx)">
                     <p>
-                        <span>{{options[item.number]}}</span>
-                        <!--<i class="icon icon-mistake"></i>-->
-                        <!--<i class="icon icon-correct"></i>-->
+                        <span v-if="!checkAnswer(item.subject, idx)">{{options[item.number]}}</span>
+                        <i class="icon icon-mistake" v-if="checkAnswer(item.subject, idx) === 'mistake'"></i>
+                        <i class="icon icon-correct" v-if="checkAnswer(item.subject, idx) === 'correct'"></i>
                     </p>
                     <span>{{item.subject}}</span>
                 </div>
-                <!--<div class="exercise-topic-options-item mistake" @click="handleOption">-->
-                    <!--<p>-->
-                        <!--&lt;!&ndash;<span>A</span>&ndash;&gt;-->
-                        <!--<i class="icon icon-mistake"></i>-->
-                        <!--&lt;!&ndash;<i class="icon icon-correct"></i>&ndash;&gt;-->
-                    <!--</p>-->
-                    <!--<span>restraintrestraintrestrai</span>-->
-                <!--</div>-->
-                <!--<div class="exercise-topic-options-item correct" @click="handleOption">-->
-                    <!--<p>-->
-                        <!--&lt;!&ndash;<span>A</span>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<i class="icon icon-mistake"></i>&ndash;&gt;-->
-                        <!--<i class="icon icon-correct"></i>-->
-                    <!--</p>-->
-                    <!--<span>123</span>-->
-                <!--</div>-->
-                <!--<div class="exercise-topic-options-item" @click="handleOption">-->
-                    <!--<p>-->
-                        <!--<span>C</span>-->
-                        <!--&lt;!&ndash;<i class="icon icon-mistake"></i>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<i class="icon icon-correct"></i>&ndash;&gt;-->
-                    <!--</p>-->
-                    <!--<span>234234werfwe</span>-->
-                <!--</div>-->
-                <!--<div class="exercise-topic-options-item" @click="handleOption">-->
-                    <!--<p>-->
-                        <!--<span>D</span>-->
-                        <!--&lt;!&ndash;<i class="icon icon-mistake"></i>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<i class="icon icon-correct"></i>&ndash;&gt;-->
-                    <!--</p>-->
-                    <!--<span>gxcbdsfg434sdf</span>-->
-                <!--</div>-->
             </div>
-            <button class="blue-btn-48 exercise-topic-btn" v-if="!isCheck"
+            <button v-if="!isCheck"
+                    :disabled="selectOptionIdx===null"
+                    :class="['blue-btn-48 exercise-topic-btn', selectOptionIdx===null?'disabled-btn':'']"
                     @click="handleCheckAnswer(lessonDetail.test_questions[currentTest].id)">
                 查看答案
             </button>
@@ -98,12 +69,13 @@
                     this.result = res;
                 });
             },
-            checkAnswer() {
-                let selectOptionIdx = this.selectOptionIdx;
-                if (this.result.answer === this.lessonDetail.test_questions[this.currentTest].options[selectOptionIdx].subject) {
-                    return true
+            checkAnswer(option, idx) {
+                if (!this.isCheck) return;
+                if (this.result && this.result.answer === option) {
+                    return 'correct'
+                } else if (this.selectOptionIdx === idx) {
+                    return 'mistake'
                 }
-                return false
             }
         }
     }
@@ -198,6 +170,9 @@
             &-btn {
                 margin-top: 30px;
                 width: 295px;
+                &.disabled {
+                    background-color: $color-gary;
+                }
             }
             &-analysis {
                 margin-top: 40px;
