@@ -57,6 +57,7 @@
                 options: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N'],
                 selectOptionIdx: null,
                 result: '',
+                historyData: {},
                 selectHistory: [],
                 correctNum: 0,
             }
@@ -77,10 +78,10 @@
                     return
                 }
                 this.selectOptionIdx = idx;
-                this.$set(this.selectHistory, this.currentTest, {
+                this.historyData = {
                     option,
                     idx
-                });
+                };
             },
             // 查看答案
             async handleCheckAnswer(id) {
@@ -89,7 +90,13 @@
                     id
                 }).then((res) => {
                     this.result = res;
-                    this.$set(this.selectHistory[this.currentTest], 'result', res);
+                    let {option, idx} = this.historyData;
+                    this.$set(this.selectHistory, this.currentTest, {
+                        option,
+                        idx,
+                        result: res
+                    });
+                    // this.$set(this.selectHistory[this.currentTest], 'result', res);
                     if (this.selectHistory[this.currentTest].option === res.answer) {
                         this.correctNum = this.correctNum + 1;
                     }
