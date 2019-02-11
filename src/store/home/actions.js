@@ -1,6 +1,6 @@
 import * as types from '@/store/mutation-types.js';
 import {banner, classList, classDetail, classCollection, resourseUrl,
-    singleClassInfo, bargainCreate, bargainMoney, classTest} from "@/api/home";
+    singleClassInfo, bargainCreate, bargainMoney, classTest, classTestRecord} from "@/api/home";
 
 export default {
     // 获取Banner
@@ -102,6 +102,18 @@ export default {
                 // commit(types.SET_BARGAIN_DETAIL, res);
                 console.log('getSingleTest', res);
                 return res;
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    },
+    // 获取单个测试题
+    async setTestRecord({commit}, opts) {
+        try {
+            const res = await classTestRecord(opts);
+            if (res) {
+                // commit(types.SET_BARGAIN_DETAIL, res);
+                console.log('setTestRecord', res);
             }
         } catch (e) {
             console.log(e)

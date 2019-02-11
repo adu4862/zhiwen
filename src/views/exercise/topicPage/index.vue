@@ -11,7 +11,7 @@
                 <div v-for="(item, idx) in lessonDetail.test_questions[currentTest].options"
                      :class="['exercise-topic-options-item', selectOptionIdx === idx?'active':'',
                      checkAnswer(item.subject, idx)]"
-                     :style="{order: item.number}" @click="handleOption(idx)">
+                     :style="{order: item.number}" @click="handleOption(item.subject, idx)">
                     <p>
                         <span v-if="!checkAnswer(item.subject, idx)">{{options[item.number]}}</span>
                         <i class="icon icon-mistake" v-if="checkAnswer(item.subject, idx) === 'mistake'"></i>
@@ -31,7 +31,16 @@
                 <p class="exercise-topic-analysis-content">{{result.analysis}}</p>
             </div>
         </div>
-        <GuideBar/>
+        <div class="exercise-topic-guide-bar" v-if="isCheck">
+            <p :class="['exercise-topic-guide-bar-prev', currentTest===0?'disabled':'']" @click="handlePrev">
+                上一题
+            </p>
+            <p class="exercise-topic-guide-bar-next" @click="handleNext">
+                <button class="blue-btn-48">
+                    {{lessonDetail.test_questions.length === currentTest+1?'查看成绩':'下一题'}}
+                </button>
+            </p>
+        </div>
     </div>
 </template>
 
@@ -50,31 +59,80 @@
                 currentTest: 0,
                 options: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N'],
                 selectOptionIdx: null,
-                result: ''
+                result: '',
+                selectHistory: []
             }
         },
         computed: {
             ...mapState('home', ['lessonDetail'])
         },
+        watch: {
+            selectHistory(val) {
+                console.log(val)
+            }
+        },
         methods: {
-            ...mapActions('home', ['getSingleTest']),
-            handleOption(idx) {
+            ...mapActions('home', ['getSingleTest', 'setTestRecord']),
+            // 选项
+            handleOption(option, idx) {
+                if (this.selectHistory[this.currentTest]) {
+                    return
+                }
                 this.selectOptionIdx = idx;
+                this.$set(this.selectHistory, this.currentTest, {
+                    option,
+                    idx
+                });
             },
-            handleCheckAnswer(id) {
+            // 查看答案
+            async handleCheckAnswer(id) {
                 this.isCheck = true;
-                this.getSingleTest({
+                await this.getSingleTest({
                     id
                 }).then((res) => {
                     this.result = res;
+                    this.$set(this.selectHistory[this.currentTest], 'result', res);
                 });
+                this.setTestRecord({
+                    test_question_id: this.result.id,
+                    answer: this.selectHistory[this.currentTest].option
+                })
             },
+            // 判断正确答案
             checkAnswer(option, idx) {
                 if (!this.isCheck) return;
                 if (this.result && this.result.answer === option) {
                     return 'correct'
                 } else if (this.selectOptionIdx === idx) {
                     return 'mistake'
+                }
+            },
+            // 上一题
+            handlePrev() {
+                if (this.currentTest === 0) {
+                    return
+                }
+                this.currentTest = this.currentTest - 1;
+                this.init();
+            },
+            // 下一题
+            handleNext() {
+                this.currentTest = this.currentTest + 1;
+                if (this.currentTest === lessonDetail.test_questions.length) {
+                    console.log('做完了')
+                    return
+                }
+                this.init();
+            },
+            init() {
+                if (this.selectHistory[this.currentTest]) {
+                    this.isCheck = true;
+                    this.selectOptionIdx = this.selectHistory[this.currentTest].idx;
+                    this.result = this.selectHistory[this.currentTest].result;
+                } else {
+                    this.isCheck = false;
+                    this.selectOptionIdx = null;
+                    this.result = '';
                 }
             }
         }
@@ -148,9 +206,6 @@
                         word-wrap: break-word;
                         overflow: hidden;
                     }
-                    &:nth-child(1) {
-                        margin-top: initial;
-                    }
                 }
                 &-item.active {
                     color: #fff;
@@ -205,6 +260,32 @@
                 width: 315px;
                 height: 20px;
                 background-color: rgba(255, 255, 255, .6);
+            }
+        }
+        .exercise-topic-guide-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            @include ftb();
+            padding: 11px 0;
+            font-size: $font-size-md;
+            background-color: #fff;
+            box-shadow: 0 2px 4px 0 rgba(101, 135, 248, 0.11);
+            &-prev {
+                padding: 4px 35px;
+                color: $color-gary;
+                border-right: 1px solid rgba(101, 135, 248, .36);
+            }
+            &-prev.disabled {
+                color: #CFCFCF;
+            }
+            &-next {
+                flex: 1;
+                button {
+                    margin-left: 35px;
+                    width: 200px;
+                }
             }
         }
     }

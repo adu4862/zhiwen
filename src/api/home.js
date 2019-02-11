@@ -21,5 +21,7 @@ export const bargainCreate = data => Request.post('/bargain', data);
 export const bargainMoney = data => Request.get('/bargain/' + data.id);
 /* 获取单个测试题 */
 export const classTest = data => Request.get('/test-question/' + data.id);
+/* 创建答题记录 */
+export const classTestRecord = data => Request.post('/test-question-record', data);
 
 
