@@ -9,7 +9,7 @@
                     :key="item.id"
                     :lesson="item"
                     :isTest="true"
-                    :style="{order: item.order, marginTop: initialTop(item.order)}"
+                    :style="{order: item.order, marginTop: initialSpace(item.order)}"
                 />
             </van-collapse-item>
         </van-collapse>

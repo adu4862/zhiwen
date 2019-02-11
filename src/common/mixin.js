@@ -36,8 +36,8 @@ export default {
                 })
             })
         },
-        // 处理order排序后首个item的向上间距
-        initialTop(order) {
+        // 处理order排序后首个item的向上、向下间距
+        initialSpace(order) {
             if (order === 1) {
                 return 'initial'
             }
