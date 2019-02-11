@@ -1,6 +1,6 @@
 <template>
     <div class="exercise">
-        <TopicPage />
+        <TitlePage />
     </div>
 </template>
 
@@ -18,12 +18,12 @@
             Bar,
         },
         mounted() {
-            this.getClassTest({
+            this.getSingleClassInfo({
                 id: this.$route.params.id
             });
         },
         methods: {
-            ...mapActions('home', ['getClassTest'])
+            ...mapActions('home', ['getSingleClassInfo'])
         }
     }
 </script>

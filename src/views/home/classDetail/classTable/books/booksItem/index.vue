@@ -6,7 +6,7 @@
                 <p class="value">{{classDetail.is_pay?'':'购买后可查看详情'}}</p>
             </div>
             <div class="class-books-item-content">
-                <template v-for="lesson in item">
+                <template v-for="lesson in item.lessons">
                     <!-- 未购买 -->
                     <ClassInfoSimple v-if="!classDetail.is_pay" :lesson="lesson" />
                     <!-- 已购买 -->
