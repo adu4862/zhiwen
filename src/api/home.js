@@ -25,5 +25,7 @@ export const classTest = data => Request.get('/test-question/' + data.id);
 export const classTestRecord = data => Request.post('/test-question-record', data);
 /* 创建答题总成绩记录 */
 export const classTestScore = data => Request.post('/test-question-score', data);
+/* 更新答题总成绩记录 */
+export const classTestScoreUpdate = data => Request.put('/test-question-score/' + data.id, data);
 
 

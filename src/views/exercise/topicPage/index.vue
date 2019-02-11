@@ -70,7 +70,7 @@
             }
         },
         methods: {
-            ...mapActions('home', ['getSingleTest', 'setTestRecord', 'setTestScore']),
+            ...mapActions('home', ['getSingleTest', 'setTestRecord', 'setTestScore', 'updateTestScore']),
             // 选项
             handleOption(option, idx) {
                 if (this.selectHistory[this.currentTest]) {
@@ -95,10 +95,10 @@
                     }
                 });
                 // 储存用户答题记录
-                // this.setTestRecord({
-                //     test_question_id: this.result.id,
-                //     answer: this.selectHistory[this.currentTest].option
-                // })
+                this.setTestRecord({
+                    test_question_id: this.result.id,
+                    answer: this.selectHistory[this.currentTest].option
+                })
             },
             // 判断正确答案
             checkAnswer(option, idx) {
