@@ -171,7 +171,7 @@
                     let that = this;
                     let {appId, timestamp, nonceStr, signature, jsApiList} = res;
                     wx.config({
-                        debug: false,
+                        debug: true,
                         appId: appId,
                         timestamp,
                         nonceStr,
@@ -182,7 +182,7 @@
                         wx.updateAppMessageShareData({
                             title: '快来帮我砍价！！！',
                             desc: '这个课程需要砍价，帮我砍价，能砍到1分钱。',
-                            link: location.href.split('#')[0],
+                            link: location.href,
                             imgUrl: that.classDetail.image_uri,
                             success: function () {
                                 // 设置成功
