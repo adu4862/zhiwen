@@ -6,8 +6,8 @@
             <p class="exercise-res-main-title">{{score}}%</p>
             <p class="exercise-res-main-sub-title">本次练习正确率为 {{score}}%</p>
             <div class="exercise-res-main-btns">
-                <button class="blue-btn-48">¥299购买课程</button>
-                <button class="white-btn-48">¥299购买课程</button>
+                <button class="blue-btn-48" @click="handleLearn">继续学习</button>
+                <button class="white-btn-48" @click="handleBack">返回课程目录</button>
             </div>
         </div>
     </div>
@@ -21,11 +21,24 @@
                 score: 0
             }
         },
+        computed: {
+            ...mapState('home', ['classDetail'])
+        },
         mounted() {
             if (this.$route.params.score) {
                 this.score = this.$route.params.score;
             } else {
                 this.$router.go(-2);
+            }
+        },
+        methods: {
+            // 继续学习
+            handleLearn() {
+
+            },
+            // 返回目录
+            handleBack() {
+
             }
         }
     }
