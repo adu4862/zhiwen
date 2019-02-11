@@ -9,7 +9,7 @@
                     :key="item.id"
                     :lesson="item"
                     :isTest="true"
-                    :style="{order: item.order}"
+                    :style="{order: item.order, marginTop: initialTop(item.order)}"
                 />
             </van-collapse-item>
         </van-collapse>
@@ -36,8 +36,9 @@
             };
         },
         computed: {
-            ...mapState('home', ['classDetail'])
-        },
+            ...mapState('home', ['classDetail']),
+
+        }
     }
 </script>
 

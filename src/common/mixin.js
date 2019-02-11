@@ -9,13 +9,16 @@ export default {
     },
     methods: {
         ...mapActions('home', ['setClassCollection']),
+        // 分页
         nextPage() {
             this.skip = this.skip + 10;
             this.limit = this.limit + 10;
         },
+        // 回首页
         toHome() {
             this.$router.push({name: 'home'});
         },
+        // 添加收藏
         addCollect() {
             this.setClassCollection({
                 product_id: this.classDetail.id
@@ -31,6 +34,12 @@ export default {
                     type: 'collection'
                 })
             })
+        },
+        // 处理order排序后首个item的间距
+        initialTop(order) {
+            if (order === 1) {
+                return 'initial'
+            }
         }
     },
 }
