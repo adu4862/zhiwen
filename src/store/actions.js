@@ -2,10 +2,6 @@ import * as types from '@/store/mutation-types.js';
 import {userInfo, wechatShare, phoneCode, phoneBind, createOrder, wechatPayConfig} from '@/api/common';
 
 export default {
-	changeUserInfo({commit}, info) {
-        let userInfo = `this is ${info}`;
-		commit(types.SET_USER_INFO, userInfo);
-    },
     /* 获取用户信息 */
     async getUserInfo({commit}, opts) {
         try {

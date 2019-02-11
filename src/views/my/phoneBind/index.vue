@@ -25,13 +25,13 @@
                 <input v-model="code" type="phone" placeholder="请输入验证码">
             </div>
         </div>
-        <div
+        <button
             :class="['bind-phone-btn blue-btn-48', isDisabled?'disabled-btn':'']"
             :disabled="isDisabled"
             @click="handleBindPhone"
         >
             立即绑定
-        </div>
+        </button>
     </div>
 </template>
 
@@ -54,12 +54,13 @@
         computed: {
             ...mapState(['phoneCode', 'userInfo']),
             isDisabled() {
-                if (!this.phone && !this.code) return true;
+                if (!this.phone || !this.code) return true;
                 return false;
             }
         },
         methods: {
             ...mapActions(['getPhoneCode', 'bindPhone']),
+            // 获取验证码
             handleCode: function () {
                 if (!this.phone) {
                     this.$toast({
@@ -67,10 +68,12 @@
                     });
                     return
                 }
-                // 获取验证码
+                let phone = this.phone;
+                if (this.phoneCode.code !== '+86') {
+                    phone = this.phoneCode.code.split('+')[1] + this.phone;
+                }
                 this.getPhoneCode({
-                    phone: this.phone,
-                    mobile_country_number: this.phoneCode
+                    phone
                 }).then((res) => {
                     this.counting = true;
                 })

@@ -60,6 +60,11 @@ export default {
             headers,
         })
     },
+    put(url, param = null, headers = {}, notUseBaseURL = false) {
+        return AJAX.put(url, param, {
+            headers,
+        })
+    },
     file(url, param = null, headers = {}, notUseBaseURL = false) {
         return AJAX.post(url, param, {
             headers: Object.assign({
