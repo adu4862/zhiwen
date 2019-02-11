@@ -1,6 +1,6 @@
 import * as types from '@/store/mutation-types.js';
 import {banner, classList, classDetail, classCollection, resourseUrl,
-    singleClassInfo, bargainCreate, bargainMoney, classTest, classTestRecord,
+    singleClassInfo, bargainCreate, bargainMoney, bargainClass, classTest, classTestRecord,
     classTestScore, classTestScoreUpdate} from "@/api/home";
 
 export default {
@@ -89,6 +89,17 @@ export default {
             const res = await bargainMoney(opts);
             if (res) {
                 commit(types.SET_BARGAIN_DETAIL, res);
+                return res;
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    },
+    // 帮别人砍价
+    async setBargainClass({commit}, opts) {
+        try {
+            const res = await bargainClass(opts);
+            if (res) {
                 return res;
             }
         } catch (e) {

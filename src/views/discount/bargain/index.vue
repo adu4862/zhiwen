@@ -82,7 +82,7 @@
             @on-confirm="handleConfirmModal"
         >
             <div class="discount-bargain-modal">
-                低价为¥269，请问是否以¥275.7购买该课程？
+                低价为¥{{classDetail.lowest_price | formatWechatPrice}}，请问是否以¥{{nowPrice | formatWechatPrice}}购买该课程？
             </div>
         </Modal>
     </div>
@@ -91,6 +91,7 @@
 <script>
     import {ClassPanel, ClassBanner, DividerTitle, Dialog, Modal, CountDown} from '@/components'
     import NP from 'number-precision'
+    import {sessionSetItem, sessionGetItem, GetRequest} from '@/common/util'
     import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
 
     export default {
@@ -117,7 +118,12 @@
             }
         },
         computed: {
-            ...mapState('home', ['classDetail'])
+            ...mapState('home', ['classDetail']),
+            isBargain() {
+                let bargain_id = GetRequest().bargain_id;
+                if (bargain_id) return true;
+                return false;
+            }
         },
         async mounted() {
             await this.createBargain({
