@@ -4,15 +4,16 @@ export default {
     data() {
         return {
             skip: 0,
-            limit: 10
+            limit: 10,
+            step: 10
         }
     },
     methods: {
         ...mapActions('home', ['setClassCollection']),
         // 分页
         nextPage() {
-            this.skip = this.skip + 10;
-            this.limit = this.limit + 10;
+            this.skip = this.skip + this.step;
+            this.limit = this.limit + this.step;
         },
         // 回首页
         toHome() {
