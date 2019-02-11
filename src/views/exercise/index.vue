@@ -2,13 +2,14 @@
     <div class="exercise">
         <TitlePage @on-start="handleStart" v-if="status==='title'"/>
         <TopicPage v-if="status==='topic'"/>
+        <ResPage v-if="status==='res'"/>
     </div>
 </template>
 
 <script>
     import TitlePage from "./titlePage"
     import TopicPage from "./topicPage"
-    import Bar from "./bar"
+    import ResPage from "./resPage"
     import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
 
     export default {
@@ -16,11 +17,11 @@
         components: {
             TitlePage,
             TopicPage,
-            Bar,
+            ResPage,
         },
         data() {
             return {
-                status: 'title',     // title-封面,topic-联系,finish-结束
+                status: 'title',     // title-封面，topic-联系，res-结束
             }
         },
         mounted() {
