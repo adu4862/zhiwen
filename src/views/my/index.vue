@@ -105,6 +105,7 @@
 
 <style lang="scss" scoped>
     .my {
+        padding-bottom: 10px;
         &-head {
             padding-top: 18px;
             padding-bottom: 31px;
