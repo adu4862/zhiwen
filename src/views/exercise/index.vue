@@ -1,6 +1,7 @@
 <template>
     <div class="exercise">
-        <TitlePage />
+        <TitlePage @on-start="handleStart" v-if="status==='title'"/>
+        <TopicPage v-if="status==='topic'"/>
     </div>
 </template>
 
@@ -17,13 +18,21 @@
             TopicPage,
             Bar,
         },
+        data() {
+            return {
+                status: 'title',     // title-封面,topic-联系,finish-结束
+            }
+        },
         mounted() {
             this.getSingleClassInfo({
                 id: this.$route.params.id
             });
         },
         methods: {
-            ...mapActions('home', ['getSingleClassInfo'])
+            ...mapActions('home', ['getSingleClassInfo']),
+            handleStart() {
+                this.status = 'topic'
+            }
         }
     }
 </script>

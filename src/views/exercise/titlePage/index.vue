@@ -2,23 +2,33 @@
 <template>
     <div class="exercise-title-page">
         <div class="exercise-title-page-content">
-            <div class="exercise-title-page-content-title">法律英语基础：练习一</div>
+            <div class="exercise-title-page-content-title">{{lessonDetail.subject}}：练习题</div>
             <div class="exercise-title-page-content-info">
-                <p>共10道题</p>
-                <p>参考用时：13分钟</p>
+                <p>共{{lessonDetail.test_questions.length}}道题</p>
+                <p>参考用时：{{lessonDetail.reference_time}}分钟</p>
             </div>
-            <div class="exercise-title-page-content-congratulations">真棒！你已经完成 <span>所有</span> 测试题了哦</div>
+            <div class="exercise-title-page-content-congratulations" v-if="lessonDetail.score">真棒！你已经完成 <span>所有</span> 测试题了哦</div>
         </div>
         <div class="exercise-title-page-btns">
-            <button class="blue-btn-48">开始练习</button>
-            <button class="white-btn-48">再做一遍</button>
+            <button class="blue-btn-48" @click="handleStart">开始练习</button>
+            <button class="white-btn-48" v-if="lessonDetail.score">再做一遍</button>
         </div>
     </div>
 </template>
 
 <script>
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
+
     export default {
-        name: "TitlePage"
+        name: "TitlePage",
+        computed: {
+            ...mapState('home', ['lessonDetail'])
+        },
+        methods: {
+            handleStart() {
+                this.$emit('on-start')
+            }
+        }
     }
 </script>
 
@@ -39,6 +49,7 @@
             color: $color-important;
             &-title {
                 font-size: $font-size-md;
+                text-align: center;
             }
             &-info {
                 margin-top: 54px;
