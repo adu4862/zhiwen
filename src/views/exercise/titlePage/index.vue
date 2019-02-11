@@ -10,8 +10,11 @@
             <div class="exercise-title-page-content-congratulations" v-if="lessonDetail.score">真棒！你已经完成 <span>所有</span> 测试题了哦</div>
         </div>
         <div class="exercise-title-page-btns">
-            <button class="blue-btn-48" @click="handleStart">开始练习</button>
-            <button class="white-btn-48" v-if="lessonDetail.score">再做一遍</button>
+            <button class="blue-btn-48" @click="handleStart" v-if="!lessonDetail.score">开始练习</button>
+            <template v-else>
+                <button class="blue-btn-48" @click="handleStart">查看解析</button>
+                <button class="white-btn-48" >再做一遍</button>
+            </template>
         </div>
     </div>
 </template>
