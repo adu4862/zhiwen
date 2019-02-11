@@ -108,7 +108,12 @@ export default {
          * @returns {number} The computed value.
          */
         hours() {
-            return Math.floor((this.totalMilliseconds % MILLISECONDS_DAY) / MILLISECONDS_HOUR);
+            let hours = Math.floor((this.totalMilliseconds % MILLISECONDS_DAY) / MILLISECONDS_HOUR);
+            if (hours.toString().length === 1) {
+                hours = '0' + hours
+            }
+            return hours;
+            // return Math.floor((this.totalMilliseconds % MILLISECONDS_DAY) / MILLISECONDS_HOUR);
         },
 
         /**
@@ -116,7 +121,12 @@ export default {
          * @returns {number} The computed value.
          */
         minutes() {
-            return Math.floor((this.totalMilliseconds % MILLISECONDS_HOUR) / MILLISECONDS_MINUTE);
+            let minutes = Math.floor((this.totalMilliseconds % MILLISECONDS_HOUR) / MILLISECONDS_MINUTE);
+            if (minutes.toString().length === 1) {
+                minutes = '0' + minutes
+            }
+            return minutes;
+            // return Math.floor((this.totalMilliseconds % MILLISECONDS_HOUR) / MILLISECONDS_MINUTE);
         },
 
         /**
@@ -124,7 +134,12 @@ export default {
          * @returns {number} The computed value.
          */
         seconds() {
-            return Math.floor((this.totalMilliseconds % MILLISECONDS_MINUTE) / MILLISECONDS_SECOND);
+            let seconds = Math.floor((this.totalMilliseconds % MILLISECONDS_MINUTE) / MILLISECONDS_SECOND);
+            if (seconds.toString().length === 1) {
+                seconds = '0' + seconds
+            }
+            return seconds;
+            // return Math.floor((this.totalMilliseconds % MILLISECONDS_MINUTE) / MILLISECONDS_SECOND);
         },
 
         /**

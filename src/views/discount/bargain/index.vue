@@ -2,7 +2,7 @@
     <div class="discount-bargain">
         <div class="panel-shadow">
             <ClassPanel class="discount-bargain-class">
-                <ClassBanner slot="banner" :uri="classDetail.image_uri" :type="classDetail.type" />
+                <ClassBanner slot="banner" :uri="classDetail.image_uri" :type="classDetail.type"/>
                 <div class="discount-bargain-class-content">
                     <div class="top">
                         <div class="class-title ellipsis">
@@ -23,7 +23,12 @@
             </ClassPanel>
         </div>
         <DividerTitle class="discount-bargain-time">
-            <span class="count-down">24:00:00</span>后失效
+            <!--<span class="count-down">24:00:00</span>后失效-->
+            <span class="count-down">
+                <CountDown :time="countDownTime">
+                  <template slot-scope="props">{{ props.hours }}:{{ props.minutes }}:{{ props.seconds }}</template>
+                </CountDown>
+            </span>后失效
         </DividerTitle>
         <div class="discount-bargain-progress">
             <div class="discount-bargain-progress-now">
@@ -59,7 +64,7 @@
             <div class="discount-bargain-dialog">
                 <i class="discount-bargain-dialog-close" @click.stop="handleCloseDialog"></i>
                 <img class="discount-bargain-dialog-header"
-                     :src="require('@/assets/img/demo_class_banner.png')" alt="header" />
+                     :src="require('@/assets/img/demo_class_banner.png')" alt="header"/>
                 <p class="discount-bargain-dialog-title">
                     谢谢你帮我砍了3.99元
                 </p>
@@ -84,7 +89,7 @@
 </template>
 
 <script>
-    import {ClassPanel, ClassBanner, DividerTitle, Dialog, Modal} from '@/components'
+    import {ClassPanel, ClassBanner, DividerTitle, Dialog, Modal, CountDown} from '@/components'
     import NP from 'number-precision'
     import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
 
@@ -96,6 +101,7 @@
             DividerTitle,
             Dialog,
             Modal,
+            CountDown,
         },
         data() {
             return {
@@ -106,7 +112,8 @@
                 isOrderVisible: false,
                 bargainDetail: {},
                 nowPrice: 0,
-                schedule: '0%'
+                schedule: '0%',
+                countDownTime: 0
             }
         },
         computed: {
@@ -116,10 +123,10 @@
             await this.createBargain({
                 product_id: this.classDetail.id
             }).then((res) => {
-                console.log(new Date(res.deadline).getTime())
                 this.bargainDetail = res;
                 this.nowPrice = NP.minus(this.classDetail.price, this.bargainDetail.price);
                 this.schedule = NP.divide(this.bargainDetail.price, this.classDetail.price);
+                this.countDownTime = new Date(res.deadline).getTime() - new Date().getTime();
             });
             this.getBargainMoney({
                 id: this.bargainDetail.id
