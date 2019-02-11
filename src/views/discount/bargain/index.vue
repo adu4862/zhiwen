@@ -96,6 +96,8 @@
 <script>
     import {ClassPanel, ClassBanner, DividerTitle, Dialog, Modal, CountDown} from '@/components'
     import NP from 'number-precision'
+    import wx from 'weixin-js-sdk'
+    import {wechatShare} from '@/api/common';
     import {sessionSetItem, sessionGetItem, GetRequest} from '@/common/util'
     import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
 
@@ -143,11 +145,61 @@
                 id: this.bargainDetail.id
             });
             this.$nextTick(() => {
+                // 砍价偏移
                 this.calcOffset();
-            })
+
+                // 微信支付
+                this.init();
+            });
         },
         methods: {
             ...mapActions('home', ['createBargain', 'getBargainMoney', 'helpBargain']),
+            // 初始化微信sdk
+            init() {
+                wechatShare({
+                    url: encodeURIComponent(location.href.split('#')[0]),
+                    jsApiList: [
+                        'chooseWXPay',
+                    ]
+                }).then((res) => {
+                    let {appId, timestamp, nonceStr, signature, jsApiList} = res;
+                    wx.config({
+                        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                        appId: appId, // 必填，公众号的唯一标识
+                        timestamp, // 必填，生成签名的时间戳
+                        nonceStr, // 必填，生成签名的随机串
+                        signature,// 必填，签名
+                        jsApiList // 必填，需要使用的JS接口列表
+                    });
+                });
+            },
+            // 微信支付
+            handleBuy() {
+                this.setOrder({
+                    product_id: this.classDetail.id,
+                    referrer_id: null
+                }).then((res) => {
+                    this.getWechatPayConfig({
+                        id: res.id
+                    }).then((res) => {
+                        let {timeStamp, nonceStr, signType, paySign} = res;
+                        wx.chooseWXPay({
+                            timestamp: timeStamp,
+                            nonceStr,
+                            package: res.package,
+                            signType,
+                            paySign,
+                            success: function (res) {
+                                this.$toast({
+                                    type: 'success',
+                                    msg: '购买成功'
+                                });
+                                this.isOrderVisible = false;
+                            },
+                        });
+                    })
+                })
+            },
             // 砍价偏移量
             calcOffset() {
                 this.scheduleWidth = this.$refs.schedule.offsetWidth;
@@ -168,7 +220,8 @@
             },
             handleCloseModal() {
                 console.log('马上下单')
-                this.isOrderVisible = false;
+                this.handleBuy();
+                // this.isOrderVisible = false;
             },
             handleConfirmModal() {
                 console.log('继续砍价')

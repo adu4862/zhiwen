@@ -35,7 +35,6 @@
         },
         mounted() {
             this.$nextTick(() => {
-                // history.pushState({}, null, window.location.href.split('#')[0] + '?' + window.location.hash);
                 this.init();
             })
         },
@@ -89,6 +88,10 @@
                             paySign, // 支付签名
                             success: function (res) {
                                 // 支付成功后的回调函数
+                                this.$toast({
+                                    type: 'success',
+                                    msg: '购买成功'
+                                })
                             },
                         });
                     })
