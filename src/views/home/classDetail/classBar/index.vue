@@ -26,9 +26,9 @@
     export default {
         name: "classDetailTableBar",
         watch: {
-            '$route' (to, from) {
-                this.directRightUrl()
-            }
+            // '$route' (to, from) {
+            //     this.directRightUrl()
+            // }
         },
         computed: {
             ...mapState('home', ['classDetail'])
