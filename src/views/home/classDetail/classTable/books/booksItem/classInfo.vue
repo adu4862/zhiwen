@@ -8,7 +8,7 @@
                 <p class="class-info-desc-content-title ellipsis">{{lesson.subject}}</p>
                 <p class="class-info-desc-content-info">
                     <span>时长{{lesson.duration | realFormatSecond}}</span>
-                    <span>播放376次</span>
+                    <span>播放{{lesson.play_count}}次</span>
                 </p>
             </div>
             <div class="class-info-desc-arrow" v-if="!isTest">
