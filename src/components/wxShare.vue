@@ -64,6 +64,7 @@
                 line-height: 14px;
                 font-weight: 500;
                 img {
+                    margin-bottom: 6px;
                     width: 51px;
                     height: 52px;
                 }
