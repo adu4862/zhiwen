@@ -88,7 +88,9 @@
                     phone: this.phone,
                     code: this.code
                 }).then((res) => {
-
+                    if (res.username) {
+                        this.$router.go(-1)
+                    }
                 })
             }
         }

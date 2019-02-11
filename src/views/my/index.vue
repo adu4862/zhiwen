@@ -11,7 +11,7 @@
         <div class="my-cell-group">
             <CellItem label="手机绑定" link="bindPhone">
                 <i class="icon icon--7" slot="icon"></i>
-                <p class="cell-content">未验证</p>
+                <p class="cell-content">{{userInfo.phone?'已验证':'未验证'}}</p>
             </CellItem>
             <CellItem label="推广中心" link="promotion">
                 <i class="icon icon--9" slot="icon"></i>
