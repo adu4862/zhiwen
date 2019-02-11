@@ -9,3 +9,4 @@ export const SET_BARGAIN_DETAIL = 'SET_BARGAIN_DETAIL';
 
 // home
 export const SET_CLASS_DETAIL = 'SET_CLASS_DETAIL';
+export const SET_LESSON_DETAIL = 'SET_LESSON_DETAIL';

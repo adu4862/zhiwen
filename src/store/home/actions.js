@@ -60,10 +60,11 @@ export default {
         }
     },
     // 获取单节课信息
-    async getSingleClassInfo({}, opts) {
+    async getSingleClassInfo({commit}, opts) {
         try {
             const res = await singleClassInfo(opts);
             if (res) {
+                commit(types.SET_LESSON_DETAIL, res);
                 return res;
             }
         } catch (e) {
