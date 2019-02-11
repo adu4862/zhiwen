@@ -189,7 +189,7 @@
                 &-content {
                     margin-top: 11px;
                     font-size: $font-size-sm;
-                    color: #909090;
+                    color: $color-gary;
                     line-height: 18px;
                     overflow: hidden;
                 }

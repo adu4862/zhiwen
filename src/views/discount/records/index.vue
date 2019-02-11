@@ -1,8 +1,12 @@
 <template>
     <div class="discount-records">
         <DividerTitle class="discount-records-title">砍价记录</DividerTitle>
-        <div class="discount-records-list">
-            <RecordItem v-for="(item, idx) in 100" :key="idx" />
+        <div class="discount-records-list" v-if="bargainDetail.records.length">
+            <RecordItem v-for="(item, idx) in 100" :key="idx"/>
+        </div>
+        <div class="discount-records-empty">
+            <p>还没有人给你砍价</p>
+            <p>快请好友来砍价吧～</p>
         </div>
     </div>
 </template>
@@ -33,6 +37,13 @@
         }
         &-list {
             margin-top: 20px;
+        }
+        &-empty {
+            padding: 20px 0 10px 0;
+            font-size: $font-size-md;
+            line-height: 22px;
+            color: $color-gary;
+            text-align: center;
         }
     }
 </style>
