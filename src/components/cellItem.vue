@@ -10,7 +10,6 @@
                 <p class="label">
                     <slot></slot>
                 </p>
-
                 <i class="cell-right-arrow"></i>
             </div>
         </router-link>
