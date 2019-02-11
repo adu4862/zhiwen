@@ -121,7 +121,8 @@
                 bargainDetail: {},
                 nowPrice: 0,
                 schedule: '0%',
-                countDownTime: 0
+                countDownTime: 0,
+                bargainRes: {}
             }
         },
         computed: {
@@ -229,6 +230,8 @@
             handleBargainFriend() {
                 this.helpBargain({
                     bargain_id: GetRequest().bargain_id
+                }).then((res) => {
+                    this.bargainRes = res;
                 })
             }
         }
