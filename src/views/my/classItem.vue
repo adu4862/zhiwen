@@ -4,12 +4,12 @@
             <ClassBanner slot="banner"/>
             <div class="my-class-item-panel-content">
                 <div class="info">
-                    <p class="class-item-title ellipsis">法律英语基础版法律英语基础版法律英语基础版</p>
-                    <p class="desc">熟悉法律条文,具有法律思维,能够把各种生活关系转换熟悉法律条文,具有法律思维,能够把各种生活关系转换</p>
+                    <p class="class-item-title ellipsis">{{classDetail.subject}}</p>
+                    <p class="desc">{{classDetail.introduction}}</p>
                 </div>
-                <div class="process">
-                    学习进度37%
-                </div>
+                <!--<div class="process">-->
+                    <!--学习进度37%-->
+                <!--</div>-->
             </div>
         </ClassPanel>
     </div>
@@ -23,6 +23,12 @@
         components: {
             ClassPanel,
             ClassBanner,
+        },
+        props: {
+            classDetail: {
+                type: Object,
+                default: {}
+            }
         }
     }
 </script>

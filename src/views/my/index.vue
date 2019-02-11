@@ -37,7 +37,10 @@
                     @load="onLoad"
                 >
                     <template v-for="(item, idx) in userClassList">
-                        <ClassItem :class="idx+1 === userClassList.length?'last-item':''"/>
+                        <ClassItem
+                            :class="idx+1 === userClassList.length?'last-item':''"
+                            :classDetail="item"
+                        />
                     </template>
                 </van-list>
             </template>

@@ -29,6 +29,10 @@
             ClassBanner
         },
         props: {
+            orderDetail: {
+                type: Object,
+                default: {}
+            },
             type: {
                 type: String,
                 default: 'voice'

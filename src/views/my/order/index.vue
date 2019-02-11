@@ -11,6 +11,7 @@
                     v-for="(item, idx) in orderList"
                     :key="idx"
                     :class="idx+1 === orderList.length?'last-item':''"
+                    :orderDetail="item"
                 />
             </van-list>
         </template>
