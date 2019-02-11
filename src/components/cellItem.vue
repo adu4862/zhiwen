@@ -5,14 +5,15 @@
             <slot name="icon"></slot>
             <span class="label">{{label}}</span>
         </div>
-        <div class="cell-right">
-            <p class="label">
-                <slot></slot>
-            </p>
-            <router-link :to="{name: link}">
+        <router-link :to="{name: link}">
+            <div class="cell-right">
+                <p class="label">
+                    <slot></slot>
+                </p>
+
                 <i class="cell-right-arrow"></i>
-            </router-link>
-        </div>
+            </div>
+        </router-link>
     </div>
 </template>
 
