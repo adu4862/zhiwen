@@ -90,13 +90,15 @@
                     id
                 }).then((res) => {
                     this.result = res;
+
                     let {option, idx} = this.historyData;
                     this.$set(this.selectHistory, this.currentTest, {
                         option,
                         idx,
                         result: res
                     });
-                    // this.$set(this.selectHistory[this.currentTest], 'result', res);
+
+                    // 选择正确数量
                     if (this.selectHistory[this.currentTest].option === res.answer) {
                         this.correctNum = this.correctNum + 1;
                     }
