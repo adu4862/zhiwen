@@ -89,7 +89,11 @@
                     code: this.code
                 }).then((res) => {
                     if (res.username) {
-                        this.$router.go(-1)
+                        this.$toast({
+                            type: 'success',
+                            msg: '绑定成功'
+                        });
+                        this.$router.go(-1);
                     }
                 })
             }
