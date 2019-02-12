@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import {sessionSetItem, sessionGetItem, isWeiXin, GetRequest} from '../common/util'
-import Request from '@/common/request';
 import title from '@/config/title'
 import homeRouter from './home'
 import myRouter from './my'
