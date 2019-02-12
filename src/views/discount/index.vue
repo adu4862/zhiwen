@@ -34,7 +34,7 @@
                 this.initWxConfig();
                 wx.ready(() => {
                     let {subject, introduction, image_uri} = this.classDetail;
-                    let shareUrl = window.location.href.split('#')[0] + 'public/redirect.html?app3Redirect=' + encodeURIComponent(window.location.href);
+                    let shareUrl = window.location.href.split('#')[0] + '/redirect.html?app3Redirect=' + encodeURIComponent(window.location.href);
                     // 分享给朋友
                     wx.updateAppMessageShareData({
                         title: '快来帮我砍价！！！',         // 分享标题
