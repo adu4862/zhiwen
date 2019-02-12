@@ -40,6 +40,7 @@
             },
             handleDiscount() {
                 this.$router.push({name: 'discount'})
+                // location.href = '#/discount'
             },
             handleBuy() {
                 this.setOrder({

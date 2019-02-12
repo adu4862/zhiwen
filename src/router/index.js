@@ -71,7 +71,6 @@ router.beforeEach((to, from, next) => {
         sessionSetItem('userId', GetRequest().user_id);
         // 去掉问号后面的参数，还原url，防止分享URL泄露信息
         history.pushState({}, null, location.href.replace(/\/\?(.*?)\#\//, '/#/'));
-        console.log(window.location.href)
     }
 
     // 判断登陆

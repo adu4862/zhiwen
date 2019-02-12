@@ -48,9 +48,7 @@
             }).then((res) => {
                 this.classList = res;
             });
-            this.getUserInfo().then((res) => {
-                console.log(res)
-            })
+            this.getUserInfo();
         },
         methods: {
             ...mapActions('home', ['getBanner', 'getClassList']),
