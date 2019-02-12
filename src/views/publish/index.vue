@@ -1,6 +1,6 @@
 <template>
     <div class="publish-container">
-        <div class="publish">
+        <div class="publish" v-if="!isShare">
             <div class="publish-card">
                 <div class="publish-card-user">
                     <img class="publish-card-user-header" :src="userInfo.headimgurl"
@@ -25,7 +25,7 @@
             </div>
             <button class="blue-btn-48" @click="handleShare">分享链接</button>
         </div>
-        <!--<WxShare />-->
+        <WxShare v-else />
     </div>
 </template>
 
@@ -39,9 +39,14 @@
         components: {
             WxShare
         },
+        data() {
+            return {
+                isShare: false
+            }
+        },
         mounted() {
             this.$nextTick(() => {
-                this.init();
+                this.initWxShare();
             })
         },
         computed: {
@@ -50,7 +55,8 @@
         },
         methods: {
             ...mapActions(['getWechatShare']),
-            init() {
+            // 初始化微信分享
+            initWxShare() {
                 this.initWxConfig();
                 wx.ready(() => {
                     let {subject, introduction, image_uri} = this.classDetail;
@@ -84,6 +90,10 @@
                         }
                     });
                 });
+            },
+            // 引导分享
+            handleShare() {
+                this.isShare = true;
             }
         }
     }

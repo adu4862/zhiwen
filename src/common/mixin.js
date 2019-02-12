@@ -55,6 +55,7 @@ export default {
                     'onMenuShareAppMessage',            // 分享给朋友（即将废弃）
                     'updateAppMessageShareData',        // 分享给朋友
                     'updateTimelineShareData',          // 分享到朋友圈
+                    'chooseWXPay',                      // 微信支付
                 ]
             }).then((res) => {
                 let {appId, timestamp, nonceStr, signature, jsApiList} = res;

@@ -1,19 +1,69 @@
 <template>
     <div class="discount">
-        <Bargain />
+        <!-- 砍价 -->
+        <Bargain/>
+        <!-- 记录 -->
         <Records/>
     </div>
 </template>
 
 <script>
+    import {wxShareLink} from '@/common/util'
     import Bargain from './bargain'
     import Records from "./records"
+    import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
 
     export default {
         name: "discount",
         components: {
             Bargain,
             Records,
+        },
+        computed: {
+            ...mapState('home', ['classDetail'])
+        },
+        mounted() {
+            this.$nextTick(() => {
+                this.initWxShare();
+            })
+        },
+        methods: {
+            // 初始化微信分享
+            initWxShare() {
+                this.initWxConfig();
+                wx.ready(() => {
+                    let {subject, introduction, image_uri} = this.classDetail;
+                    // 分享给朋友
+                    wx.updateAppMessageShareData({
+                        title: '快来帮我砍价！！！',         // 分享标题
+                        desc: introduction,               // 分享描述
+                        link: wxShareLink(),
+                        imgUrl: image_uri,                // 分享图标
+                        success: function () {
+                            // 用户点击了分享后执行的回调函数
+                            console.log('分享成功')
+                        },
+                        cancel: function () {
+                            // 用户取消分享后执行的回调函数
+                            console.log('取消分享')
+                        }
+                    });
+                    // 分享到朋友圈
+                    wx.updateTimelineShareData({
+                        title: '快来帮我砍价！！！',
+                        link: wxShareLink(),
+                        imgUrl: image_uri,
+                        success: function () {
+                            // 用户点击了分享后执行的回调函数
+                            console.log('分享成功')
+                        },
+                        cancel: function () {
+                            // 用户取消分享后执行的回调函数
+                            console.log('取消分享')
+                        }
+                    });
+                });
+            }
         }
     }
 </script>

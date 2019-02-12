@@ -153,47 +153,10 @@
             this.$nextTick(() => {
                 // 砍价偏移
                 this.calcOffset();
-                // 微信支付
-                this.init();
             });
         },
         methods: {
             ...mapActions('home', ['createBargain', 'getBargainMoney', 'helpBargain']),
-            // 初始化微信sdk
-            init() {
-                wechatShare({
-                    url: encodeURIComponent(location.href.split('#')[0]),
-                    jsApiList: [
-                        'chooseWXPay',
-                        'updateAppMessageShareData',
-                    ]
-                }).then((res) => {
-                    let that = this;
-                    let {appId, timestamp, nonceStr, signature, jsApiList} = res;
-                    wx.config({
-                        debug: true,
-                        appId: appId,
-                        timestamp,
-                        nonceStr,
-                        signature,
-                        jsApiList
-                    });
-                    wx.ready(function(){
-                        wx.updateAppMessageShareData({
-                            title: '快来帮我砍价！！！',
-                            desc: '这个课程需要砍价，帮我砍价，能砍到1分钱。',
-                            link: location.href,
-                            imgUrl: that.classDetail.image_uri,
-                            success: function () {
-                                // 设置成功
-                            },
-                            cancel: function () {
-                                // 取消分享
-                            }
-                        })
-                    });
-                });
-            },
             // 微信支付
             handleBuy() {
                 this.setOrder({
