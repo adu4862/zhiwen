@@ -60,7 +60,9 @@
         },
         mounted() {
             this.$nextTick(() => {
-                this.creatQrCode()
+                setTimeout(() => {
+                    this.creatQrCode()
+                }, 500)
             });
             this.getPunchInfo({
                 product_id: '6daf312c-3507-4903-8c12-d0dc519e1c97'
