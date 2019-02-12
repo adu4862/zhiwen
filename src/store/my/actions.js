@@ -7,7 +7,8 @@ import {
     deleteUserCollections,
     userProducts,
     punchInfo,
-    punch
+    punch,
+    withdraw,
 } from "@/api/my";
 import {sessionSetItem, sessionGetItem, isWeiXin, GetRequest} from '@/common/util'
 
@@ -95,6 +96,17 @@ export default {
     async setPunch({}, opts) {
         try {
             const res = await punch(Object.assign(opts, {userId: sessionGetItem('userId')}));
+            if (res) {
+                return res
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    },
+    // 提现
+    async withDraw({}, opts) {
+        try {
+            const res = await withdraw(opts);
             if (res) {
                 return res
             }

@@ -23,3 +23,6 @@ export const userProducts = data => Request.get('/user/' + data.userId + '/produ
 export const punchInfo = data => Request.get('/user/' + data.userId + '/punch', data);
 /* 用户打卡 */
 export const punch = data => Request.post('/punch', data);
+
+/* 提现 */
+export const withdraw = data => Request.post('/withdraw', data);
