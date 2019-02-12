@@ -1,5 +1,5 @@
 <template>
-    <ClassPanel class="m-order-item">
+    <ClassPanel class="m-order-item" @click.native="handleClassDetail(orderDetail.items[0].product.id)">
         <ClassBanner slot="banner" :uri="orderDetail.items[0].product.image_uri" :type="orderDetail.items[0].product.type" />
         <div class="m-order-item-content">
             <div class="info">
@@ -44,6 +44,14 @@
         filters: {
             formatTime(val) {
                 return new Date(val).getTime()
+            }
+        },
+        methods: {
+            handleClassDetail(id) {
+                this.$router.push({
+                    name: 'classDetail',
+                    params: {id}
+                })
             }
         }
     };
