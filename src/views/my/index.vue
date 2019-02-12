@@ -83,13 +83,19 @@
             ...mapActions(['userLogin', 'getUserInfo']),
             ...mapActions('my', ['getUserProducts']),
             getMyClass() {
-                this.finished = true;
+                // 加载状态开始
+                this.loading = true;
                 this.getUserProducts({
                     skip: this.skip,
                     limit: this.limit
                 }).then((res) => {
                     this.userClassList = res.list;
-                    this.finished = false;
+                    // 加载状态结束
+                    this.loading = false;
+                    // 数据全部加载完成
+                    if (res.list.length >= 10) {
+                        this.finished = true;
+                    }
                 });
             }
             // onLoad() {
