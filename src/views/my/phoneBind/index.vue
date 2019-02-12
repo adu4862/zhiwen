@@ -9,7 +9,7 @@
                 <router-link :to="{name: 'areaSelect'}"><i class="cell-item-right-arrow"></i></router-link>
             </div>
             <div class="cell-item">
-                <input v-model="phone" type="phone" placeholder="请输入您的手机号">
+                <input v-model="phone" type="tel" placeholder="请输入您的手机号">
                 <button
                     :class="['code-btn blue-btn-48', counting?'disabled-btn':'']"
                     :disabled="counting"
@@ -22,7 +22,7 @@
                 </button>
             </div>
             <div class="cell-item">
-                <input v-model="code" type="phone" placeholder="请输入验证码">
+                <input v-model="code" type="tel" placeholder="请输入验证码">
             </div>
         </div>
         <button
