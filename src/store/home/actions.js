@@ -32,7 +32,6 @@ export default {
             const res = await classDetail({id});
             if (res) {
                 commit(types.SET_CLASS_DETAIL, res);
-                // return res;
             }
         } catch (e) {
             console.log(e)
@@ -111,8 +110,6 @@ export default {
         try {
             const res = await classTest(opts);
             if (res) {
-                // commit(types.SET_BARGAIN_DETAIL, res);
-                console.log('getSingleTest', res);
                 return res;
             }
         } catch (e) {
@@ -124,7 +121,7 @@ export default {
         try {
             const res = await classTestRecord(opts);
             if (res) {
-                console.log('setTestRecord', res);
+                // console.log('setTestRecord', res);
             }
         } catch (e) {
             console.log(e)
@@ -135,7 +132,7 @@ export default {
         try {
             const res = await classTestScore(opts);
             if (res) {
-                console.log('setTestScore', res);
+                // console.log('setTestScore', res);
             }
         } catch (e) {
             console.log(e)
@@ -146,7 +143,7 @@ export default {
         try {
             const res = await classTestScoreUpdate(opts);
             if (res) {
-                console.log('updateTestScore', res);
+                // console.log('updateTestScore', res);
             }
         } catch (e) {
             console.log(e)

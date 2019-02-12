@@ -41,8 +41,6 @@ export default {
         try {
             const res = await userOrders(Object.assign(opts, {userId: sessionGetItem('userId')}));
             if (res) {
-                console.log("getUserOrders--------", res);
-                // commit(types.SET_TOKEN, res);
                 return res
             }
         } catch (e) {
