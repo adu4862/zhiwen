@@ -42,7 +42,7 @@
             ...mapActions('my', ['withDraw']),
             // 全部提现
             handleAll(balance) {
-                this.withdrawAccount = NP.divide(balance, 1000);
+                this.withdrawAccount = NP.divide(balance, 100);
             },
             // 查看提现记录
             handleRecords() {
@@ -51,7 +51,7 @@
             // 提现
             handleWithdraw() {
                 this.withDraw({
-                    price: NP.times(this.withdrawAccount, 1000),
+                    price: NP.times(this.withdrawAccount, 100),
                     true_name: this.userInfo.username
                 })
             }

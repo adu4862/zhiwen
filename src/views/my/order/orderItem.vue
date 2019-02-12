@@ -1,19 +1,19 @@
 <template>
     <ClassPanel class="m-order-item">
-        <ClassBanner slot="banner" />
+        <ClassBanner slot="banner" :uri="orderDetail.items[0].product.image_uri" :type="orderDetail.items[0].product.type" />
         <div class="m-order-item-content">
             <div class="info">
-                <div class="title ellipsis">法律英语基础版法法律英语基础版法法律英语基础版法</div>
+                <div class="title ellipsis">{{orderDetail.items[0].product.subject}}</div>
                 <div class="pay-time">
-                    <span class="label">付款时间</span> 2018-12-17 01:54:14
+                    <span class="label">付款时间</span> {{orderDetail.items[0].created_date | formatTime | timeFilter}}
                 </div>
                 <div class="order-no">
-                    <span class="label">订单号</span> 010000000000111111000
+                    <span class="label">订单号</span> {{orderDetail.items[0].id}}
                 </div>
             </div>
             <div class="order-price">
-                <p class="price">价格 ¥299</p>
-                <p class="pay">实付 <span>¥229</span></p>
+                <p class="price">价格 ¥{{orderDetail.items[0].product.old_price | formatWechatPrice}}</p>
+                <p class="pay">实付 <span>¥{{orderDetail.items[0].product.price | formatWechatPrice}}</span></p>
             </div>
         </div>
     </ClassPanel>
@@ -41,6 +41,11 @@
         data() {
             return {};
         },
+        filters: {
+            formatTime(val) {
+                return new Date(val).getTime()
+            }
+        }
     };
 </script>
 

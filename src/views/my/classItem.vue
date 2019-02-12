@@ -7,9 +7,9 @@
                     <p class="class-item-title ellipsis">{{classDetail.product.subject}}</p>
                     <p class="desc">{{classDetail.product.introduction}}</p>
                 </div>
-                <!--<div class="process">-->
-                    <!--学习进度37%-->
-                <!--</div>-->
+                <div class="process">
+                    学习进度{{classDetail.product.learning_progress}}
+                </div>
             </div>
         </ClassPanel>
     </div>
