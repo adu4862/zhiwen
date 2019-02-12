@@ -37,22 +37,6 @@
             ...mapActions('home', ['setClassCollection']),
             init() {
                 this.initWxConfig();
-                // wechatShare({
-                //     url: encodeURIComponent(location.href.split('#')[0]),
-                //     jsApiList: [
-                //         'chooseWXPay',
-                //     ]
-                // }).then((res) => {
-                //     let {appId, timestamp, nonceStr, signature, jsApiList} = res;
-                //     wx.config({
-                //         debug: false,
-                //         appId: appId,
-                //         timestamp,
-                //         nonceStr,
-                //         signature,
-                //         jsApiList
-                //     });
-                // });
             },
             handleDiscount() {
                 this.$router.push({name: 'discount'})
