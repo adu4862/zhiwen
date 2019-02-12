@@ -31,9 +31,8 @@
 
 <script>
     import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
-    import wx from 'weixin-js-sdk'
-    import {wechatShare} from '@/api/common'
     import {WxShare} from '@/components'
+    import {wxShareLink} from '@/common/util'
 
     export default {
         name: "publish",
@@ -52,75 +51,15 @@
         methods: {
             ...mapActions(['getWechatShare']),
             init() {
-                wechatShare({
-                    url: encodeURIComponent(location.href.split('#')[0]),
-                    jsApiList: [
-                        'checkJsApi',
-                        'onMenuShareTimeline',
-                        'onMenuShareAppMessage',
-                        'onMenuShareQQ',
-                        'onMenuShareWeibo',
-                        'onMenuShareQZone',
-                        'hideMenuItems',
-                        'showMenuItems',
-                        'hideAllNonBaseMenuItem',
-                        'showAllNonBaseMenuItem',
-                        'translateVoice',
-                        'startRecord',
-                        'stopRecord',
-                        'onVoiceRecordEnd',
-                        'playVoice',
-                        'onVoicePlayEnd',
-                        'pauseVoice',
-                        'stopVoice',
-                        'uploadVoice',
-                        'downloadVoice',
-                        'chooseImage',
-                        'previewImage',
-                        'uploadImage',
-                        'downloadImage',
-                        'getNetworkType',
-                        'openLocation',
-                        'getLocation',
-                        'hideOptionMenu',
-                        'showOptionMenu',
-                        'closeWindow',
-                        'scanQRCode',
-                        'chooseWXPay',
-                        'openProductSpecificView',
-                        'addCard',
-                        'chooseCard',
-                        'openCard',
-                        'updateAppMessageShareData',
-                        'updateTimelineShareData',
-                    ]
-                }).then((res) => {
-                    let {appId, timestamp, nonceStr, signature, jsApiList} = res;
-                    wx.config({
-                        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-                        appId: appId, // 必填，公众号的唯一标识
-                        timestamp, // 必填，生成签名的时间戳
-                        nonceStr, // 必填，生成签名的随机串
-                        signature,// 必填，签名
-                        jsApiList // 必填，需要使用的JS接口列表
-                    });
-                    // wx.ready(function () {
-                    //     // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
-                    //
-                    // });
-                    // wx.error(function (res) {
-                    //     // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
-                    //     console.log('error', res)
-                    // });
-                });
-            },
-            handleShare() {
-                wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
+                this.initWxConfig();
+                wx.ready(() => {
+                    let {subject, introduction, image_uri} = this.classDetail;
+                    ``
                     wx.updateAppMessageShareData({
-                        title: '123', // 分享标题
-                        desc: '123', // 分享描述
-                        link: location.href.split('#')[0], // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                        imgUrl: 'https://xuetang-public.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E5%A4%A7%E5%9B%BE.jpg', // 分享图标
+                        title: subject,         // 分享标题
+                        desc: introduction,     // 分享描述
+                        link: wxShareLink(),
+                        imgUrl: image_uri,      // 分享图标
                         success: function () {
                             // 用户点击了分享后执行的回调函数
                             console.log('分享成功')
@@ -128,14 +67,22 @@
                         cancel: function () {
                             // 用户取消分享后执行的回调函数
                             console.log('取消分享')
+                        }
+                    });
+                    // 分享到朋友圈
+                    wx.updateTimelineShareData({
+                        title: subject,
+                        link: wxShareLink(),
+                        imgUrl: image_uri,
+                        success: function () {
+                            // 用户点击了分享后执行的回调函数
+                            console.log('分享成功')
                         },
-                        fail: function (e) {
-                            console.log('错误', e)
-                        },
-                        complete: function (e) {
-                            console.log('complete', e)
-                        },
-                    })
+                        cancel: function () {
+                            // 用户取消分享后执行的回调函数
+                            console.log('取消分享')
+                        }
+                    });
                 });
             }
         }

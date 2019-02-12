@@ -27,6 +27,7 @@ Object.keys(filters).forEach(filterName => {
     Vue.filter(filterName, filters[filterName])
 })
 
+// 全局mixin
 import commonMixin from '@/common/mixin'
 Vue.mixin(commonMixin);
 

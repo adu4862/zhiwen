@@ -358,3 +358,11 @@ export const isWifi = () => {
 export const fistLetterUpper = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
 };
+
+/**
+ * 微信分享页面链接（解决微信链接里下毒）
+ * @returns {string}
+ */
+export const wxShareLink = () => {
+    return window.location.href.split('#')[0] + '#' + window.location.href.split('#')[1]
+};
