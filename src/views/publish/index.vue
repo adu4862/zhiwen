@@ -54,7 +54,7 @@
                     params: {
                         id: GetRequest().productId
                     }
-                })
+                });
                 return
             }
             this.$nextTick(() => {
