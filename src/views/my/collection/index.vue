@@ -19,7 +19,7 @@
                 v-model="loading"
                 :finished="finished"
                 finished-text="没有更多了"
-                @load="onLoad"
+                @load="getMyCollection"
             >
                 <CollectionItem
                     v-for="(item, idx) in collectionList"
@@ -77,29 +77,25 @@
             }
         },
         mounted() {
-            this.getUserCollections({
-                skip: this.skip,
-                limit: this.limit
-            }).then((res) => {
-                this.collectionList = res.list
-            });
+            this.getMyCollection();
         },
         methods: {
             ...mapActions('my', ['getUserCollections', 'deleteUserCollections']),
-            onLoad() {
-                // 模拟异步更新数据
-                setTimeout(() => {
-                    for (let i = 0; i < 5; i++) {
-                        this.list.push(this.list.length + 1);
-                    }
+            getMyCollection() {
+                // 加载状态开始
+                this.loading = true;
+                this.getUserCollections({
+                    skip: this.skip,
+                    limit: this.limit
+                }).then((res) => {
+                    this.collectionList = res.list;
                     // 加载状态结束
                     this.loading = false;
-
                     // 数据全部加载完成
-                    if (this.list.length >= 10) {
+                    if (res.list.length < 10) {
                         this.finished = true;
                     }
-                }, 500);
+                });
             },
             handelSelect() {
                 this.isSelect = !this.isSelect;
