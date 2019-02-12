@@ -29,10 +29,8 @@
         computed: {
             ...mapState('home', ['classDetail'])
         },
-        mounted() {
-            this.$nextTick(() => {
-                this.init();
-            })
+        created() {
+            this.init();
         },
         methods: {
             ...mapActions(['getWechatPayConfig', 'setOrder']),
