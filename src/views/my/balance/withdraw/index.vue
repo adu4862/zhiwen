@@ -52,7 +52,7 @@
             handleWithdraw() {
                 this.withDraw({
                     price: NP.times(this.withdrawAccount, 1000),
-                    true_name: "string"
+                    true_name: this.userInfo.username
                 })
             }
         }
