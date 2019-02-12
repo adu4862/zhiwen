@@ -79,11 +79,15 @@
         mounted() {
             // 查看解析
             if (this.type === 'analysis') {
-                
+                this.getTestRecords({
+                    id: this.lessonDetail.test_questions[this.currentTest].id
+                }).then((res) => {
+                    console.log(res)
+                })
             }
         },
         methods: {
-            ...mapActions('home', ['getSingleTest', 'setTestRecord', 'setTestScore', 'updateTestScore']),
+            ...mapActions('home', ['getSingleTest', 'setTestRecord', 'setTestScore', 'updateTestScore', 'getTestRecords']),
             // 选项
             handleOption(option, idx) {
                 if (this.selectHistory[this.currentTest]) {

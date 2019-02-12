@@ -1,7 +1,7 @@
 import * as types from '@/store/mutation-types.js';
 import {banner, classList, classDetail, classCollection, resourseUrl,
     singleClassInfo, bargainCreate, bargainMoney, bargainClass, classTest, classTestRecord,
-    classTestScore, classTestScoreUpdate} from "@/api/home";
+    classTestScore, classTestScoreUpdate, getClassTestRecord} from "@/api/home";
 
 export default {
     // 获取Banner
@@ -144,6 +144,18 @@ export default {
             const res = await classTestScoreUpdate(opts);
             if (res) {
                 // console.log('updateTestScore', res);
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    },
+    // 更新答题总成绩记录
+    async getTestRecords({commit}, opts) {
+        try {
+            const res = await getClassTestRecord(opts);
+            if (res) {
+                console.log('getTestRecords', res);
+                return res;
             }
         } catch (e) {
             console.log(e)

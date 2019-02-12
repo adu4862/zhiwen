@@ -40,7 +40,7 @@
             },
             // 返回目录
             handleBack() {
-
+                this.$router.go(-2);
             }
         }
     }
