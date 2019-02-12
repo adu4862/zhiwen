@@ -85,6 +85,13 @@
                     });
                     return
                 }
+                // 大陆用户判断手机号
+                if (this.phoneCode === '+86' && this.phone.toString().length !== 11) {
+                    this.$toast({
+                        msg: '请填写正确的手机号'
+                    });
+                    return
+                }
                 let phone = this.phone;
                 if (this.phoneCode.code !== '+86') {
                     phone = this.phoneCode.code.split('+')[1] + this.phone;
