@@ -8,7 +8,7 @@
                     <p class="desc">{{classDetail.product.introduction}}</p>
                 </div>
                 <div class="process">
-                    学习进度{{classDetail.product.learning_progress}}
+                    学习进度{{classDetail.learning_progress}}%
                 </div>
             </div>
         </ClassPanel>

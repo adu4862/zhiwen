@@ -10,15 +10,15 @@
                 <div class="title ellipsis">{{collectionDetail.product.subject}}</div>
                 <div class="content">{{collectionDetail.product.introduction}}</div>
                 <div class="buy-num">
-                    <span>1444</span>人已购买
+                    <span>{{collectionDetail.pay_count}}</span>人已购买
                 </div>
             </div>
             <div class="sale-price">
-                <!--<div class="saled">-->
-                <!--<img :src="require('@/assets/img/my/collection/icon_buy.png')" alt="icon_buy">-->
-                <!--<span>已购买</span>-->
-                <!--</div>-->
-                <div class="prices">
+                <div class="saled" v-if="collectionDetail.is_pay">
+                    <img :src="require('@/assets/img/my/collection/icon_buy.png')" alt="icon_buy">
+                    <span>已购买</span>
+                </div>
+                <div class="prices" v-else>
                     <span class="new-price">¥{{collectionDetail.product.price | formatWechatPrice}}</span>
                     <span class="old-price">¥{{collectionDetail.product.old_price | formatWechatPrice}}</span>
                 </div>
