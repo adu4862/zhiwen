@@ -19,7 +19,7 @@ export const userOrders = data => Request.get('/user/' + data.userId + '/orders'
 /* 我的收藏 */
 export const userCollections = data => Request.get('/user/' + data.userId + '/collections', data);
 /* 我的收藏 - 删除 */
-export const deleteUserCollections = data => Request.delete('/collection/' + data.userId);
+export const deleteUserCollections = data => Request.delete('/collection/' + data.id);
 /* 我的课程 */
 export const userProducts = data => Request.get('/user/' + data.userId + '/products', data);
 

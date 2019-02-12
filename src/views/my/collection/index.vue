@@ -79,6 +79,11 @@
         mounted() {
             this.getMyCollection();
         },
+        watch: {
+            deleteList(val) {
+                console.log(val)
+            }
+        },
         methods: {
             ...mapActions('my', ['getUserCollections', 'deleteUserCollections']),
             getMyCollection() {
@@ -119,7 +124,6 @@
                 this.isVisible = false;
             },
             handelConfirm() {
-                console.log('confirm')
                 if (!this.deleteList.length) {
                     this.$toast({
                         msg: '请选择课程'
@@ -137,6 +141,7 @@
                             this.$toast({
                                 msg: '删除成功'
                             });
+                            this.getMyCollection();
                         }
                     })
                 })
