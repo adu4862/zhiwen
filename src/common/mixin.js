@@ -47,7 +47,7 @@ export default {
         },
         // 微信分享初始化
         initWxConfig() {
-            let isDebug = true;     // 是否开启调试模式
+            let isDebug = false;     // 是否开启调试模式
             wechatShare({
                 url: encodeURIComponent(location.href.split('#')[0]),
                 jsApiList: [
