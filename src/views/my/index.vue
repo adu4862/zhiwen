@@ -40,6 +40,7 @@
                         <ClassItem
                             :class="idx+1 === userClassList.length?'last-item':''"
                             :classDetail="item"
+                            @click.native="handleMyClass(item.product.id)"
                         />
                     </template>
                 </van-list>
@@ -97,6 +98,9 @@
                         this.finished = true;
                     }
                 });
+            },
+            handleMyClass(id) {
+                this.$router.push({name: 'classDetail', params: {id}})
             }
         }
     }
