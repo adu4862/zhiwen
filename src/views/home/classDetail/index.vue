@@ -35,7 +35,8 @@
         methods: {
             ...mapActions('home', ['getClassDetail']),
             handleTest() {
-                this.$router.push({name: 'publish'})
+                // this.$router.push({name: 'publish'})
+                location.href = "#/publish" ;
             }
         }
     };
