@@ -75,6 +75,7 @@
                 wx.ready(() => {
                     let {subject, introduction, image_uri, id} = this.classDetail;
                     // 分享给朋友
+                    console.log(window.location.href.split('#')[0] + '#' + '/class/' + id)
                     wx.updateAppMessageShareData({
                         title: subject,         // 分享标题
                         desc: introduction,     // 分享描述
