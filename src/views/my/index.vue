@@ -73,13 +73,8 @@
             }
         },
         async mounted() {
-            this.getUserInfo();
-            this.getUserProducts({
-                skip: this.skip,
-                limit: this.limit
-            }).then((res) => {
-                this.userClassList = res.list;
-            });
+            await this.getUserInfo();
+            this.getMyClass();
         },
         computed: {
             ...mapState(['userInfo'])
@@ -87,6 +82,16 @@
         methods: {
             ...mapActions(['userLogin', 'getUserInfo']),
             ...mapActions('my', ['getUserProducts']),
+            getMyClass() {
+                this.finished = true;
+                this.getUserProducts({
+                    skip: this.skip,
+                    limit: this.limit
+                }).then((res) => {
+                    this.userClassList = res.list;
+                    this.finished = false;
+                });
+            }
             // onLoad() {
             //     // 模拟异步更新数据
             //     setTimeout(() => {
