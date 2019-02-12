@@ -12,8 +12,8 @@
         <div class="exercise-title-page-btns">
             <button class="blue-btn-48" @click="handleStart" v-if="!lessonDetail.score">开始练习</button>
             <template v-else>
-                <button class="blue-btn-48" @click="handleStart">查看解析</button>
-                <button class="white-btn-48" >再做一遍</button>
+                <button class="blue-btn-48" @click="handleAnalysis">查看解析</button>
+                <button class="white-btn-48" @click="handleStart">再做一遍</button>
             </template>
         </div>
     </div>
@@ -30,6 +30,9 @@
         methods: {
             handleStart() {
                 this.$emit('on-start')
+            },
+            handleAnalysis() {
+                this.$emit('on-analysis')
             }
         }
     }

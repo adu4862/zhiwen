@@ -50,6 +50,12 @@
 
     export default {
         name: "TopicPage",
+        props: {
+            type: {
+                type: String,
+                default: ''
+            }
+        },
         data() {
             return {
                 isCheck: false,
@@ -68,6 +74,12 @@
         watch: {
             selectHistory(val) {
                 console.log(val)
+            }
+        },
+        mounted() {
+            // 查看解析
+            if (this.type === 'analysis') {
+                
             }
         },
         methods: {

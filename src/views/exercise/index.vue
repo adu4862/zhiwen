@@ -1,7 +1,7 @@
 <template>
     <div class="exercise">
-        <TitlePage @on-start="handleStart" v-if="status==='title'"/>
-        <TopicPage v-if="status==='topic'"/>
+        <TitlePage @on-start="handleStart" @on-analysis="handleAnalysis" v-if="status==='title'"/>
+        <TopicPage :type="topicType" v-if="status==='topic'" />
         <ResPage v-if="status==='res'"/>
     </div>
 </template>
@@ -21,7 +21,8 @@
         },
         data() {
             return {
-                status: 'title',     // title-封面，topic-联系，res-结束
+                status: 'title',     // title-封面，topic-练习，res-结束
+                topicType: '',       // analysis-查看解析
             }
         },
         mounted() {
@@ -32,7 +33,11 @@
         methods: {
             ...mapActions('home', ['getSingleClassInfo']),
             handleStart() {
-                this.status = 'topic'
+                this.status = 'topic';
+            },
+            handleAnalysis() {
+                this.topicType = 'analysis';
+                this.status = 'topic';
             }
         }
     }
