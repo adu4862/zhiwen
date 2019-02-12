@@ -35,8 +35,13 @@
         methods: {
             ...mapActions('home', ['getClassDetail']),
             handleTest() {
-                // this.$router.push({name: 'publish'})
-                location.href = "#/publish" ;
+                this.$router.push({
+                    name: 'publish',
+                    query: {
+                        productId: this.classDetail.id
+                    }
+                })
+                // location.href = "#/publish" ;
             }
         }
     };

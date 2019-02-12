@@ -34,6 +34,7 @@
     import {WxShare} from '@/components'
     import {wxShareLink} from '@/common/util'
     import wx from 'weixin-js-sdk'
+    import {GetRequest} from '@/common/util'
 
     export default {
         name: "publish",
@@ -46,6 +47,16 @@
             }
         },
         mounted() {
+            // 微信分享进来调到对应课程
+            if (GetRequest().from) {
+                this.$router.push({
+                    name: 'classDetail',
+                    params: {
+                        id: GetRequest().productId
+                    }
+                })
+                return
+            }
             this.$nextTick(() => {
                 this.initWxShare();
             })
