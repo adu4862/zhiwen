@@ -6,7 +6,7 @@
         <div class="icon-wrap">
             <img v-if="type === 'video'" class="class-type-icon"
                  :src="require('@/assets/img/icon_video.png')" alt="video_icon">
-            <img v-if="type === 'voice'" class="class-type-icon"
+            <img v-else class="class-type-icon"
                  :src="require('@/assets/img/icon_voice.png')" alt="video_icon">
         </div>
     </div>

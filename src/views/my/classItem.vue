@@ -1,11 +1,11 @@
 <template>
     <div class="my-class-item">
         <ClassPanel class="my-class-item-panel">
-            <ClassBanner slot="banner"/>
+            <ClassBanner slot="banner" :uri="classDetail.product.image_uri" :type="classDetail.product.type"/>
             <div class="my-class-item-panel-content">
                 <div class="info">
-                    <p class="class-item-title ellipsis">{{classDetail.subject}}</p>
-                    <p class="desc">{{classDetail.introduction}}</p>
+                    <p class="class-item-title ellipsis">{{classDetail.product.subject}}</p>
+                    <p class="desc">{{classDetail.product.introduction}}</p>
                 </div>
                 <!--<div class="process">-->
                     <!--学习进度37%-->
