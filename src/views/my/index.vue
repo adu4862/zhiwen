@@ -34,7 +34,7 @@
                     v-model="loading"
                     :finished="finished"
                     finished-text="没有更多了"
-                    @load="onLoad"
+                    @load="getMyClass"
                 >
                     <template v-for="(item, idx) in userClassList">
                         <ClassItem
@@ -93,26 +93,11 @@
                     // 加载状态结束
                     this.loading = false;
                     // 数据全部加载完成
-                    if (res.list.length >= 10) {
+                    if (res.list.length < 10) {
                         this.finished = true;
                     }
                 });
             }
-            // onLoad() {
-            //     // 模拟异步更新数据
-            //     setTimeout(() => {
-            //         for (let i = 0; i < 5; i++) {
-            //             this.list.push(this.list.length + 1);
-            //         }
-            //         // 加载状态结束
-            //         this.loading = false;
-            //
-            //         // 数据全部加载完成
-            //         if (this.list.length >= 10) {
-            //             this.finished = true;
-            //         }
-            //     }, 500);
-            // }
         }
     }
 </script>
