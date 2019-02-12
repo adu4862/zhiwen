@@ -82,7 +82,8 @@
                 this.getTestRecords({
                     id: this.lessonDetail.test_questions[this.currentTest].id
                 }).then((res) => {
-                    console.log(res)
+                    // console.log(res)
+                    
                 })
             }
         },
