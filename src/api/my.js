@@ -6,10 +6,14 @@ import {sessionSetItem, sessionGetItem, isWeiXin, GetRequest} from '../common/ut
 
 /* 用户收益 */
 export const userRewardAmount = data => Request.get('/user/' + data.userId + '/reward/amount', data);
-/* 推广订单 */
+
+/* 创建推广订单 */
+export const makeRewards = data => Request.post('/rewards', data);
+/* 获取推广订单 */
 export const userRewards = data => Request.get('/user/' + data.userId + '/rewards', data);
-/* 推广订单详情 */
+/* 获取推广订单详情 */
 export const userRewardDetail = data => Request.get('/reward/' + data.userId + '/reward-record', data);
+
 /* 我的订单 */
 export const userOrders = data => Request.get('/user/' + data.userId + '/orders', data);
 /* 我的收藏 */

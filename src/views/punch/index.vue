@@ -6,19 +6,19 @@
                 <span>{{userInfo.nickname}}</span>
             </div>
             <div class="punch-card-title">
-                <p class="punch-card-title-day">我已连续21天学习</p>
-                <p class="punch-card-title-class">法律英语基础版法律英语基础版法律英语基础版法律英语基础版法律英语基础版法律英语基础版法律英语基础版-诉讼部分</p>
+                <p class="punch-card-title-day">我已连续{{cardContent.count}}天学习</p>
+                <p class="punch-card-title-class">{{cardContent.product.subject}}</p>
             </div>
             <div class="punch-card-info">
                 <p class="punch-card-info-word">
-                    <i><!--这个标签只有一个作用——html2canvas保证布局--></i>statutestatute
+                    <i><!--这个标签只有一个作用——html2canvas保证布局--></i>{{cardContent.word.word}}
                 </p>
                 <p class="punch-card-info-symbol">
-                    <i><!--这个标签只有一个作用——html2canvas保证布局--></i>/'atenia/
+                    <i><!--这个标签只有一个作用——html2canvas保证布局--></i>{{cardContent.word.pronunciation}}
                 </p>
-                <p class="punch-card-info-mean">n.律师释词汇解释词汇解</p>
+                <p class="punch-card-info-mean">{{cardContent.word.translation}}</p>
                 <p class="punch-card-info-content">
-                    释词汇解释词汇解释释词汇解释词汇解释释词汇解释词汇解释释词汇解释词汇解释释词汇解释词汇解释释词汇解释词汇解释
+                    {{cardContent.word.example}}
                 </p>
             </div>
             <img class="punch-card-img" :src="require('@/assets/img/punch/punch_01.png')" alt="punch_img"/>
@@ -52,6 +52,7 @@
         name: "Punch",
         data() {
             return {
+                cardContent: {}
             }
         },
         computed: {
@@ -62,9 +63,10 @@
                 this.creatQrCode()
             });
             this.getPunchInfo({
-                product_id: 'e75fa570-0678-484a-b79f-890010398d0d'
+                product_id: '6daf312c-3507-4903-8c12-d0dc519e1c97'
             }).then((res) => {
-                console.log(res)
+                console.log(res);
+                this.cardContent = res;
             })
         },
         methods: {
