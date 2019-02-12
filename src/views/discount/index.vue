@@ -12,6 +12,7 @@
     import Bargain from './bargain'
     import Records from "./records"
     import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
+    import wx from 'weixin-js-sdk'
 
     export default {
         name: "discount",

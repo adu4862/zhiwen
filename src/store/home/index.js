@@ -9,7 +9,9 @@ const state = {
     lessonDetail: {
         test_questions: [],
     },
-    bargainDetail: {},
+    bargainDetail: {
+        records: [],
+    },
 };
 
 export default {

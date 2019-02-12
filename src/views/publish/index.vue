@@ -33,6 +33,7 @@
     import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
     import {WxShare} from '@/components'
     import {wxShareLink} from '@/common/util'
+    import wx from 'weixin-js-sdk'
 
     export default {
         name: "publish",
