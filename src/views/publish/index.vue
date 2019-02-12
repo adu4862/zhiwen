@@ -54,7 +54,7 @@
                 this.initWxConfig();
                 wx.ready(() => {
                     let {subject, introduction, image_uri} = this.classDetail;
-                    ``
+                    // 分享给朋友
                     wx.updateAppMessageShareData({
                         title: subject,         // 分享标题
                         desc: introduction,     // 分享描述
