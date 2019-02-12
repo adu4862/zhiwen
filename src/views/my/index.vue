@@ -15,7 +15,7 @@
             </CellItem>
             <CellItem label="推广中心" link="promotion">
                 <i class="icon icon--9" slot="icon"></i>
-                <p class="cell-content">可提现 <span class="cell-content-withdraw">{{userInfo.balance}}元</span></p>
+                <!--<p class="cell-content">可提现 <span class="cell-content-withdraw">{{userInfo.balance}}元</span></p>-->
             </CellItem>
             <CellItem label="我的订单" link="order">
                 <i class="icon icon-" slot="icon"></i>
