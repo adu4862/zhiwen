@@ -73,12 +73,12 @@
             initWxShare() {
                 this.initWxConfig();
                 wx.ready(() => {
-                    let {subject, introduction, image_uri} = this.classDetail;
+                    let {subject, introduction, image_uri, id} = this.classDetail;
                     // 分享给朋友
                     wx.updateAppMessageShareData({
                         title: subject,         // 分享标题
                         desc: introduction,     // 分享描述
-                        link: wxShareLink(),
+                        link: window.location.href.split('#')[0] + '#' + '/class/' + id,
                         imgUrl: image_uri,      // 分享图标
                         success: function () {
                             // 用户点击了分享后执行的回调函数

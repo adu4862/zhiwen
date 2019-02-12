@@ -23,7 +23,6 @@
             </ClassPanel>
         </div>
         <DividerTitle class="discount-bargain-time">
-            <!--<span class="count-down">24:00:00</span>后失效-->
             <span class="count-down">
                 <CountDown :time="countDownTime">
                   <template slot-scope="props">{{ props.hours }}:{{ props.minutes }}:{{ props.seconds }}</template>
