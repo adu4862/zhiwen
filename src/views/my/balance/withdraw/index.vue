@@ -20,11 +20,12 @@
                 当前可提现金额{{userInfo.balance | formatFloat}}元，<span @click="handleAll(userInfo.balance)">全部提现</span>
             </p>
         </div>
-        <button class="my-balance-withdraw-btn blue-btn-48">确认提现</button>
+        <button class="my-balance-withdraw-btn blue-btn-48" @click="handleWithdraw">确认提现</button>
     </div>
 </template>
 
 <script>
+    import NP from 'number-precision'
     import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
 
     export default {
@@ -38,11 +39,21 @@
             ...mapState(['userInfo'])
         },
         methods: {
+            ...mapActions('my', ['withDraw']),
+            // 全部提现
             handleAll(balance) {
-                this.withdrawAccount = balance;
+                this.withdrawAccount = NP.divide(balance, 1000);
             },
+            // 查看提现记录
             handleRecords() {
                 this.$router.push({name: 'balanceRecord'})
+            },
+            // 提现
+            handleWithdraw() {
+                this.withDraw({
+                    price: NP.times(this.withdrawAccount, 1000),
+                    true_name: "string"
+                })
             }
         }
     }
