@@ -15,7 +15,7 @@
                     :disabled="counting"
                     @click="handleCode"
                 >
-                    <CountDown v-if="counting" :time="6000" @end="handleCountdownEnd">
+                    <CountDown v-if="counting" :time="60000" @end="handleCountdownEnd">
                         <template slot-scope="props">{{ props.totalSeconds }} 秒后重试</template>
                     </CountDown>
                     <span v-else>获取验证码</span>
