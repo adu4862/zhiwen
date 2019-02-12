@@ -33,11 +33,15 @@
         },
         data() {
             return {
-                activeHeader: "2"
+                // activeHeader: "1"
             };
         },
         computed: {
-            ...mapState('home', ['classDetail'])
+            ...mapState('home', ['classDetail']),
+            activeHeader() {
+                if (this.classDetail.is_pay) return '2';
+                return '1';
+            }
         },
         methods: {
             handleHeader(type) {
