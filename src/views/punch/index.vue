@@ -56,7 +56,8 @@
             }
         },
         computed: {
-            ...mapState(['userInfo'])
+            ...mapState(['userInfo']),
+            ...mapState('home', ['classDetail']),
         },
         mounted() {
             this.$nextTick(() => {
@@ -65,7 +66,7 @@
                 }, 500)
             });
             this.getPunchInfo({
-                product_id: '6daf312c-3507-4903-8c12-d0dc519e1c97'
+                product_id: this.classDetail.id
             }).then((res) => {
                 console.log(res);
                 this.cardContent = res;
@@ -85,7 +86,7 @@
             },
             handleCreateImg() {
                 this.setPunch({
-                    product_id: 'e75fa570-0678-484a-b79f-890010398d0d'
+                    product_id: this.classDetail.id
                 }).then((res) => {
                     if (res.statusCode) {
                         this.$toast({
