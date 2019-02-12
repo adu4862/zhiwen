@@ -48,6 +48,7 @@
         },
         mounted() {
             // 微信分享进来调到对应课程
+            console.log(111, window.location.href)
             if (GetRequest().from) {
                 this.$router.push({
                     name: 'classDetail',
@@ -55,6 +56,7 @@
                         id: GetRequest().productId
                     }
                 });
+                // location.href = "#/class/17669f33-3b13-4306-8802-64234cb2a971";
                 return
             }
             this.$nextTick(() => {
