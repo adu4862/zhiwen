@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="punch-success-bottom">
-            <button class="blue-btn-48">继续学习</button>
+            <button class="blue-btn-48" @click="handleLearn">继续学习</button>
         </div>
     </div>
 </template>
@@ -33,6 +33,11 @@
                 this.imgSrc = this.$route.params.imgSrc;
             } else {
                 this.$router.go(-1)
+            }
+        },
+        methods: {
+            handleLearn() {
+                this.$router.go(-2)
             }
         }
     }

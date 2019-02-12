@@ -7,18 +7,18 @@
             </div>
             <div class="punch-card-title">
                 <p class="punch-card-title-day">我已连续{{cardContent.count}}天学习</p>
-                <p class="punch-card-title-class">{{cardContent.product.subject}}</p>
+                <p class="punch-card-title-class">{{cardContent.product && cardContent.product.subject}}</p>
             </div>
             <div class="punch-card-info">
                 <p class="punch-card-info-word">
-                    <i><!--这个标签只有一个作用——html2canvas保证布局--></i>{{cardContent.word.word}}
+                    <i><!--这个标签只有一个作用——html2canvas保证布局--></i>{{cardContent.word && cardContent.word.word}}
                 </p>
                 <p class="punch-card-info-symbol">
-                    <i><!--这个标签只有一个作用——html2canvas保证布局--></i>{{cardContent.word.pronunciation}}
+                    <i><!--这个标签只有一个作用——html2canvas保证布局--></i>{{cardContent.word && cardContent.word.pronunciation}}
                 </p>
-                <p class="punch-card-info-mean">{{cardContent.word.translation}}</p>
+                <p class="punch-card-info-mean">{{cardContent.word && cardContent.word.translation}}</p>
                 <p class="punch-card-info-content">
-                    {{cardContent.word.example}}
+                    {{cardContent.word && cardContent.word.example}}
                 </p>
             </div>
             <img class="punch-card-img" :src="require('@/assets/img/punch/punch_01.png')" alt="punch_img"/>
@@ -94,7 +94,7 @@
                         });
                         return
                     }
-                    // this.toImage();
+                    this.toImage();
                 });
             },
             toImage() {
