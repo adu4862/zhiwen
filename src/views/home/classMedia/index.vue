@@ -71,7 +71,7 @@
                     width: window.innerWidth,
                     height: 200,
                     loop: false,
-                    muted: true,    // 静音
+                    muted: false,    // 静音
                     // bigPlayButton: false,
                     controlBar: {
                         // timeDivider: true,

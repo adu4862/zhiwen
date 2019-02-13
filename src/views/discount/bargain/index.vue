@@ -193,7 +193,8 @@
                 }
             },
             handleBargain() {
-                this.isVisible = true;
+                // this.isVisible = true;
+                this.$emit('on-wxGuide')
             },
             handleCloseDialog() {
                 this.isVisible = false;

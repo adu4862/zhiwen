@@ -1,9 +1,12 @@
 <template>
-    <div class="discount">
-        <!-- 砍价 -->
-        <Bargain/>
-        <!-- 记录 -->
-        <Records/>
+    <div>
+        <div class="discount" v-if="!isShare">
+            <!-- 砍价 -->
+            <Bargain @on-wxGuide="handleGuide"/>
+            <!-- 记录 -->
+            <Records/>
+        </div>
+        <WxShare v-else />
     </div>
 </template>
 
@@ -11,6 +14,7 @@
     import {wxShareLink} from '@/common/util'
     import Bargain from './bargain'
     import Records from "./records"
+    import {WxShare} from '@/components'
     import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
     import wx from 'weixin-js-sdk'
 
@@ -19,6 +23,12 @@
         components: {
             Bargain,
             Records,
+            WxShare,
+        },
+        data() {
+            return {
+                isShare: false
+            }
         },
         computed: {
             ...mapState('home', ['classDetail'])
@@ -66,6 +76,9 @@
                         }
                     });
                 });
+            },
+            handleGuide() {
+                this.isShare = true;
             }
         }
     }
